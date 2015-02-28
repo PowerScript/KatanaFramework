@@ -9,7 +9,8 @@ def help():
 	GR = '\033[37m'
 	print """
 	"""+R+"""Command"""+W+""" \t """+C+"""Description"""+W+"""
-	help		 :help about catana
-	show modules	 :modules
-	use		 :use module
+	help		 : help about catana
+	show modules	 : modules
+	use		 : use module
+	set              : set up 
 		  """

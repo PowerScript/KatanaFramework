@@ -1,5 +1,10 @@
+# KATANA Vs 0,1
+
+from scripts import BruteForceFormBase
 from scripts import BruteForceHTTP
+from scripts import AdminFinder
 from core import help
+from core import updatekatana
 
 
 W  = '\033[0m'  
@@ -25,31 +30,39 @@ print """
 	   by RedToor
 
 	   """+R+"""Command"""+W+"""\t"""+C+"""Description"""+W+"""
-	   help		:help about Katana
-	   show modules	:modules
-	   use		:use module
+	   help		: help about command
+	   show modules	: modules
+	   use		: use module
+	   set          : set up 
+	   update       : update Katana
 	  """
 
-def catana():
+def katana():
 	action = raw_input(B+" KtN> "+W)
 	if action == "show modules":
-		print "		modules\n"
+		print "\n	WEB's Application ---------------------------- \n"
 		print "		web/httpbt\tHTTP Brute Force"
-		catana()
+		print "		web/formbt\tFORM Brute Force"
+		print "		web/cpfinder\tAdmin Finder"
+		katana()
 	elif action[0:3] == "use":
 		if action[4:14] == "web/httpbt":
 			BruteForceHTTP.httpbt()
+		if action[4:16] == "web/cpfinder":
+			AdminFinder.adminfinder()
+		if action[4:16] == "web/formbt":
+			BruteForceFormBase.httpformbasebruteforce()
 		else:
 			print "[!] module "+O+"UNKNOW"
-			catana()
-
+			katana()
 	elif action == "exit":
 		print C+"   GooD"+W+" bye."
 		exit()
 	elif action == "help":
 		help.help()
+	elif action == "update":
+		updatekatana.update()
 	else:
 		print "[!] command No "+O+"ACCEPT"+W
-		catana()
-	
-catana()
+		katana()
+katana()
