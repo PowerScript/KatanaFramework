@@ -53,7 +53,6 @@ def katana():
 		if action[4:16] == "web/formbt":
 			BruteForceFormBase.httpformbasebruteforce()
 		else:
-			print "[!] module "+O+"UNKNOW"
 			katana()
 	elif action == "exit":
 		print C+"   GooD"+W+" bye."

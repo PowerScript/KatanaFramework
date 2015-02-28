@@ -2,7 +2,6 @@
 # Brute Force HTTP Authentication
 # Script by RedToor
 # 27/02/2015
-
 import socket
 import base64
 from core import help
@@ -36,7 +35,7 @@ def httpbt():
 		print "     dictionary_2   : ",defoultdic2
 		httpbt()
 	elif actions=="back":
-		pass
+		return 
 	elif actions=="exit":
 		print C+"   GooD"+W+" bye."
 		exit()
