@@ -1,5 +1,7 @@
 # KATANA Vs 0,1
 
+from scripts import GetDataReport
+from scripts import ARPLooking
 from scripts import BruteForceFormBase
 from scripts import BruteForceHTTP
 from scripts import AdminFinder
@@ -40,10 +42,20 @@ print """
 def katana():
 	action = raw_input(B+" KtN> "+W)
 	if action == "show modules":
-		print "\n	WEB's Application ---------------------------- \n"
-		print "		web/httpbt\tHTTP Brute Force"
-		print "		web/formbt\tFORM Brute Force"
-		print "		web/cpfinder\tAdmin Finder"
+		print "\n 	___________________"
+		print "	|web's application|"
+		print "	---------------------------------------------"
+		print "	|web/httpbt\t | HTTP Brute Force        |"
+		print "	|web/formbt\t | FORM Brute Force        |"
+		print "	|web/cpfinder\t | Admin Finder            |"
+		print "	---------------------------------------------\n 	__________________"
+		print "	|sniffing network|"
+		print "	---------------------------------------------"
+		print "	|net/arplook\t | ARP Attack Detect       |"
+		print "	---------------------------------------------\n 	___________________"
+		print "	|social engineering|"
+		print "	---------------------------------------------"
+		print "	|seng/gdreport\t | Getting information     |"
 		katana()
 	elif action[0:3] == "use":
 		if action[4:14] == "web/httpbt":
@@ -52,6 +64,11 @@ def katana():
 			AdminFinder.adminfinder()
 		if action[4:16] == "web/formbt":
 			BruteForceFormBase.httpformbasebruteforce()
+		if action[4:16] == "net/arplook":
+			ARPLooking.arplook()
+		if action[4:17] == "seng/gdreport":
+			GetDataReport.getdatareport()
+
 		else:
 			katana()
 	elif action == "exit":
