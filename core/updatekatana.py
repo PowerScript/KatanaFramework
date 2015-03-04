@@ -20,3 +20,5 @@ def update():
 		print("     ["+R+"-"+W+"] Error")
 		pass
 	print "     ["+G+"+"+W+"] SUCCESSFUL KATANA Updated"
+	print "     ["+G+"+"+W+"] Katana is in /usr/share/katana/"
+	print ""

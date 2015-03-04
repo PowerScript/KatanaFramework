@@ -1,5 +1,7 @@
 # KATANA Vs 0,1
-
+from scripts import ClientFTP
+from scripts import BruteRAR
+from scripts import BruteZIP
 from scripts import GetDataReport
 from scripts import ARPLooking
 from scripts import BruteForceFormBase
@@ -26,14 +28,15 @@ print """
          | .  ./ /__\ \/../ _ \. /\..\ | |/ /__\ \-----
          | .| .\.\  /./../ /_\.\.\ \..\| |\.\  /./---
          |_.|\_.\.\/./._/./   \_\.\ \..__| \.\/./--
-	    _______?_________________________________
-	   {_| | | |##################################>
-	      ^ ^ ^               THE FRAMEWORK, VS 0.1
+	    _______?___________________________________
+	   {_| | | | I################################/
+	      ^ ^ ^ ^             THE FRAMEWORK, VS (0.1)
 	   by RedToor
 
 	   """+R+"""Command"""+W+"""\t"""+C+"""Description"""+W+"""
 	   help		: help about command
 	   show modules	: modules
+	   show options : options mudule
 	   use		: use module
 	   set          : set up 
 	   update       : update Katana
@@ -45,17 +48,27 @@ def katana():
 		print "\n 	___________________"
 		print "	|web's application|"
 		print "	---------------------------------------------"
-		print "	|web/httpbt\t | HTTP Brute Force        |"
-		print "	|web/formbt\t | FORM Brute Force        |"
-		print "	|web/cpfinder\t | Admin Finder            |"
+		print "	|"+O+"web/httpbt"+W+"\t | "+C+"HTTP Brute Force"+W+"        |"
+		print "	|"+O+"web/formbt"+W+"\t | "+C+"FORM Brute Force"+W+"        |"
+		print "	|"+O+"web/cpfinder"+W+"\t | "+C+"Admin Finder"+W+"            |"
 		print "	---------------------------------------------\n 	__________________"
 		print "	|sniffing network|"
 		print "	---------------------------------------------"
-		print "	|net/arplook\t | ARP Attack Detect       |"
+		print "	|"+O+"net/arplook"+W+"\t | "+C+"ARP Attack Detect"+W+"       |"
 		print "	---------------------------------------------\n 	___________________"
 		print "	|social engineering|"
 		print "	---------------------------------------------"
-		print "	|seng/gdreport\t | Getting information     |"
+		print "	|"+O+"seng/gdreport"+W+"\t | "+C+"Getting information"+W+"     |"
+		print "	---------------------------------------------\n 	______"
+		print "	|files|"
+		print "	---------------------------------------------"
+		print "	|"+O+"file/brutezip"+W+"\t | "+C+"ZIP Brute Force"+W+"         |"
+		print "	|"+O+"file/bruterar"+W+"\t | "+C+"RAR Brute Force"+W+"         |"
+		print "	---------------------------------------------\n 	_________"
+		print "	|Clients|"
+		print "	---------------------------------------------"
+		print "	|"+O+"clt/ftp"+W+"\t | "+C+"FTP Client"+W+"              |"
+		print "	---------------------------------------------"
 		katana()
 	elif action[0:3] == "use":
 		if action[4:14] == "web/httpbt":
@@ -68,6 +81,12 @@ def katana():
 			ARPLooking.arplook()
 		if action[4:17] == "seng/gdreport":
 			GetDataReport.getdatareport()
+		if action[4:17] == "file/brutezip":
+			BruteZIP.btzip()
+		if action[4:17] == "file/bruterar":
+			BruteRAR.btRAR()
+		if action[4:11] == "clt/ftp":
+			ClientFTP.cftp()
 
 		else:
 			katana()
