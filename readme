@@ -1,30 +1,30 @@
-See http://www.debian.org/ for information about Debian GNU/Linux.
-Four Debian releases are available on the main site:
+ KATANA
+ el framework pentesters
 
-Debian 6.0.10, or squeeze.  Access this release through dists/oldstable
-Debian 6.0.10 was released Saturday, 19th July 2014. Please note that
-the 6.0 distribution is no longer receiving security support. If you
-are using the amd64 or i386 architecture and not able to upgrade to the
-current stable release, you may wish to investigate the "squeeze-lts"
-distribution. More information is available at:
-https://wiki.debian.org/LTS/ 
+ programado y desarrollandolo por RedToor
+          	                		  redtoor@inbox.ru
+				                          fb.com/RedToor
+  
+  Español Solamente.
+  bueno, he empezado un framework que busque unir herramientas en general para
+  auditorias, donde se tengan herramientas tanto para auditoria web como auditorias
+  de redes y demas. si tu quieres apoyar el proyecto o quieres ser parte de el agregando
+  modulos o scripts, puedes hacerlo y te pones en conctato con migo, para agregarlos 
+  a la version oficial. 
+ 
+  este proyecto es Open Source(es python), asi podes ver y aprender un poco.
+  aunque este apenas empezando se espera mucho de el, asi que si quieres apoyar la causa
+  y hacer algo para la comunidad esta es la oportunidad.
 
-Debian 7.8, or wheezy.  Access this release through dists/stable
-Debian 7.8 was released Saturday, 10th January 2015.
+  si tienes herramientas hechas por ti y quieres agragarlas tambien puedes contactarme
+  para evaluarlas y posteriormente agregarlas con sus respetivos creditos
 
-Testing, or jessie.  Access this release through dists/testing.  The
-current tested development snapshot is named jessie.  Packages which
-have been tested in unstable and passed automated tests propagate to
-this release.
+  allways learning
+  Code Team, codeteam.tk
 
-Unstable, or sid.  Access this release through dists/unstable.  The
-current development snapshot is named sid.  Untested candidate
-packages for future releases.
-
-Older releases of Debian are at http://archive.debian.org/debian-archive
-
---- Other directories:
-doc             Debian documentation.
-indices         Various indices of the site.
-project         Experimental packages and other miscellaneous files.
-tools           Tools for creating boot disks and booting Linux.
+  Creditos para los Haxors/Programadores que me han pasado Script Propios en el Repositorio Atual.
+  
+  LeSZO ZerO
+  cl34r
+  ... tu? 
+  
