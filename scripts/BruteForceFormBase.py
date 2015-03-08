@@ -126,7 +126,7 @@ def httpformbasebruteforce():
 									else:
 										print "     ["+O+"!"+W+"] Checking with "+defaultdat1+" : "+us+" , "+defaultdat2+" : "+ps	
 				except(KeyboardInterrupt, SystemExit):
-					print("   ["+O+"!"+W+"] (Ctrl + C) Detected, System Exit")
+					print("\n   ["+O+"!"+W+"] (Ctrl + C) Detected, System Exit")
 		except:
 			print("     ["+R+"-"+W+"] target DEAD")
 	httpformbasebruteforce()

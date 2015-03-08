@@ -1,4 +1,5 @@
 # KATANA Vs 0,1
+from scripts import BruteForceFTP
 from scripts import ClientFTP
 from scripts import BruteRAR
 from scripts import BruteZIP
@@ -43,61 +44,68 @@ print """
 	  """
 
 def katana():
-	action = raw_input(B+" KtN> "+W)
-	if action == "show modules":
-		print "\n 	___________________"
-		print "	|web's application|"
-		print "	---------------------------------------------"
-		print "	|"+O+"web/httpbt"+W+"\t | "+C+"HTTP Brute Force"+W+"        |"
-		print "	|"+O+"web/formbt"+W+"\t | "+C+"FORM Brute Force"+W+"        |"
-		print "	|"+O+"web/cpfinder"+W+"\t | "+C+"Admin Finder"+W+"            |"
-		print "	---------------------------------------------\n 	__________________"
-		print "	|sniffing network|"
-		print "	---------------------------------------------"
-		print "	|"+O+"net/arplook"+W+"\t | "+C+"ARP Attack Detect"+W+"       |"
-		print "	---------------------------------------------\n 	___________________"
-		print "	|social engineering|"
-		print "	---------------------------------------------"
-		print "	|"+O+"seng/gdreport"+W+"\t | "+C+"Getting information"+W+"     |"
-		print "	---------------------------------------------\n 	______"
-		print "	|files|"
-		print "	---------------------------------------------"
-		print "	|"+O+"file/brutezip"+W+"\t | "+C+"ZIP Brute Force"+W+"         |"
-		print "	|"+O+"file/bruterar"+W+"\t | "+C+"RAR Brute Force"+W+"         |"
-		print "	---------------------------------------------\n 	_________"
-		print "	|Clients|"
-		print "	---------------------------------------------"
-		print "	|"+O+"clt/ftp"+W+"\t | "+C+"FTP Client"+W+"              |"
-		print "	---------------------------------------------"
-		katana()
-	elif action[0:3] == "use":
-		if action[4:14] == "web/httpbt":
-			BruteForceHTTP.httpbt()
-		if action[4:16] == "web/cpfinder":
-			AdminFinder.adminfinder()
-		if action[4:16] == "web/formbt":
-			BruteForceFormBase.httpformbasebruteforce()
-		if action[4:16] == "net/arplook":
-			ARPLooking.arplook()
-		if action[4:17] == "seng/gdreport":
-			GetDataReport.getdatareport()
-		if action[4:17] == "file/brutezip":
-			BruteZIP.btzip()
-		if action[4:17] == "file/bruterar":
-			BruteRAR.btRAR()
-		if action[4:11] == "clt/ftp":
-			ClientFTP.cftp()
-
-		else:
+	try:
+		action = raw_input(B+" KtN> "+W)
+		if action == "show modules":
+			print "\n 	___________________"
+			print "	|web's application|"
+			print "	---------------------------------------------"
+			print "	|"+O+"web/httpbt"+W+"\t | "+C+"HTTP Brute Force"+W+"        |"
+			print "	|"+O+"web/formbt"+W+"\t | "+C+"FORM Brute Force"+W+"        |"
+			print "	|"+O+"web/cpfinder"+W+"\t | "+C+"Admin Finder"+W+"            |"
+			print "	---------------------------------------------\n 	__________________"
+			print "	|sniffing network|"
+			print "	---------------------------------------------"
+			print "	|"+O+"net/arplook"+W+"\t | "+C+"ARP Attack Detect"+W+"       |"
+			print "	---------------------------------------------\n 	___________________"
+			print "	|social engineering|"
+			print "	---------------------------------------------"
+			print "	|"+O+"seng/gdreport"+W+"\t | "+C+"Getting information"+W+"     |"
+			print "	---------------------------------------------\n 	______"
+			print "	|files|"
+			print "	---------------------------------------------"
+			print "	|"+O+"file/brutezip"+W+"\t | "+C+"ZIP Brute Force"+W+"         |"
+			print "	|"+O+"file/bruterar"+W+"\t | "+C+"RAR Brute Force"+W+"         |"
+			print "	---------------------------------------------\n 	_________"
+			print "	|Clients|"
+			print "	---------------------------------------------"
+			print "	|"+O+"clt/ftp"+W+"\t | "+C+"FTP Client"+W+"              |"
+			print "	---------------------------------------------\n 	_________"
+			print "	|Brute Force Protocols|"
+			print "	---------------------------------------------"
+			print "	|"+O+"bt/ftp"+W+"\t 	 | "+C+"FTP Brute Force"+W+"         |"
+			print "	---------------------------------------------"
 			katana()
-	elif action == "exit":
-		print C+"   GooD"+W+" bye."
-		exit()
-	elif action == "help":
-		help.help()
-	elif action == "update":
-		updatekatana.update()
-	else:
-		print "[!] command No "+O+"ACCEPT"+W
-		katana()
+		elif action[0:3] == "use":
+			if action[4:14] == "web/httpbt":
+				BruteForceHTTP.httpbt()
+			if action[4:16] == "web/cpfinder":
+				AdminFinder.adminfinder()
+			if action[4:16] == "web/formbt":
+				BruteForceFormBase.httpformbasebruteforce()
+			if action[4:16] == "net/arplook":
+				ARPLooking.arplook()
+			if action[4:17] == "seng/gdreport":
+				GetDataReport.getdatareport()
+			if action[4:17] == "file/brutezip":
+				BruteZIP.btzip()
+			if action[4:17] == "file/bruterar":
+				BruteRAR.btRAR()
+			if action[4:11] == "clt/ftp":
+				ClientFTP.cftp()
+			if action[4:10] == "bt/ftp":
+				BruteForceFTP.btftp()
+			else:
+				katana()
+		elif action == "exit":
+			print C+"   GooD"+W+" bye."
+			exit()
+		elif action == "help":
+			help.help()
+		elif action == "update":
+			updatekatana.update()
+		else:
+			print "[!] command No "+O+"ACCEPT"+W
+	except(KeyboardInterrupt, SystemExit):
+		print("\n   ["+O+"!"+W+"] (Ctrl + C) Detected, System Exit")
 katana()
