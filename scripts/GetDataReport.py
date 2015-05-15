@@ -46,26 +46,26 @@ def getdatareport():
 			subprocess.call('echo "<?php \$url=\'http://'+defaultred+'\';\$javascript=\''+defaultjav+'\';?>" > /var/www/appconfig.php', shell=True)
 			print("\n     ["+O+"!"+W+"] Running Apache Server")
 			subprocess.call('cp /root/Desktop/katana/files/getdatareport/* /var/www/', shell=True)
-			subprocess.call('chmod -c 777 /var/www/redirect.php', shell=True)
-			subprocess.call('apache2ctl start', shell=True)
+			subprocess.call('chmod -c 777 /var/www/', shell=True)
+			subprocess.call('service apache2 start', shell=True)
 			if True:
 				try:
 					print("     ["+G+"+"+W+"] Apache Started")
 					print("     ["+G+"+"+W+"] Script Running in http://127.0.0.1/redirect.php?id=1337")
 					print("     ["+O+"!"+W+"] The Report will be save in /var/www/")
-					while True:
-						s = socket.socket()        
-						port = 4567             
-						s.bind(('', port))        
-						s.listen(5)   
-						while True:
-						   c, addr = s.accept()
-						   data=c.recv(10000)    
-						   print "     ["+G+"+"+W+"] Address: ",addr
-						   print "     ",data
-				except(KeyboardInterrupt):
+					print""
+					print("     ["+G+"+"+W+"] Running GetDataReport Script...")
+					raw_input("     ["+O+"!"+W+"] Press any key for Stop GetDataReport")
 					print("     ["+O+"!"+W+"] Stoping Process")
 					subprocess.call('apache2ctl stop', shell=True)
+					print("     ["+O+"+"+W+"] Stop Apache d' GetDataReport Script")
+				except(KeyboardInterrupt):
+					print("     ["+G+"!"+W+"] Stoping Process")
+					subprocess.call('service apache2 stop', shell=True)
+					subprocess.call('rm /var/www/redirect.php', shell=True)
+					subprocess.call('rm /var/www/appconfig.php', shell=True)
+					subprocess.call('rm /var/www/jquery.js', shell=True)
+					print "\n"
 					getdatareport()
 		except(KeyboardInterrupt, SystemExit):
 			print("\n     ["+O+"!"+W+"] (Ctrl + C) Detected, System Exit")

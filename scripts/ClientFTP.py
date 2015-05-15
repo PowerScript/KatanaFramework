@@ -4,6 +4,8 @@
 # 03/03/2015
 from core import help
 from lib.ftplib.ftplib import FTP
+import subprocess
+import os
 W  = '\033[0m'  
 R  = '\033[31m' 
 G  = '\033[32m' 
@@ -98,6 +100,9 @@ def cftp():
 										lfile=cmd[4:].replace("\n","")
 										try:
 											ftp.retrbinary('RETR '+lfile,open(lfile,'wb').write)
+											if True:
+												subprocess.Popen("cp "+lfile+" /root/Desktop/;rm "+lfile+"", stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True).wait()
+												print "      ["+O+"!"+W+"] Saved, /root/Desktop/"+lfile
 										except:
 											print "     ["+O+"!"+W+"] Error: file wrong"
 									if cmd[0:3] == "put":
@@ -131,5 +136,4 @@ def cftp():
 				print("     ["+R+"-"+W+"] target DEAD")
 	except(KeyboardInterrupt):
 		print("\n   ["+O+"!"+W+"] (Ctrl + C) Detected, System Exit")
-		exit()
 	cftp()

