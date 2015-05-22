@@ -4,24 +4,28 @@
 # Tool  : Python  
 # Coders: RedToor, LeSZO ZerO, cl34r 
 # 
-# Made in Colombia With Backtrack ;) 
+# Made in Colombia With Backtrack but for KALI ;) 
 #
 # KATANA Framework, Make for Kali Linux (Distribution) 
 # it's Projects can be share 'd edicted, No Commerce
 
+
+from scripts import BruteForcePOP3
 from scripts import BruteForceSQL
-from scripts import ClientMYSQL
 from scripts import BruteForceSSH
-from scripts import WifiDetecter
 from scripts import BruteForceFTP
-from scripts import ClientFTP
 from scripts import BruteRAR
 from scripts import BruteZIP
-from scripts import GetDataReport
-from scripts import ARPLooking
 from scripts import BruteForceFormBase
 from scripts import BruteForceHTTP
+from scripts import ClientMYSQL
+from scripts import ClientFTP
+from scripts import ClientPOP3
+from scripts import GetDataReport
+from scripts import ARPLooking
 from scripts import AdminFinder
+from scripts import WifiDetecter
+
 from core import help
 from core import updatekatana
 
@@ -45,8 +49,8 @@ print """
          |_.|\_.\.\/./._/./   \_\.\ \..__| \.\/./--
 	    _______?___________________________________
 	   {_| | | | I################################/
-	      ^ ^ ^ ^THE FRAMEWORK, VS (0.0.0.1) 14/05/15
-	   by """+R+"""Red"""+B+"""Toor"""+W+""", LULZ 4 u. 
+	      ^ ^ ^ ^THE FRAMEWORK, VS (0.0.0.1) 22/05/15
+	   by """+R+"""Red"""+O+"""Toor"""+W+""", LULZ 4 u. 
 
 	   """+R+"""Command"""+W+"""\t"""+C+"""Description"""+W+"""
 	   help		: help about command
@@ -85,12 +89,14 @@ def katana():
 			print "	---------------------------------------------"
 			print "	|"+O+"clt/ftp"+W+"\t | "+C+"FTP Client"+W+"              |"
 			print "	|"+O+"clt/sql"+W+"\t | "+C+"SQL Client"+W+"              |"
+			print "	|"+O+"clt/pop3"+W+"\t | "+C+"POP3 Client"+W+"             |"
 			print "	---------------------------------------------\n 	_______________________"
 			print "	|Brute Force Protocols|"
 			print "	---------------------------------------------"
 			print "	|"+O+"bt/ftp"+W+"\t 	 | "+C+"FTP Brute Force"+W+"         |"
 			print "	|"+O+"bt/sql"+W+"\t 	 | "+C+"SQL Brute Force"+W+"         |"
 			print "	|"+O+"bt/ssh"+W+"\t 	 | "+C+"SSH Brute Force"+W+"         |"
+			print "	|"+O+"bt/pop3"+W+"\t | "+C+"POP3 Brute Force"+W+"        |"
 			print "	---------------------------------------------\n 	"
 			#print "	|Wifi|"
 			#print "	---------------------------------------------"
@@ -124,6 +130,10 @@ def katana():
 				ClientMYSQL.cmysql()	
 			if action[4:10] == "bt/sql":
 				BruteForceSQL.btsql()		
+			if action[4:11] == "bt/pop3":
+				BruteForcePOP3.btpop3()
+			if action[4:12] == "clt/pop3":
+				ClientPOP3.cpop3()
 			else:
 				katana()
 		elif action == "exit":

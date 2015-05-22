@@ -1,0 +1,43 @@
+   
+  Katana framework. 
+  Documentation
+
+  Licence GNU/Linux, Free Distribution.
+  This Framework was made for KALI Linux 
+
+  based on Python (Powered by Python), is't a framework for Pentesters. 
+  Katana have 10 (ten) Modules:
+
+  	BruteForceSSH
+        -------------
+	with this modules you can do brute force to SSH Protocol
+	SSH is a protocol for comunication "Sure" between Computers
+	this protocol use credentials.
+
+        	OPTIONS Modules                     OPTIONS Example
+		target       : IP,DNS of Target     192.168.1.17
+		port         : Port Service         23
+		dictionary_1 : Dictionary Users     /root/Desktop/username.txt
+		dictionary_2 : Dictionary Passwords /root/Desktop/password.txt
+
+	so, when you run, the Script test Usernames and Password in target
+ 	if some credential is correct you will be alert.	
+		
+	BruteForceFTP
+	-------------
+	with this modules you can do brute force to FTP Protocol
+	FTP is a protocol for transmition of files between Computers
+	this protocol use credentials.
+
+        	OPTIONS Modules                     OPTIONS Example
+		target       : IP,DNS of Target     192.168.1.17
+		port         : Port Service         21
+		dictionary_1 : Dictionary Users     /root/Desktop/username.txt
+		dictionary_2 : Dictionary Passwords /root/Desktop/password.txt
+
+	so, when you run, the Script test Usernames and Password in target
+ 	if some credential is correct you will be alert.
+
+
+
+
