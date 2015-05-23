@@ -9,7 +9,8 @@
 # KATANA Framework, Make for Kali Linux (Distribution) 
 # it's Projects can be share 'd edicted, No Commerce
 
-
+from scripts import TLogin
+from scripts import FuzzerFTP
 from scripts import BruteForcePOP3
 from scripts import BruteForceSQL
 from scripts import BruteForceSSH
@@ -49,7 +50,7 @@ print """
          |_.|\_.\.\/./._/./   \_\.\ \..__| \.\/./--
 	    _______?___________________________________
 	   {_| | | | I################################/
-	      ^ ^ ^ ^THE FRAMEWORK, VS (0.0.0.1) 22/05/15
+	      ^ ^ ^ ^THE FRAMEWORK, Build (0.0.0.2)
 	   by """+R+"""Red"""+O+"""Toor"""+W+""", LULZ 4 u. 
 
 	   """+R+"""Command"""+W+"""\t"""+C+"""Description"""+W+"""
@@ -75,11 +76,11 @@ def katana():
 			print "	|sniffing network|"
 			print "	---------------------------------------------"
 			print "	|"+O+"net/arplook"+W+"\t | "+C+"ARP Attack Detect"+W+"       |"
-			print "	---------------------------------------------\n 	___________________"
+			print "	---------------------------------------------\n 	____________________"
 			print "	|social engineering|"
 			print "	---------------------------------------------"
 			print "	|"+O+"seng/gdreport"+W+"\t | "+C+"Getting information"+W+"     |"
-			print "	---------------------------------------------\n 	______"
+			print "	---------------------------------------------\n 	_______"
 			print "	|files|"
 			print "	---------------------------------------------"
 			print "	|"+O+"file/brutezip"+W+"\t | "+C+"ZIP Brute Force"+W+"         |"
@@ -97,7 +98,15 @@ def katana():
 			print "	|"+O+"bt/sql"+W+"\t 	 | "+C+"SQL Brute Force"+W+"         |"
 			print "	|"+O+"bt/ssh"+W+"\t 	 | "+C+"SSH Brute Force"+W+"         |"
 			print "	|"+O+"bt/pop3"+W+"\t | "+C+"POP3 Brute Force"+W+"        |"
-			print "	---------------------------------------------\n 	"
+			print "	---------------------------------------------\n 	________"
+			print "	|Fuzzers|"
+			print "	---------------------------------------------"
+			print "	|"+O+"fz/ftp"+W+"\t 	 | "+C+"FTP Fuzzer"+W+"              |"
+			print "	---------------------------------------------\n 	_______________"
+			print "	|Miscellaneous|"
+			print "	---------------------------------------------"
+			print "	|"+O+"mc/tlogin"+W+"\t | "+C+"Test of Credentials"+W+"     |"
+			print "	---------------------------------------------\n                     "
 			#print "	|Wifi|"
 			#print "	---------------------------------------------"
 			#print "	|"+O+"wifi/hwifipwd"+W+"\t | "+C+"Pwd Hacker wife"+W+"         |"
@@ -134,6 +143,10 @@ def katana():
 				BruteForcePOP3.btpop3()
 			if action[4:12] == "clt/pop3":
 				ClientPOP3.cpop3()
+			if action[4:13] == "mc/tlogin":
+				TLogin.tlogin()
+			if action[4:10] == "fz/ftp":
+				FuzzerFTP.fftp()
 			else:
 				katana()
 		elif action == "exit":
