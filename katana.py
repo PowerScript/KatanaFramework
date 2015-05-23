@@ -24,7 +24,7 @@ from scripts import ClientPOP3
 from scripts import GetDataReport
 from scripts import ARPLooking
 from scripts import AdminFinder
-from scripts import WifiDetecter
+#from scripts import WifiDetecter
 
 from core import help
 from core import updatekatana
