@@ -1,5 +1,5 @@
 # KATANA Vs 0.0.0.1
-# Date  : 14/05/15
+# Date  : 28/05/15
 # Autor : RedToor
 # Tool  : Python  
 # Coders: RedToor, LeSZO ZerO, cl34r 
@@ -9,6 +9,7 @@
 # KATANA Framework, Make for Kali Linux (Distribution) 
 # it's Projects can be share 'd edicted, No Commerce
 
+from scripts import Joomscan
 from scripts import TLogin
 from scripts import FuzzerFTP
 from scripts import BruteForcePOP3
@@ -50,7 +51,7 @@ print """
          |_.|\_.\.\/./._/./   \_\.\ \..__| \.\/./--
 	    _______?___________________________________
 	   {_| | | | I################################/
-	      ^ ^ ^ ^THE FRAMEWORK, Build (0.0.0.2)
+	      ^ ^ ^ ^THE FRAMEWORK, Build (0.0.0.3)
 	   by """+R+"""Red"""+O+"""Toor"""+W+""", LULZ 4 u. 
 
 	   """+R+"""Command"""+W+"""\t"""+C+"""Description"""+W+"""
@@ -72,6 +73,7 @@ def katana():
 			print "	|"+O+"web/httpbt"+W+"\t | "+C+"HTTP Brute Force"+W+"        |"
 			print "	|"+O+"web/formbt"+W+"\t | "+C+"FORM Brute Force"+W+"        |"
 			print "	|"+O+"web/cpfinder"+W+"\t | "+C+"Admin Finder"+W+"            |"
+			print "	|"+O+"web/joomscan"+W+"\t | "+C+"Scan Vul's CMS Jommla"+W+"   |"
 			print "	---------------------------------------------\n 	__________________"
 			print "	|sniffing network|"
 			print "	---------------------------------------------"
@@ -147,6 +149,8 @@ def katana():
 				TLogin.tlogin()
 			if action[4:10] == "fz/ftp":
 				FuzzerFTP.fftp()
+			if action[4:17] == "web/joomscan":
+				Joomscan.xjoomla()
 			else:
 				katana()
 		elif action == "exit":
