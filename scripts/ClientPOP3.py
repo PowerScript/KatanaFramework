@@ -2,6 +2,7 @@
 # client POP3 
 # Script by RedToor
 # 22/05/2015
+
 from core import help
 import poplib
 W  = '\033[0m'  
@@ -19,18 +20,21 @@ defaultdat2="password"
 def cpop3():
 	try:
 		global defaulthost,defaultport,defaultdat1,defaultdat2
-		actions = raw_input(B+"   clt/pop3 > "+W)
+		actions = raw_input(O+"     ktn/clt/pop3 > "+W)
 		if actions == "show options":
+			print ""
 			print "     ["+R+"+"+W+"] options"
-			print "     host           : yes"
-			print "     port           : no/yes"
-			print "     username       : yes"
-			print "     password       : yes\n"
+			print "     |host           : yes"
+			print "     |port           : no/yes"
+			print "     |username       : yes"
+			print "     |password       : yes\n"
+			print ""
 			print "     ["+G+"+"+W+"] options current"
-			print "     host           : ",defaulthost
-			print "     port           : ",defaultport
-			print "     username       : ",defaultdat1
-			print "     password       : ",defaultdat2
+			print "     |host           : ",defaulthost
+			print "     |port           : ",defaultport
+			print "     |username       : ",defaultdat1
+			print "     |password       : ",defaultdat2
+			print ""
 			cpop3()
 		elif actions[0:8] == "set host":
 			defaulthost = actions[9:]
@@ -49,9 +53,9 @@ def cpop3():
 			print "     password       : "+defaultdat2+" "+O+"     Saved!!!"+W
 			cpop3()
 		elif actions=="back":
-			pass 
+			return 
 		elif actions=="exit":
-			print C+"   GooD"+W+" bye."
+			print C+"     GooD"+W+" bye."
 			exit()
 		elif actions == "help":
 			help.help()
@@ -62,6 +66,7 @@ def cpop3():
 			print "     port           : ",defaultport
 			print "     username       : ",defaultdat1
 			print "     password       : ",defaultdat2
+			print ""
 			try:
 				red=poplib.POP3(defaulthost, defaultport)
 				if True:
@@ -99,13 +104,13 @@ def cpop3():
 										print "      ["+O+"!"+W+"] Exit, bye."
 										break
 							except(KeyboardInterrupt):
-								print("\n   ["+O+"!"+W+"] (Ctrl + C) Detected, System Exit")
+								print("\n     ["+O+"!"+W+"] (Ctrl + C) Detected, System Exit")
 							except Exception,e:
 								print("     ["+R+"-"+W+"] Timeout", e)
 					except:
 						print("     ["+R+"-"+W+"] username or password Wrong")
 			except:
-				print("     ["+R+"-"+W+"] target DEAD")
+				print("     ["+R+"-"+W+"] target off")
 	except(KeyboardInterrupt):
-		print("\n   ["+O+"!"+W+"] (Ctrl + C) Detected, System Exit")
+		print("\n     ["+O+"!"+W+"] (Ctrl + C) Detected, System Exit")
 	cpop3()

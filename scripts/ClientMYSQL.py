@@ -2,6 +2,7 @@
 # client MYSQL 
 # Script by RedToor
 # 15/05/2015
+
 from core import help
 from lib import MySQLdb
 import socket
@@ -20,18 +21,21 @@ defaultdat2=""
 def cmysql():
 	try:
 		global defaulthost,defaultport,defaultdat1,defaultdat2
-		actions = raw_input(B+"   clt/sql > "+W)
+		actions = raw_input(O+"     ktn/clt/sql > "+W)
 		if actions == "show options":
+			print ""
 			print "     ["+R+"+"+W+"] options"
-			print "     host           : yes"
-			print "     port           : no/yes"
-			print "     username       : yes"
-			print "     password       : yes\n"
+			print "     |host           : yes"
+			print "     |port           : no/yes"
+			print "     |username       : yes"
+			print "     |password       : yes\n"
+			print ""
 			print "     ["+G+"+"+W+"] options current"
-			print "     host           : ",defaulthost
-			print "     port           : ",defaultport
-			print "     username       : ",defaultdat1
-			print "     password       : ",defaultdat2
+			print "     |host           : ",defaulthost
+			print "     |port           : ",defaultport
+			print "     |username       : ",defaultdat1
+			print "     |password       : ",defaultdat2
+			print ""
 			cmysql()
 		elif actions[0:8] == "set host":
 			defaulthost = actions[9:]
@@ -52,7 +56,7 @@ def cmysql():
 		elif actions=="back":
 			pass 
 		elif actions=="exit":
-			print C+"   GooD"+W+" bye."
+			print C+"     GooD"+W+" bye."
 			exit()
 		elif actions == "help":
 			help.help()
@@ -63,6 +67,7 @@ def cmysql():
 			print "     port           : ",defaultport
 			print "     username       : ",defaultdat1
 			print "     password       : ",defaultdat2
+			print ""
 			try:
 				red=socket.socket(socket.AF_INET, socket.SOCK_STREAM)       
 				red.connect((defaulthost, int(defaultport)))
@@ -99,13 +104,15 @@ def cmysql():
 							except:
 								print "Error"
 					except(KeyboardInterrupt):
-						print("\n   ["+O+"!"+W+"] (Ctrl + C) Detected, System Exit")
+						print("\n     ["+O+"!"+W+"] (Ctrl + C) Detected, System Exit")
 					except:
 						print("     ["+R+"-"+W+"] username or password Wrong")
 			except(KeyboardInterrupt):
-				print("\n   ["+O+"!"+W+"] (Ctrl + C) Detected, System Exit")
+				print("\n     ["+O+"!"+W+"] (Ctrl + C) Detected, System Exit")
 			except:
-				print("     ["+R+"-"+W+"] target DEAD")
+				print("     ["+R+"-"+W+"] target off")
+		else:
+			print "     ["+O+"!"+W+"] command No Accept"+W
 	except(KeyboardInterrupt):
-		print("\n   ["+O+"!"+W+"] (Ctrl + C) Detected, System Exit")
+		print("\n     ["+O+"!"+W+"] (Ctrl + C) Detected, System Exit")
 	cmysql()

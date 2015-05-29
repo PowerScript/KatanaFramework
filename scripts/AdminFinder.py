@@ -2,10 +2,12 @@
 # Admin finder
 # Script by RedToor
 # 28/02/2015
+
+from core import help
 import httplib
 import socket
 import sys
-from core import help
+import time
 W  = '\033[0m'  
 R  = '\033[31m' 
 G  = '\033[32m' 
@@ -19,8 +21,9 @@ defaultport="80"
 defaultdicc="core/db/commons-dir-admin.tbl"
 def adminfinder():
 	global defaulthost,defaultport,defaultdicc
-	actions = raw_input(B+"   web/cpfinder > "+W)
+	actions = raw_input(O+"     ktn/web/cpfinder > "+W)
 	if actions == "show options":
+		print ""
 		print "     ["+R+"+"+W+"] options"
 		print "     target         : yes"
 		print "     port           : yes/no"
@@ -28,11 +31,12 @@ def adminfinder():
 		print "     ["+G+"+"+W+"] options current"
 		print "     target         : ",defaulthost
 		print "     port           : ",defaultport
+		print ""
 		adminfinder()
 	elif actions=="back":
 		return 
 	elif actions=="exit":
-		print C+"   GooD"+W+" bye."
+		print C+"     GooD"+W+" bye."
 		exit()
 	elif actions == "help":
 		help.help()
@@ -51,7 +55,7 @@ def adminfinder():
 		print "     ["+G+"+"+W+"] options current"
 		print "     target         : "+defaulthost
 		print "     port           : "+defaultport
-		print
+		print ""
 		try:
 			red=socket.socket(socket.AF_INET, socket.SOCK_STREAM)       
 			red.connect((defaulthost, int(defaultport))) 
@@ -67,13 +71,23 @@ def adminfinder():
 							connection.request("GET",patch)
 							response = connection.getresponse()
 							if response.status == 200:
-								print "     ["+G+"+"+W+"] SUCCESSFUL Possible +- CPANEL in "+patch
+								log=open('core/logs/logsAdminFinder.log','a')
+								log.write('\n ===================================== ')
+								log.write('\n Module  : BruteForcePOP3')
+								log.write('\n Data    : '+time.strftime('%c'))
+								log.write('\n target  : '+defaulthost)
+								log.write('\n port    : '+defaultport)
+								log.write('\n Cracked : folder : '+patch)
+								log.close()
+								print "     ["+G+"+"+W+"] Successfully Possible +- CPANEL in "+patch
 								red.close
 								adminfinder()
 							else:
 								print "     ["+O+"!"+W+"] Checking with "+patch
 				except(KeyboardInterrupt, SystemExit):
-					print("   ["+O+"!"+W+"] (Ctrl + C) Detected, System Exit")
+					print("     ["+O+"!"+W+"] (Ctrl + C) Detected, System Exit")
 		except:
-			print("     ["+R+"-"+W+"] target DEAD")
+			print("     ["+R+"-"+W+"] target off")
+	else:
+			print "     ["+O+"!"+W+"] command No Accept"+W
 	adminfinder()

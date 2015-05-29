@@ -2,6 +2,7 @@
 # Fuzzer FTP 
 # Script by RedToor
 # 23/05/2015
+
 from core import help
 import socket
 W  = '\033[0m'  
@@ -21,22 +22,25 @@ defaultstri="A"
 def fftp():
 	try:
 		global defaulthost,defaultport,defaultdat1,defaultdat2,defaultstri,defaultlent
-		actions = raw_input(B+"   clt/ftp > "+W)
+		actions = raw_input(O+"     ktn/clt/ftp > "+W)
 		if actions == "show options":
+			print ""
 			print "     ["+R+"+"+W+"] options"
-			print "     host           : yes"
-			print "     port           : no/yes"
-			print "     username       : yes"
-			print "     password       : yes"
-			print "     length         : yes"
-			print "     buffer         : yes"
+			print "     |host           : yes"
+			print "     |port           : no/yes"
+			print "     |username       : yes"
+			print "     |password       : yes"
+			print "     |length         : yes"
+			print "     |buffer         : yes"
+			print ""
 			print "     ["+G+"+"+W+"] options current"
-			print "     host           : ",defaulthost
-			print "     port           : ",defaultport
-			print "     username       : ",defaultdat1
-			print "     password       : ",defaultdat2
-			print "     length         : ",defaultlent
-			print "     buffer         : ",defaultstri
+			print "     |host           : ",defaulthost
+			print "     |port           : ",defaultport
+			print "     |username       : ",defaultdat1
+			print "     |password       : ",defaultdat2
+			print "     |length         : ",defaultlent
+			print "     |buffer         : ",defaultstri
+			print ""
 			fftp()
 		elif actions[0:8] == "set host":
 			defaulthost = actions[9:]
@@ -63,9 +67,9 @@ def fftp():
 			print "     length         : "+defaultlent+" "+O+"     Saved!!!"+W
 			fftp()
 		elif actions=="back":
-			pass 
+			return 
 		elif actions=="exit":
-			print C+"   GooD"+W+" bye."
+			print C+"     GooD"+W+" bye."
 			exit()
 		elif actions == "help":
 			help.help()
@@ -78,6 +82,7 @@ def fftp():
 			print "     password       : ",defaultdat2
 			print "     length         : ",defaultlent
 			print "     buffer         : ",defaultstri
+			print ""
 			try:
 				red=socket.socket(socket.AF_INET, socket.SOCK_STREAM)       
 				red.connect((defaulthost, int(defaultport))) 
@@ -108,7 +113,9 @@ def fftp():
 						print("\n   ["+O+"!"+W+"] (Ctrl + C) Detected, System Exit")
 						exit()
 			except:
-				print("     ["+R+"-"+W+"] target DEAD")	
+				print("     ["+R+"-"+W+"] target off")	
+		else:
+			print "     ["+O+"!"+W+"] command No Accept"+W
 	except(KeyboardInterrupt):
 		print("\n   ["+O+"!"+W+"] (Ctrl + C) Detected, System Exit")
 		exit()

@@ -2,11 +2,13 @@
 # ZIP Brute Force
 # Script by LeSZO ZerO
 # 28/02/2015
+
+from core import help
 import zipfile
 import optparse
 import sys
 import os
-from core import help
+import time
 W  = '\033[0m'  
 R  = '\033[31m' 
 G  = '\033[32m' 
@@ -19,19 +21,22 @@ defaultarc="empy"
 defaultdic="core/db/pass.dicc"
 def btzip():
 	global defaultarc,defaultdic
-	actions = raw_input(B+"   file/brutezip > "+W)
+	actions = raw_input(O+"     ktn/file/brutezip > "+W)
 	if actions == "show options":
+		print ""
 		print "     ["+R+"+"+W+"] options"
-		print "     file           : yes"
-		print "     dictionary     : no/yes\n"
+		print "     |file           : yes"
+		print "     |dictionary     : no/yes\n"
+		print ""
 		print "     ["+G+"+"+W+"] options current"
-		print "     file           : ",defaultarc
-		print "     dictionary     : ",defaultdic
+		print "     |file           : ",defaultarc
+		print "     |dictionary     : ",defaultdic
+		print ""
 		btzip()
 	elif actions=="back":
 		return 
 	elif actions=="exit":
-		print C+"   GooD"+W+" bye."
+		print C+"     GooD"+W+" bye."
 		exit()
 	elif actions[0:8] == "set file":
 		defaultarc = actions[9:]
@@ -49,13 +54,20 @@ def btzip():
 				print "     ["+G+"+"+W+"] options current"
 				print "     file         : ",defaultarc
 				print "     dictionary   : ",defaultdic
-				print 
+				print ""
 				leeArchivo = Arch.readlines()
 				for palabra in leeArchivo:
 					palabraLlegada = palabra.split("\n")
 					try:
 						ZIParch = zipfile.ZipFile(defaultarc)
 						try:
+							log=open('core/logs/logsBruteForce.log','a')
+							log.write('\n ===================================== ')
+							log.write('\n Module  : BruteForceZIP')
+							log.write('\n Data    : '+time.strftime('%c'))
+							log.write('\n file    : '+defaultarc)
+							log.write('\n Cracked : password : ',str(palabraLlegada[0]))
+							log.close()
 							ZIParch.extractall(pwd=str(palabraLlegada[0]))
 							print "     ["+G+"+"+W+"] Craked with ",str(palabraLlegada[0])
 							break
@@ -66,4 +78,6 @@ def btzip():
 						break
 		except:
 			print "     ["+O+"!"+W+"] Error to open dictionary"
+	else:
+		print "     ["+O+"!"+W+"] command No Accept"+W
 	btzip()

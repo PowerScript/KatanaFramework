@@ -2,23 +2,21 @@
 # Update
 # Script by RedToor
 # 28/02/2015
+from core import colors
 import subprocess
+import socket
 import os
-W  = '\033[0m'  
-R  = '\033[31m' 
-G  = '\033[32m' 
-O  = '\033[33m' 
-B  = '\033[34m' 
-P  = '\033[35m' 
-C  = '\033[36m' 
-GR = '\033[37m'
 def update():
-	print "     ["+O+"!"+W+"] Updating KATANA..."
-	try:
-		subprocess.Popen("cd /tmp;git clone https://github.com/RedToor/katana.git;cp -R test/ /usr/share;rm -rf /tmp/test/", stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True).wait()
-	except Exception, e:
-		print("     ["+R+"-"+W+"] Error")
-		pass
-	print "     ["+G+"+"+W+"] SUCCESSFUL KATANA Updated"
-	print "     ["+G+"+"+W+"] Katana is in /usr/share/katana/"
 	print ""
+	print "     ["+colors.O+"!"+colors.W+"] Updating KATANA..."
+	try:
+		red=socket.socket(socket.AF_INET, socket.SOCK_STREAM)       
+		red.connect(("google.com", int(80))) 
+		if True:
+			subprocess.Popen("cd /tmp;git clone https://github.com/RedToor/katana.git;cp -R /tmp/katana/* /usr/share/katana/;rm -rf /tmp/katana/*", stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True).wait()
+			pass
+			print "     ["+colors.G+"+"+colors.W+"] SUCCESSFUL KATANA Updated"
+			print ""
+	except:
+		print("     ["+colors.R+"-"+colors.W+"] Error ")
+		print""

