@@ -63,7 +63,7 @@ the cause and do something for the community, this is the opportunity.
 
 #Screenshots
 
-<p align="center"><img src="https://lh3.googleusercontent.com/-QCwmt8iCHbA/VWnrMU2-agI/AAAAAAAAAGc/sam_yeyIH6Q/w426-h352/Screenshot%2Bfrom%2B2015-05-30%2B11_28_07.png" /><br /><i>Installation</i></p>
+<p align="center"><img src="https://lh3.googleusercontent.com/-QCwmt8iCHbA/VWnrMU2-agI/AAAAAAAAAGc/sam_yeyIH6Q/w1040-h859-no/Screenshot%2Bfrom%2B2015-05-30%2B11_28_07.png" /><br /><i>Installation</i></p>
 
 # LICENSE
 Katana is licensed . See [LICENSE](LICENSE) for more information.
