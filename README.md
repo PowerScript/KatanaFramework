@@ -1,5 +1,7 @@
 Katana Framework
 
+#ABOUT
+
 Well, I've started a framework that seekss to unite general auditing tools,
 which are general pentesting tools (Network,Web,Desktop and others). if you
 want to support the project or want to be part by adding modules or scripts,
@@ -8,6 +10,11 @@ you can contact "ME" (RedToor) and they could be added to the oficcial Version
 This Project is Open Source (s python), so you can see and learn.
 This is just the beginning there is alot more expected, so if you want to support
 the cause and do something for the community, this is the opportunity.
+
+# REQUIREMENTS
+```
+        Kali Linux
+```
 
 #INSTALLATION
 
@@ -53,6 +60,13 @@ the cause and do something for the community, this is the opportunity.
         >exit
         quit framework
 ```
+
+#Screenshots
+
+<p align="center"><img src="https://lh3.googleusercontent.com/-QCwmt8iCHbA/VWnrMU2-agI/AAAAAAAAAGc/sam_yeyIH6Q/w426-h352/Screenshot%2Bfrom%2B2015-05-30%2B11_28_07.png" /><br /><i>Installation</i></p>
+
+# LICENSE
+Katana is licensed . See [LICENSE](LICENSE) for more information.
 
 Contact me for more info...
 CodeTeam, BlackteamSecurity.
