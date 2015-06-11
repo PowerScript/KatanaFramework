@@ -1,0 +1,11 @@
+
+BSSID, First time seen, Last time seen, channel, Speed, Privacy, Cipher, Authentication, Power, # beacons, # IV, LAN IP, ID-length, ESSID, Key
+E8:40:F2:32:37:FD, 2015-06-11 14:18:49, 2015-06-11 14:20:21, 11,  54, WPA2, CCMP TKIP,PSK, -84,      840,     1947,   0.  0.  0.  0,   7, perlita, 
+
+Station MAC, First time seen, Last time seen, Power, # packets, BSSID, Probed ESSIDs
+D0:7A:B5:7B:F9:9E, 2015-06-11 14:18:51, 2015-06-11 14:20:11, -96,       57, E8:40:F2:32:37:FD,
+8C:3A:E3:7E:9B:CC, 2015-06-11 14:18:50, 2015-06-11 14:20:19, -88,      117, E8:40:F2:32:37:FD,
+70:AA:B2:D7:33:F7, 2015-06-11 14:19:01, 2015-06-11 14:20:18, -94,      658, E8:40:F2:32:37:FD,
+B8:5A:73:8D:53:3A, 2015-06-11 14:18:51, 2015-06-11 14:19:47, -90,     1150, E8:40:F2:32:37:FD,
+8C:C5:E1:96:5D:43, 2015-06-11 14:18:49, 2015-06-11 14:20:20, -78,     1242, E8:40:F2:32:37:FD,
+

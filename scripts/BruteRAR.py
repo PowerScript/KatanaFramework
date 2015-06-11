@@ -69,7 +69,7 @@ def btRAR():
 							log.write('\n Cracked : password : ',str(palabraLlegada[0]))
 							log.close()
 							RARarch.extractall(pwd=str(palabraLlegada[0]))
-							print "     ["+G+"+"+W+"] Craked with ",str(palabraLlegada[0])
+							print "     ["+G+"+"+W+"] Cracked with ",str(palabraLlegada[0])
 							break
 						except:
 							print "     ["+O+"!"+W+"] Checking with ",str(palabraLlegada[0])

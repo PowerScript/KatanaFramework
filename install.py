@@ -2,6 +2,7 @@
 # Redtoor
 # Install build 0.0.0.3
 from core import colors
+import os
 import subprocess
 import time
 print ""
@@ -25,6 +26,16 @@ print "                   I_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_
 print "                   \_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_/                  				 "#                   \_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_/                  
 print ""
 print ""
+
+if os.getuid() != 0:
+	print R+' [!]'+O+' ERROR:'+G+' wifite'+O+' must be run as '+R+'root'+W
+	print R+' [!]'+O+' login as root ('+W+'su root'+O+') or try '+W+'sudo ./wifite.py'+W
+	exit(1)
+
+if not os.uname()[0].startswith("Linux") and not 'Darwin' in os.uname()[0]: # OSX support, 'cause why not?
+	print O+' [!]'+R+' WARNING:'+G+' wifite'+W+' must be run on '+O+'linux'+W
+	exit(1)
+
 print colors.O+" Wait... "
 time.sleep(2)
 print colors.B+" Katana framework, installing"
