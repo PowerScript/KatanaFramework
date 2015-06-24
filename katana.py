@@ -1,5 +1,4 @@
-# KATANA Vs 0.0.0.3
-# Date  : 11/06/15
+# KATANA 
 # Autor : RedToor
 # Tool  : Python  
 # Coders: RedToor, LeSZO ZerO, cl34r 
@@ -29,6 +28,7 @@ from scripts import ClientPOP3
 from scripts import GetDataReport
 from scripts import ARPLooking
 from scripts import AdminFinder
+from core import info
 from core import help
 from core import colors
 from core import updatekatana
@@ -43,7 +43,7 @@ print """
          |_.|\_.\.\/./._/./   \_\.\ \..__| \.\/./--
 	    _______?___________________________________
 	   {_| | | | I################################/
-	      ^ ^ ^ ^THE FRAMEWORK, Build (0.0.0.3)
+	      ^ ^ ^ ^THE FRAMEWORK, Build ("""+info.version+""")
 	   by """+colors.W+"""Red"""+colors.GR+"""Toor"""+colors.W+"""
 
 	   """+colors.R+"""Command"""+colors.W+"""\t"""+colors.C+"""Description"""+colors.W+"""

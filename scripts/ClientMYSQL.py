@@ -4,7 +4,7 @@
 # 15/05/2015
 
 from core import help
-from lib import MySQLdb
+#from lib import MySQLdb
 import socket
 W  = '\033[0m'  
 R  = '\033[31m' 

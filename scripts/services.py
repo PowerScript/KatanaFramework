@@ -36,12 +36,12 @@ def services(process):
 					print("     ["+G+"+"+W+"] Running")
 					try:
 						print("     ["+O+"!"+W+"] Starting Service "+process)
-						subprocess.call('service '+process+' start >> core/logs/logsServices.log', shell=True)
+						subprocess.call('service '+process+' start > nul', shell=True)
 						print("     ["+G+"+"+W+"] Service started")
 						print ""
 						raw_input("     ["+O+"!"+W+"] Press any key for Stop Service")
 						print("     ["+O+"!"+W+"] Stopping Service "+process)
-						subprocess.call('service '+process+' stop >> core/logs/logsServices.log', shell=True)
+						subprocess.call('service '+process+' stop > nul ', shell=True)
 						print("     ["+G+"+"+W+"] Service Stoped")
 						print ""
 					except(KeyboardInterrupt):

