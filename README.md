@@ -14,23 +14,28 @@ the cause and do something for the community, this is the opportunity.
 # REQUIREMENTS
 ```
         Kali Linux
+        Backtrack 5 Rt 3
+        Wifislax
+        Wifiway
+        
 ```
 
 #INSTALLATION
 
 ```
-        ~/cd Desktop
-        ~/Desktop/ git clone https://github.com/RedToor/katana.git
-        ~/Desktop/ cd Katana
-        ~/Desktop/Katana/ python install.py
-        ~/Desktop/cd ..
-        ~/rm -r Desktop/Katana
+        ~/> cd Desktop
+        ~/Desktop/> git clone https://github.com/RedToor/katana.git
+        ~/Desktop/> cd Katana
+        ~/Desktop/Katana/> python install.py
+        ~/Desktop/katana/> cd ..
+        ~/Desktop/> rm -r Katana
 ```
 
 #USAGE
 
 ```
         ~/katana
+        ~/msfkatana -m module
 ```
 
 # DESCRIPTION OF ARGUMENTS
@@ -66,7 +71,8 @@ the cause and do something for the community, this is the opportunity.
 <p align="center"><img src="https://lh3.googleusercontent.com/-QCwmt8iCHbA/VWnrMU2-agI/AAAAAAAAAGc/sam_yeyIH6Q/w1040-h859-no/Screenshot%2Bfrom%2B2015-05-30%2B11_28_07.png" /><br /><i>Installation</i></p>
 
 # LICENSE
-Katana is licensed . See [LICENSE](LICENSE) for more information.
+Katana is licensed. 
+See [LICENSE](LICENSE) for more information.
 
 Contact me for more info...
 CodeTeam, BlackteamSecurity.
