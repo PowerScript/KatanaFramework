@@ -1,0 +1,137 @@
+   
+
+                  __                         __
+         ___  ___/  \_______________   ___  /  \---
+         | .|/ ./ __ \__   ___/.....\  | | / __ \----
+         | .  ./ /__\ \/../ _ \. /\..\ | |/ /__\ \-----
+         | .| .\.\  /./../ /_\.\.\ \..\| |\.\  /./---
+         |_.|\_.\.\/./._/./   \_\.\ \..__| \.\/./--
+	    _______?___________________________________
+	   {_| | | | I################################/
+	      ^ ^ ^ ^     THE FRAMEWORK
+
+	  Katana framework. 
+	  Documentation and Support {No Format}
+
+	  Licence GNU/Linux, Free Distribution.
+	  This Framework was made for KALI Linux and Backtrack 5 Rt 3 (Not Stabled)
+
+	  based on Python (Powered by Python), is't a framework Multitool for Pentesters by RedToor 
+	  Katana have 20 (twenty) Modules:
+
+
+  	BruteForceSSH
+    	-------------
+	with this module you can do brute force to SSH Protocol/Service
+	for use this module use {bt/ssh}
+
+       	OPTIONS Modules                     		OPTIONS Example
+	target       : IP,DNS of Target   		127.0.0.1
+	port         : Port Service         		23
+	dictionary_1 : Dictionary Users     		/root/Desktop/username.txt
+	dictionary_2 : Dictionary Passwords 		/root/Desktop/password.txt
+
+
+	BruteForceFTP
+	-------------
+	with this module you can do brute force to FTP Protocol/Service
+	for use this module use {bt/ftp}
+
+       	OPTIONS Modules                     		OPTIONS Example
+	target       : IP,DNS of Target     		127.0.0.1
+	port         : Port Service         		21
+	dictionary_1 : Dictionary Users     		/root/Desktop/username.txt
+	dictionary_2 : Dictionary Passwords 		/root/Desktop/password.txt
+
+	
+	BruteForceSQL
+	-------------
+	with this module you can do brute force to SQL Protocol/Service
+	for use this module use {bt/sql}
+
+       	OPTIONS Modules                     		OPTIONS Example
+	target       : IP,DNS of Target     		127.0.0.1
+	port         : Port Service         		3636
+	dictionary_1 : Dictionary Users     		/root/Desktop/username.txt
+	dictionary_2 : Dictionary Passwords 		/root/Desktop/password.txt
+
+
+	BruteForcePOP3
+	-------------
+	with this module you can do brute force to POP3 Protocol/Service
+	for use this module use {bt/pop3}
+
+       	OPTIONS Modules                   		OPTIONS Example
+	target       : IP,DNS of Target     		127.0.0.1
+	port         : Port Service         		110
+	account      : ID account           		admin@targer.com
+	dictionary   : Dictionary Passwords 		/root/Desktop/password.txt
+
+
+	BruteForceRAR
+	-------------
+	with this module you can do brute force to RAR File
+	for use this module use {file/bruterar}
+
+       	OPTIONS Modules                     		OPTIONS Example
+	file         : file path            		/root/Desktop/file_with_password.rar
+ 	dictionary   : Dictionary Passwords 		/root/Desktop/password.txt
+
+
+	BruteForceZIP
+	-------------
+	with this module you can do brute force to ZIP File
+	for use this module use {file/brutezip}
+
+       	OPTIONS Modules                     		OPTIONS Example
+	file         : file path            		/root/Desktop/file_with_password.zip
+ 	dictionary   : Dictionary Passwords 		/root/Desktop/password.txt
+
+
+	BruteForceFormBase
+	-------------
+	with this module you can do brute force to form base http/php
+	for use this module use {web/formbt}
+
+       	OPTIONS Modules                     		OPTIONS Example
+    	target         : IP,DNS of Target		127.0.0.1
+   	port           : Port Service			80
+     	patch          : file path 			/admin/login.php
+     	param_1        : Parameter			username
+   	param_2        : Parameter			password
+    	method         : Method				POST
+     	[if!=]condition: Condiction			no
+     	dictionary_1   : Dictionary Users		core/db/user.dicc
+     	dictionary_2   : Dictionary Passwords 		core/db/pass.dicc
+
+
+	BruteForceHTTP
+	-------------
+	with this module you can do brute force to http
+	for use this module use {web/httpbt}
+
+       	OPTIONS Modules                     		OPTIONS Example
+    	target         : IP,DNS of Target		127.0.0.1
+   	port           : Port Service			80
+     	patch          : path	 			/admin/
+     	dictionary_1   : Dictionary Users		core/db/user.dicc
+     	dictionary_2   : Dictionary Passwords 		core/db/pass.dicc
+
+
+
+
+
+
+		
+
+	
+
+	Date:  3/07/2015, 9:02pm, Colombia, Pereira.
+	Email: RedToor{at}imbox.ru
+	Fb:    www.fb.com/RedToor
+	Blog:  cave-rt.blogspot.com
+	Site:  blackteamsecurity.net
+
+	Regards, Rt.
+
+

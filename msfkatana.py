@@ -1,5 +1,6 @@
 # katana
 # MFS
+from scripts import GenDic
 from scripts import Wifi_DDOS
 from scripts import WpaBTF
 from scripts import services
@@ -110,6 +111,9 @@ try:
 			if m == "wifi/ddos":
 				print "     ["+colors.G+"+"+colors.W+"] Running"
 				Wifi_DDOS.ddos()
+			if action[4:13] == "mc/gendic":
+				print "     ["+colors.G+"+"+colors.W+"] Running"
+				GenDic.Gendic()
 			else:
 				print "     ["+colors.O+"!"+colors.W+"] Module not found"
 				print ""

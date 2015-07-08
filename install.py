@@ -1,5 +1,6 @@
-# KATANA
+# Katana Install 0.0.0.4 0002
 # Redtoor
+
 from core import info
 from core import colors
 import os
@@ -15,7 +16,7 @@ print "                    ("+colors.O+"/__\ /__\\"+colors.B+")"+colors.W+"     
 print "                    "+colors.B+"/"+colors.W+"\  .V.  /"+colors.B+"\\"+colors.W+"                   				 "#                    /\  .V.  /\                   
 print "                   "+colors.B+"/"+colors.W+"  \,---,/  "+colors.B+"\\"+colors.W+"                  				 "#                   /  \,---,/  \                  
 print "                   "+colors.B+"\\"+colors.W+"___TTTTT___"+colors.B+"/"+colors.W+"                   SETUP: KATANA  "#                   \___TTTTT___/                  
-print "                ::::\ "+colors.R+"|"+colors.W+"_____"+colors.R+"|"+colors.W+" /::::                DATE:  "+info.date""#                ::::\ "+colors.R+"|"+colors.W+"_____"+colors.R+"|"+colors.W+" /::::               
+print "                ::::\ "+colors.R+"|"+colors.W+"_____"+colors.R+"|"+colors.W+" /::::                DATE:  "+info.date+""#                ::::\ "+colors.R+"|"+colors.W+"_____"+colors.R+"|"+colors.W+" /::::               
 print "                (+  _"+colors.R+"|"+colors.W+" __"+colors.R+"|"+colors.W+"__ "+colors.R+"|"+colors.W+"_  +)                BUILD: "+info.version+" "#                (+  _"+colors.R+"|"+colors.W+" __"+colors.R+"|"+colors.W+"__ "+colors.R+"|"+colors.W+"_  +)               
 print "                "+colors.R+"|"+colors.W+"  I_"+colors.R+"|"+colors.W+"KATANA."+colors.R+"|"+colors.W+"_I  "+colors.R+"|"+colors.W+"                               "#                "+colors.R+"|"+colors.W+"  I_"+colors.R+"|"+colors.W+".ANATAK"+colors.R+"|"+colors.W+"_I  "+colors.R+"|"+colors.W+"               
 print "                "+colors.R+"|"+colors.W+"  I_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"  "+colors.R+"|"+colors.W+"               				 "#                "+colors.R+"|"+colors.W+"  I_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"  "+colors.R+"|"+colors.W+"               
@@ -40,11 +41,10 @@ print colors.W+" Giving privileges"
 subprocess.call('chmod -c -R 777 /usr/share/katana/', shell=True)
 print colors.W+" Creating Link"
 subprocess.call('cp core/katana /usr/bin/katana', shell=True)
+subprocess.call('cp core/msfkatana /usr/bin/msfkatana', shell=True)
 subprocess.call('chmod -c 777 /usr/bin/katana', shell=True)
-subprocess.call('rm /usr/share/katana/install', shell=True)
+subprocess.call('chmod -c 777 /usr/bin/msfkatana', shell=True)
 subprocess.call('rm /usr/share/katana/install.py', shell=True)
-subprocess.call('rm /usr/share/katana/readme', shell=True)
-subprocess.call('rm /usr/share/katana/katana', shell=True)
 print " Now you can remove this diretory."
 print " Done !!!"
 print ""

@@ -1,13 +1,14 @@
 # KATANA 
 # Autor : RedToor
 # Tool  : Python  
-# Coders: RedToor, LeSZO ZerO, cl34r 
+# Coders: RedToor, LeSZO ZerO, cl34r.
 # 
 # Made in Colombia, for KALI Distro ;) 
 #
 # KATANA Framework, Make for Kali Linux (Distribution) 
 # it's Projects can be share 'd edicted, No Commerce
 
+from scripts import GenDic
 from scripts import Wifi_DDOS
 from scripts import WpaBTF
 from scripts import services
@@ -70,7 +71,7 @@ def katana():
 			print "	---------------------------------------------\n 	__________________"
 			print "	|sniffing network|"
 			print "	---------------------------------------------"
-			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"net/arplook"+colors.W+"\t | "+colors.C+"ARP Attack Detect"+colors.W+"       |"
+			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"net/arplook"+colors.W+"\t | "+colors.C+"ARP Attack Detector"+colors.W+"     |"
 			print "	---------------------------------------------\n 	____________________"
 			print "	|social engineering|"
 			print "	---------------------------------------------"
@@ -106,12 +107,13 @@ def katana():
 			print "	---------------------------------------------\n 	______"
 			print "	|Wifi|"
 			print "	---------------------------------------------"
-			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"wifi/wpabtf"+colors.W+"\t | "+colors.C+"WPA Brute Force"+colors.W+"          |"
-			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"wifi/ddos"+colors.W+"\t | "+colors.C+"wifi DDOS"+colors.W+"                |"
+			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"wifi/wpabtf"+colors.W+"\t | "+colors.C+"WPA Brute Force"+colors.W+"         |"
+			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"wifi/ddos"+colors.W+"\t | "+colors.C+"wifi DDOS"+colors.W+"               |"
 			print "	---------------------------------------------\n 	_______________"
 			print "	|Miscellaneous|"
 			print "	---------------------------------------------"
 			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"mc/tlogin"+colors.W+"\t | "+colors.C+"Test of Credentials"+colors.W+"     |"
+			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"mc/gendic"+colors.W+"\t | "+colors.C+"Generator Dictionary"+colors.W+"    |"
 			print "	---------------------------------------------\n                     "
 			katana()
 		elif action[0:3] == "use":
@@ -161,6 +163,8 @@ def katana():
 				WpaBTF.wpabtf()
 			if action[4:13] == "wifi/ddos":
 				Wifi_DDOS.ddos()
+			if action[4:13] == "mc/gendic":
+				GenDic.Gendic()
 			else:
 				print " ["+colors.O+"!"+colors.W+"] module not found"
 				katana()
