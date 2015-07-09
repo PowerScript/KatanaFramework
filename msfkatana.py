@@ -1,5 +1,7 @@
 # katana
 # MFS
+
+from scripts import Whois
 from scripts import GenDic
 from scripts import Wifi_DDOS
 from scripts import WpaBTF
@@ -111,9 +113,12 @@ try:
 			if m == "wifi/ddos":
 				print "     ["+colors.G+"+"+colors.W+"] Running"
 				Wifi_DDOS.ddos()
-			if action[4:13] == "mc/gendic":
+			if m == "mc/gendic":
 				print "     ["+colors.G+"+"+colors.W+"] Running"
 				GenDic.Gendic()
+			if m == "web/whois":
+				print "     ["+colors.G+"+"+colors.W+"] Running"
+				Whois.wuis()
 			else:
 				print "     ["+colors.O+"!"+colors.W+"] Module not found"
 				print ""

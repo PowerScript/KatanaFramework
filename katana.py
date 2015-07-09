@@ -8,6 +8,7 @@
 # KATANA Framework, Make for Kali Linux (Distribution) 
 # it's Projects can be share 'd edicted, No Commerce
 
+from scripts import Whois
 from scripts import GenDic
 from scripts import Wifi_DDOS
 from scripts import WpaBTF
@@ -47,7 +48,7 @@ print """
 	      ^ ^ ^ ^THE FRAMEWORK, Build ("""+info.version+""")
 	   by """+colors.W+"""Red"""+colors.GR+"""Toor"""+colors.W+"""
 
-	   """+colors.R+"""Command"""+colors.W+"""\t"""+colors.C+"""Description"""+colors.W+"""
+	   """+colors.R+"""Command"""+colors.W+"""\t"""+colors.C+"""  Description"""+colors.W+"""
 	   help		: help about command
 	   show modules	: modules
 	   show options : options mudule
@@ -61,60 +62,62 @@ def katana():
 	try:
 		action = raw_input(colors.O+" ktn/ "+colors.W)
 		if action == "show modules":
-			print "\n 	___________________"
-			print "	|web's application|"
-			print "	---------------------------------------------"
-			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"web/httpbt"+colors.W+"\t | "+colors.C+"HTTP Brute Force"+colors.W+"        |"
-			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"web/formbt"+colors.W+"\t | "+colors.C+"FORM Brute Force"+colors.W+"        |"
-			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"web/cpfinder"+colors.W+" | "+colors.C+"Admin Finder"+colors.W+"            |"
-			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"web/joomscan"+colors.W+" | "+colors.C+"Scan Vul's CMS Jommla"+colors.W+"   |"
-			print "	---------------------------------------------\n 	__________________"
-			print "	|sniffing network|"
-			print "	---------------------------------------------"
-			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"net/arplook"+colors.W+"\t | "+colors.C+"ARP Attack Detector"+colors.W+"     |"
-			print "	---------------------------------------------\n 	____________________"
-			print "	|social engineering|"
-			print "	---------------------------------------------"
-			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"seng/gdreport"+colors.W+"| "+colors.C+"Getting information"+colors.W+"     |"
-			print "	---------------------------------------------\n 	_______"
-			print "	|files|"
-			print "	---------------------------------------------"
-			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"file/brutezip"+colors.W+"| "+colors.C+"ZIP Brute Force"+colors.W+"         |"
-			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"file/bruterar"+colors.W+"| "+colors.C+"RAR Brute Force"+colors.W+"         |"
-			print "	---------------------------------------------\n 	_________"
-			print "	|Clients|"
-			print "	---------------------------------------------"
-			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"clt/ftp"+colors.W+"\t | "+colors.C+"FTP Client"+colors.W+"              |"
-			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"clt/sql"+colors.W+"\t | "+colors.C+"SQL Client"+colors.W+"              |"
-			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"clt/pop3"+colors.W+"\t | "+colors.C+"POP3 Client"+colors.W+"             |"
-			print "	---------------------------------------------\n 	__________"
-			print "	|Services|"
-			print "	---------------------------------------------"
-			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"server/sql"+colors.W+"\t | "+colors.C+"SQL Server"+colors.W+"              |"
-			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"server/apache"+colors.W+"| "+colors.C+"HTTP Server"+colors.W+"             |"
-			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"server/ssh"+colors.W+"\t | "+colors.C+"SSH Server"+colors.W+"              |"
-			print "	---------------------------------------------\n 	_______________________"
-			print "	|Brute Force Protocols|"
-			print "	---------------------------------------------"
-			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"bt/ftp"+colors.W+"\t | "+colors.C+"FTP Brute Force"+colors.W+"         |"
-			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"bt/sql"+colors.W+"\t | "+colors.C+"SQL Brute Force"+colors.W+"         |"
-			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"bt/ssh"+colors.W+"\t | "+colors.C+"SSH Brute Force"+colors.W+"         |"
-			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"bt/pop3"+colors.W+"\t | "+colors.C+"POP3 Brute Force"+colors.W+"        |"
-			print "	---------------------------------------------\n 	_________"
-			print "	|Fuzzers|"
-			print "	---------------------------------------------"
-			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"fz/ftp"+colors.W+"\t | "+colors.C+"FTP Fuzzer"+colors.W+"              |"
-			print "	---------------------------------------------\n 	______"
-			print "	|Wifi|"
-			print "	---------------------------------------------"
-			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"wifi/wpabtf"+colors.W+"\t | "+colors.C+"WPA Brute Force"+colors.W+"         |"
-			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"wifi/ddos"+colors.W+"\t | "+colors.C+"wifi DDOS"+colors.W+"               |"
-			print "	---------------------------------------------\n 	_______________"
-			print "	|Miscellaneous|"
-			print "	---------------------------------------------"
-			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"mc/tlogin"+colors.W+"\t | "+colors.C+"Test of Credentials"+colors.W+"     |"
-			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"mc/gendic"+colors.W+"\t | "+colors.C+"Generator Dictionary"+colors.W+"    |"
-			print "	---------------------------------------------\n                     "
+			print "\n 	_____________________"
+			print "	|web's application|"+colors.G+"5"+colors.W+"|"
+			print "	-------------------------------------------------------"
+			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"web/httpbt"+colors.W+"\t | "+colors.C+"brute force to HTTP 401"+colors.W+"         |"+colors.R+"<--"+colors.W
+			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"web/formbt"+colors.W+"\t | "+colors.C+"brute force to form POST/GET"+colors.W+"    |"+colors.R+"<--"+colors.W
+			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"web/cpfinder"+colors.W+" | "+colors.C+"admin panel finder"+colors.W+"              |"+colors.R+"<--"+colors.W
+			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"web/joomscan"+colors.W+" | "+colors.C+"Scanner Vul's CMS Jommla"+colors.W+"        |"+colors.R+"<--"+colors.W
+			#print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"web/ddos"+colors.W+"     | "+colors.C+"denial of service web"+colors.W+"           |"+colors.R+"<--"+colors.W
+			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"web/whois"+colors.W+"    | "+colors.C+"who-is web"+colors.W+"                      |"+colors.R+"<--"+colors.W
+			print "	-------------------------------------------------------\n 	____________________"
+			print "	|sniffing network|"+colors.G+"1"+colors.W+"|"
+			print "	-------------------------------------------------------"
+			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"net/arplook"+colors.W+"\t | "+colors.C+"ARP attack detector"+colors.W+"             |"+colors.R+"<--"+colors.W
+			print "	-------------------------------------------------------\n 	______________________"
+			print "	|social engineering|"+colors.G+"1"+colors.W+"|"
+			print "	-------------------------------------------------------"
+			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"seng/gdreport"+colors.W+"| "+colors.C+"getting information with web"+colors.W+"    |"+colors.R+"<--"+colors.W
+			print "	-------------------------------------------------------\n 	_________"
+			print "	|files|"+colors.G+"2"+colors.W+"|"
+			print "	-------------------------------------------------------"
+			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"file/brutezip"+colors.W+"| "+colors.C+"brute force to zip files"+colors.W+"        |"+colors.R+"<--"+colors.W
+			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"file/bruterar"+colors.W+"| "+colors.C+"brute force to rar files"+colors.W+"        |"+colors.R+"<--"+colors.W
+			print "	-------------------------------------------------------\n 	___________"
+			print "	|Clients|"+colors.G+"3"+colors.W+"|"
+			print "	-------------------------------------------------------"
+			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"clt/ftp"+colors.W+"\t | "+colors.C+"ftp client"+colors.W+"                      |"+colors.R+"<--"+colors.W
+			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"clt/sql"+colors.W+"\t | "+colors.C+"sql client"+colors.W+"                      |"+colors.R+"<--"+colors.W
+			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"clt/pop3"+colors.W+"\t | "+colors.C+"pop3 client"+colors.W+"                     |"+colors.R+"<--"+colors.W
+			print "	-------------------------------------------------------\n 	____________"
+			print "	|Services|"+colors.G+"3"+colors.W+"|"
+			print "	-------------------------------------------------------"
+			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"server/sql"+colors.W+"\t | "+colors.C+"sql Server"+colors.W+"                      |"+colors.R+"<--"+colors.W
+			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"server/apache"+colors.W+"| "+colors.C+"http Server"+colors.W+"                     |"+colors.R+"<--"+colors.W
+			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"server/ssh"+colors.W+"\t | "+colors.C+"ssh Server"+colors.W+"                      |"+colors.R+"<--"+colors.W
+			print "	-------------------------------------------------------\n 	_________________________"
+			print "	|Brute Force Protocols|"+colors.G+"4"+colors.W+"|"
+			print "	-------------------------------------------------------"
+			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"bt/ftp"+colors.W+"\t | "+colors.C+"brute force to ftp"+colors.W+"              |"+colors.R+"<--"+colors.W
+			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"bt/sql"+colors.W+"\t | "+colors.C+"brute force to sql"+colors.W+"              |"+colors.R+"<--"+colors.W
+			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"bt/ssh"+colors.W+"\t | "+colors.C+"brute force to ssh"+colors.W+"              |"+colors.R+"<--"+colors.W
+			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"bt/pop3"+colors.W+"\t | "+colors.C+"brute force to pop3"+colors.W+"             |"+colors.R+"<--"+colors.W
+			print "	-------------------------------------------------------\n 	___________"
+			print "	|Fuzzers|"+colors.G+"1"+colors.W+"|"
+			print "	-------------------------------------------------------"
+			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"fz/ftp"+colors.W+"\t | "+colors.C+"fuzzer to ftp"+colors.W+"                   |"+colors.R+"<--"+colors.W
+			print "	-------------------------------------------------------\n 	________"
+			print "	|Wifi|"+colors.G+"2"+colors.W+"|"
+			print "	-------------------------------------------------------"
+			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"wifi/wpabtf"+colors.W+"\t | "+colors.C+"brute force to wpa encriptation"+colors.W+" |"+colors.R+"<--"+colors.W
+			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"wifi/ddos"+colors.W+"\t | "+colors.C+"denial of service wifi"+colors.W+"          |"+colors.R+"<--"+colors.W
+			print "	-------------------------------------------------------\n 	_________________"
+			print "	|Miscellaneous|"+colors.G+"2"+colors.W+"|"
+			print "	-------------------------------------------------------"
+			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"mc/tlogin"+colors.W+"\t | "+colors.C+"test of credentials"+colors.W+"             |"+colors.R+"<--"+colors.W
+			print "	"+colors.R+"-->"+colors.W+"|"+colors.O+"mc/gendic"+colors.W+"\t | "+colors.C+"generator dictionary"+colors.W+"            |"+colors.R+"<--"+colors.W
+			print "	-------------------------------------------------------\n                     "
 			katana()
 		elif action[0:3] == "use":
 			if action[4:14] == "web/httpbt":
@@ -165,6 +168,8 @@ def katana():
 				Wifi_DDOS.ddos()
 			if action[4:13] == "mc/gendic":
 				GenDic.Gendic()
+			if action[4:13] == "web/whois":
+				Whois.wuis()
 			else:
 				print " ["+colors.O+"!"+colors.W+"] module not found"
 				katana()
