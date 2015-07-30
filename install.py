@@ -1,4 +1,4 @@
-# Katana Install 0.0.0.5 0002
+# Katana Install 0.0.0.6
 # Redtoor
 
 from core import info
@@ -40,13 +40,20 @@ subprocess.call('cp -r * /usr/share/katana', shell=True)
 print colors.W+" Giving privileges"
 subprocess.call('chmod -c -R 777 /usr/share/katana/', shell=True)
 print colors.W+" Creating Link"
-subprocess.call('cp core/katana /usr/bin/katana', shell=True)
-subprocess.call('cp core/msfkatana /usr/bin/msfkatana', shell=True)
-subprocess.call('chmod -c 777 /usr/bin/katana', shell=True)
-subprocess.call('chmod -c 777 /usr/bin/msfkatana', shell=True)
+subprocess.call('cp core/ktfconsole /usr/bin/ktfconsole', shell=True)
+subprocess.call('cp core/ktfrun /usr/bin/ktfrun', shell=True)
+subprocess.call('cp core/ktflab /usr/bin/ktflab', shell=True)
+subprocess.call('chmod -c 777 /usr/bin/ktfconsole', shell=True)
+subprocess.call('chmod -c 777 /usr/bin/ktfrun', shell=True)
+subprocess.call('chmod -c 777 /usr/bin/ktflab', shell=True)
 subprocess.call('rm /usr/share/katana/install.py', shell=True)
 print " Now you can remove this diretory."
 print " Done !!!"
+print ""
+print " USE: "
+print " ktfconsole > for mode console"
+print " ktfrun     > use modules fastly"
+print " ktflab     > start laboratory"
 print ""
 print " Path    : /usr/share/katana"
 print " Modules : /usr/share/katana/scripts"

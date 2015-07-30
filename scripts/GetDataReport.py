@@ -1,78 +1,98 @@
-# KATANA
-# GetDataReport
-# Script by RedToor
-# 02/03/2015
-
-from core import help
-import socket
-import subprocess
-W  = '\033[0m'  
-R  = '\033[31m' 
-G  = '\033[32m' 
-O  = '\033[33m' 
-B  = '\033[34m' 
-P  = '\033[35m' 
-C  = '\033[36m' 
-GR = '\033[37m'
+# :-:-:-:-:-:-:-:-:-:-:-:-:-: #
+# @KATANA                     #
+# Modules   : GetDataReport   #
+# Script by : RedToor         #
+# Date      : 02/03/2015      #
+# :-:-:-:-:-:-:-:-:-:-:-:-:-: #
+# Katana Core                 #
+from core.design import *     #
+from core import help         #
+from core import ping         #
+d=DESIGN()                    #
+# :-:-:-:-:-:-:-:-:-:-:-:-:-: #
+# Libraries                   #
+import socket                 #
+import subprocess             #
+# :-:-:-:-:-:-:-:-:-:-:-:-:-: #
+# Default                     #
+# :-:-:-:-:-:-:-:-:-:-:-:-:-: #
 defaultred="www.google.com"
 defaultjav="true"
-def getdatareport():
+# :-:-:-:-:-:-:-:-:-:-:-:-:-: #
+
+def run(para,parb):
 	global defaultred,defaultjav
-	actions = raw_input(O+"     ktn/seng/gdreport > "+W)
-	if actions == "show options":
-		print ""
-		print "     ["+R+"+"+W+"] options"
-		print "     |redirect        : yes"
-		print "     |javascript      : yes/no\n"
-		print ""
-		print "     ["+G+"+"+W+"] options current"
-		print "     |redirect        : ",defaultred
-		print "     |javascript      : ",defaultjav
-		print ""
-	elif actions=="back":
-		pass 
-	elif actions=="exit":
-		print C+"     GooD"+W+" bye."
+	defaultred=para
+	defaultjav=parb
+	getdatareport(1)
+
+def getdatareport(run):
+	try:
+		global defaultred,defaultjav
+		if run!=1:
+			actions=raw_input(d.prompt("seng/gdreport"))
+		else:
+			actions="run"
+		if actions == "show options" or actions == "sop":
+			d.option()
+			d.descrip("link","yes","redirectly",defaultred)
+			d.descrip("javas","no","JS for Geo",defaultjav)
+ 			print ""
+		elif actions[0:8] == "set link":
+				defaultred = actions[9:]
+				d.change("link",defaultred)
+				getdatareport(0)
+		elif actions[0:9] == "set javas":
+				defaultjav = actions[10:]
+				if defaultjav == "true" or defaultjav == "false":
+					d.change("javas",defaultjav)
+				else:
+					d.nodataallow()
+				getdatareport(0)
+		elif actions=="exit" or actions=="x":
+			d.goodbye()
+			exit()
+		elif actions=="help" or actions=="h":
+			help.help()
+		elif actions=="back" or actions=="b":
+			return
+		elif actions=="run"  or actions=="r":
+			d.run()
+			try:
+				subprocess.call('echo "<?php \$url=\'http://'+defaultred+'\';\$javascript=\''+defaultjav+'\';?>" > /var/www/appconfig.php', shell=True)
+				print("\n ["+colors[4]+"!"+colors[0]+"] Running Apache Server")
+				subprocess.call('cp files/getdatareport/* /var/www/', shell=True)
+				subprocess.call('chmod -c 777 /var/www/', shell=True)
+				subprocess.call('service apache2 start', shell=True)
+				if True:
+					try:
+						print(" ["+colors[2]+"+"+colors[0]+"] Apache Started")
+						print(" ["+colors[2]+"+"+colors[0]+"] Script Running in http://127.0.0.1/redirect.php?id=1337")
+						print(" ["+colors[4]+"!"+colors[0]+"] The Report will be save in /var/www/")
+						print""
+						print(" ["+colors[2]+"+"+colors[0]+"] Running GetDataReport Script...")
+						raw_input(" ["+colors[3]+"-"+colors[0]+"] Press any key for Stop GetDataReport")
+						print(" ["+colors[4]+"!"+colors[0]+"] Stoping Process")
+						subprocess.call('rm /var/www/redirect.php', shell=True)
+						subprocess.call('rm /var/www/appconfig.php', shell=True)
+						subprocess.call('rm /var/www/jquery.js', shell=True)
+						subprocess.call('apache2ctl stop', shell=True)
+						print(" ["+colors[4]+"!"+colors[0]+"] Stoping Apache and GetDataReport Script")
+						print(" ["+colors[2]+"+"+colors[0]+"] Scritp Stoped and Apache")
+					except:
+						print(" ["+colors[4]+"!"+colors[0]+"] Stoping Process")
+						subprocess.call('service apache2 stop', shell=True)
+						subprocess.call('rm /var/www/redirect.php', shell=True)
+						subprocess.call('rm /var/www/appconfig.php', shell=True)
+						subprocess.call('rm /var/www/jquery.js', shell=True)
+						print(" ["+colors[2]+"+"+colors[0]+"] Stoped")
+						getdatareport(0)
+			except:
+				d.kbi()
+				exit()
+		else:
+			d.nocommand()
+	except:
+		d.kib()
 		exit()
-	elif actions[0:12] == "set redirect":
-			defaultred = actions[13:]
-			print "     redirect        : "+defaultred+" "+O+"     Saved!!!"+W
-			getdatareport()
-	elif actions[0:14] == "set javascript":
-			defaultjav = actions[15:]
-			if defaultjav == "true" or defaultjav == "false":
-				print "     javascript      : "+defaultjav+" "+O+"     Saved!!!"+W
-			else:
-				print "     ["+O+"!"+W+"] data not allowed, just (true/false)"
-			getdatareport()
-	elif actions == "run":
-		try:
-			subprocess.call('echo "<?php \$url=\'http://'+defaultred+'\';\$javascript=\''+defaultjav+'\';?>" > /var/www/appconfig.php', shell=True)
-			print("\n     ["+O+"!"+W+"] Running Apache Server")
-			subprocess.call('cp files/getdatareport/* /var/www/', shell=True)
-			subprocess.call('chmod -c 777 /var/www/', shell=True)
-			subprocess.call('service apache2 start', shell=True)
-			if True:
-				try:
-					print("     ["+G+"+"+W+"] Apache Started")
-					print("     ["+G+"+"+W+"] Script Running in http://127.0.0.1/redirect.php?id=1337")
-					print("     ["+O+"!"+W+"] The Report will be save in /var/www/")
-					print""
-					print("     ["+G+"+"+W+"] Running GetDataReport Script...")
-					raw_input("     ["+O+"!"+W+"] Press any key for Stop GetDataReport")
-					print("     ["+O+"!"+W+"] Stoping Process")
-					subprocess.call('apache2ctl stop', shell=True)
-					print("     ["+O+"+"+W+"] Stop Apache d' GetDataReport Script")
-				except(KeyboardInterrupt):
-					print("     ["+G+"!"+W+"] Stoping Process")
-					subprocess.call('service apache2 stop', shell=True)
-					subprocess.call('rm /var/www/redirect.php', shell=True)
-					subprocess.call('rm /var/www/appconfig.php', shell=True)
-					subprocess.call('rm /var/www/jquery.js', shell=True)
-					print "\n"
-					getdatareport()
-		except(KeyboardInterrupt, SystemExit):
-			print("\n     ["+O+"!"+W+"] (Ctrl + C) Detected, System Exit")
-	else:
-		print "     ["+O+"!"+W+"] command No Accept"+W
-	getdatareport()
+	getdatareport(0)

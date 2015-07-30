@@ -1,60 +1,68 @@
-# KATANA
-# Joomscan runer 
-# Script by RedToor
-# 26/05/2015
-
-import subprocess
-from core import help
-W  = '\033[0m'  
-R  = '\033[31m' 
-G  = '\033[32m' 
-O  = '\033[33m' 
-B  = '\033[34m' 
-P  = '\033[35m' 
-C  = '\033[36m' 
-GR = '\033[37m'
+# :-:-:-:-:-:-:-:-:-:-:-:-:- #
+# @KATANA                    #
+# Modules   : Joomscan runer #
+# Script by : RedToor        #
+# Date      : 26/05/2015     #
+# :-:-:-:-:-:-:-:-:-:-:-:-:- #
+# Katana Core                #
+from core.design import *    #
+from core import help        #
+from core import ping        #
+d=DESIGN()                   #
+# :-:-:-:-:-:-:-:-:-:-:-:-:- #
+# Libraries                  #
+import subprocess            #
+# :-:-:-:-:-:-:-:-:-:-:-:-:- #
+# Default                    #
+# :-:-:-:-:-:-:-:-:-:-:-:-:- #
 defaulthost="127.0.0.1"
 defaultport="80"
-def xjoomla():
+# :-:-:-:-:-:-:-:-:-:-:-:-:- #
+
+def run(para,parb):
+	global defaulthost,defaultport
+	defaulthost=para
+	defaultport=parb
+	xjoomla(1)
+
+def xjoomla(run):
 	try:
 		global defaulthost,defaultport
-		actions = raw_input(O+"     ktn/web/joomscan > "+W)
-		if actions == "show options":
+		if run!=1:
+			actions=raw_input(d.prompt("web/joomscan"))
+		else:
+			actions="run"
+		if actions == "show options" or actions == "sop":
+			d.option()
+			d.descrip("target","yes","IP or DNS",defaulthost)
+			d.descrip("port","no","Port of target",defaultport)
 			print ""
-			print "     ["+R+"+"+W+"] options"
-			print "     |host           : yes\n"
-			print ""
-			print "     ["+G+"+"+W+"] options current"
-			print "     |host           : ",defaulthost
-			print ""
-			xjoomla()
-		elif actions[0:8] == "set host":
-			defaulthost = actions[9:]
-			print "     host           : "+defaulthost+" "+O+"     Saved!!!"+W
-			xjoomla()
-		elif actions=="exit":
-			print C+"     GooD"+W+" bye."
+		elif actions[0:10] == "set target":
+			defaulthost = actions[11:]
+			d.change("target",defaulthost)
+			xjoomla(0)
+		elif actions=="exit" or actions=="x":
+			d.goodbye()
+			exit()
+		elif actions=="help" or actions=="h":
+			help.help()
+		elif actions=="back" or actions=="b":
 			return
 			return
-		elif actions == "run":
-			print("\n     ["+O+"!"+W+"] Checking target")
-			print "     ["+G+"+"+W+"] options current"
-			print "     host           : ",defaulthost
-			print ""
+		elif actions=="run"  or actions=="r":
+			d.run()
 			try:
+				ping.live(defaulthost,defaultport)
 				if True:
-					print("     ["+G+"+"+W+"] target LIVE")
-					print("     ["+G+"+"+W+"] Running")
 					try:
 						subprocess.call('cd /usr/share/joomscan/;./joomscan.pl -u '+defaulthost, shell=True)
 					except(KeyboardInterrupt):
-						print("\n     ["+O+"!"+W+"] (Ctrl + C) Detected, System Exit")
+						d.kbi()
 			except:
-				print("     ["+R+"-"+W+"] target off")
-		elif actions=="back":
-			return
+				d.off()
 		else:
-			print "     ["+O+"!"+W+"] command No Accept"+W
-	except(KeyboardInterrupt):
-		print("\n   ["+O+"!"+W+"] (Ctrl + C) Detected, System Exit")
-	xjoomla()
+			d.nocommand()
+	except:
+		d.kbi()
+		exit()
+	xjoomla(0)

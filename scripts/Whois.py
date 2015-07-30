@@ -1,55 +1,59 @@
-# KATANA
-# Whois
-# Script by RedToor
-# 09/07/2015
-
-from core import help
-from lib import whois
-import socket
-
-W  = '\033[0m'  
-R  = '\033[31m' 
-G  = '\033[32m' 
-O  = '\033[33m' 
-B  = '\033[34m' 
-P  = '\033[35m' 
-C  = '\033[36m' 
-GR = '\033[37m'
+# :-:-:-:-:-:-:-:-:-:-:-: #
+# @KATANA                 #
+# Modules   : Whois       #
+# Script by : RedToor     #
+# Date      : 09/07/2015  #
+# :-:-:-:-:-:-:-:-:-:-:-: #
+# Katana Core             #
+from core.design import * #
+from core import help     #
+from core import ping     #
+d=DESIGN()                #
+# :-:-:-:-:-:-:-:-:-:-:-: #
+# Libraries               #
+from lib import whois     #
+# :-:-:-:-:-:-:-:-:-:-:-: #
+# Default                 #
+# :-:-:-:-:-:-:-:-:-:-:-: #
 defaulthost="127.0.0.1"
 defaultport="80"
-def wuis():
+# :-:-:-:-:-:-:-:-:-:-:-: #
+
+def run(para,parb):
+	global defaulthost,defaultport
+	defaulthost=para
+	defaultport=parb
+	wuis(1)
+
+def wuis(run):
 	try:
 		global defaulthost,defaultport
-		actions = raw_input(O+"     ktn/web/whois > "+W)
-		if actions == "show options":
+		if run!=1:
+			actions=raw_input(d.prompt("web/whois"))
+		else:
+			actions="run"
+		if actions == "show options" or actions == "sop":
+			d.option()
+			d.descrip("target","yes","IP or DNS",defaulthost)
+			d.descrip("port","no","Port of target",defaultport)
 			print ""
-			print "     ["+R+"+"+W+"] options"
-			print "     |host           : yes\n"
-			print ""
-			print "     ["+G+"+"+W+"] options current"
-			print "     |host           : ",defaulthost
-			print ""
-			wuis()
-		elif actions[0:8] == "set host":
-			defaulthost = actions[9:]
-			print "     host           : "+defaulthost+" "+O+"     Saved!!!"+W
-			wuis()
-		elif actions=="exit":
-			print C+"     GooD"+W+" bye."
+		elif actions[0:10] == "set target":
+			defaulthost = actions[11:]
+			d.change("target",defaulthost)
+			wuis(0)
+		elif actions=="exit" or actions=="x":
+			d.goodbye()
+			exit()
+		elif actions=="help" or actions=="h":
+			help.help()
+		elif actions=="back" or actions=="b":
 			return
 			return
-		elif actions == "run":
-			print("\n     ["+O+"!"+W+"] Checking target")
-			print "     ["+G+"+"+W+"] options current"
-			print "     host           : ",defaulthost
-			print ""
+		elif actions=="run"  or actions=="r":
+			d.run()
 			try:
-				red=socket.socket(socket.AF_INET, socket.SOCK_STREAM)       
-				red.connect((defaulthost, int(defaultport))) 
+				ping.live(defaulthost,defaultport)
 				if True:
-					print("     ["+G+"+"+W+"] target LIVE")
-					print("     ["+G+"+"+W+"] Running")
-					print ""
 					try:
 						w = whois.whois(defaulthost)
 						if w:
@@ -58,14 +62,13 @@ def wuis():
 								print('%20s\t"%s"' % (k, v))
 							print ""
 					except(KeyboardInterrupt):
-						print("\n     ["+O+"!"+W+"] (Ctrl + C) Detected, System Exit")
+						d.kbi()
+						exit()
 			except:
-				print("     ["+R+"-"+W+"] target off")
-		elif actions=="back":
-			return
+				d.off()
 		else:
-			print "     ["+O+"!"+W+"] command No Accept"+W
-	except(KeyboardInterrupt):
-		print("\n   ["+O+"!"+W+"] (Ctrl + C) Detected, System Exit")
+			d.nocommand()
+	except:
+		d.kbi()
 		exit()
-	wuis()
+	wuis(0)

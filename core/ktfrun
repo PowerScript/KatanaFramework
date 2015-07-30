@@ -1,0 +1,2 @@
+cd /usr/share/katana
+python ktfrun.py -m $2
