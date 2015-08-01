@@ -1,5 +1,7 @@
 Katana Framework
 
+<p align="center"><img src="http://4.bp.blogspot.com/-KeoV1yJYj88/VbMAEALnQpI/AAAAAAAAAPE/wna4tJRO0kk/s200/mask.png" /><br /><i>logo</i></p>
+
 #ABOUT
 
 Well, I've started a framework that seekss to unite general auditing tools,
