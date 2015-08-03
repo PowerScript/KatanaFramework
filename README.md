@@ -29,12 +29,12 @@ the cause and do something for the community, this is the opportunity.
 #INSTALLATION
 
 ```
-        ~/> cd Desktop
-        ~/Desktop/> git clone https://github.com/RedToor/katana.git
-        ~/Desktop/> cd Katana
-        ~/Desktop/Katana/> python install.py
-        ~/Desktop/katana/> cd ..
-        ~/Desktop/> rm -r Katana
+        git clone https://github.com/RedToor/katana.git
+        cd Katana
+        chmod 777 install.py
+        python install.py
+        cd ..
+        rm -r Katana
 ```
 
 #USAGE
@@ -43,7 +43,35 @@ the cause and do something for the community, this is the opportunity.
         ~/ktfconsole
 ```
 
+#Features
 
+```
+	Brute force to HTTP 401
+	Admin panel finder
+	Scanner Vul's CMS Jommla
+	denial of service web
+	Who-is web
+	ARP attack detector
+	Getting information with web
+	Brute force to zip files
+	Brute force to rar files
+	Console FTP client
+	Console SQL client
+	Console POP3 client
+	Start SQL Server
+	Start HTTP Server
+	Start SSH Server
+	Brute force to ftp
+	Brute force to sql
+	Brute force to ssh
+	Brute force to pop3
+	Fuzzer to ftp
+	Brute force to wpa encriptation
+	Denial of service wifi
+	Test of credentials
+	Generator dictionary
+ ```
+ 
 # LICENSE
 Katana is licensed. 
 See [LICENSE](LICENSE) for more information.
