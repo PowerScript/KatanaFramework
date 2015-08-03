@@ -1,4 +1,7 @@
-# Katana Lab
+#
+# Katana framework 
+# @Katana Kab
+#
 
 from core import colors
 import subprocess            

@@ -14,84 +14,70 @@ from core import colors
 from core import updatekatana
 from core import splash
 import random
-
-spa=random.randint(1,3)
-if spa==1:
-	print splash.splash1
-elif spa==2:
+import subprocess            
+spa=random.randint(2,5)
+subprocess.call('clear', shell=True)
+if spa==2:
 	print splash.splash2
 elif spa==3:
-	splash.splash3(0)
+	print splash.splash3
+elif spa==4:
+	print splash.splash4
+elif spa==5:
+	print splash.splash5
 
 print """
-                  |"""+colors.B+""">"""+colors.O+"""Katana Framework"""+colors.W+"""
-                  |"""+colors.B+"""["""+colors.R+"""Core"""+colors.W+""" = """+info.version+"""
-   >~$$$=~@@@@@:::|"""+colors.B+"""["""+colors.R+"""Tema"""+colors.W+""" = """+info.tema+"""
-   >~$$$=~@@@@@:::|"""+colors.B+"""["""+colors.R+"""Modules"""+colors.W+""" = """+colors.G+""" """+info.modules+""""""+colors.W+"""
-                  |"""+colors.B+"""["""+colors.R+"""Date"""+colors.W+""" = """+info.date+"""
+	 .-.--.  
+	 \  \==\ """+colors.O+"""Katana Framework"""+colors.W+"""
+	 /- /==/ 
+	/' /==/  """+colors.G+"""~"""+colors.R+"""Core"""+colors.W+""" = """+info.version+"""
+	|,|==|   """+colors.G+"""~"""+colors.R+"""Tema"""+colors.W+""" = """+info.tema+"""
+	\  \==\  """+colors.G+"""~"""+colors.R+"""Modules"""+colors.W+""" = """+colors.G+""" """+info.modules+""""""+colors.W+"""
+	 \ ,\==\ """+colors.G+"""~"""+colors.R+"""Date"""+colors.W+""" = """+info.date+"""
+	 / -/==/ """+colors.B+""" Github: redtoor/Katana"""+colors.W+"""
+	 `-'--'  
 	  """
+
+
+def line(module, description):
+	print """ |==| .| """+colors.R+"""@"""+colors.W+"""|"""+colors.O+module+colors.W+"""\t\t * """+colors.C+description+colors.W
 
 def katana():
 	if True:
 		action = raw_input(colors.W+" ktn > "+colors.W)
 		if action == "show modules" or action == "showm":
-			print "\n 	_____________________"
-			print "	|web's application|"+colors.G+"5"+colors.W+"|"
-			print "	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-			print "	"+colors.R+"@"+colors.W+"|"+colors.O+"web/httpbt"+colors.W+"\t * "+colors.C+"Brute force to HTTP 401"+colors.W
-			print "	"+colors.R+"@"+colors.W+"|"+colors.O+"web/formbt"+colors.W+"\t * "+colors.C+"Brute force to Form-based"+colors.W
-			print "	"+colors.R+"@"+colors.W+"|"+colors.O+"web/cpfinder"+colors.W+"   * "+colors.C+"Admin panel finder"+colors.W
-			print "	"+colors.R+"@"+colors.W+"|"+colors.O+"web/joomscan"+colors.W+"   * "+colors.C+"Scanner Vul's CMS Jommla"+colors.W
-			#print "	"+colors.R+"@"+colors.W+"|"+colors.O+"web/ddos"+colors.W+"     | "+colors.C+"denial of service web"+colors.W+"           
-			print "	"+colors.R+"@"+colors.W+"|"+colors.O+"web/whois"+colors.W+"      * "+colors.C+"Who-is web"+colors.W
-			print "	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n 	____________________"
-			print "	|sniffing network|"+colors.G+"1"+colors.W+"|"
-			print "	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-			print "	"+colors.R+"@"+colors.W+"|"+colors.O+"net/arplook"+colors.W+"\t * "+colors.C+"ARP attack detector"+colors.W         
-			print "	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n 	______________________"
-			print "	|social engineering|"+colors.G+"1"+colors.W+"|"
-			print "	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-			print "	"+colors.R+"@"+colors.W+"|"+colors.O+"seng/gdreport"+colors.W+"  * "+colors.C+"Getting information with web"+colors.W    
-			print "	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n 	_________"
-			print "	|files|"+colors.G+"2"+colors.W+"|"
-			print "	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-			print "	"+colors.R+"@"+colors.W+"|"+colors.O+"file/Brutezip"+colors.W+"  * "+colors.C+"Brute force to zip files"+colors.W      
-			print "	"+colors.R+"@"+colors.W+"|"+colors.O+"file/Bruterar"+colors.W+"  * "+colors.C+"Brute force to rar files"+colors.W        
-			print "	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n 	___________"
-			print "	|Clients|"+colors.G+"3"+colors.W+"|"
-			print "	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-			print "	"+colors.R+"@"+colors.W+"|"+colors.O+"clt/ftp"+colors.W+"\t * "+colors.C+"Console FTP client"+colors.W                      
-			print "	"+colors.R+"@"+colors.W+"|"+colors.O+"clt/sql"+colors.W+"\t * "+colors.C+"Console SQL client"+colors.W                      
-			print "	"+colors.R+"@"+colors.W+"|"+colors.O+"clt/pop3"+colors.W+"\t * "+colors.C+"Console POP3 client"+colors.W                     
-			print "	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n 	____________"
-			print "	|Services|"+colors.G+"3"+colors.W+"|"
-			print "	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-			print "	"+colors.R+"@"+colors.W+"|"+colors.O+"server/sql"+colors.W+"\t * "+colors.C+"Start SQL Server"+colors.W                      
-			print "	"+colors.R+"@"+colors.W+"|"+colors.O+"server/apache"+colors.W+"  * "+colors.C+"Start HTTP Server"+colors.W                     
-			print "	"+colors.R+"@"+colors.W+"|"+colors.O+"server/ssh"+colors.W+"\t * "+colors.C+"Start SSH Server"+colors.W                      
-			print "	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n 	_________________________"
-			print "	|Brute Force Protocols|"+colors.G+"4"+colors.W+"|"
-			print "	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-			print "	"+colors.R+"@"+colors.W+"|"+colors.O+"bt/ftp"+colors.W+"\t * "+colors.C+"Brute force to ftp"+colors.W        
-			print "	"+colors.R+"@"+colors.W+"|"+colors.O+"bt/sql"+colors.W+"\t * "+colors.C+"Brute force to sql"+colors.W              
-			print "	"+colors.R+"@"+colors.W+"|"+colors.O+"bt/ssh"+colors.W+"\t * "+colors.C+"Brute force to ssh"+colors.W              
-			print "	"+colors.R+"@"+colors.W+"|"+colors.O+"bt/pop3"+colors.W+"\t * "+colors.C+"Brute force to pop3"+colors.W             
-			print "	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n 	___________"
-			print "	|Fuzzers|"+colors.G+"1"+colors.W+"|"
-			print "	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-			print "	"+colors.R+"@"+colors.W+"|"+colors.O+"fz/ftp"+colors.W+"\t * "+colors.C+"Fuzzer to ftp"+colors.W               
-			print "	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n 	________"
-			print "	|Wifi|"+colors.G+"2"+colors.W+"|"
-			print "	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-			print "	"+colors.R+"@"+colors.W+"|"+colors.O+"wifi/wpabtf"+colors.W+"\t * "+colors.C+"Brute force to wpa encriptation"+colors.W
-			print "	"+colors.R+"@"+colors.W+"|"+colors.O+"wifi/ddos"+colors.W+"\t * "+colors.C+"Denial of service wifi"+colors.W 
-			print "	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n 	_________________"
-			print "	|Miscellaneous|"+colors.G+"2"+colors.W+"|"
-			print "	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-			print "	"+colors.R+"@"+colors.W+"|"+colors.O+"mc/tlogin"+colors.W+"\t * "+colors.C+"Test of credentials"+colors.W             
-			print "	"+colors.R+"@"+colors.W+"|"+colors.O+"mc/gendic"+colors.W+"\t * "+colors.C+"Generator dictionary"+colors.W            
-			print "	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n                     "
+			print """ 
+  ,--.-,  ____________________________________________________
+ /==/  /  \033[4m| Module               | Description                """+colors.W+"""| 
+ |==|, | """+colors.R+"""@"""+colors.W+"""|"""+colors.O+"""web/httpbt"""+colors.W+"""\t\t * """+colors.C+"""Brute force to HTTP 401"""+colors.W
+			line("web/formbt","Brute force to HTTP 401")
+			line("web/cpfinder","Admin panel finder")
+			line("web/joomscan","Scanner Vul's CMS Jommla")
+			line("web/dos","denial of service web")
+			line("web/whois","Who-is web")
+			line("net/arplook","ARP attack detector")
+			line("eng/gdreport","Getting information with web")
+			line("fle/brutezip","Brute force to zip files")
+			line("fle/bruterar","Brute force to rar files")
+			line("clt/ftp","Console FTP client")
+			line("clt/sql","Console SQL client")
+			line("clt/pop3","Console POP3 client")
+			line("ser/sql","Start SQL Server")
+			line("ser/apache","Start HTTP Server")
+			line("ser/ssh","Start SSH Server")
+			line("bt/ftp","Brute force to ftp")
+			line("bt/sql","Brute force to sql")
+			line("bt/ssh","Brute force to ssh")
+			line("bt/pop3","Brute force to pop3")
+			line("fz/ftp","Fuzzer to ftp")
+			line("wifi/wpabtf","Brute force to wpa encriptation")
+			line("wifi/dos","Denial of service wifi")
+			line("mc/tlogin","Test of credentials")
+			line("mc/gendic","Generator dictionary")
+			print """ /==/, / 
+ `--`-' \n""" 
 			katana()
+
 		elif action[0:3] == "use":
 			if action[4:14] == "web/httpbt":
 				BruteForceHTTP.httpbt(0)
@@ -101,22 +87,22 @@ def katana():
 				BruteForceFormBase.httpformbasebruteforce(0)
 			if action[4:16] == "net/arplook":
 				ARPLooking.arplook()
-			if action[4:17] == "seng/gdreport":
+			if action[4:17] == "eng/gdreport":
 				GetDataReport.getdatareport(0)
-			if action[4:17] == "file/Brutezip":
+			if action[4:17] == "fle/Brutezip":
 				BruteZIP.btzip()
-			if action[4:17] == "file/Bruterar":
+			if action[4:17] == "fle/Bruterar":
 				BruteRAR.btRAR()
 			if action[4:11] == "clt/ftp":
-				ClientFTP.cftp()
+				ClientFTP.cftp(0)
 			if action[4:10] == "bt/ftp":
-				BruteForceFTP.btftp()
+				BruteForceFTP.btftp(0)
 			if action[4:17] == "wifi/hwifipwd":
 				WifiDetecter.hackerwifipwd()
 			if action[4:10] == "bt/ssh":
 				BruteForceSSH.btssh()	
 			if action[4:11] == "clt/sql":
-				ClientMYSQL.cmysql()	
+				ClientMYSQL.cmysql(0)	
 			if action[4:10] == "bt/sql":
 				BruteForceSQL.btsql()		
 			if action[4:11] == "bt/pop3":
@@ -129,15 +115,15 @@ def katana():
 				FuzzerFTP.fftp()
 			if action[4:17] == "web/joomscan":
 				Joomscan.xjoomla(0)
-			if action[4:14] == "server/sql":
+			if action[4:14] == "ser/sql":
 				services.services('mysql')
-			if action[4:14] == "server/ssh":
+			if action[4:14] == "ser/ssh":
 				services.services('ssh')
-			if action[4:18] == "server/apache":
+			if action[4:18] == "ser/apache":
 				services.services('apache2')
 			if action[4:15] == "wifi/wpabtf":
 				WpaBTF.wpabtf()
-			if action[4:13] == "wifi/ddos":
+			if action[4:12] == "wifi/dos":
 				Wifi_DDOS.ddos()
 			if action[4:13] == "mc/gendic":
 				GenDic.Gendic()
@@ -150,8 +136,12 @@ def katana():
 			exit()
 		elif action == "help" or action == "h":
 			help.help()
+			katana()
 		elif action == "update" or action == "u":
 			updatekatana.update()
+		elif action == "clear" or action == "c":
+			subprocess.call('clear', shell=True)
+			katana()			
 		else:
 			print " ["+colors.R+"!"+colors.W+"] Invalid parameter use show 'help' for more information"+colors.W
 			katana()

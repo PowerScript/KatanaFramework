@@ -53,3 +53,5 @@ class DESIGN:
 		print "\n-["+colors[2]+"*"+colors[0]+"] Successfully with (username="+username+")(password="+password+")\n"
 	def nodataallow(self):
 		print " ["+colors[4]+"!"+colors[0]+"] parameter not allow"+colors[0]
+	def nomatch(self):
+		print " ["+colors[1]+"-"+colors[0]+"] Username or password no match, Check againt the parameters.\n"

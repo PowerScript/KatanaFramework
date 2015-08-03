@@ -1,7 +1,7 @@
-# KATANA
-# Update
-# Script by RedToor
-# 28/02/2015
+#
+# Katana framework 
+# @Katana Update
+#
 
 from core import colors
 import subprocess

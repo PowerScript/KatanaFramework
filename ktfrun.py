@@ -1,28 +1,9 @@
-# katana
-# KtnRun
+#
+# Katana framework 
+# @Katana Run
+#
 
-from scripts import Whois
-from scripts import GenDic
-from scripts import Wifi_DDOS
-from scripts import WpaBTF
-from scripts import services
-from scripts import Joomscan
-from scripts import TLogin
-from scripts import FuzzerFTP
-from scripts import BruteForcePOP3
-from scripts import BruteForceSQL
-from scripts import BruteForceSSH
-from scripts import BruteForceFTP
-from scripts import BruteRAR
-from scripts import BruteZIP
-from scripts import BruteForceFormBase
-from scripts import BruteForceHTTP
-from scripts import ClientMYSQL
-from scripts import ClientFTP
-from scripts import ClientPOP3
-from scripts import GetDataReport
-from scripts import ARPLooking
-from scripts import AdminFinder
+from scripts import *
 from core import colors
 from core import info
 import getopt

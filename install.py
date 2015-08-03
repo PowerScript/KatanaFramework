@@ -1,5 +1,7 @@
-# Katana Install 0.0.0.6
-# Redtoor
+#
+# Katana framework 
+# @Katana Install
+#
 
 from core import info
 from core import colors
