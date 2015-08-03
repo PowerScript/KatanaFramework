@@ -60,29 +60,30 @@ Modules and Scripts:
 
  Module                 | Description
 ------------------------|---------------------
-Brute force to HTTP 401 |  Brute forcing consists of systematically enumerating all possible candidates for the solution and checking whether each candidate satisfies the problem's statement.
-Admin panel finder      | find boards of directors or login is something most usual default directories used to find them.
+Brute force to HTTP 401 | Brute forcing to 401 (restricted area)
+Admin panel finder      | find boards of directors or login
 Scanner Vul's CMS Jommla| Joomscan launch
-denial of service web   | A denial-of-service attack is characterized by an explicit attempt by attackers to prevent legitimate users of a service from using that service.
-Who-is web              | WHOIS (pronounced as the phrase who is) is a query and response protocol that is widely used for querying databases that store the registered users or assignees of an Internet resource, such as a domain name, an IP address block, or an autonomous system, but is also used for a wider range of other information.
-ARP attack detector     | x
-Getting information with web| x 
-Brute force to zip files    | x
-Brute force to rar files    | x
-Console FTP client      | x
-Console POP3 client     | x
-Start SQL Server        | x
-Start HTTP Server       | x
-Start SSH Server        | x
-Brute force to ftp      | x
-Brute force to sql      | x
-Brute force to ssh      | x
-Brute force to pop3     | x
-Fuzzer to ftp           | x
-Brute force to wpa encriptation| x
-Denial of service wifi  | x
-Test of credentials     | x
-Generator dictionary    | x
+denial of service web   | Denial-of-service attack for web
+Who-is web              | WHOIS for DNS
+ARP attack detector     | ARP_Spoofing detector
+Getting information with web| Getting information with web
+Brute force to zip files    | Brute forcing to zip files
+Brute force to rar files    | Brute forcing torar files
+Console FTP client      | Client for protocol FTP
+Console POP3 client     | Client for protocol POP3
+Console SQL client      | Client for protocol MySQL
+Start SQL Server        | Starts sql Service
+Start HTTP Server       | Starts apache Service
+Start SSH Server        | Starts ssh Service
+Brute force to ftp      | Brute forcing to ftp service
+Brute force to sql      | Brute forcing to sql service
+Brute force to ssh      | Brute forcing to ssh service
+Brute force to pop3     | Brute forcing to pop3 service
+Fuzzer to ftp           | Fuzzing to ftp srervice
+Brute force to wpa encriptation| Brute forcing to wpa encriptation
+Denial of service wifi  | Denial-of-service attack for ap Wifi
+Test of credentials     | Test of credentials 
+Generator dictionary    | Generator dictionary
  
  
 # LICENSE
