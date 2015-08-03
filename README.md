@@ -17,17 +17,26 @@ This Project is Open Source (s python), so you can see and learn.
 This is just the beginning there is alot more expected, so if you want to support
 the cause and do something for the community, this is the opportunity.
 
-# REQUIREMENTS
+# SOURCE CODE ORGANIZATION
+The Katana source code is organized as follows:
 ```
-        Kali Linux
-        Backtrack 5 Rt 3
-        Wifislax
-        Wifiway
-        
+KatanaGUI/     source code for graphical user interface
+KatanaLAB/     source code for katana laboratory
+core/          source code core
+core/db/       dictionaries and tables
+core/logs/     registers of modules
+files/         files necessary for some modules
+lib/           libraries
+scripts/       source code of modules
+```
+# REQUIREMENTS
+OS requirement:
+```
+        GNU/Linux (Kali distro)
 ```
 
 #INSTALLATION
-
+Installation of Katana framework:
 ```
         git clone https://github.com/RedToor/katana.git
         cd Katana
@@ -38,39 +47,43 @@ the cause and do something for the community, this is the opportunity.
 ```
 
 #USAGE
-
+Commands
 ```
-        ~/ktfconsole
+        ktfconsole # starts katana console
+        ktfrun     # quickly launch modules
+        ktflab     # starts katana laboratory
 ```
 
-#Features
 
-```
-	Brute force to HTTP 401
-	Admin panel finder
-	Scanner Vul's CMS Jommla
-	denial of service web
-	Who-is web
-	ARP attack detector
-	Getting information with web
-	Brute force to zip files
-	Brute force to rar files
-	Console FTP client
-	Console SQL client
-	Console POP3 client
-	Start SQL Server
-	Start HTTP Server
-	Start SSH Server
-	Brute force to ftp
-	Brute force to sql
-	Brute force to ssh
-	Brute force to pop3
-	Fuzzer to ftp
-	Brute force to wpa encriptation
-	Denial of service wifi
-	Test of credentials
-	Generator dictionary
- ```
+#### Features
+Modules and Scripts:
+
+ Module                 | Description
+------------------------|---------------------
+Brute force to HTTP 401 |  Brute forcing consists of systematically enumerating all possible candidates for the solution and checking whether each candidate satisfies the problem's statement.
+Admin panel finder      | find boards of directors or login is something most usual default directories used to find them.
+Scanner Vul's CMS Jommla| Joomscan launch
+denial of service web   | A denial-of-service attack is characterized by an explicit attempt by attackers to prevent legitimate users of a service from using that service.
+Who-is web              | WHOIS (pronounced as the phrase who is) is a query and response protocol that is widely used for querying databases that store the registered users or assignees of an Internet resource, such as a domain name, an IP address block, or an autonomous system, but is also used for a wider range of other information.
+ARP attack detector     | x
+Getting information with web| x 
+Brute force to zip files    | x
+Brute force to rar files    | x
+Console FTP client      | x
+Console POP3 client     | x
+Start SQL Server        | x
+Start HTTP Server       | x
+Start SSH Server        | x
+Brute force to ftp      | x
+Brute force to sql      | x
+Brute force to ssh      | x
+Brute force to pop3     | x
+Fuzzer to ftp           | x
+Brute force to wpa encriptation| x
+Denial of service wifi  | x
+Test of credentials     | x
+Generator dictionary    | x
+ 
  
 # LICENSE
 Katana is licensed. 
