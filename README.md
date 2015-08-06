@@ -90,8 +90,6 @@ Generator dictionary    | Generator dictionary
 Katana is licensed. 
 See [LICENSE](LICENSE) for more information.
 
-<center><img src="http://4.bp.blogspot.com/-KeoV1yJYj88/VbMAEALnQpI/AAAAAAAAAPE/wna4tJRO0kk/s200/mask.png" style="
-width:80px;height:70px" title="Katana"></center>
 
 Contact me for more info...
 CodeTeam, BlackteamSecurity.
