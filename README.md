@@ -90,9 +90,8 @@ Generator dictionary    | Generator dictionary
 Katana is licensed. 
 See [LICENSE](LICENSE) for more information.
 
-<img src="https://thehackerway.files.wordpress.com/2015/07/200px-python-logo-notext-svg.png?w=200&h=200" style="
-width:80px;height:70px"><img src="http://4.bp.blogspot.com/-KeoV1yJYj88/VbMAEALnQpI/AAAAAAAAAPE/wna4tJRO0kk/s200/mask.png" style="
-width:80px;height:70px">
+<center><img src="http://4.bp.blogspot.com/-KeoV1yJYj88/VbMAEALnQpI/AAAAAAAAAPE/wna4tJRO0kk/s200/mask.png" style="
+width:80px;height:70px" title="Katana"></center>
 
 Contact me for more info...
 CodeTeam, BlackteamSecurity.
