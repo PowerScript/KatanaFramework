@@ -98,7 +98,7 @@ def btpop3(run):
 									except:
 										print " ["+colors[4]+"!"+colors[0]+"] Checking ("+defaultaccount+"="+ps+")"
 						except:
-							d.filenot()
+							d.filenot(defaultdicc)
 							btpop3(0)
 					except:
 						d.kbi()

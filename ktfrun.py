@@ -18,99 +18,94 @@ for option, arg in options:
 print ""
 print " "+colors.B+"*"+colors.W+" "
 print "	"+colors.R+"-->"+colors.W+""+colors.B+"*"+colors.W+"  _______?___________________________________ "
-print "	"+colors.B+"*"+colors.W+""+colors.R+"-->"+colors.W+""+colors.R+"*"+colors.W+"{_| | | | I########## "+colors.R+"KTF"+colors.W+" Katana ##########/ "
+print "	"+colors.B+"*"+colors.W+""+colors.R+"-->"+colors.W+""+colors.R+"*"+colors.W+"{_| | | | I##########  "+colors.R+"KTF"+colors.W+" Run   ##########/ "
 print "   "+colors.B+"*"+colors.W+""+colors.R+"-->"+colors.W+""+colors.R+"*"+colors.W+"       ^ ^ ^ ^              "+info.version
 print ""+colors.B+"*"+colors.W+"  "+colors.R+"*"+colors.W
-print "     ["+colors.O+"!"+colors.W+"] Checking Module"
+print " ktn | Checking Module"
 try:
 	if True:
 		if True:
 			if m == "web/httpbt":
-				print "     ["+colors.G+"+"+colors.W+"] Running"
-				BruteForceHTTP.httpbt()
+				print " ktn | Running"
+				BruteForceHTTP.httpbt(0)
 			if m == "web/cpfinder":
-				print "     ["+colors.G+"+"+colors.W+"] Running"
-				AdminFinder.adminfinder()
+				print " ktn | Running"
+				AdminFinder.adminfinder(0)
 			if m == "web/formbt":
-				print "     ["+colors.G+"+"+colors.W+"] Running"
-				BruteForceFormBase.httpformbasebruteforce()
+				print " ktn | Running"
+				BruteForceFormBase.httpformbasebruteforce(0)
 			if m == "net/arplook":
-				print "     ["+colors.G+"+"+colors.W+"] Running"
-				ARPLooking.arplook()
+				print " ktn | Running"
+				ARPLooking.arplook(0)
 			if m == "seng/gdreport":
-				print "     ["+colors.G+"+"+colors.W+"] Running"
-				GetDataReport.getdatareport()
+				print " ktn | Running"
+				GetDataReport.getdatareport(0)
 			if m == "file/brutezip":
-				print "     ["+colors.G+"+"+colors.W+"] Running"
-				BruteZIP.btzip()
+				print " ktn | Running"
+				BruteZIP.btzip(0)
 			if m == "file/bruterar":
-				print "     ["+colors.G+"+"+colors.W+"] Running"
+				print " ktn | Running"
 				BruteRAR.btRAR()
 			if m == "clt/ftp":
-				print "     ["+colors.G+"+"+colors.W+"] Running"
-				ClientFTP.cftp()
+				print " ktn | Running"
+				ClientFTP.cftp(0)
 			if m == "bt/ftp":
-				print "     ["+colors.G+"+"+colors.W+"] Running"
-				BruteForceFTP.btftp()
+				print " ktn | Running"
+				BruteForceFTP.btftp(0)
 			if m == "wifi/hwifipwd":
-				print "     ["+colors.G+"+"+colors.W+"] Running"
+				print " ktn | Running"
 				WifiDetecter.hackerwifipwd()
 			if m == "bt/ssh":
-				print "     ["+colors.G+"+"+colors.W+"] Running"
-				BruteForceSSH.btssh()	
+				print " ktn | Running"
+				BruteForceSSH.btssh(0)	
 			if m == "clt/sql":
-				print "     ["+colors.G+"+"+colors.W+"] Running"
-				ClientMYSQL.cmysql()	
+				print " ktn | Running"
+				ClientMYSQL.cmysql(0)	
 			if m == "bt/sql":
-				print "     ["+colors.G+"+"+colors.W+"] Running"
-				BruteForceSQL.btsql()		
+				print " ktn | Running"
+				BruteForceSQL.btsql(0)		
 			if m == "bt/pop3":
-				print "     ["+colors.G+"+"+colors.W+"] Running"
-				BruteForcePOP3.btpop3()
+				print " ktn | Running"
+				BruteForcePOP3.btpop3(0)
 			if m == "clt/pop3":
-				print "     ["+colors.G+"+"+colors.W+"] Running"
-				ClientPOP3.cpop3()
+				print " ktn | Running"
+				ClientPOP3.cpop3(0)
 			if m == "mc/tlogin":
-				print "     ["+colors.G+"+"+colors.W+"] Running"
-				TLogin.tlogin()
+				print " ktn | Running"
+				TLogin.tlogin(0)
 			if m == "fz/ftp":
-				print "     ["+colors.G+"+"+colors.W+"] Running"
-				FuzzerFTP.fftp()
+				print " ktn | Running"
+				FuzzerFTP.fftp(0)
 			if m == "web/joomscan":
-				print "     ["+colors.G+"+"+colors.W+"] Running"
-				Joomscan.xjoomla()
+				print " ktn | Running"
+				Joomscan.xjoomla(0)
 			if m == "server/sql":
-				print "     ["+colors.G+"+"+colors.W+"] Running"
+				print " ktn | Running"
 				services.services('mysql')
 			if m == "server/ssh":
-				print "     ["+colors.G+"+"+colors.W+"] Running"
+				print " ktn | Running"
 				services.services('ssh')
 			if m == "server/apache":
-				print "     ["+colors.G+"+"+colors.W+"] Running"
+				print " ktn | Running"
 				services.services('apache2')
 			if m == "wifi/wpabtf":
-				print "     ["+colors.G+"+"+colors.W+"] Running"
-				WpaBTF.wpabtf()
+				print " ktn | Running"
+				WpaBTF.btwpa(0)
 			if m == "wifi/ddos":
-				print "     ["+colors.G+"+"+colors.W+"] Running"
-				Wifi_DDOS.ddos()
+				print " ktn | Running"
+				Wifi_DDOS.ddos(0)
 			if m == "mc/gendic":
-				print "     ["+colors.G+"+"+colors.W+"] Running"
-				GenDic.Gendic()
+				print " ktn | Running"
+				GenDic.Gendic(0)
 			if m == "web/whois":
-				print "     ["+colors.G+"+"+colors.W+"] Running"
-				Whois.wuis()
+				print " ktn | Running"
+				Whois.wuis(0)
 			else:
-				print "     ["+colors.O+"!"+colors.W+"] Module not found"
+				print " ["+colors.O+"!"+colors.W+"] Module not found"
 				print ""
-				print "     ["+colors.O+"!"+colors.W+"] Use msfkatana -m Module"
-				print "     ["+colors.B+"*"+colors.W+"] ex: msfkatana -m wifi/ddos"
-
+				print " ["+colors.O+"!"+colors.W+"] Use msfkatana -m Module"
+				print " ["+colors.B+"*"+colors.W+"] ex: msfkatana -m wifi/ddos"
 				exit()
 except:
 	print ""
 exit()
-
-
-
-

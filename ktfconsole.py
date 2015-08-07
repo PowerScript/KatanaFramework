@@ -89,10 +89,10 @@ def katana():
 				ARPLooking.arplook()
 			if action[4:17] == "eng/gdreport":
 				GetDataReport.getdatareport(0)
-			if action[4:17] == "fle/Brutezip":
-				BruteZIP.btzip()
-			if action[4:17] == "fle/Bruterar":
-				BruteRAR.btRAR()
+			if action[4:17] == "fle/brutezip":
+				BruteZIP.btzip(0)
+			if action[4:17] == "fle/bruterar":
+				BruteRAR.btrar(0)
 			if action[4:11] == "clt/ftp":
 				ClientFTP.cftp(0)
 			if action[4:10] == "bt/ftp":
@@ -100,15 +100,15 @@ def katana():
 			if action[4:17] == "wifi/hwifipwd":
 				WifiDetecter.hackerwifipwd()
 			if action[4:10] == "bt/ssh":
-				BruteForceSSH.btssh()	
+				BruteForceSSH.btssh(0)	
 			if action[4:11] == "clt/sql":
 				ClientMYSQL.cmysql(0)	
 			if action[4:10] == "bt/sql":
-				BruteForceSQL.btsql()		
+				BruteForceSQL.btsql(0)		
 			if action[4:11] == "bt/pop3":
-				BruteForcePOP3.btpop3()
+				BruteForcePOP3.btpop3(0)
 			if action[4:12] == "clt/pop3":
-				ClientPOP3.cpop3()
+				ClientPOP3.cpop3(0)
 			if action[4:13] == "mc/tlogin":
 				TLogin.tlogin()
 			if action[4:10] == "fz/ftp":
@@ -122,7 +122,7 @@ def katana():
 			if action[4:18] == "ser/apache":
 				services.services('apache2')
 			if action[4:15] == "wifi/wpabtf":
-				WpaBTF.wpabtf()
+				WpaBTF.wpabtf(0)
 			if action[4:12] == "wifi/dos":
 				Wifi_DDOS.ddos()
 			if action[4:13] == "mc/gendic":

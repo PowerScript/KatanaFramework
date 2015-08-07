@@ -1,83 +1,90 @@
-# KATANA
-# ZIP Brute Force
-# Script by LeSZO ZerO
-# 28/02/2015
+# :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
+# @KATANA                       #
+# Modules   : ZIP Brute Force   #
+# Script by : LeSZO ZerO        #
+# Date      : 28/02/2015        #
+# :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
+# Katana Core                   #
+from core.design import *       #
+from core import help           #
+from core import ping           #
+d=DESIGN()                      #
+# :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
+# Libraries                     #
+import zipfile                  #
+import optparse                 #
+import sys                      #
+import os                       #
+# :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
+# Default                       #
+# :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
+defaultarch="core/test/test.zip"
+defaultdicc="core/db/pass.dicc"
+# :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
-from core import help
-import zipfile
-import optparse
-import sys
-import os
-import time
-W  = '\033[0m'  
-R  = '\033[31m' 
-G  = '\033[32m' 
-O  = '\033[33m' 
-B  = '\033[34m' 
-P  = '\033[35m' 
-C  = '\033[36m' 
-GR = '\033[37m'
-defaultarc="empy"
-defaultdic="core/db/pass.dicc"
-def btzip():
-	global defaultarc,defaultdic
-	actions = raw_input(O+"     ktn/file/brutezip > "+W)
-	if actions == "show options":
-		print ""
-		print "     ["+R+"+"+W+"] options"
-		print "     |file           : yes"
-		print "     |dictionary     : no/yes\n"
-		print ""
-		print "     ["+G+"+"+W+"] options current"
-		print "     |file           : ",defaultarc
-		print "     |dictionary     : ",defaultdic
-		print ""
-		btzip()
-	elif actions=="back":
-		return 
-	elif actions=="exit":
-		print C+"     GooD"+W+" bye."
-		exit()
-	elif actions[0:8] == "set file":
-		defaultarc = actions[9:]
-		print "     file          : "+defaultarc+" "+O+"     Saved!!!"+W
-		btzip()
-	elif actions[0:14] == "set dictionary":
-		defaultdic = actions[16:]
-		print "     dictionary    : "+defaultdic+" "+O+"     Saved!!!"+W
-		btzip()
-	if actions == "run":
-		print("\n     ["+O+"!"+W+"] Checking file")
-		try:
-			Arch = open(defaultdic,"r")
-			if True:
-				print "     ["+G+"+"+W+"] options current"
-				print "     file         : ",defaultarc
-				print "     dictionary   : ",defaultdic
-				print ""
-				leeArchivo = Arch.readlines()
-				for palabra in leeArchivo:
-					palabraLlegada = palabra.split("\n")
-					try:
-						ZIParch = zipfile.ZipFile(defaultarc)
+
+def run(para,parb):
+	global defaultarch,defaultdicc
+	defaultarch=para
+	defaultdicc=parb
+	btzip(1)
+
+def btzip(run):
+	try:
+		global defaultarch,defaultdicc
+		if run!=1:
+			actions=raw_input(d.prompt("fle/zip"))
+		else:
+			actions="run"
+		if actions == "show options" or actions == "sop":
+			d.option()
+			d.descrip("file","yes","file with pass",defaultarch)
+ 			d.descrip("dict_1","yes","Dictionary pass",defaultdicc)
+			print ""
+			btzip(0)
+		elif actions[0:8] == "set file":
+			defaultarch = actions[11:]
+			d.change("file",defaultarch)
+			btzip(0)
+		elif actions[0:10] == "set dict_1":
+			defaultdicc = actions[11:]
+			d.change("dict_1",defaultdicc)
+			btzip(0)
+		elif actions=="exit" or actions=="x":
+			d.goodbye()
+			exit()
+		elif actions=="help" or actions=="h":
+			help.help()
+		elif actions=="back" or actions=="b":
+			pass
+		elif actions=="run"  or actions=="r":
+			d.run()
+			try:
+				d.loading()
+				Arch = open(defaultdicc,"r")
+				if True:
+					leeArchivo = Arch.readlines()
+					for palabra in leeArchivo:
+						palabraLlegada = palabra.split("\n")
 						try:
-							log=open('core/logs/logsBruteForce.log','a')
-							log.write('\n ===================================== ')
-							log.write('\n Module  : BruteForceZIP')
-							log.write('\n Data    : '+time.strftime('%c'))
-							log.write('\n file    : '+defaultarc)
-							log.write('\n Cracked : password : ',str(palabraLlegada[0]))
-							log.close()
-							ZIParch.extractall(pwd=str(palabraLlegada[0]))
-							print "     ["+G+"+"+W+"] Craked with ",str(palabraLlegada[0])
-							break
+							ZIParch = zipfile.ZipFile(defaultarch)
+							try:
+								ZIParch.extractall(pwd=str(palabraLlegada[0]))
+								if True:
+									ping.savetwo("BruteForceZIP",defaultarch,palabraLlegada[0])
+									print "\n-"+Suf+" file Cracked with =",str(palabraLlegada[0])+"\n"
+									return 1
+							except:
+								print " "+Alr+" Checking with ",str(palabraLlegada[0])
 						except:
-							print "     ["+O+"!"+W+"] Checking with ",str(palabraLlegada[0])
-					except:
-						print "     ["+O+"!"+W+"] Error to open file"
-						break
-		except:
-			print "     ["+O+"!"+W+"] Error to open dictionary"
-	else:
-		print "     ["+O+"!"+W+"] command No Accept"+W
-	btzip()
+							d.arcnot(defaultarch)
+							btzip(0)
+			except:
+				d.filenot(defaultdicc)
+				btzip(0)
+		else:
+			d.nocommand()
+	except:
+		d.kbi()
+		exit()
+	btzip(0)

@@ -1,0 +1,104 @@
+for make a new module for Katana framework, you have to create a file in folder scripts/ with the name of module and write into 
+
+	# :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
+	# @KATANA                       #
+	# Modules   : [name]            #
+	# Script by : [autor]           #
+	# Date      : [date]            #
+	# :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
+	# Katana Core                   #
+	from core.design import *       #
+	from core import help           #
+	from core import ping           #
+	d=DESIGN()                      #
+	# :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
+	# Libraries                     #
+	[librarie one]                  #
+	[librarie two]                  #
+	[etc...]                        #
+	# :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
+	# Default                       #
+	# :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
+	[varnameone]=[value]
+	[varnametwo]=[value]
+	# :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
+
+Where:
+
+[name] : module name, whatever as "fuzzerWeb".
+[autor]: coder name, autor, creator...
+[date] : date of creation.
+[librarie one] : dependences, libraries.
+[varnameone]=[value] : parameters necesaries.
+
+and:
+
+def [function name](run):
+	try:
+		global [varnameone],[varnametwo]
+		if run!=1:
+			actions=raw_input(d.prompt("[path of module]"))
+		else:
+			actions="run"
+		if actions == "show options" or actions == "sop":
+			d.option()
+			d.descrip("file","yes","file with pass",defaultarch)
+ 			d.descrip("dict_1","yes","Dictionary pass",defaultdicc)
+			print ""
+			btrar(0)
+		elif actions[0:8] == "set file":
+			defaultarch = actions[11:]
+			d.change("file",defaulthost)
+			btrar(0)
+		elif actions[0:10] == "set dict_1":
+			defaultdicc = actions[11:]
+			d.change("dict_1",defaultdicc)
+			btrar(0)
+		elif actions=="exit" or actions=="x":
+			d.goodbye()
+			exit()
+		elif actions=="help" or actions=="h":
+			help.help()
+		elif actions=="back" or actions=="b":
+			pass
+		elif actions=="run"  or actions=="r":
+			d.run()
+			try:
+				d.loading()
+				Arch = open(defaultdicc,"r")
+				if True:
+					leeArchivo = Arch.readlines()
+					for palabra in leeArchivo:
+						palabraLlegada = palabra.split("\n")
+						try:
+							RARarch = RARfile.RARFile(defaultarc)
+							try:
+								log=open('core/logs/logsBruteForce.log','a')
+								log.write('\n ===================================== ')
+								log.write('\n Module  : BruteForceRAR')
+								log.write('\n Data    : '+time.strftime('%c'))
+								log.write('\n file    : '+defaultarc)
+								log.write('\n Cracked : password : ',str(palabraLlegada[0]))
+								log.close()
+								ZIParch.extractall(pwd=str(palabraLlegada[0]))
+								print " "+Suf+" Cracked with ",str(palabraLlegada[0])
+								return 1
+							except:
+								print " "+Alr+" Checking with ",str(palabraLlegada[0])
+						except:
+							d.arcnot()
+							btrar(0)
+			except:
+				d.filenot()
+				btrar(0)
+		else:
+			d.nocommand()
+	except:
+		d.kbi()
+		exit()
+	btrar(0)
+
+Where:
+
+[function name] : 
+[path of module]:

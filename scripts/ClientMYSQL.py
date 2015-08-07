@@ -12,7 +12,7 @@ d=DESIGN()                   #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # Libraries                  #
 import socket                #
-from lib import MySQLdb
+#from lib import MySQLdb     #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # Default                    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
@@ -80,7 +80,7 @@ def cmysql(run):
 						if True:
 							try:
 								cmd="nop"
-								print "\n ["+colors[7]+"*"+colors[0]+"] SQL Client help\n"
+								print "\n "+Hlp+" SQL Client help\n"
 								print "  -------------------------------------------------------------------------------------------------------"
 								print "  |"+colors[6]+"Commd"+colors[0]+"            | "+colors[6]+"Description"+colors[0]+"     | "+colors[6]+"Examples"+colors[0]+"                                                        |"
 								print "  -------------------------------------------------------------------------------------------------------"

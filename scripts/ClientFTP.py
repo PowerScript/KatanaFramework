@@ -81,7 +81,7 @@ def cftp(run):
 							try:
 								cmd="nop"
 								patch=""
-								print "\n ["+colors[7]+"*"+colors[0]+"] FTP Client help\n"
+								print "\n "+Hlp+" FTP Client help\n"
 								print "  ----------------------------------------"
 								print "  |"+colors[6]+"Commd"+colors[0]+"| "+colors[6]+"Description"+colors[0]+" | "+colors[6]+"Examples"+colors[0]+"         |"
 								print "  ----------------------------------------"

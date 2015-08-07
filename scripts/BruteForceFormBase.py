@@ -142,10 +142,10 @@ def httpformbasebruteforce(run):
 												else:
 													print " ["+colors[4]+"!"+colors[0]+"] Checking ("+defaultdat1+"="+us+")("+defaultdat2+"="+ps+")"
 									except:
-										d.filenot()
+										d.filenot(defaultdic2)
 										httpformbasebruteforce(0)
 						except:
-							d.filenot()
+							d.filenot(defaultdic1)
 							httpformbasebruteforce(0)
 					except:
 						d.kbi()
