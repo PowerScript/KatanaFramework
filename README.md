@@ -62,7 +62,7 @@ Modules and Scripts:
 ------------------------|---------------------
 Brute force to HTTP 401 | Brute forcing to 401 (restricted area)
 Admin panel finder      | find boards of directors or login
-Scanner Vul's CMS Jommla| Joomscan launch
+Scanner Vul's CMS Joomla| Joomscan launch
 denial of service web   | Denial-of-service attack for web
 Who-is web              | WHOIS for DNS
 ARP attack detector     | ARP_Spoofing detector

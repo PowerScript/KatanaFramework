@@ -52,7 +52,7 @@ def katana():
  |==|, | """+colors.R+"""@"""+colors.W+"""|"""+colors.O+"""web/httpbt"""+colors.W+"""\t\t * """+colors.C+"""Brute force to HTTP 401"""+colors.W
 			line("web/formbt","Brute force to HTTP 401")
 			line("web/cpfinder","Admin panel finder")
-			line("web/joomscan","Scanner Vul's CMS Jommla")
+			line("web/joomscan","Scanner vul's CMS joomla")
 			line("web/dos","denial of service web")
 			line("web/whois","Who-is web")
 			line("net/arplook","ARP attack detector")
