@@ -3,9 +3,11 @@
 	█████╔╝ ███████║   ██║   ███████║██╔██╗ ██║███████║
 	██╔═██╗ ██╔══██║   ██║   ██╔══██║██║╚██╗██║██╔══██║
 	██║  ██╗██║  ██║   ██║   ██║  ██║██║ ╚████║██║  ██║
-	╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝ framework
+	╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝ 
 		                                           
-
+---
+[![Gitter chat](https://badges.gitter.im/totaljs/framework.png)](https://gitter.im/RedToor/Katana)
+---
 #ABOUT
 
 Well, I've started a framework that seekss to unite general auditing tools,
