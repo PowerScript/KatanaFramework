@@ -31,9 +31,7 @@ scripts/       source code of modules
 ```
 # REQUIREMENTS
 OS requirement:
-```
-        GNU/Linux (Kali distro)
-```
+        <img src="http://www.question-defense.com/wp-content/themes/qd/backtrack-menu/backtrack-logo.png"> Kali Linux
 
 #INSTALLATION
 Installation of Katana framework:
@@ -90,6 +88,7 @@ Generator dictionary    | Generator dictionary
 Katana is licensed. 
 See [LICENSE](LICENSE) for more information.
 
+from <img src="http://www.euromonitor.com/medialibrary/Image/Flag_20x20_Colombia.png" title="Colombia"> made in <img src="https://developer.ibm.com/predictiveanalytics/wp-content/uploads/sites/48/2015/04/python-icon.png" title="Python"> with <img src="http://cdn0.bodas.com.mx/img/smileys/smiley_heart.png" title="Love">
 
 Contact me for more info...
 CodeTeam, BlackteamSecurity.
