@@ -1,9 +1,4 @@
-	██╗  ██╗ █████╗ ████████╗ █████╗ ███╗   ██╗ █████╗ 
-	██║ ██╔╝██╔══██╗╚══██╔══╝██╔══██╗████╗  ██║██╔══██╗
-	█████╔╝ ███████║   ██║   ███████║██╔██╗ ██║███████║
-	██╔═██╗ ██╔══██║   ██║   ██╔══██║██║╚██╗██║██╔══██║
-	██║  ██╗██║  ██║   ██║   ██║  ██║██║ ╚████║██║  ██║
-	╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝ 
+[![logo](http://s18.postimg.org/d6feyq5jd/rsz_11836534_10206502927188334_1988226269_o.jpg)
 		                                           
 ---
 [![Gitter chat](https://badges.gitter.im/totaljs/framework.png)](https://gitter.im/RedToor/Katana) 
@@ -96,4 +91,4 @@ Contact me for more info...
 CodeTeam, BlackteamSecurity.
 
 <br>Donate <img src="http://www.wbtcb.com/frontend/webroot/gfx/bitcoin-ico.gif" title="Bitcoins">196H8v86JtnMA2ZG5RqxKBfSz5D3JLCUGj
-
+---
