@@ -6,7 +6,7 @@
 	╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝ 
 		                                           
 ---
-[![Gitter chat](https://badges.gitter.im/totaljs/framework.png)](https://gitter.im/RedToor/Katana)
+[![Gitter chat](https://badges.gitter.im/totaljs/framework.png)](https://gitter.im/RedToor/Katana) 
 ---
 #ABOUT
 
@@ -94,3 +94,6 @@ from <img src="http://www.euromonitor.com/medialibrary/Image/Flag_20x20_Colombia
 
 Contact me for more info...
 CodeTeam, BlackteamSecurity.
+
+<br>Donate <img src="http://www.wbtcb.com/frontend/webroot/gfx/bitcoin-ico.gif" title="Bitcoins">196H8v86JtnMA2ZG5RqxKBfSz5D3JLCUGj
+
