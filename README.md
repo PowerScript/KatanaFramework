@@ -3,9 +3,12 @@
 	█████╔╝ ███████║   ██║   ███████║██╔██╗ ██║███████║
 	██╔═██╗ ██╔══██║   ██║   ██╔══██║██║╚██╗██║██╔══██║
 	██║  ██╗██║  ██║   ██║   ██║  ██║██║ ╚████║██║  ██║
-	╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝ framework
+	╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝ 
 		                                           
-
+```
+---
+[![Gitter chat](https://badges.gitter.im/totaljs/framework.png)](https://gitter.im/RedToor/Katana) 
+---
 #ABOUT
 
 Well, I've started a framework that seekss to unite general auditing tools,
@@ -26,14 +29,13 @@ core/          source code core
 core/db/       dictionaries and tables
 core/logs/     registers of modules
 files/         files necessary for some modules
+tmp/           temp files
 lib/           libraries
 scripts/       source code of modules
 ```
 # REQUIREMENTS
 OS requirement:
-```
-        GNU/Linux (Kali distro)
-```
+        <img src="http://www.question-defense.com/wp-content/themes/qd/backtrack-menu/backtrack-logo.png"> Kali Linux
 
 #INSTALLATION
 Installation of Katana framework:
@@ -62,7 +64,7 @@ Modules and Scripts:
 ------------------------|---------------------
 Brute force to HTTP 401 | Brute forcing to 401 (restricted area)
 Admin panel finder      | find boards of directors or login
-Scanner Vul's CMS Jommla| Joomscan launch
+Scanner Vul's CMS Joomla| Joomscan launch
 denial of service web   | Denial-of-service attack for web
 Who-is web              | WHOIS for DNS
 ARP attack detector     | ARP_Spoofing detector
@@ -90,6 +92,10 @@ Generator dictionary    | Generator dictionary
 Katana is licensed. 
 See [LICENSE](LICENSE) for more information.
 
+from <img src="http://www.euromonitor.com/medialibrary/Image/Flag_20x20_Colombia.png" title="Colombia"> made in <img src="https://developer.ibm.com/predictiveanalytics/wp-content/uploads/sites/48/2015/04/python-icon.png" title="Python"> with <img src="http://cdn0.bodas.com.mx/img/smileys/smiley_heart.png" title="Love">
 
 Contact me for more info...
 CodeTeam, BlackteamSecurity.
+
+<br>Donate <img src="http://www.wbtcb.com/frontend/webroot/gfx/bitcoin-ico.gif" title="Bitcoins">196H8v86JtnMA2ZG5RqxKBfSz5D3JLCUGj
+---

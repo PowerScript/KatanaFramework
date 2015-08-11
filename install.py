@@ -30,8 +30,8 @@ print "                   \_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_
 print ""
 print ""
 if os.getuid() != 0:
-	print colors.R+' [!]'+O+' ERROR:'+colors.G+' Katana Install'+colors.O+' must be run as '+colors.R+'root'+colors.W
-	print colors.R+' [!]'+O+' login as root ('+colors.W+'su root'+colors.O+') or try '+colors.W+'sudo ./install.py'+colors.W
+	print " ["+colors.R+"-"+colors.W+"] ERROR:"+colors.B+" Katana Install"+colors.B+" must be run as "+colors.R+"root"+colors.W+"."
+	print " ["+colors.R+"-"+colors.W+"] login as root ("+colors.R+"sudo"+colors.W+") or try "+colors.W+"sudo python install.py"+colors.W+"\n"
 	exit(1)
 print colors.O+" Wait... "
 time.sleep(2)
@@ -64,4 +64,3 @@ print colors.G+" Now you can run katana directly in console #kanata [ENTER]"
 print colors.G+" For update katana use 'update' when you are run it."
 print colors.O+" Completed Install"
 print ""
-# Thanks 

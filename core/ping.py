@@ -1,10 +1,14 @@
 #
 # Katana framework 
-# @Katana Ping
+# @Katana Ping functions
 #
 
+
+from scapy.all import *
+import colors
 import socket
 import time 
+ap_list = []
 
 def live(defaulthost, defaultport):
 	red=socket.socket(socket.AF_INET, socket.SOCK_STREAM)      
@@ -27,3 +31,14 @@ def savetwo(module, files, password):
 	log.write('\n file    : '+files)
 	log.write('\n Cracked : password : '+password)
 	log.close()
+
+def PacketHandler(pkt) :
+  if pkt.haslayer(Dot11) :
+		if pkt.type == 0 and pkt.subtype == 8 :
+			if pkt.addr2 not in ap_list :
+				ap_list.append(pkt.addr2)
+				print " BSSID: %s \t ESSID: %s " %(pkt.addr2, pkt.info)
+
+def scanwifi():
+	print " Scanning APs - "+colors.O+"Ctrl+C"+colors.W+" for Stop.\n"
+	sniff(iface="mon0", prn = PacketHandler)

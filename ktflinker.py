@@ -4,6 +4,9 @@
 #
 
 from scripts import *
+
+Wifi_DDOS.ddos(0)
+
 #Whois.run("127.0.0.1","80")
 #Joomscan.run("127.0.0.1","80")
 #AdminFinder.run("127.0.0.1","80","core/db/commons-dir-admin.tbl")

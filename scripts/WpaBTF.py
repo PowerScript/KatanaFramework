@@ -48,7 +48,7 @@ def btwpa(run):
 			btwpa(0)
 		elif actions[0:7] == "set mac":
 			defaultmac = actions[8:]
-			d.change("mac",defaultmac)
+			d.change("maca",defaultmac)
 			btwpa(0)
 		elif actions[0:10] == "set dict_1":
 			defaultdic = actions[11:]

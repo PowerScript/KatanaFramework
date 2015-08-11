@@ -40,7 +40,7 @@ print """
 
 
 def line(module, description):
-	print """ |==| .| """+colors.R+"""@"""+colors.W+"""|"""+colors.O+module+colors.W+"""\t\t * """+colors.C+description+colors.W
+	print """ |==| .| """+colors.R+"""@"""+colors.W+"""|"""+colors.O+module+colors.W+"""\t\t | """+colors.C+description+colors.W
 
 def katana():
 	if True:
@@ -49,10 +49,10 @@ def katana():
 			print """ 
   ,--.-,  ____________________________________________________
  /==/  /  \033[4m| Module               | Description                """+colors.W+"""| 
- |==|, | """+colors.R+"""@"""+colors.W+"""|"""+colors.O+"""web/httpbt"""+colors.W+"""\t\t * """+colors.C+"""Brute force to HTTP 401"""+colors.W
+ |==|, | """+colors.R+"""@"""+colors.W+"""|"""+colors.O+"""web/httpbt"""+colors.W+"""\t\t | """+colors.C+"""Brute force to HTTP 401"""+colors.W
 			line("web/formbt","Brute force to HTTP 401")
 			line("web/cpfinder","Admin panel finder")
-			line("web/joomscan","Scanner Vul's CMS Jommla")
+			line("web/joomscan","Scanner vul's CMS joomla")
 			line("web/dos","denial of service web")
 			line("web/whois","Who-is web")
 			line("net/arplook","ARP attack detector")
@@ -124,7 +124,7 @@ def katana():
 			if action[4:15] == "wifi/wpabtf":
 				WpaBTF.wpabtf(0)
 			if action[4:12] == "wifi/dos":
-				Wifi_DDOS.ddos()
+				Wifi_DDOS.ddos(0)
 			if action[4:13] == "mc/gendic":
 				GenDic.Gendic()
 			if action[4:13] == "web/whois":
