@@ -50,7 +50,7 @@ def katana():
   ,--.-,  ____________________________________________________
  /==/  /  \033[4m| Module               | Description                """+colors.W+"""| 
  |==|, | """+colors.R+"""@"""+colors.W+"""|"""+colors.O+"""web/httpbt"""+colors.W+"""\t\t | """+colors.C+"""Brute force to HTTP 401"""+colors.W
-			line("web/formbt","Brute force to HTTP 401")
+			line("web/formbt","Brute force to form-based")
 			line("web/cpfinder","Admin panel finder")
 			line("web/joomscan","Scanner vul's CMS joomla")
 			line("web/dos","denial of service web")
