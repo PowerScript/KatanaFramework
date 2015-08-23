@@ -18,8 +18,8 @@ for option, arg in options:
 print ""
 print " "+colors.B+"*"+colors.W+" "
 print "	"+colors.R+"-->"+colors.W+""+colors.B+"*"+colors.W+"  _______?___________________________________ "
-print "	"+colors.B+"*"+colors.W+""+colors.R+"-->"+colors.W+""+colors.R+"*"+colors.W+"{_| | | | I##########  "+colors.R+"KTF"+colors.W+" Run   ##########/ "
-print "   "+colors.B+"*"+colors.W+""+colors.R+"-->"+colors.W+""+colors.R+"*"+colors.W+"       ^ ^ ^ ^              "+info.version
+print "	"+colors.B+"*"+colors.W+""+colors.R+"-->"+colors.W+""+colors.R+"*"+colors.W+"{_| | | | I##########  "+colors.R+"KTF"+colors.W+"Run   ##########/ "
+print "   "+colors.B+"*"+colors.W+""+colors.R+"-->"+colors.W+""+colors.R+"*"+colors.W+"       ^ ^ ^ ^             "+info.version
 print ""+colors.B+"*"+colors.W+"  "+colors.R+"*"+colors.W
 print " ktn | Checking Module"
 try:
@@ -41,7 +41,7 @@ try:
 				print " ktn | Running"
 				ARPLooking.arplook(0)
 				exit()
-			if m == "seng/gdreport":
+			if m == "eng/gdreport":
 				print " ktn | Running"
 				GetDataReport.getdatareport(0)
 				exit()
@@ -129,11 +129,15 @@ try:
 				print " ktn | Running"
 				LANScanner.hostl(0)
 				exit()
+			if m == "eng/facebrok":
+				print " ktn | Running"
+				facebrok.facebrok(0)
+				exit()
 			else:
 				print " ["+colors.O+"!"+colors.W+"] Module not found"
 				print ""
 				print " ["+colors.O+"!"+colors.W+"] Use msfkatana -m Module"
-				print " ["+colors.B+"*"+colors.W+"] ex: msfkatana -m wifi/ddos"
+				print " ["+colors.B+"*"+colors.W+"] ex: msfkatana -m wifi/dos"
 				exit()
 except:
 	print ""

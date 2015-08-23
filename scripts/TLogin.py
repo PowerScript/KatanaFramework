@@ -20,7 +20,7 @@ GR = '\033[37m'
 defaulthost="127.0.0.1"
 defaultdat1="root"
 defaultdat2="toor"
-def tlogin():
+def tlogin(run):
 	try:
 		global defaulthost,defaultport,defaultdat1,defaultdat2
 		actions = raw_input(O+"     ktn/mc/tlogin > "+W)
@@ -36,19 +36,19 @@ def tlogin():
 			print "     |username       : ",defaultdat1
 			print "     |password       : ",defaultdat2
 			print ""
-			tlogin()
+			tlogin(0)
 		elif actions[0:8] == "set host":
 			defaulthost = actions[9:]
 			print "     host           : "+defaulthost+" "+O+"     Saved!!!"+W
-			tlogin()
+			tlogin(0)
 		elif actions[0:12] == "set username":
 			defaultdat1 = actions[13:]
 			print "     username       : "+defaultdat1+" "+O+"     Saved!!!"+W
-			tlogin()
+			tlogin(0)
 		elif actions[0:12] == "set password":
 			defaultdat2= actions[13:]
 			print "     password       : "+defaultdat2+" "+O+"     Saved!!!"+W
-			tlogin()
+			tlogin(0)
 		elif actions=="back":
 			return 
 		elif actions=="exit":
@@ -100,4 +100,4 @@ def tlogin():
 	except(KeyboardInterrupt):
 		print("\n     ["+O+"!"+W+"] (Ctrl + C) Detected, System Exit")
 		return
-	tlogin()
+	tlogin(0)

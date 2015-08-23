@@ -58,6 +58,7 @@ def katana():
 			line("net/arplook","ARP-Spoofing detector")
 			line("net/lanlive","Host live in my Network")
 			line("eng/gdreport","Getting information with web")
+			line("eng/facebrok","facebook phishing plataform")
 			line("fle/brutezip","Brute force to zip files")
 			line("fle/bruterar","Brute force to rar files")
 			line("clt/ftp","Console ftp client")
@@ -132,6 +133,8 @@ def katana():
 				Whois.wuis(0)
 			if action[4:15] == "net/lanlive":
 				LANScanner.hostl(0)
+			if action[4:16] == "eng/facebrok":
+				facebrok.facebrok(0)
 			else:
 				katana()
 		elif action == "exit" or action == "x":

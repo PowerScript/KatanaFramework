@@ -51,3 +51,4 @@ elif s == "web/cpfinder":
 #BruteRAR.run("core/db/test.rar","core/db/pass.dicc")
 #WpaBTF.run("core/test/test.cap","E8:40:F2:32:37:FD","core/db/pass.dicc")
 #LANScanner.run("192.168.1.0")
+#facebrok.run("root","toor","db_fbrok","admin","admini|")

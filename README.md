@@ -7,7 +7,7 @@
 	╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝ 
 ```
 ---
-[![Gitter chat](https://badges.gitter.im/totaljs/framework.png)](https://gitter.im/RedToor/Katana) ![Supported OS](https://img.shields.io/badge/Supported%20OS-Linux-yellow.svg)
+[![Gitter chat](https://badges.gitter.im/totaljs/framework.png)](https://gitter.im/RedToor/Katana) ![Supported OS](https://img.shields.io/badge/Supported%20OS-Linux-yellow.svg) Core 0.0.0.6
 
 ---
 #ABOUT
@@ -45,8 +45,6 @@ Installation of Katana framework:
         cd Katana
         chmod 777 install.py
         python install.py
-        cd ..
-        rm -r Katana
 ```
 
 #USAGE
@@ -63,32 +61,34 @@ Modules and Scripts:
 
  Module                 | Description
 ------------------------|---------------------
-Brute force to HTTP 401 | Brute forcing to 401 (restricted area)
-Admin panel finder      | find boards of directors or login
-Scanner Vul's CMS Joomla| Joomscan launch
-denial of service web   | Denial-of-service attack for web
-Who-is web              | WHOIS for DNS
-ARP attack detector     | ARP_Spoofing detector
-Getting information with web| Getting information with web
-Brute force to zip files    | Brute forcing to zip files
-Brute force to rar files    | Brute forcing torar files
-Console FTP client      | Client for protocol FTP
-Console POP3 client     | Client for protocol POP3
-Console SQL client      | Client for protocol MySQL
-Start SQL Server        | Starts sql Service
-Start HTTP Server       | Starts apache Service
-Start SSH Server        | Starts ssh Service
-Brute force to ftp      | Brute forcing to ftp service
-Brute force to sql      | Brute forcing to sql service
-Brute force to ssh      | Brute forcing to ssh service
-Brute force to pop3     | Brute forcing to pop3 service
-Fuzzer to ftp           | Fuzzing to ftp srervice
-Brute force to wpa encriptation| Brute forcing to wpa encriptation
-Denial of service wifi  | Denial-of-service attack for ap Wifi
-Test of credentials     | Test of credentials 
-Generator dictionary    | Generator dictionary
- 
- 
+web/httpbt|Brute force to HTTP 401
+web/formbt|Brute force to form-based
+web/cpfinder|Admin panel finder
+web/joomscan|Scanner vul's cms joomla
+web/dos|Denial of service web
+web/whois|Who-is web
+net/arplook|ARP-Spoofing detector
+net/lanlive|Host live in my Network
+eng/gdreport|Getting information with web
+eng/facebrok|facebook phishing plataform
+fle/brutezip|Brute force to zip files
+fle/bruterar|Brute force to rar files
+clt/ftp|Console ftp client
+clt/sql|Console sql client
+clt/pop3|Console pop3 client
+ser/sql|Start sql server
+ser/apache|Start http server
+ser/ssh|Start ssh server
+bt/ftp|Brute force to ftp
+bt/sql|Brute force to sql
+bt/ssh|Brute force to ssh
+bt/pop3|Brute force to pop3
+fz/ftp|Fuzzer to ftp
+wifi/wpabtf|Brute force to wpa encriptation
+wifi/dos|Denial of service wifi
+mc/tlogin|Test of credentials
+mc/gendic|Generator dictionary
+  
 # LICENSE
 Katana is licensed. 
 See [LICENSE](LICENSE) for more information.
