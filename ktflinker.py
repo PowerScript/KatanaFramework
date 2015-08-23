@@ -4,12 +4,39 @@
 #
 
 from scripts import *
+import getopt
+import sys
 
-Wifi_DDOS.ddos(0)
+t=""
+p=""
+f=""
+u=""
+p=""
+m=""
+s=""
+options, remainder = getopt.getopt(sys.argv[1:], 't:p:f:u:ps:m:s:')
+for option, arg in options:
+		if option   == '-t':
+			t=arg
+		if option 	== '-p':
+			p=arg
+		if option   == '-f':
+			f=arg
+		if option 	== '-u':
+			u=arg
+		if option   == '-ps':
+			ps=arg
+		if option 	== '-m':
+			m=arg
+		if option 	== '-s':
+			s=arg
 
-#Whois.run("127.0.0.1","80")
-#Joomscan.run("127.0.0.1","80")
-#AdminFinder.run("127.0.0.1","80","core/db/commons-dir-admin.tbl")
+if s == "web/whois":
+	Whois.run(t,p)
+elif s == "web/joomscan":
+	Joomscan.run(t,p)
+elif s == "web/cpfinder":
+	AdminFinder.run(t,p,"core/db/commons-dir-admin.tbl")
 #BruteForceFormBase.run("127.0.0.1","80","/admin/login.php","core/db/user.dicc","core/db/pass.dicc","username","password","POST","no")
 #BruteForceHTTP.run("127.0.0.1","80","/admin/","core/db/user.dicc","core/db/pass.dicc")
 #GetDataReport.run("googles.com","false")
@@ -23,3 +50,4 @@ Wifi_DDOS.ddos(0)
 #BruteZIP.run("core/db/test.zip","core/db/pass.dicc")
 #BruteRAR.run("core/db/test.rar","core/db/pass.dicc")
 #WpaBTF.run("core/test/test.cap","E8:40:F2:32:37:FD","core/db/pass.dicc")
+#LANScanner.run("192.168.1.0")
