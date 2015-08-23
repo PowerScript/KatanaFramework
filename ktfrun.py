@@ -125,6 +125,10 @@ try:
 				print " ktn | Running"
 				Whois.wuis(0)
 				exit()
+			if m == "net/lanlive":
+				print " ktn | Running"
+				LANScanner.hostl(0)
+				exit()
 			else:
 				print " ["+colors.O+"!"+colors.W+"] Module not found"
 				print ""

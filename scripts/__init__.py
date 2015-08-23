@@ -20,3 +20,4 @@ import ClientPOP3
 import GetDataReport
 import ARPLooking
 import AdminFinder
+import LANScanner
