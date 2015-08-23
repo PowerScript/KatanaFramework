@@ -52,19 +52,20 @@ def katana():
  |==|, | """+colors.R+"""@"""+colors.W+"""|"""+colors.O+"""web/httpbt"""+colors.W+"""\t\t | """+colors.C+"""Brute force to HTTP 401"""+colors.W
 			line("web/formbt","Brute force to form-based")
 			line("web/cpfinder","Admin panel finder")
-			line("web/joomscan","Scanner vul's CMS joomla")
-			line("web/dos","denial of service web")
+			line("web/joomscan","Scanner vul's cms joomla")
+			line("web/dos","Denial of service web")
 			line("web/whois","Who-is web")
-			line("net/arplook","ARP attack detector")
+			line("net/arplook","ARP-Spoofing detector")
+			line("net/lanlive","Host live in my Network")
 			line("eng/gdreport","Getting information with web")
 			line("fle/brutezip","Brute force to zip files")
 			line("fle/bruterar","Brute force to rar files")
-			line("clt/ftp","Console FTP client")
-			line("clt/sql","Console SQL client")
-			line("clt/pop3","Console POP3 client")
-			line("ser/sql","Start SQL Server")
-			line("ser/apache","Start HTTP Server")
-			line("ser/ssh","Start SSH Server")
+			line("clt/ftp","Console ftp client")
+			line("clt/sql","Console sql client")
+			line("clt/pop3","Console pop3 client")
+			line("ser/sql","Start sql server")
+			line("ser/apache","Start http server")
+			line("ser/ssh","Start ssh server")
 			line("bt/ftp","Brute force to ftp")
 			line("bt/sql","Brute force to sql")
 			line("bt/ssh","Brute force to ssh")
@@ -129,6 +130,8 @@ def katana():
 				GenDic.Gendic()
 			if action[4:13] == "web/whois":
 				Whois.wuis(0)
+			if action[4:15] == "net/lanlive":
+				LANScanner.hostl(0)
 			else:
 				katana()
 		elif action == "exit" or action == "x":
