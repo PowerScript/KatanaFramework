@@ -20,6 +20,7 @@ defaulthost="127.0.0.1"
 defaultport="21"
 defaultuser="admin"
 defaultdicc="core/db/pass.dicc"
+# :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
 def run(para,parb,parc,pard):
 	global defaulthost,defaultport,defaultuser,defaultdicc

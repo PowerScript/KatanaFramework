@@ -35,6 +35,9 @@ def hostl(run):
 			d.option()
 			d.descrip("nets","yes","Local area net",defaultnet)
 			print ""
+			print " "+Hlp+" Auxiliar Help"
+			print ""
+			ping.myip()
 			hostl(0)
 		elif actions[0:8] == "set nets":
 			defaultnet = actions[9:]

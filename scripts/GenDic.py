@@ -45,6 +45,7 @@ def Gendic(run):
 			print " chars_min = [a,b,c,...,z]"
 			print " chars_may = [A,B,C,...,Z]"
 			print " chars_num = [0,1,2,...,9]"
+			print " chars_mix = [a,b,...,0,1]"
 			print ""
 			Gendic(0)
 		elif actions[0:8] == "set path":
@@ -57,11 +58,12 @@ def Gendic(run):
 				Gendic(0)
 		elif actions[0:8] == "set type":
 				defaultstr = actions[9:]
-				if defaultstr != "chars_min" or defaultstr != "chars_may" or defaultstr != "chars_num":
-					print " "+Alr+" Error to set type, use chars_min, chars_may or chars_num"
+				if defaultstr != "chars_min" and defaultstr != "chars_may" and defaultstr != "chars_num" and defaultstr != "chars_mix":
+					print " "+Alr+" Error to set type, use chars_min, chars_mix, chars_may or chars_num"
 					defaultstr="chars_num"
 					Gendic(0)
 				else:
+					defaultstr=defaultstr
 					d.change("type",defaultstr)
 					Gendic(0)
 		elif actions=="exit" or actions=="x":
@@ -89,6 +91,9 @@ def Gendic(run):
 					permitidos += chars_may
 				if defaultstr == "chars_min":
 					permitidos += chars_min
+				if defaultstr == "chars_mix":
+					permitidos +=chars_min
+					permitidos +=chars_num
 				total_chars = len(permitidos)
 				print total_chars
 				char_n_max = total_chars - 1

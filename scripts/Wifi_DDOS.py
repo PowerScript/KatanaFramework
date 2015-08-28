@@ -49,20 +49,9 @@ def ddos(run):
 			d.descrip("chan","yes","Channel red",defaultcha)
 			print ""
 			print " "+Hlp+" Auxiliar help\n"
-			Interfaces=commands.getoutput("airmon-ng | grep 'wlan' | awk '{print $1}'")
-			Monitor=commands.getoutput("airmon-ng | grep 'mon' | awk '{print $1}'")
-			Interfaces=Interfaces.replace("\n",",")
-			Monitor=Monitor.replace("\n",",")
-			if Interfaces=="":
-				Interfaces="No network cards was found."
-			if Monitor=="":
-				Monitor="No monitor mode enabled, use 'start {Interface}' right here."
-			print " Interfaces      : ",Interfaces
-			print " Int... Monitor  : ",Monitor
+			ping.interfaces()
+			ping.monitor()
 			print ""
-			if Monitor!="No monitor mode enabled, use 'start {Interface}' right here.":
-				ping.scanwifi()
-				print ""
 			ddos(0)
 		elif actions[0:8] == "set intf":
 			defaultcar = actions[9:]

@@ -41,10 +41,11 @@ print """
 
 def line(module, description):
 	print """ |==| .| """+colors.R+"""@"""+colors.W+"""|"""+colors.O+module+colors.W+"""\t\t | """+colors.C+description+colors.W
-
+def separator():
+	print """ |==| .|  """
 def katana():
 	if True:
-		action = raw_input(colors.W+" ktn > "+colors.W)
+		action = raw_input(colors.W+" ktn "+colors.G+"~"+colors.W+" "+colors.W)
 		if action == "show modules" or action == "showm":
 			print """ 
   ,--.-,  ____________________________________________________
@@ -55,27 +56,39 @@ def katana():
 			line("web/joomscan","Scanner vul's cms joomla")
 			line("web/dos","Denial of service web")
 			line("web/whois","Who-is web")
+			separator()
+			line("net/arpspoof","ARP-Spoofing attack")
 			line("net/arplook","ARP-Spoofing detector")
-			line("net/lanlive","Host live in my Network")
+			line("net/lanlive","Host live's in my Network")
+			separator()
 			line("eng/gdreport","Getting information with web")
+			line("eng/mailboom","E-mail boombing")
 			line("eng/facebrok","facebook phishing plataform")
+			separator()
 			line("fle/brutezip","Brute force to zip files")
 			line("fle/bruterar","Brute force to rar files")
+			separator()
 			line("clt/ftp","Console ftp client")
 			line("clt/sql","Console sql client")
 			line("clt/pop3","Console pop3 client")
+			separator()
 			line("ser/sql","Start sql server")
 			line("ser/apache","Start http server")
 			line("ser/ssh","Start ssh server")
+			separator()
 			line("bt/ftp","Brute force to ftp")
 			line("bt/sql","Brute force to sql")
 			line("bt/ssh","Brute force to ssh")
 			line("bt/pop3","Brute force to pop3")
+			separator()
 			line("fz/ftp","Fuzzer to ftp")
+			separator()
 			line("wifi/wpabtf","Brute force to wpa encriptation")
 			line("wifi/dos","Denial of service wifi")
+			separator()
 			line("mc/tlogin","Test of credentials")
 			line("mc/gendic","Generator dictionary")
+			separator()
 			print """ /==/, / 
  `--`-' \n""" 
 			katana()
@@ -128,13 +141,17 @@ def katana():
 			if action[4:12] == "wifi/dos":
 				Wifi_DDOS.ddos(0)
 			if action[4:13] == "mc/gendic":
-				GenDic.Gendic()
+				GenDic.Gendic(0)
 			if action[4:13] == "web/whois":
 				Whois.wuis(0)
 			if action[4:15] == "net/lanlive":
 				LANScanner.hostl(0)
 			if action[4:16] == "eng/facebrok":
 				facebrok.facebrok(0)
+			if action[4:16] == "net/arpspoof":
+				ARPPoisoning.arpp(0)
+			if action[4:16] == "eng/mailboom":
+				smtpBombing.smtpbombing(0)
 			else:
 				katana()
 		elif action == "exit" or action == "x":

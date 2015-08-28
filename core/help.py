@@ -13,16 +13,19 @@ def help():
 	C  = '\033[36m' 
 	GR = '\033[37m'
 	BO = '\033[1m'
-	print """
-			  _          _       
-			 | |        | |      
-			 | |__   ___| |_ __  
-			 | '_ \ / _ \ | '_ \ 
-			 | | | |  __/ | |_) |
-			 |_| |_|\___|_| .__/ 
-			              | |    
-			              |_|    
-"""
+	print BO+"""
+				  _          _       
+				 | |        | |      
+				 | |__   ___| |_ __  
+				 | '_ \ / _ \ | '_ \ 
+				 | | | |  __/ | |_) |
+				 |_| |_|\___|_| .__/ 
+				              | |    
+				              |_|    
+"""+W
+	print "     Katana is a framework for Hackers, Pentesters, Proffesional Security, Etc"
+	print "     a framework multi-tool very util for pentest (penetrec test)"
+	print ""
 	print "     show modules or showm             <--- Show modules "
 	print "     use                               <--- Use modules "
 	print "     show options or sop               <--- Show Options of Module"
@@ -68,4 +71,10 @@ def help():
 	print "     Dictionary Not found     | path wrong"
 	print "     Keyboard Interrupt       | Ctrol+C"
 	print "     ..."
+	print ""
+	print "     for more info go to github project https://github.com/redtoor/katana"
+	print "     or send a email to redtoor[at]inbox.ru"
+	print "     fb.com/redtoor - twitter.com/redtoor - plus.google.com/+redtoor"
+	print ""
+	print "     Based in "+G+"Python"+W+" with "+R+"<3"+W+" from "+O+"Col"+B+"om"+R+"bia "+W+"by "+R+"Red"+W+"Toor"
 	print ""

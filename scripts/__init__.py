@@ -1,3 +1,8 @@
+#
+# Katana framework 
+# @Katana Modules import
+#
+
 import Whois
 import GenDic
 import Wifi_DDOS
@@ -22,3 +27,5 @@ import ARPLooking
 import AdminFinder
 import LANScanner
 import facebrok
+import ARPPoisoning
+import smtpBombing

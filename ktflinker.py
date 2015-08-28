@@ -14,7 +14,8 @@ u=""
 p=""
 m=""
 s=""
-options, remainder = getopt.getopt(sys.argv[1:], 't:p:f:u:ps:m:s:')
+h=""
+options, remainder = getopt.getopt(sys.argv[1:], 't:p:f:u:ps:m:s:h')
 for option, arg in options:
 		if option   == '-t':
 			t=arg
@@ -30,9 +31,16 @@ for option, arg in options:
 			m=arg
 		if option 	== '-s':
 			s=arg
-
+		if option 	== '-h':
+			h=1
 if s == "web/whois":
-	Whois.run(t,p)
+	if h==1:
+		print "\n web/whois: who-is domain name service, information juice of domains.\n"
+		print " -t [target]  127.0.0.1"
+		print " -p [port]    80"
+		print ""
+	else:
+		Whois.run(t,p)
 elif s == "web/joomscan":
 	Joomscan.run(t,p)
 elif s == "web/cpfinder":
@@ -51,4 +59,5 @@ elif s == "web/cpfinder":
 #BruteRAR.run("core/db/test.rar","core/db/pass.dicc")
 #WpaBTF.run("core/test/test.cap","E8:40:F2:32:37:FD","core/db/pass.dicc")
 #LANScanner.run("192.168.1.0")
-#facebrok.run("root","toor","db_fbrok","admin","admini|")
+#facebrok.run("root","toor","db_fbrok","admin","admin")
+#ARPPoisoning.run("192.168.1.0","192.168.1.254","wlan0")

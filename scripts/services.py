@@ -21,12 +21,12 @@ def services(process):
 	try:
 		d.run()
 		print(" "+Alr+" Starting Service "+process)
-		subprocess.call('service '+process+' start > nul', shell=True)
+		subprocess.call('service '+process+' start', shell=True)
 		print(" "+God+" Service started")
 		print ""
 		raw_input(" "+Hlp+" Press any key for Stop Service")
 		print(" "+Alr+" Stopping Service "+process)
-		subprocess.call('service '+process+' stop > nul ', shell=True)
+		subprocess.call('service '+process+' stop', shell=True)
 		print(" "+God+" Service Stoped")
 		print ""
 		return

@@ -15,12 +15,16 @@ for option, arg in options:
 		if option   == '-m':
 			m=arg
 
-print ""
-print " "+colors.B+"*"+colors.W+" "
-print "	"+colors.R+"-->"+colors.W+""+colors.B+"*"+colors.W+"  _______?___________________________________ "
-print "	"+colors.B+"*"+colors.W+""+colors.R+"-->"+colors.W+""+colors.R+"*"+colors.W+"{_| | | | I##########  "+colors.R+"KTF"+colors.W+"Run   ##########/ "
-print "   "+colors.B+"*"+colors.W+""+colors.R+"-->"+colors.W+""+colors.R+"*"+colors.W+"       ^ ^ ^ ^             "+info.version
-print ""+colors.B+"*"+colors.W+"  "+colors.R+"*"+colors.W
+print """
+		   __   __  ___            
+		  / /__/ /_/ _/"""+colors.R+"""_____ _____      """+colors.W+"""
+		 /  '_/ __/ _/"""+colors.R+"""_ __/ // / _ \\   """+colors.W+"""
+		/_/\_\\\\_/__/ """+colors.R+"""/_/  \_,_/_//_/  """+colors.W+"""
+		Core:"""+info.version+"""
+                           
+"""
+
+
 print " ktn | Checking Module"
 try:
 	if True:
@@ -113,7 +117,7 @@ try:
 				print " ktn | Running"
 				WpaBTF.btwpa(0)
 				exit()
-			if m == "wifi/ddos":
+			if m == "wifi/dos":
 				print " ktn | Running"
 				Wifi_DDOS.ddos(0)
 				exit()
@@ -133,11 +137,19 @@ try:
 				print " ktn | Running"
 				facebrok.facebrok(0)
 				exit()
+			if m == "net/arpspoof":
+				print " ktn | Running"
+				ARPPoisoning.arpp(0)
+				exit()
+			if m == "eng/mailboom":
+				print " ktn | Running"
+				smtpBombing.smtpbombing(0)
+				exit()
 			else:
 				print " ["+colors.O+"!"+colors.W+"] Module not found"
 				print ""
-				print " ["+colors.O+"!"+colors.W+"] Use msfkatana -m Module"
-				print " ["+colors.B+"*"+colors.W+"] ex: msfkatana -m wifi/dos"
+				print " ["+colors.O+"!"+colors.W+"] Use ktfkatana -m Module"
+				print " ["+colors.B+"*"+colors.W+"] ex: ktfkatana -m wifi/dos"
 				exit()
 except:
 	print ""
