@@ -30,7 +30,7 @@ The Katana source code is organized as follows:
 <i>--[core/db/](https://github.com/RedToor/Katana/tree/master/core/db)</i> > Dictionaries and tables<br>
 <i>--[core/logs/](https://github.com/RedToor/Katana/tree/master/core/logs)</i> > Registers of modules<br>
 <i>-[files/](https://github.com/RedToor/Katana/tree/master/files)</i> > Files necessary for some modules<br>
-<i>-[core/](https://github.com/RedToor/Katana/tree/master/temp)</i> > Temp files<br>
+<i>-[tmp/](https://github.com/RedToor/Katana/tree/master/temp)</i> > Temp files<br>
 <i>-[lib/](https://github.com/RedToor/Katana/tree/master/lib)</i> > Libraries<br>
 <i>-[scripts/](https://github.com/RedToor/Katana/tree/master/scripts)</i> > Scripts(modules)<br>
 
@@ -40,12 +40,12 @@ OS requirement:
 
 #INSTALLATION
 Installation of Katana framework:
-```
-        git clone https://github.com/RedToor/katana.git
-        cd Katana
-        chmod 777 install.py
-        python install.py
-```
+<i><b><br><br>
+	git clone https://github.com/RedToor/katana.git<br>
+        cd Katana<br>
+        chmod 777 install.py<br>
+        python install.py</i>
+</i></b>
 
 #USAGE
 Commands
