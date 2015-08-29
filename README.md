@@ -25,7 +25,7 @@ The Katana source code is organized as follows:
 <i>--[core/db/](https://github.com/RedToor/Katana/tree/master/core/db)</i> > Dictionaries and tables<br>
 <i>--[core/logs/](https://github.com/RedToor/Katana/tree/master/core/logs)</i> > Registers of modules<br>
 <i>-[files/](https://github.com/RedToor/Katana/tree/master/files)</i> > Files necessary for some modules<br>
-<i>-[tmp/](https://github.com/RedToor/Katana/tree/master/temp)</i> > Temp files<br>
+<i>-[tmp/](https://github.com/RedToor/Katana/tree/master/tmp)</i> > Temp files<br>
 <i>-[lib/](https://github.com/RedToor/Katana/tree/master/lib)</i> > Libraries<br>
 <i>-[scripts/](https://github.com/RedToor/Katana/tree/master/scripts)</i> > Scripts(modules)<br>
 
@@ -53,6 +53,6 @@ Commands
 
 # LICENSE
 Katana is licensed. 
-See [LICENSE](LICENSE) for more information.
+See [LICENSE](https://github.com/RedToor/Katana/tree/master/LICENSE) for more information.
 
-from <img src="http://www.euromonitor.com/medialibrary/Image/Flag_20x20_Colombia.png" title="Colombia"> made in <img src="https://developer.ibm.com/predictiveanalytics/wp-content/uploads/sites/48/2015/04/python-icon.png" title="Python"> with <img src="http://cdn0.bodas.com.mx/img/smileys/smiley_heart.png" title="Love"> if u want Donate <img src="http://www.wbtcb.com/frontend/webroot/gfx/bitcoin-ico.gif" title="Bitcoins"> 196H8v86JtnMA2ZG5RqxKBfSz5D3JLCUGj
+from <img src="http://www.euromonitor.com/medialibrary/Image/Flag_20x20_Colombia.png" title="Colombia"> made in <img src="https://developer.ibm.com/predictiveanalytics/wp-content/uploads/sites/48/2015/04/python-icon.png" title="Python"> with <img src="http://cdn0.bodas.com.mx/img/smileys/smiley_heart.png" title="Love"> , if u want Donate <img src="http://www.wbtcb.com/frontend/webroot/gfx/bitcoin-ico.gif" title="Bitcoins"> 196H8v86JtnMA2ZG5RqxKBfSz5D3JLCUGj
