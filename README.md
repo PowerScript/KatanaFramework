@@ -7,7 +7,7 @@
 	╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝ 
 ```
 ---
-[![Gitter chat](https://badges.gitter.im/totaljs/framework.png)](https://gitter.im/RedToor/Katana) ![Supported OS](https://img.shields.io/badge/Supported%20OS-Linux-yellow.svg) 
+[![Gitter chat](https://badges.gitter.im/totaljs/framework.png)](https://gitter.im/RedToor/Katana) ![Supported OS](https://img.shields.io/badge/Supported%20OS-Linux-yellow.svg) ![License](https://img.shields.io/badge/license-GPLv3-blue.svg) ![Core](https://img.shields.io/badge/Core-0.0.0.6-green.svg) ![P](https://img.shields.io/pypi/pyversions/Django.svg)
 
 ---
 #ABOUT
@@ -23,17 +23,17 @@ the cause and do something for the community, this is the opportunity.
 
 # SOURCE CODE ORGANIZATION
 The Katana source code is organized as follows:
-```
-KatanaGUI/     source code for graphical user interface
-KatanaLAB/     source code for katana laboratory
-core/          source code core
-core/db/       dictionaries and tables
-core/logs/     registers of modules
-files/         files necessary for some modules
-tmp/           temp files
-lib/           libraries
-scripts/       source code of modules
-```
+
+<i>-[KatanaGUI/](https://github.com/RedToor/Katana/tree/master/KatanaGUI)</i> > source code for graphical user interface<br>
+<i>-[KatanaLAB/](https://github.com/RedToor/Katana/tree/master/KatanaLAB)</i> >source code for katana laboratory<br>
+<i>-[core/](https://github.com/RedToor/Katana/tree/master/core)</i> > source code core<br>
+<i>--[core/db/](https://github.com/RedToor/Katana/tree/master/core/db)</i> > dictionaries and tables<br>
+<i>--[core/logs/](https://github.com/RedToor/Katana/tree/master/core/logs)</i> > registers of modules<br>
+<i>-[files/](https://github.com/RedToor/Katana/tree/master/files)</i> > files necessary for some modules<br>
+<i>-[core/](https://github.com/RedToor/Katana/tree/master/temp)</i> > temp files<br>
+<i>-[lib/](https://github.com/RedToor/Katana/tree/master/lib)</i> > libraries<br>
+<i>-[scripts/](https://github.com/RedToor/Katana/tree/master/scripts)</i> > scripts(modules)<br>
+
 # REQUIREMENTS
 OS requirement:
         <img src="http://www.question-defense.com/wp-content/themes/qd/backtrack-menu/backtrack-logo.png"> Kali Linux
@@ -58,37 +58,35 @@ Commands
 
 #### Features
 Modules and Scripts:
+```
+1) Whois web
+2) Generator ditionaries
+3) DOS to wifi
+4) Brute force a wpa 
+5) Services (HTTP, SQL, SSH)
+6) Joomscan 
+7) Test login
+8) Fuzzer FTP
+9) Brute force to POP3
+10) Brute force to SQL
+11) Brute force to SSH
+12) Brute force to FTP
+13) Brute force to form-based
+14) Brute force to 403
+15) Brute force to rar files
+16) Brute force to zip files
+17) Client POP3
+18) Client FTP
+19) Client SQL
+20) ARP-Spoof Detector
+21) ARP-Spoof Atack
+22) Admin Finder
+23) get data Report for web
+24) facebrok 
+25) email Boombing
+26) Host live in my network
+```
 
- Module                 | Description
-------------------------|---------------------
-web/httpbt|Brute force to HTTP 401
-web/formbt|Brute force to form-based
-web/cpfinder|Admin panel finder
-web/joomscan|Scanner vul's cms joomla
-web/dos|Denial of service web
-web/whois|Who-is web
-net/arplook|ARP-Spoofing detector
-net/lanlive|Host live in my Network
-eng/gdreport|Getting information with web
-eng/facebrok|facebook phishing plataform
-fle/brutezip|Brute force to zip files
-fle/bruterar|Brute force to rar files
-clt/ftp|Console ftp client
-clt/sql|Console sql client
-clt/pop3|Console pop3 client
-ser/sql|Start sql server
-ser/apache|Start http server
-ser/ssh|Start ssh server
-bt/ftp|Brute force to ftp
-bt/sql|Brute force to sql
-bt/ssh|Brute force to ssh
-bt/pop3|Brute force to pop3
-fz/ftp|Fuzzer to ftp
-wifi/wpabtf|Brute force to wpa encriptation
-wifi/dos|Denial of service wifi
-mc/tlogin|Test of credentials
-mc/gendic|Generator dictionary
-  
 # LICENSE
 Katana is licensed. 
 See [LICENSE](LICENSE) for more information.
