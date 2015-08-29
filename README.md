@@ -27,6 +27,7 @@ The Katana source code is organized as follows:
 <i>-[files/](https://github.com/RedToor/Katana/tree/master/files)</i> > Files necessary for some modules<br>
 <i>-[tmp/](https://github.com/RedToor/Katana/tree/master/tmp)</i> > Temp files<br>
 <i>-[lib/](https://github.com/RedToor/Katana/tree/master/lib)</i> > Libraries<br>
+<i>-[doc/](https://github.com/RedToor/Katana/tree/master/doc)</i> > Documentation<br>
 <i>-[scripts/](https://github.com/RedToor/Katana/tree/master/scripts)</i> > Scripts(modules)<br>
 
 # REQUIREMENTS
