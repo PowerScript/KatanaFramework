@@ -24,15 +24,15 @@ the cause and do something for the community, this is the opportunity.
 # SOURCE CODE ORGANIZATION
 The Katana source code is organized as follows:
 
-<i>-[KatanaGUI/](https://github.com/RedToor/Katana/tree/master/KatanaGUI)</i> > source code for graphical user interface<br>
-<i>-[KatanaLAB/](https://github.com/RedToor/Katana/tree/master/KatanaLAB)</i> >source code for katana laboratory<br>
-<i>-[core/](https://github.com/RedToor/Katana/tree/master/core)</i> > source code core<br>
-<i>--[core/db/](https://github.com/RedToor/Katana/tree/master/core/db)</i> > dictionaries and tables<br>
-<i>--[core/logs/](https://github.com/RedToor/Katana/tree/master/core/logs)</i> > registers of modules<br>
-<i>-[files/](https://github.com/RedToor/Katana/tree/master/files)</i> > files necessary for some modules<br>
-<i>-[core/](https://github.com/RedToor/Katana/tree/master/temp)</i> > temp files<br>
-<i>-[lib/](https://github.com/RedToor/Katana/tree/master/lib)</i> > libraries<br>
-<i>-[scripts/](https://github.com/RedToor/Katana/tree/master/scripts)</i> > scripts(modules)<br>
+<i>-[KatanaGUI/](https://github.com/RedToor/Katana/tree/master/KatanaGUI)</i> > Source code for graphical user interface<br>
+<i>-[KatanaLAB/](https://github.com/RedToor/Katana/tree/master/KatanaLAB)</i> > Source code for katana laboratory<br>
+<i>-[core/](https://github.com/RedToor/Katana/tree/master/core)</i> > Source code core<br>
+<i>--[core/db/](https://github.com/RedToor/Katana/tree/master/core/db)</i> > Dictionaries and tables<br>
+<i>--[core/logs/](https://github.com/RedToor/Katana/tree/master/core/logs)</i> > Registers of modules<br>
+<i>-[files/](https://github.com/RedToor/Katana/tree/master/files)</i> > Files necessary for some modules<br>
+<i>-[core/](https://github.com/RedToor/Katana/tree/master/temp)</i> > Temp files<br>
+<i>-[lib/](https://github.com/RedToor/Katana/tree/master/lib)</i> > Libraries<br>
+<i>-[scripts/](https://github.com/RedToor/Katana/tree/master/scripts)</i> > Scripts(modules)<br>
 
 # REQUIREMENTS
 OS requirement:
@@ -50,41 +50,10 @@ Installation of Katana framework:
 #USAGE
 Commands
 ```
-        ktfconsole # starts katana console
-        ktfrun     # quickly launch modules
-        ktflab     # starts katana laboratory
-```
-
-
-#### Features
-Modules and Scripts:
-```
-1) Whois web
-2) Generator ditionaries
-3) DOS to wifi
-4) Brute force a wpa 
-5) Services (HTTP, SQL, SSH)
-6) Joomscan 
-7) Test login
-8) Fuzzer FTP
-9) Brute force to POP3
-10) Brute force to SQL
-11) Brute force to SSH
-12) Brute force to FTP
-13) Brute force to form-based
-14) Brute force to 403
-15) Brute force to rar files
-16) Brute force to zip files
-17) Client POP3
-18) Client FTP
-19) Client SQL
-20) ARP-Spoof Detector
-21) ARP-Spoof Atack
-22) Admin Finder
-23) get data Report for web
-24) facebrok 
-25) email Boombing
-26) Host live in my network
+        ktfconsole 
+        ktflab
+        ktfrun -m net/arpspoof
+        ktflinker -m clt/ftp -t 127.0.0.1 -p 21 -c root:toor
 ```
 
 # LICENSE
