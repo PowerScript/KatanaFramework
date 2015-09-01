@@ -7,6 +7,8 @@
 ---
 #ABOUT
 
+[![Join the chat at https://gitter.im/RedToor/Katana](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/RedToor/Katana?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Well, I've started a framework that seekss to unite general auditing tools,
 which are general pentesting tools (Network,Web,Desktop and others). if you
 want to support the project or want to be part by adding modules or scripts,
