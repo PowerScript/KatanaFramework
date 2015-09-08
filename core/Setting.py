@@ -11,7 +11,7 @@ MY_IP="192.168.1.225"
 GATEWAY_ADR="192.168.1.254"
 
 # DEFAUTL PATCHS
-PATCH_WWW="var/www/"
+PATCH_WWW="/var/www/"
 
 # DEFAULT DATE
 EMAIL="root@localhost"
