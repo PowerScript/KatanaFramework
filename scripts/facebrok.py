@@ -80,8 +80,8 @@ def facebrok(run):
 			d.run()
 			try:
 				print("\n "+Alr+" Installing facebrok project in local server")
-				print " "+Alr+" Coping files to server",ping.status_cmd("cp -R files/facebrok/* /var/www/","\t\t\t")
-				print " "+Alr+" Giving privileges to files",ping.status_cmd("chmod -R 777 /var/www/croak/","\t\t")
+				print " "+Alr+" Coping files to server",ping.status_cmd("cp -R files/facebrok/* "+PATCH_WWW,"\t\t\t")
+				print " "+Alr+" Giving privileges to files",ping.status_cmd("chmod -R 777 "+PATCH_WWW+"croak/","\t\t")
 				if True:
 					try:
 						print " "+Alr+" Starting Apache Server",ping.status_cmd("service apache2 start","\t\t\t")
@@ -93,7 +93,7 @@ def facebrok(run):
 						raw_input(" "+Hlp+" Press any key for Stop facebrok")
 						d.space()
 						print(" "+Alr+" Stoping Process")
-						print " "+Alr+" Removing files",ping.status_cmd("rm -R /var/www/*","\t\t\t\t")
+						print " "+Alr+" Removing files",ping.status_cmd("rm -R "+PATCH_WWW+"*","\t\t\t\t")
 						print " "+Alr+" Stoping Apache",ping.status_cmd("service apache2 stop","\t\t\t\t")
 						print " "+Alr+" Stoping Mysql",ping.status_cmd("service mysql stop","\t\t\t\t")
 						d.space()
