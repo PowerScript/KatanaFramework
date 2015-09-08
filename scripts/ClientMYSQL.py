@@ -1,13 +1,16 @@
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # @KATANA                    #
-# Modules   : Client MYSQL   #
+# Module    : Client MYSQL   #
 # Script by : RedToor        #
 # Date      : 15/05/2015     #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # Katana Core                #
 from core.design import *    #
+from core.Setting import *   #
+from core import Errors      #
 from core import help        #
 from core import ping        #
+import sys                   #
 d=DESIGN()                   #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # Libraries                  #
@@ -16,18 +19,18 @@ import socket                #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # Default                    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
-defaulthost="127.0.0.1"
-defaultport="3306"
-defaultuser="root"
-defaultpass="toor"
+defaulthost=LOCAL_IP
+defaultport=SQL_PORT
+defaultuser=USERNAME
+defaultpass=PASSWORD
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 
-def run(para,parb,parc,pard):
+def run(target,port,username,password):
 	global defaulthost,defaultport,defaultuser,defaultpass
-	defaulthost=para
-	defaultport=parb
-	defaultuser=parc
-	defaultpass=pard
+	defaulthost=target
+	defaultport=port
+	defaultuser=username
+	defaultpass=password
 	cmysql(1)
 
 
@@ -44,25 +47,21 @@ def cmysql(run):
 			d.descrip("port","no","Port of target",defaultport)
  			d.descrip("user","yes","Username",defaultuser)
  			d.descrip("pass","yes","Password",defaultpass)
-			print ""
+			d.space()
 			cmysql(0)
 		elif actions[0:10] == "set target":
-			defaulthost = actions[11:]
-			defaulthost = defaulthost.replace("http://", "")
+			defaulthost=defaulthost.replace("http://", "")
+			defaulthost=ping.update(defaulthost,actions,"target")
 			d.change("target",defaulthost)
-			cmysql(0)
 		elif actions[0:8] == "set port":
-			defaultport = actions[9:]
+			defaultport=ping.update(defaultport,actions,"port")
 			d.change("port",defaultport)
-			cmysql(0)
 		elif actions[0:8] == "set user":
-			defaultuser = actions[9:]
+			defaultuser=ping.update(defaultuser,actions,"user")
 			d.change("user",defaultuser)
-			cmysql(0)
 		elif actions[0:8] == "set pass":
-			defaultpass = actions[9:]
+			defaultpass=ping.update(defaultpass,actions,"pass")
 			d.change("pass",defaultpass)
-			cmysql(0)
 		elif actions=="exit" or actions=="x":
 			d.goodbye()
 			exit()
@@ -97,7 +96,7 @@ def cmysql(run):
 								print "  -------------------------------------------------------------------------------------------------------"
 								print ""
 								while(cmd!="exit"):
-									cmd = raw_input(colors[1]+" CLT~"+colors[3]+"sql/> "+colors[0])
+									cmd = raw_input(d.Client_prompt('sql'))
 									cur=con.cursor() 
 									try:
 										tor=cur.execute(cmd)
@@ -105,18 +104,15 @@ def cmysql(run):
 											for x in range(tor):
 	   											print cur.fetchone()
 	   								except:
-	   									print " ["+colors[1]+"-"+colors[0]+"] Error: command"				
-							except(KeyboardInterrupt):
-								d.kbi()
-							except Exception,e:
-								print(" ["+colors[1]+"-"+colors[0]+"] Timeout.", e)
+	   									print " "+Bad+" No command '"+cmd+"' found"
+							except:
+								Errors.Errors(event=sys.exc_info()[0], info=False)
 					except:
-						d.nomatch()
+						d.No_match()
 			except:
-				d.off()
+				Errors.Errors(event=sys.exc_info()[0], info=defaulthost+":"+defaultport)
 		else:
-			d.nocommand()
+			d.No_actions()
 	except:
-		d.kbi()
-		exit()
+		Errors.Errors(event=sys.exc_info()[0], info=False)
 	cmysql(0)

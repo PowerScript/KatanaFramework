@@ -6,17 +6,19 @@
 # :-:-:-:-:-:-:-:-:-:-:-: #
 # Katana Core             #
 from core.design import * #
+from core.Setting import *#
+from core import Errors   #
 from core import help     #
 from core import ping     #
 d=DESIGN()                #
 # :-:-:-:-:-:-:-:-:-:-:-: #
 # Libraries               #
-import re
-import curses
-import time
 from datetime import datetime
 from time import gmtime, strftime
 from subprocess import  PIPE, Popen
+import re
+import curses
+import time
 # :-:-:-:-:-:-:-:-:-:-:-: #
 # Default                 #
 # :-:-:-:-:-:-:-:-:-:-:-: #
@@ -71,12 +73,10 @@ def arplook(run):
                                                         print "     ["+O+"!"+W+"] ARP Table Changed ", " at: ", datetime.now().strftime('%H:%M:%S')
                                                         print "     ["+G+"+"+W+"] Data:\n", look
                                                 time.sleep(15)
-                                        except:
-                                                d.kbi()                                                
-                                                arplook(0)
+                                        except:                                              
+                                                Errors.Errors(event=sys.exc_info()[0], info=True)
                         else:
-                                d.nocommand()
+                                No_actions()
         except:
-                d.kbi()
-                exit()
+                Errors.Errors(event=sys.exc_info()[0], info=False)
         arplook(0)

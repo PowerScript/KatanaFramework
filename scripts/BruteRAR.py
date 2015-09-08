@@ -6,27 +6,29 @@
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Katana Core                   #
 from core.design import *       #
+from core.Setting import *      #
+from core import Errors         #
 from core import help           #
 from core import ping           #
+import sys                      #
 d=DESIGN()                      #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Libraries                     #
-from lib.rarfile import RARfile #
+from lib.rarfile import *       #
 import optparse                 #
-import sys                      #
 import os                       #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Default                       #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 defaultarch="core/test/test.rar"
-defaultdicc="core/db/pass.dicc"
+defaultdicc=DITIONARY_PASSWORDS
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
 
-def run(para,parb):
+def run(file,dictionary):
 	global defaultarch,defaultdicc
-	defaultarch=para
-	defaultdicc=parb
+	defaultarch=file
+	defaultdicc=dictionary
 	btrar(1)
 
 def btrar(run):
@@ -43,13 +45,11 @@ def btrar(run):
 			print ""
 			btrar(0)
 		elif actions[0:8] == "set file":
-			defaultarch = actions[11:]
+			defaultarch=ping.update(defaultarch,actions,"file")
 			d.change("file",defaultarch)
-			btrar(0)
 		elif actions[0:10] == "set dict_1":
-			defaultdicc = actions[11:]
+			defaultdicc=ping.update(defaultdicc,actions,"dict_1")
 			d.change("dict_1",defaultdicc)
-			btrar(0)
 		elif actions=="exit" or actions=="x":
 			d.goodbye()
 			exit()
@@ -60,14 +60,14 @@ def btrar(run):
 		elif actions=="run"  or actions=="r":
 			d.run()
 			try:
-				d.loading()
+				d.loading_file()
 				Arch = open(defaultdicc,"r")
 				if True:
 					leeArchivo = Arch.readlines()
 					for palabra in leeArchivo:
 						palabraLlegada = palabra.split("\n")
 						try:
-							RARarch = RARfile.RARFile(defaultarch)
+							RARarch = RarFile(defaultarch)
 							try:
 								RARarch.extractall(pwd=str(palabraLlegada[0]))
 								if True:
@@ -77,14 +77,11 @@ def btrar(run):
 							except:
 								print " "+Alr+" Checking with ",str(palabraLlegada[0])
 						except:
-							d.arcnot(defaultarch)
-							btrar(0)
+							Errors.Errors(event=sys.exc_info(), info=defaultarch)
 			except:
-				d.filenot(defaultdicc)
-				btrar(0)
+				Errors.Errors(event=sys.exc_info(), info=defaultdicc)
 		else:
-			d.nocommand()
+			d.No_actions()
 	except:
-		d.kbi()
-		exit()
+		Errors.Errors(event=sys.exc_info(), info=False)
 	btrar(0)

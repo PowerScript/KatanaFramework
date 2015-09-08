@@ -6,8 +6,11 @@
 # :-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Katana Core                 #
 from core.design import *     #
+from core.Setting import *    #
+from core import Errors       #
 from core import help         #
 from core import ping         #
+import sys                    #
 d=DESIGN()                    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Libraries                   #
@@ -77,39 +80,34 @@ def facebrok(run):
 			d.run()
 			try:
 				print("\n "+Alr+" Installing facebrok project in local server")
-				subprocess.call('cp -R files/facebrok/* /var/www/', shell=True)
-				subprocess.call('chmod -R 777 /var/www/croak/', shell=True)
+				print " "+Alr+" Coping files to server",ping.status_cmd("cp -R files/facebrok/* /var/www/","\t\t\t")
+				print " "+Alr+" Giving privileges to files",ping.status_cmd("chmod -R 777 /var/www/croak/","\t\t")
 				if True:
 					try:
-						print(" "+Alr+" Starting Apache Server")
-						subprocess.call('service apache2 start', shell=True)
-						print(" "+Suf+" Apache Started")
-						print(" "+Alr+" Starting Mysql Server")
-						subprocess.call('service mysql start', shell=True)
-						print(" "+Suf+" Mysql Started")
-						subprocess.call('wget --post-data "server=127.0.0.1&user='+username_sql+'&pass='+password_sql+'&data='+database_sql+'&userp='+username_cp+'&passp='+password_cp+'" 127.0.0.1/croak/install/startgame.php', shell=True)
-						print(" "+Suf+" Script Running in http://127.0.0.1/")
-						print""
-						print(" "+Suf+" Running facebrok Script...")
+						print " "+Alr+" Starting Apache Server",ping.status_cmd("service apache2 start","\t\t\t")
+						print(" "+Alr+" Starting Mysql Server"),ping.status_cmd("service mysql start","\t\t\t")
+						print(" "+Alr+" Installing facebrok"),ping.status_cmd('wget -b -nv --post-data "server=127.0.0.1&user='+username_sql+'&pass='+password_sql+'&data='+database_sql+'&userp='+username_cp+'&passp='+password_cp+'" 127.0.0.1/croak/install/startgame.php','\t\t\t')
+						d.space()
+						print(" "+Got+" Script Running in http://127.0.0.1/")
+						d.space()
 						raw_input(" "+Hlp+" Press any key for Stop facebrok")
+						d.space()
 						print(" "+Alr+" Stoping Process")
-						subprocess.call('rm -R /var/www/*', shell=True)
-						subprocess.call('apache2ctl stop', shell=True)
-						print(" "+Alr+" Stoping Apache and facebrok project")
-						print(" "+Suf+" Scritp Stoped and Apache")
+						print " "+Alr+" Removing files",ping.status_cmd("rm -R /var/www/*","\t\t\t\t")
+						print " "+Alr+" Stoping Apache",ping.status_cmd("service apache2 stop","\t\t\t\t")
+						print " "+Alr+" Stoping Mysql",ping.status_cmd("service mysql stop","\t\t\t\t")
+						d.space()
 					except:
+						d.space()
 						print(" "+Alr+" Stoping Process")
-						subprocess.call('service apache2 stop', shell=True)
-						subprocess.call('service mysql stop', shell=True)
-						subprocess.call('rm -R /var/www/*', shell=True)
-						print(" "+Suf+" Stoped")
-						facebrok(0)
+						print " "+Alr+" Removing files",ping.status_cmd("rm -R /var/www/*","\t\t\t\t")
+						print " "+Alr+" Stoping Apache",ping.status_cmd("service apache2 stop","\t\t\t\t")
+						print " "+Alr+" Stoping Mysql",ping.status_cmd("service mysql stop","\t\t\t\t")
+						d.space()
 			except:
-				d.kbi()
-				exit()
+				Errors.Errors(event=sys.exc_info()[0], info=False)
 		else:
-			d.nocommand()
+			d.No_actions()
 	except:
-		d.kib()
-		exit()
+		Errors.Errors(event=sys.exc_info()[0], info=False)
 	facebrok(0)

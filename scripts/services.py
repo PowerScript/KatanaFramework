@@ -1,35 +1,31 @@
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # @KATANA                       #
-# Modules   : Services          #
+# Module    : Services          #
 # Script by : RedToor           #
 # Date      : 11/06/2015        #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Katana Core                   #
 from core.design import *       #
+from core.Setting import *      #
+from core import Errors         #
 from core import help           #
 from core import ping           #
+import sys                      #
 d=DESIGN()                      #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Libraries                     #
 import subprocess               #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
-# Default                       #
-# :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
-# :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
 def services(process):
 	try:
 		d.run()
-		print(" "+Alr+" Starting Service "+process)
-		subprocess.call('service '+process+' start', shell=True)
-		print(" "+God+" Service started")
-		print ""
+		print " "+Alr+" Starting "+process+"",ping.status_cmd("service "+process+" start","\t\t\t\t")
+		d.space()
 		raw_input(" "+Hlp+" Press any key for Stop Service")
-		print(" "+Alr+" Stopping Service "+process)
-		subprocess.call('service '+process+' stop', shell=True)
-		print(" "+God+" Service Stoped")
-		print ""
+		print " "+Alr+" Stopping "+process+"",ping.status_cmd("service "+process+" stop","\t\t\t\t")
+		d.space()
 		return
-	except(KeyboardInterrupt):
-		d.kbi()
+	except:
+		Errors.Errors(event=sys.exc_info()[0], info=False)
 	services(process)

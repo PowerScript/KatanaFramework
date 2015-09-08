@@ -6,8 +6,11 @@
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # Katana Core                #
 from core.design import *    #
+from core.Setting import *   #
+from core import Errors      #
 from core import help        #
 from core import ping        #
+import sys                   #
 d=DESIGN()                   #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # Libraries                  #
@@ -15,18 +18,18 @@ import poplib                #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # Default                    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
-defaulthost="127.0.0.1"
-defaultport="110"
-defaultuser="admin"
-defaultpass="admin"
+defaulthost=LOCAL_IP
+defaultport=POP_PORT
+defaultuser=USERNAME
+defaultpass=PASSWORD
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 
-def run(para,parb,parc,pard):
+def run(target,port,username,password):
 	global defaulthost,defaultport,defaultuser,defaultpass
-	defaulthost=para
-	defaultport=parb
-	defaultuser=parc
-	defaultpass=pard
+	defaulthost=target
+	defaultport=port
+	defaultuser=username
+	defaultpass=password
 	cpop3(1)
 
 def cpop3(run):
@@ -42,25 +45,21 @@ def cpop3(run):
 			d.descrip("port","no","Port of target",defaultport)
  			d.descrip("user","yes","Username",defaultuser)
  			d.descrip("pass","yes","Password",defaultpass)
-			print ""
+			d.space()
 			cpop3(0)
 		elif actions[0:10] == "set target":
-			defaulthost = actions[11:]
-			defaulthost = defaulthost.replace("http://", "")
+			defaulthost=defaulthost.replace("http://", "")
+			defaulthost=ping.update(defaulthost,actions,"target")
 			d.change("target",defaulthost)
-			cpop3(0)
 		elif actions[0:8] == "set port":
-			defaultport = actions[9:]
+			defaultport=ping.update(defaultport,actions,"port")
 			d.change("port",defaultport)
-			cpop3(0)
 		elif actions[0:8] == "set user":
-			defaultuser = actions[9:]
+			defaultuser=ping.update(defaultuser,actions,"user")
 			d.change("user",defaultuser)
-			cpop3(0)
 		elif actions[0:8] == "set pass":
-			defaultpass = actions[9:]
+			defaultpass=ping.update(defaultpass,actions,"pass")
 			d.change("pass",defaultpass)
-			cpop3(0)
 		elif actions=="exit" or actions=="x":
 			d.goodbye()
 			exit()
@@ -91,7 +90,7 @@ def cpop3(run):
 							if True:
 								if True:
 									while(cmd!="exit"):
-										cmd = raw_input(colors[1]+" CLT~"+colors[3]+"pop3/> "+colors[0])
+										cmd = raw_input(d.Client_prompt('pop3'))
 										if cmd == "list":
 											numMessages = len(red.list()[1])
 											for i in range(numMessages):
@@ -111,12 +110,11 @@ def cpop3(run):
 											print " "+Alr+" Exit, bye."
 											break
 				except:
-					d.nomatch()
+					d.No_match()
 			except:
-				d.off()
+				Errors.Errors(event=sys.exc_info()[0], info=defaulthost+":"+defaultport)
 		else:
-			d.nocommand()
+			d.No_actions()
 	except:
-		d.kbi()
-		exit()
+		Errors.Errors(event=sys.exc_info()[0], info=False)
 	cpop3(0)

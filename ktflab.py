@@ -4,21 +4,27 @@
 #
 
 from core import colors
-import subprocess            
+from core import info
+from core import ping 
+from core.design import *
+d=DESIGN()
+
+
+
 if True:
-	print " ["+colors.G+"+"+colors.W+"] Starting Katana Laboratory"
-	print " ["+colors.O+"!"+colors.W+"] Coping Katana Laboratory to apache folder"
-	subprocess.call('cp -R KatanaLAB /var/www/KatanaLAB', shell=True)
-	print " ["+colors.O+"!"+colors.W+"] Giving privileges to folder"
-	subprocess.call('chmod -c -R 777 /var/www/KatanaLAB/', shell=True)
-	print " ["+colors.O+"!"+colors.W+"] Starting Apache2"
-	subprocess.call('service apache2 start', shell=True)
-	print " ["+colors.G+"+"+colors.W+"] Katana Lab Started"
+	d.lab(info.version)
 	print ""
-	print " ["+colors.B+">"+colors.W+"] Go to http://localhost/KatanaLAB"
+	print " "+Suf+" Starting Katana Laboratory"
+	print " "+Alr+" Coping Katana Laboratory to apache folder",ping.status_cmd("cp -R KatanaLAB /var/www/KatanaLAB","\t")
+	print " "+Alr+" Giving privileges to folder",ping.status_cmd("chmod -c -R 777 /var/www/KatanaLAB/","\t\t\t")
+	print " "+Alr+" Starting Apache2",ping.status_cmd("service apache2 start","\t\t\t\t")
+	print " "+Suf+" Katana Lab Started"
 	print ""
-	raw_input(" ["+colors.R+"-"+colors.W+"] Press any key for Stop Katana Lab")
-	print(" ["+colors.O+"!"+colors.W+"] Stoping Process")
-	subprocess.call('rm -R /var/www/KatanaLAB', shell=True)
-	subprocess.call('apache2ctl stop', shell=True)
-	print " ["+colors.G+"+"+colors.W+"] Katana Lab Stoped"
+	d.go("http://localhost/KatanaLAB")
+	print ""
+	raw_input(" "+Hlp+" Press any key for Stop Katana Lab")
+	print(" "+Alr+" Stoping Process")
+	print " "+Alr+" Removing files",ping.status_cmd("rm -R /var/www/KatanaLAB","\t\t\t\t\t")
+	print " "+Alr+" Stoping Apache2",ping.status_cmd("service apache2 stop","\t\t\t\t\t")
+	print " "+Suf+" Katana Lab Stoped"
+	print ""

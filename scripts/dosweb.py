@@ -1,8 +1,8 @@
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # @KATANA                    #
-# Modules   : Joomscan runer #
+# Modules   : Dos Web        #
 # Script by : RedToor        #
-# Date      : 26/05/2015     #
+# Date      : 31/08/2015     #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # Katana Core                #
 from core.design import *    #
@@ -23,13 +23,13 @@ def run(target,port):
 	global defaulthost,defaultport
 	defaulthost=target
 	defaultport=port
-	xjoomla(1)
+	dosweb(1)
 
-def xjoomla(run):
+def dosweb(run):
 	try:
 		global defaulthost,defaultport
 		if run!=1:
-			actions=raw_input(d.prompt("web/joomscan"))
+			actions=raw_input(d.prompt("web/dos"))
 		else:
 			actions="run"
 		if actions == "show options" or actions == "sop":
@@ -39,8 +39,13 @@ def xjoomla(run):
 			print ""
 		elif actions[0:10] == "set target":
 			defaulthost = actions[11:]
+			defaulthost = defaulthost.replace("http://", "")
 			d.change("target",defaulthost)
-			xjoomla(0)
+			dosweb(0)
+		elif actions[0:8] == "set port":
+			defaultport = actions[9:]
+			d.change("port",defaultport)
+			dosweb(0)
 		elif actions=="exit" or actions=="x":
 			d.goodbye()
 			exit()
@@ -55,7 +60,7 @@ def xjoomla(run):
 				ping.live(defaulthost,defaultport)
 				if True:
 					try:
-						subprocess.call('cd /pentest/web/joomscan/;./joomscan.pl -u '+defaulthost+":"+defaultport, shell=True)
+						subprocess.call('python "files/hulk/hulk.py" http://'+defaulthost, shell=True)
 					except(KeyboardInterrupt):
 						d.kbi()
 			except:
@@ -65,4 +70,4 @@ def xjoomla(run):
 	except:
 		d.kbi()
 		exit()
-	xjoomla(0)
+	dosweb(0)

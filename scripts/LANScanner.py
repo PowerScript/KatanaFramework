@@ -6,8 +6,11 @@
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Katana Core                   #
 from core.design import *       #
+from core.Setting import *      #
+from core import Errors         #
 from core import help           #
 from core import ping           #
+import sys                      #
 d=DESIGN()                      #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Libraries                     #
@@ -15,7 +18,7 @@ import subprocess               #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Default                       #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
-defaultnet="192.168.1.0"
+defaultnet=MY_IP
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
 def run(para):
@@ -34,10 +37,12 @@ def hostl(run):
 		if actions == "show options" or actions == "sop":
 			d.option()
 			d.descrip("nets","yes","Local area net",defaultnet)
-			print ""
-			print " "+Hlp+" Auxiliar Help"
-			print ""
-			ping.myip()
+			d.helpAUX()
+			if ping.conneted()!=False:
+				print " You IP     : ",ping.myip()
+			else:
+				print d.noconnect()
+			d.space()
 			hostl(0)
 		elif actions[0:8] == "set nets":
 			defaultnet = actions[9:]
@@ -53,13 +58,13 @@ def hostl(run):
 		elif actions=="run"  or actions=="r":
 			d.run()
 			try:
-				subprocess.call('nmap -sP '+defaultnet+'/24', shell=True)
-				print ""
-			except(KeyboardInterrupt, SystemExit):
-				d.kbi()
+				d.space()
+				ping.lan_ips(1)
+				d.space()
+			except:
+				Errors.Errors(event=sys.exc_info()[0], info=False)
 		else:
-			d.nocommand()
+			d.No_actions()
 	except:
-		d.kbi()
-		exit()
+		Errors.Errors(event=sys.exc_info()[0], info=False)
 	hostl(0)

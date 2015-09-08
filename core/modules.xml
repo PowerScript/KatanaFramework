@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<modules>
+    <module name="web/formbt">
+        <description>Brute force to form-based</description>
+    </module>
+    <module name="web/cpfinder">
+        <description>Admin panel finder</description>
+    </module>
+    <module name="web/joomscan">
+        <description>Scanner vul's cms joomla</description>
+    </module>
+    <module name="web/dos">
+        <description>Denial of service web</description>
+    </module>
+    <module name="web/whois">
+        <description>Who-is web</description>
+    </module>
+    <module name="net/arpspoof">
+        <description>ARP-Spoofing attack</description>
+    </module>
+    <module name="net/arplook">
+        <description>ARP-Spoofing detector</description>
+    </module>
+    <module name="net/lanlive">
+        <description>Host live's in my Network</description>
+    </module>
+    <module name="eng/gdreport">
+        <description>Getting information with web</description>
+    </module>
+    <module name="eng/mailboom">
+        <description>E-mail boombing</description>
+    </module>
+    <module name="eng/facebrok">
+        <description>facebook phishing plataform</description>
+    </module>
+    <module name="fle/brutezip">
+        <description>Brute force to zip files</description>
+    </module>
+    <module name="fle/bruterar">
+        <description>Brute force to rar files</description>
+    </module>
+    <module name="clt/ftp">
+        <description>Console ftp client</description>
+    </module>
+    <module name="clt/sql">
+        <description>Console sql client</description>
+    </module>
+    <module name="clt/pop3">
+        <description>Console pop3 client</description>
+    </module>
+    <module name="ser/sql">
+        <description>Start sql server</description>
+    </module>
+    <module name="ser/apache">
+        <description>Start http server</description>
+    </module>
+    <module name="ser/ssh">
+        <description>Start ssh server</description>
+    </module>
+    <module name="bt/ftp">
+        <description>Brute force to ftp</description>
+    </module>
+    <module name="bt/sql">
+        <description>Brute force to sql</description>
+    </module>
+    <module name="bt/ssh">
+        <description>Brute force to ssh</description>
+    </module>
+    <module name="bt/pop3">
+        <description>Brute force to pop3</description>
+    </module>
+    <module name="fz/ftp">
+        <description>Fuzzer to ftp</description>
+    </module>
+    <module name="wifi/wpabtf">
+        <description>Brute force to wpa encriptation</description>
+    </module>
+    <module name="wifi/dos">
+        <description>Denial of service wifi</description>
+    </module>
+    <module name="mc/tlogin">
+        <description>Test of credentials</description>
+    </module>
+    <module name="mc/gendic">
+        <description>Generator dictionary</description>
+    </module>
+    <module name="mc/i     ">
+        <description>My Settup</description>
+    </module>
+</modules>

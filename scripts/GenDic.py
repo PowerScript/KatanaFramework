@@ -7,8 +7,11 @@
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # Katana Core                #
 from core.design import *    #
+from core.Setting import *   #
+from core import Errors      #
 from core import help        #
 from core import ping        #
+import sys                   #
 d=DESIGN()                   #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # Libraries                  #
@@ -16,16 +19,16 @@ import time                  #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # Default                    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
-defaultdic="/root/Desktop/Dictionary.txt"
-defaultlon="5"
+defaultdic=DITIONARY_PASSWORDS
+defaultlon=DEFAUTL_LONGITED
 defaultstr="chars_num"
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 
-def run(para,parb,parc):
+def run(dictionary, longitude, types):
 	global defaultdic,defaultlon,defaultstr
-	defaultdic=para
-	defaultlon=parb
-	defaultstr=parc
+	defaultdic=dictionary
+	defaultlon=longitude
+	defaultstr=types
 	Gendic(1)
 
 def Gendic(run):
@@ -40,22 +43,19 @@ def Gendic(run):
 			d.descrip("path","yes","Output file",defaultdic)
 			d.descrip("long","yes","Longitude",defaultlon)
  			d.descrip("type","yes","Type matrix",defaultstr)
-			print ""
-			print " "+Hlp+" Auxiliar help\n"
+			d.helpAUX()
 			print " chars_min = [a,b,c,...,z]"
 			print " chars_may = [A,B,C,...,Z]"
 			print " chars_num = [0,1,2,...,9]"
 			print " chars_mix = [a,b,...,0,1]"
-			print ""
+			d.space()
 			Gendic(0)
 		elif actions[0:8] == "set path":
-				defaultdic = actions[9:]
-				d.change("path",defaultdic)
-				Gendic(0)
+			defaultdic=ping.update(defaultdic,actions,"path")
+			d.change("path",defaultdic)
 		elif actions[0:8] == "set long":
-				defaultlon = actions[9:]
-				d.change("long",defaultlon)
-				Gendic(0)
+			defaultlon=ping.update(defaulthost,actions,"target")
+			d.change("long",defaultlon)
 		elif actions[0:8] == "set type":
 				defaultstr = actions[9:]
 				if defaultstr != "chars_min" and defaultstr != "chars_may" and defaultstr != "chars_num" and defaultstr != "chars_mix":
@@ -142,9 +142,10 @@ def Gendic(run):
 				    cadena = aumentarCadena(cadena)
 				print(" "+Suf+" Complete, output file in "+defaultdic)
 				fichero.close()
-			except(KeyboardInterrupt, SystemExit):
-				d.kbi()
+			except:
+				Errors.Errors(event=sys.exc_info()[0], info=False)
+		else:
+			d.No_actions()
 	except:
-		d.kbi()
-		exit()
+		Errors.Errors(event=sys.exc_info()[0], info=False)
 	Gendic(0)

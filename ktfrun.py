@@ -10,11 +10,13 @@ import getopt
 import sys
 
 m=""
-options, remainder = getopt.getopt(sys.argv[1:], 'm:')
+h=""
+options, remainder = getopt.getopt(sys.argv[1:], 'm:h')
 for option, arg in options:
 		if option   == '-m':
 			m=arg
-
+		if option   == '-h':
+			h=1
 print """
 		   __   __  ___            
 		  / /__/ /_/ _/"""+colors.R+"""_____ _____      """+colors.W+"""
@@ -24,8 +26,8 @@ print """
                            
 """
 
-
-print " ktn | Checking Module"
+if h!=1:
+	print " ktn | Checking Module"
 try:
 	if True:
 		if True:
@@ -49,11 +51,11 @@ try:
 				print " ktn | Running"
 				GetDataReport.getdatareport(0)
 				exit()
-			if m == "file/brutezip":
+			if m == "fle/brutezip":
 				print " ktn | Running"
 				BruteZIP.btzip(0)
 				exit()
-			if m == "file/bruterar":
+			if m == "fle/bruterar":
 				print " ktn | Running"
 				BruteRAR.btrar(0)
 				exit()
@@ -145,11 +147,26 @@ try:
 				print " ktn | Running"
 				smtpBombing.smtpbombing(0)
 				exit()
+			if m == "mc/i":
+				Iandl.iandi()
+				exit()
+			if h == 1:
+				print " ktfrun Build 9500 30/08/2015"
+				print ""
+				print " Katana framework run, it's a sub-tool for use modules fastly"
+				print " with line command."
+				print ""
+				print " Example:"
+				print ""
+				print " ktfrun -m category/module"
+				print " ktfrun -m mc/gendic"
+				print ""
 			else:
 				print " ["+colors.O+"!"+colors.W+"] Module not found"
 				print ""
 				print " ["+colors.O+"!"+colors.W+"] Use ktfkatana -m Module"
 				print " ["+colors.B+"*"+colors.W+"] ex: ktfkatana -m wifi/dos"
+				print " ["+colors.B+"*"+colors.W+"] ex: ktfkatana -h"
 				exit()
 except:
 	print ""

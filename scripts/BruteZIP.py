@@ -6,27 +6,29 @@
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Katana Core                   #
 from core.design import *       #
+from core.Setting import *      #
+from core import Errors         #
 from core import help           #
 from core import ping           #
+import sys                      #
 d=DESIGN()                      #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Libraries                     #
 import zipfile                  #
 import optparse                 #
-import sys                      #
 import os                       #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Default                       #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 defaultarch="core/test/test.zip"
-defaultdicc="core/db/pass.dicc"
+defaultdicc=DITIONARY_PASSWORDS
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
 
-def run(para,parb):
+def run(file,dictionary):
 	global defaultarch,defaultdicc
-	defaultarch=para
-	defaultdicc=parb
+	defaultarch=file
+	defaultdicc=dictionary
 	btzip(1)
 
 def btzip(run):
@@ -43,13 +45,11 @@ def btzip(run):
 			print ""
 			btzip(0)
 		elif actions[0:8] == "set file":
-			defaultarch = actions[11:]
+			defaultarch=ping.update(defaultarch,actions,"file")
 			d.change("file",defaultarch)
-			btzip(0)
 		elif actions[0:10] == "set dict_1":
-			defaultdicc = actions[11:]
+			defaultdicc=ping.update(defaultdicc,actions,"dict_1")
 			d.change("dict_1",defaultdicc)
-			btzip(0)
 		elif actions=="exit" or actions=="x":
 			d.goodbye()
 			exit()
@@ -60,7 +60,7 @@ def btzip(run):
 		elif actions=="run"  or actions=="r":
 			d.run()
 			try:
-				d.loading()
+				d.loading_file()
 				Arch = open(defaultdicc,"r")
 				if True:
 					leeArchivo = Arch.readlines()
@@ -77,14 +77,11 @@ def btzip(run):
 							except:
 								print " "+Alr+" Checking with ",str(palabraLlegada[0])
 						except:
-							d.arcnot(defaultarch)
-							btzip(0)
+							Errors.Errors(event=sys.exc_info(), info=defaultarch)
 			except:
-				d.filenot(defaultdicc)
-				btzip(0)
+				Errors.Errors(event=sys.exc_info(), info=defaultdicc)
 		else:
-			d.nocommand()
+			d.No_actions()
 	except:
-		d.kbi()
-		exit()
+		Errors.Errors(event=sys.exc_info(), info=False)
 	btzip(0)
