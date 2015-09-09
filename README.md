@@ -46,7 +46,7 @@ Installation of Katana framework:
 Commands
 ```
         ktfconsole                                            98% Build - Enabled
-        ktflab                       			      30% Build - No yet.
+        ktflab                                                30% Build - No yet.
         ktfrun -m net/arpspoof                                95% Build - Enabled
         ktflinker -m clt/ftp -t 127.0.0.1 -p 21 -c root:toor  40% Build - No yet.
 ```
