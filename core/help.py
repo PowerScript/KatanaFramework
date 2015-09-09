@@ -24,7 +24,7 @@ def help():
 				              |_|    
 """+W
 	print "     Katana is a framework for Hackers, Pentesters, Proffesional Security, Etc"
-	print "     a framework multi-tool very util for pentest (penetrec test)"
+	print "     a framework multi-tool very strong for pentesting"
 	print ""
 	print "     show modules or showm             <--- Show modules "
 	print "     use                               <--- Use modules "
