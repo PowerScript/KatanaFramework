@@ -6,9 +6,7 @@
 ---
 #ABOUT
 
-katana is a framework written in python for making penetration testing, based on a simple and comprehensive structure for anyone to use, modify and share, the goal is to unify herramietas serve for profeccional when making a penetration test or simply as a routine tool.
-
-The current version is not completely stable, not complete.
+katana is a framework written in python for making penetration testing, based on a simple and comprehensive structure for anyone to use, modify and share, the goal is to unify herramietas serve for professional when making a penetration test or simply as a routine tool, The current version is not completely stable, not complete. 
 
 The project is open to partners.
 
