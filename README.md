@@ -6,14 +6,11 @@
 ---
 #ABOUT
 
-Well, I've started a framework that seekss to unite general auditing tools,
-which are general pentesting tools (Network,Web,Desktop and others). if you
-want to support the project or want to be part by adding modules or scripts,
-you can contact "ME" (RedToor) and they could be added to the oficcial Version
+katana is a framework written in python for making penetration testing, based on a simple and comprehensive structure for anyone to use, modify and share, the goal is to unify herramietas serve for profeccional when making a penetration test or simply as a routine tool.
 
-This Project is Open Source (s python), so you can see and learn.
-This is just the beginning there is alot more expected, so if you want to support
-the cause and do something for the community, this is the opportunity.
+The current version is not completely stable, not complete.
+
+The project is open to partners.
 
 # SOURCE CODE ORGANIZATION
 The Katana source code is organized as follows:
