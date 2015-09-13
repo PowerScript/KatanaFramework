@@ -163,9 +163,9 @@ def lan_ips(output):
 def status_cmd(cmd,tabulations):
 	status_1=subprocess.call(cmd+' > null', shell=True)
 	if status_1==0:
-		return tabulations+""+colors.G+"[OK]"+colors.W
+		return tabulations+""+colors.G+"[\033[1mOK\033[0m]"+colors.W
 	else:
-		return tabulations+""+colors.R+"[ERROR]"+colors.B+"[WARNING]"+colors.W
+		return tabulations+""+colors.R+"[\033[1mERROR\033[0m]"+colors.B+"[WARNING]"+colors.W
 
 
 ### GET GATEWAY ###
