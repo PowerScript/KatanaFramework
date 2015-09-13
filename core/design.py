@@ -19,7 +19,7 @@ Alr="["+colors[4]+"Inf"+colors[0]+"]"
 God="["+colors[2]+"Run"+colors[0]+"]"
 Suf="["+colors[2]+"SUF"+colors[0]+"]"
 Hlp="["+colors[7]+"HLP"+colors[0]+"]"
-Got="["+colors[8]+"--->"+colors[0]+"]"
+Got="["+colors[8]+"-->"+colors[0]+"]"
 Ned="["+colors[1]+"Err"+colors[0]+"]"
 Nrs="["+colors[1]+"NRS"+colors[0]+"]"
 
