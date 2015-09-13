@@ -3,6 +3,7 @@
 # @Katana Install
 #
 
+from core.Setting import * 
 from core import info
 from core import colors
 from core import ping
@@ -20,7 +21,7 @@ print "                    "+colors.B+"/"+colors.W+"\  .V.  /"+colors.B+"\\"+col
 print "                   "+colors.B+"/"+colors.W+"  \,---,/  "+colors.B+"\\"+colors.W+"                  				 "#                   /  \,---,/  \                  
 print "                   "+colors.B+"\\"+colors.W+"___TTTTT___"+colors.B+"/"+colors.W+"                SETUP: KATANA  "#                   \___TTTTT___/                  
 print "                ::::\ "+colors.R+"|"+colors.W+"_____"+colors.R+"|"+colors.W+" /::::             DATE:  "+info.date+""#                ::::\ "+colors.R+"|"+colors.W+"_____"+colors.R+"|"+colors.W+" /::::               
-print "                (+  _"+colors.R+"|"+colors.W+" __"+colors.R+"|"+colors.W+"__ "+colors.R+"|"+colors.W+"_  +)             BUILD: "+info.version+" "#                (+  _"+colors.R+"|"+colors.W+" __"+colors.R+"|"+colors.W+"__ "+colors.R+"|"+colors.W+"_  +)               
+print "                (+  _"+colors.R+"|"+colors.W+" __"+colors.R+"|"+colors.W+"__ "+colors.R+"|"+colors.W+"_  +)             CORE: "+info.version+", BUILD: "+info.build #                (+  _"+colors.R+"|"+colors.W+" __"+colors.R+"|"+colors.W+"__ "+colors.R+"|"+colors.W+"_  +)               
 print "                "+colors.R+"|"+colors.W+"  I_"+colors.R+"|"+colors.W+"KATANA."+colors.R+"|"+colors.W+"_I  "+colors.R+"|"+colors.W+"                               "#                "+colors.R+"|"+colors.W+"  I_"+colors.R+"|"+colors.W+".ANATAK"+colors.R+"|"+colors.W+"_I  "+colors.R+"|"+colors.W+"               
 print "                "+colors.R+"|"+colors.W+"  I_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"  "+colors.R+"|"+colors.W+"               				 "#                "+colors.R+"|"+colors.W+"  I_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"  "+colors.R+"|"+colors.W+"               
 print "    __________?_________________________________  				 "#    __________?_________________________________  
@@ -37,9 +38,9 @@ if os.getuid() != 0:
 print colors.O+" Wait... "
 time.sleep(2)
 print colors.B+" Katana framework, installing"
-print colors.W+" Creating Folder", ping.status_cmd('mkdir -p /usr/share/katana',"\t\t\t")
-print colors.W+" Coping files ktf", ping.status_cmd('cp -r * /usr/share/katana',"\t\t\t")
-print colors.W+" Giving privileges", ping.status_cmd('chmod -c -R 777 /usr/share/katana/',"\t\t\t")
+print colors.W+" Creating Folder", ping.status_cmd('mkdir -p '+PATCH_INTALL+'katana',"\t\t\t")
+print colors.W+" Coping files ktf", ping.status_cmd('cp -r * '+PATCH_INTALL+'katana',"\t\t\t")
+print colors.W+" Giving privileges", ping.status_cmd('chmod -c -R 777 '+PATCH_INTALL+'katana/',"\t\t\t")
 print colors.W+" Creating Link 1 ", ping.status_cmd('cp core/ktfconsole /usr/bin/ktfconsole',"\t\t\t")
 print colors.W+" Creating Link 2 ", ping.status_cmd('cp core/ktfconsole /usr/bin/ktfrun',"\t\t\t")
 print colors.W+" Creating Link 3 ", ping.status_cmd('cp core/ktfconsole /usr/bin/ktflab',"\t\t\t")
@@ -57,8 +58,8 @@ print " ktfrun     > use modules fastly"
 print " ktflab     > start laboratory"
 #print " ktflinker  > use modules fastly and pass parameter directly"
 print ""
-print " Path    : /usr/share/katana"
-print " Modules : /usr/share/katana/scripts"
+print " Path    : "+PATCH_INTALL+"katana"
+print " Modules : "+PATCH_INTALL+"katana/scripts"
 print ""
 print colors.G+" Now you can run katana directly in console #ktfconsole [ENTER]"
 print colors.G+" For update katana use 'update' when you are run it."
