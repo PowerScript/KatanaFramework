@@ -6,8 +6,11 @@
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # Katana Core                #
 from core.design import *    #
+from core.Setting import *   #
+from core import Errors      #
 from core import help        #
 from core import ping        #
+import sys                   #
 d=DESIGN()                   #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # Libraries                  #
@@ -16,20 +19,20 @@ import commands              #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # Default                    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
-defaultcar="wlan0"
-defaultint="mon1"
-defaultmac="68:94:23:6E:48:5B"
-defaultcha="9"
-defaultess="LILI__WIFI"
+defaultcar=INTERFACE_DEVICE
+defaultint=INTERFACE_MONITOR
+defaultmac=MAC_TARGET
+defaultcha=CHANNEL_TARGET
+defaultess=ESSID_TARGET
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 
-def run(para,parb,parc,pard,pare):
+def run(card,monitor,mac,channel,essid):
 	global defaultcar,defaultint,defaultmac,defaultcha,defaultess
-	defaultcar=para
-	defaultint=parb
-	defaultmac=parc
-	defaultcha=pard
-	defaultess=pare
+	defaultcar=card
+	defaultint=monitor
+	defaultmac=mac
+	defaultcha=channel
+	defaultess=essid
 	ddos(1)
 
 
@@ -47,36 +50,28 @@ def ddos(run):
 			d.descrip("bssid","yes","Mac address",defaultmac)
 			d.descrip("essid","yes","Name of AP",defaultess)
 			d.descrip("chan","yes","Channel red",defaultcha)
-			print ""
-			print " "+Hlp+" Auxiliar help\n"
-			ping.interfaces()
+			d.helpAUX()
+			ping.interfaces(1)
 			ping.monitor()
-			print ""
-			ddos(0)
+			d.space()
 		elif actions[0:8] == "set intf":
-			defaultcar = actions[9:]
+			defaultcar=ping.update(defaultcar,actions,"intf")
 			d.change("intf",defaultcar)
-			ddos(0)
 		elif actions[0:8] == "set intm":
-			defaultint = actions[9:]
-			d.change("intf",defaultint)
-			ddos(0)
+			defaultint=ping.update(defaultint,actions,"intm")
+			d.change("intm",defaultint)
 		elif actions[0:9] == "set bssid":
-			defaultmac = actions[10:]
+			defaultmac=ping.update(defaultmac,actions,"bssid")
 			d.change("bssid",defaultmac)
-			ddos(0)
 		elif actions[0:9] == "set essid":
-			defaultess = actions[10:]
+			defaultess=ping.update(defaultess,actions,"essid")
 			d.change("essid",defaultess)
-			ddos(0)
 		elif actions[0:8] == "set chan":
-			defaultcha = actions[9:]
+			defaultcha=ping.update(defaultcha,actions,"chan")
 			d.change("chan",defaultcha)
-			ddos(0)
 		elif actions[0:5] == "start":
 			start = actions[6:]
-			subprocess.call('airmon-ng start '+start, shell=True)
-			ddos(0)
+			print " "+Alr+" Starting Monitor Mode In "+start,ping.status_cmd("airmon-ng start "+start,"\t\t\t")
 		elif actions=="exit" or actions=="x":
 			d.goodbye()
 			exit()
