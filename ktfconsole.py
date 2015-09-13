@@ -33,9 +33,9 @@ print """
 	 .-.--.  
 	 \  \==\ """+colors.O+"""Katana Framework"""+colors.W+"""
 	 /- /==/ 
-	/' /==/  """+colors.G+"""~"""+colors.R+"""Core"""+colors.W+""" = """+info.version+"""
+	/' /==/  """+colors.G+"""~"""+colors.R+"""Core"""+colors.W+""" = """+info.version+""", Build: """+info.build+"""
 	|,|==|   """+colors.G+"""~"""+colors.R+"""Theme"""+colors.W+""" = """+info.tema+"""
-	\  \==\  """+colors.G+"""~"""+colors.R+"""Modules"""+colors.W+""" = """+colors.G+""" """+info.modules+""""""+colors.W+"""
+	\  \==\  """+colors.G+"""~"""+colors.R+"""Modules"""+colors.W+""" = """+colors.G+""""""+info.modules+""""""+colors.W+"""
 	 \ ,\==\ """+colors.G+"""~"""+colors.R+"""Date"""+colors.W+""" = """+info.date+"""
 	 / -/==/ """+colors.B+""" Github: redtoor/Katana"""+colors.W+"""
 	 `-'--'  
