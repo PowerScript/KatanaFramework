@@ -6,7 +6,7 @@
 ---
 #ABOUT
 
-katana is a framework written in python for making penetration testing, based on a simple and comprehensive structure for anyone to use, modify and share, the goal is to unify herramietas serve for professional when making a penetration test or simply as a routine tool, The current version is not completely stable, not complete. 
+katana is a framework written in python for making penetration testing, based on a simple and comprehensive structure for anyone to use, modify and share, the goal is to unify tools serve for professional when making a penetration test or simply as a routine tool, The current version is not completely stable, not complete. 
 
 The project is open to partners.
 
@@ -48,6 +48,8 @@ Commands
 
 # LICENSE
 Katana is licensed. 
-See [LICENSE](https://github.com/RedToor/Katana/blob/master/LICENSE) for more information, and supported by GrizzlySystems
+See [LICENSE](https://github.com/RedToor/Katana/blob/master/LICENSE) for more information.
+
+We need partners, if you're interested in support or help contact.
 
 from <img src="http://www.euromonitor.com/medialibrary/Image/Flag_20x20_Colombia.png" title="Colombia"> made in <img src="https://developer.ibm.com/predictiveanalytics/wp-content/uploads/sites/48/2015/04/python-icon.png" title="Python"> with <img src="http://cdn0.bodas.com.mx/img/smileys/smiley_heart.png" title="Love"> , if u want Donate <img src="http://www.wbtcb.com/frontend/webroot/gfx/bitcoin-ico.gif" title="Bitcoins"> 196H8v86JtnMA2ZG5RqxKBfSz5D3JLCUGj
