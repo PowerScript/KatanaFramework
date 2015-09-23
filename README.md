@@ -1,5 +1,5 @@
 <center>
-<img src="http://i220.photobucket.com/albums/dd59/redhead1652/Afro_Samurai_Sig_by_CBProduction-1.png" title="Python" align="center">
+<img src="http://web.alsa.org/images/content/pagebuilder/KTF_Logo.jpg" title="Python" align="center">
 </center>
 ---
 [![Gitter chat](https://badges.gitter.im/totaljs/framework.png)](https://gitter.im/RedToor/Katana) ![Supported OS](https://img.shields.io/badge/Supported%20OS-Linux-yellow.svg) ![License](https://img.shields.io/badge/license-GPLv3-blue.svg) 
