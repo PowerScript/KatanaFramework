@@ -40,10 +40,12 @@ Installation of Katana framework:
 #USAGE
 Commands
 ```
-        ktfconsole                                            98% Build - Enabled
-        ktflab                                                30% Build - No yet.
-        ktfrun -m net/arpspoof                                95% Build - Enabled
-        ktflinker -m clt/ftp -t 127.0.0.1 -p 21 -c root:toor  40% Build - No yet.
+        Stable ------------------------------------------------------------------
+        sudo ktfconsole                                     98% Builded - Enabled
+        sudo ktfrun -m net/arpspoof                         95% Builded - Enabled
+        Building ----------------------------------------------------------------
+        ktflab                                              30% Builded - No yet.
+        ktflinker -m web/whois -t google.com -p 80          30% Builded - No yet.
 ```
 
 # LICENSE
@@ -52,4 +54,4 @@ See [LICENSE](https://github.com/RedToor/Katana/blob/master/LICENSE) for more in
 
 We need partners, if you're interested in support or help contact.
 
-from <img src="http://www.euromonitor.com/medialibrary/Image/Flag_20x20_Colombia.png" title="Colombia"> made in <img src="https://developer.ibm.com/predictiveanalytics/wp-content/uploads/sites/48/2015/04/python-icon.png" title="Python"> with <img src="http://cdn0.bodas.com.mx/img/smileys/smiley_heart.png" title="Love"> by <img src="http://webresizer.com/session/2goiBXWwW9YjhEr9jDwKvwIxvJCxuoHC/original.jpg?1443020746.30532" title="RedToor"> , if u want Donate <img src="http://www.wbtcb.com/frontend/webroot/gfx/bitcoin-ico.gif" title="Bitcoins"> 196H8v86JtnMA2ZG5RqxKBfSz5D3JLCUGj
+from <img src="http://www.euromonitor.com/medialibrary/Image/Flag_20x20_Colombia.png" title="Colombia"> made in <img src="https://developer.ibm.com/predictiveanalytics/wp-content/uploads/sites/48/2015/04/python-icon.png" title="Python"> with <img src="http://cdn0.bodas.com.mx/img/smileys/smiley_heart.png" title="Love"> by <font color="red">Red</font>Toor, if you want Donate <img src="http://www.wbtcb.com/frontend/webroot/gfx/bitcoin-ico.gif" title="Bitcoins"> 196H8v86JtnMA2ZG5RqxKBfSz5D3JLCUGj
