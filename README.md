@@ -4,7 +4,7 @@
 ---
 [![Gitter chat](https://badges.gitter.im/totaljs/framework.png)](https://gitter.im/RedToor/Katana) ![Supported OS](https://img.shields.io/badge/Supported%20OS-Linux-yellow.svg) ![License](https://img.shields.io/badge/license-GPLv3-blue.svg) 
 ---
-#ABOUT
+# ABOUT
 
 katana is a framework written in python for making penetration testing, based on a simple and comprehensive structure for anyone to use, modify and share, the goal is to unify tools serve for professional when making a penetration test or simply as a routine tool, The current version is not completely stable, not complete. 
 
@@ -28,7 +28,7 @@ The Katana source code is organized as follows:
 OS requirement:
         <img src="http://www.question-defense.com/wp-content/themes/qd/backtrack-menu/backtrack-logo.png"> Kali Linux
 
-#INSTALLATION
+# INSTALLATION
 Installation of Katana framework:
 <i><b><br><br>
 	git clone https://github.com/RedToor/katana.git<br>
@@ -37,7 +37,7 @@ Installation of Katana framework:
         python install.py</i>
 </i></b>
 
-#USAGE
+# USAGE
 Commands
 ```
         Stable ------------------------------------------------------------------
@@ -47,6 +47,34 @@ Commands
         ktflab                                              30% Builded - No yet.
         ktflinker -m web/whois -t google.com -p 80          30% Builded - No yet.
 ```
+# MODULES (SCRIPTS)
+
+Code Name | Description | Autor | Version
+----------|-------------|-------|--------
+web/httpbt|Brute force to http 403|Redtoor|1.0
+web/formbt|Brute force to form-based|Redtoor|1.0
+web/cpfinder|Admin panel finder|Redtoor|1.0
+web/joomscan|Scanner vul's cms joomla|Redtoor|1.0
+web/dos|Denial of service web|Redtoor|1.0
+web/whois|Who-is web|Redtoor|1.0
+net/arpspoof|ARP-Spoofing attack|Redtoor|1.0
+net/arplook|ARP-Spoofing detector|cl34r|1.0
+eng/gdreport|Getting information with web|RedToor|3.0
+eng/mailboom|E-mail boombing SPAM|RedToor|3.0
+eng/facebrok|facebook phishing plataform|RedToor|1.7
+fle/brutezip|Brute force to zip files|LeSZO ZerO|1.0
+fle/bruterar|Brute force to rar files|LeSZO ZerO|1.0
+clt/ftp|Console ftp client|Redtoor|1.0
+clt/sql|Console sql client|Redtoor|1.0
+clt/pop3|Console pop3 client|Redtoor|1.0
+clt/ftp|Console ftp client|Redtoor|1.0
+ser/sql|Start SQL server|Redtoor|1.0
+ser/apache|Start Apache server|Redtoor|1.0
+ser/ssh|Start SSH server|Redtoor|1.0
+bt/ftp|Brute force to ftp|Redtoor|1.0
+bt/ssh|Brute force to ssh|Redtoor|1.0
+bt/sql|Brute force to sql|Redtoor|1.0
+bt/pop3|Brute force to pop3|Redtoor|1.0
 
 # LICENSE
 Katana is licensed. 
