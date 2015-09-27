@@ -14,14 +14,14 @@ colors=['\033[0m', '\033[31m', '\033[32m', '\033[33m', '\033[34m', '\033[35m', '
 		#Bold       #Underl     #ENDL       #BackBlack
 
 # Alerts 
-Bad="["+colors[1]+"Err"+colors[0]+"]"
-Alr="["+colors[4]+"Inf"+colors[0]+"]"
-God="["+colors[2]+"Run"+colors[0]+"]"
-Suf="["+colors[2]+"SUF"+colors[0]+"]"
-Hlp="["+colors[7]+"HLP"+colors[0]+"]"
-Got="["+colors[8]+"-->"+colors[0]+"]"
-Ned="["+colors[1]+"Err"+colors[0]+"]"
-Nrs="["+colors[1]+"NRS"+colors[0]+"]"
+Bad=colors[0]+"["+colors[1]+"Err"+colors[0]+"]"
+Alr=colors[0]+"["+colors[4]+"Inf"+colors[0]+"]"
+God=colors[0]+"["+colors[2]+"Run"+colors[0]+"]"
+Suf=colors[0]+"["+colors[2]+"SUF"+colors[0]+"]"
+Hlp=colors[0]+"["+colors[7]+"HLP"+colors[0]+"]"
+Got=colors[0]+"["+colors[8]+"-->"+colors[0]+"]"
+Ned=colors[0]+"["+colors[1]+"Err"+colors[0]+"]"
+Nrs=colors[0]+"["+colors[1]+"NRS"+colors[0]+"]"
 
 #print colors[0]+"0"+colors[1]+"1"+colors[2]+"2"+colors[3]+"3"+colors[4]+"4"+colors[5]+"5"+colors[6]+"6"+colors[7]+"7"+colors[8]+"8"+colors[9]+"9"+colors[10]+"10"
 
@@ -85,6 +85,8 @@ class DESIGN:
 		print " "+God+" Service LIVE "
 	def space(self):
 		print ""
+	def nocommandCLT(self, string):
+		return "parameter '"+string+"' not allow."
 	def lab(self,version):
 		print """
 		   __   __  ___"""+colors[3]+"""__     __     """+colors[0]+"""
