@@ -1,8 +1,7 @@
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # @KATANA                    #
-# Modules   : I and I        #
-# Script by : Uknowk         #
-# Adated by : RedToor        #
+# Module    : I and I        #
+# Script by : RedToor        #
 # Date      : 30/08/2015     #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # Katana Core                #
@@ -16,27 +15,15 @@ import time                  #
 import commands              #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 
-
 def iandi():
 	d.run()
-	print ""
-	print " Ip Local"
-	ping.myip()
-	print " Ip Public"
+	d.space()
+	print " IP Local   : ",ping.myip()
+        ping.interfaces(1)
+        ping.get_gateway(1)
+        ping.my_mac_address(1)	
 	ping.get_external_ip()
-	print " Devices"
-	ping.interfaces()
-	print""
-	print " Devices monitor"
-	ping.monitor()
-	print ""
-	print " Username"
-	user=commands.getoutput('whoami')
-	print " user            :  "+user
-	print ""
-	print " Operative System "
-	print " OS              :  "+commands.getoutput('uname')
-	print ""
-	print " Version OS"
-	print " Version         :  "+commands.getoutput('uname -r')
+	print " Username   : ",commands.getoutput('whoami')
+	print " OS         : ",commands.getoutput('uname')
+	print " Version    : ",commands.getoutput('uname -r')
 	return 1
