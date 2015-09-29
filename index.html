@@ -19,10 +19,236 @@
     </section>
 
     <section class="main-content">
-      <h3>
-<a id="welcome-to-katana-repo" class="anchor" href="#welcome-to-katana-repo" aria-hidden="true"><span class="octicon octicon-link"></span></a>Welcome to Katana Repo.</h3>
+      <p></p>
+<img src="http://web.alsa.org/images/content/pagebuilder/KTF_Logo.jpg" title="Python" align="center">
 
-<p>katana is a framework written in python for making penetration testing, based on a simple and comprehensive structure for anyone to use, modify and share, the goal is to unify tools serve for professional when making a penetration test or simply as a routine tool, The current version is not completely stable, not complete.</p>
+<h2></h2>
+
+<h2>
+<a id="---" class="anchor" href="#---" aria-hidden="true"><span class="octicon octicon-link"></span></a><a href="https://gitter.im/RedToor/Katana"><img src="https://badges.gitter.im/totaljs/framework.png" alt="Gitter chat"></a> <img src="https://img.shields.io/badge/Supported%20OS-Linux-yellow.svg" alt="Supported OS"> <img src="https://img.shields.io/badge/license-GPLv3-blue.svg" alt="License"> </h2>
+
+<h1>
+<a id="about" class="anchor" href="#about" aria-hidden="true"><span class="octicon octicon-link"></span></a>ABOUT</h1>
+
+<p>katana is a framework written in python for making penetration testing, based on a simple and comprehensive structure for anyone to use, modify and share, the goal is to unify tools serve for professional when making a penetration test or simply as a routine tool, The current version is not completely stable, not complete. </p>
+
+<p>The project is open to partners.</p>
+
+<h1>
+<a id="source-code-organization" class="anchor" href="#source-code-organization" aria-hidden="true"><span class="octicon octicon-link"></span></a>SOURCE CODE ORGANIZATION</h1>
+
+<p>The Katana source code is organized as follows:</p>
+
+<p><i>-<a href="https://github.com/RedToor/Katana/tree/master/KatanaGUI">KatanaGUI/</a></i> &gt; Source code for graphical user interface<br>
+<i>-<a href="https://github.com/RedToor/Katana/tree/master/KatanaLAB">KatanaLAB/</a></i> &gt; Source code for katana laboratory<br>
+<i>-<a href="https://github.com/RedToor/Katana/tree/master/core">core/</a></i> &gt; Source code core<br>
+<i>--<a href="https://github.com/RedToor/Katana/tree/master/core/db">core/db/</a></i> &gt; Dictionaries and tables<br>
+<i>--<a href="https://github.com/RedToor/Katana/tree/master/core/logs">core/logs/</a></i> &gt; Registers of modules<br>
+<i>-<a href="https://github.com/RedToor/Katana/tree/master/files">files/</a></i> &gt; Files necessary for some modules<br>
+<i>-<a href="https://github.com/RedToor/Katana/tree/master/tmp">tmp/</a></i> &gt; Temp files<br>
+<i>-<a href="https://github.com/RedToor/Katana/tree/master/lib">lib/</a></i> &gt; Libraries<br>
+<i>-<a href="https://github.com/RedToor/Katana/tree/master/doc">doc/</a></i> &gt; Documentation<br>
+<i>-<a href="https://github.com/RedToor/Katana/tree/master/scripts">scripts/</a></i> &gt; Scripts(modules)<br></p>
+
+<h1>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>REQUIREMENTS</h1>
+
+<p>OS requirement:
+        <img src="http://www.question-defense.com/wp-content/themes/qd/backtrack-menu/backtrack-logo.png"> Kali Linux</p>
+
+<h1>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>INSTALLATION</h1>
+
+<p>Installation of Katana framework:
+<i><b><br><br>
+    git clone <a href="https://github.com/RedToor/katana.git">https://github.com/RedToor/katana.git</a><br>
+        cd Katana<br>
+        chmod 777 install.py<br>
+        python install.py</b></i>
+</p>
+
+<h1>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>USAGE</h1>
+
+<p>Commands</p>
+
+<pre><code>        Stable ------------------------------------------------------------------
+        sudo ktfconsole                                     98% Builded - Enabled
+        sudo ktfrun -m net/arpspoof                         95% Builded - Enabled
+        Building ----------------------------------------------------------------
+        ktflab                                              30% Builded - No yet.
+        ktflinker -m web/whois -t google.com -p 80          30% Builded - No yet.
+</code></pre>
+
+<h1>
+<a id="modules-scripts" class="anchor" href="#modules-scripts" aria-hidden="true"><span class="octicon octicon-link"></span></a>MODULES (SCRIPTS)</h1>
+
+<table>
+<thead>
+<tr>
+<th>Code Name</th>
+<th>Description</th>
+<th>Autor</th>
+<th>Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>web/httpbt</td>
+<td>Brute force to http 403</td>
+<td>Redtoor</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>web/formbt</td>
+<td>Brute force to form-based</td>
+<td>Redtoor</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>web/cpfinder</td>
+<td>Admin panel finder</td>
+<td>Redtoor</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>web/joomscan</td>
+<td>Scanner vul's cms joomla</td>
+<td>Redtoor</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>web/dos</td>
+<td>Denial of service web</td>
+<td>Redtoor</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>web/whois</td>
+<td>Who-is web</td>
+<td>Redtoor</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>net/arpspoof</td>
+<td>ARP-Spoofing attack</td>
+<td>Redtoor</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>net/arplook</td>
+<td>ARP-Spoofing detector</td>
+<td>cl34r</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>eng/gdreport</td>
+<td>Getting information with web</td>
+<td>RedToor</td>
+<td>3.0</td>
+</tr>
+<tr>
+<td>eng/mailboom</td>
+<td>E-mail boombing SPAM</td>
+<td>RedToor</td>
+<td>3.0</td>
+</tr>
+<tr>
+<td>eng/facebrok</td>
+<td>facebook phishing plataform</td>
+<td>RedToor</td>
+<td>1.7</td>
+</tr>
+<tr>
+<td>fle/brutezip</td>
+<td>Brute force to zip files</td>
+<td>LeSZO ZerO</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>fle/bruterar</td>
+<td>Brute force to rar files</td>
+<td>LeSZO ZerO</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>clt/ftp</td>
+<td>Console ftp client</td>
+<td>Redtoor</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>clt/sql</td>
+<td>Console sql client</td>
+<td>Redtoor</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>clt/pop3</td>
+<td>Console pop3 client</td>
+<td>Redtoor</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>clt/ftp</td>
+<td>Console ftp client</td>
+<td>Redtoor</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>ser/sql</td>
+<td>Start SQL server</td>
+<td>Redtoor</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>ser/apache</td>
+<td>Start Apache server</td>
+<td>Redtoor</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>ser/ssh</td>
+<td>Start SSH server</td>
+<td>Redtoor</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>bt/ftp</td>
+<td>Brute force to ftp</td>
+<td>Redtoor</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>bt/ssh</td>
+<td>Brute force to ssh</td>
+<td>Redtoor</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>bt/sql</td>
+<td>Brute force to sql</td>
+<td>Redtoor</td>
+<td>1.0</td>
+</tr>
+<tr>
+<td>bt/pop3</td>
+<td>Brute force to pop3</td>
+<td>Redtoor</td>
+<td>1.0</td>
+</tr>
+</tbody>
+</table>
+
+<h1>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>LICENSE</h1>
+
+<p>Katana is licensed. 
+See <a href="https://github.com/RedToor/Katana/blob/master/LICENSE">LICENSE</a> for more information.</p>
+
+<p>We need partners, if you're interested in support or help contact.</p>
+
+<p>from <img src="http://www.euromonitor.com/medialibrary/Image/Flag_20x20_Colombia.png" title="Colombia"> made in <img src="https://developer.ibm.com/predictiveanalytics/wp-content/uploads/sites/48/2015/04/python-icon.png" title="Python"> with <img src="http://cdn0.bodas.com.mx/img/smileys/smiley_heart.png" title="Love"> by RedToor, if you want Donate <img src="http://www.wbtcb.com/frontend/webroot/gfx/bitcoin-ico.gif" title="Bitcoins"> 1Hw2SSTpAZ7kSccvoYfvyQewGgMhtmya3u</p>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/RedToor/Katana">Katana</a> is maintained by <a href="https://github.com/RedToor">RedToor</a>.</span>
