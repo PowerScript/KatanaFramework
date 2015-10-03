@@ -22,5 +22,8 @@ def Errors(event, info):
 	if string.find("KeyboardInterrupt") >= 0 and info==False:
 		d.kbi()
 		exit(0)
+	if string.find("SystemExit") >= 0 and info==False:
+		exit(0)
 	else:
 		print "Event : %s \n Info: %s "  % (event,info)
+		exit(0)
