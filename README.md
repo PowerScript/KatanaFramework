@@ -41,11 +41,11 @@ Installation of Katana framework:
 Commands
 ```
         Stable ------------------------------------------------------------------
-        sudo ktfconsole                                     98% Builded - Enabled
-        sudo ktfrun -m net/arpspoof                         95% Builded - Enabled
+        sudo ktf.console                                     98% Builded - Enabled
+        sudo ktf.run -m net/arpspoof                         95% Builded - Enabled
         Building ----------------------------------------------------------------
-        ktflab                                              30% Builded - No yet.
-        ktflinker -m web/whois -t google.com -p 80          30% Builded - No yet.
+        ktf.lab                                              30% Builded - No yet.
+        ktf.linker -m web/whois -t google.com -p 80          30% Builded - No yet.
 ```
 # MODULES (SCRIPTS)
 
