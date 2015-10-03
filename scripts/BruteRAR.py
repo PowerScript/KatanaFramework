@@ -35,7 +35,7 @@ def btrar(run):
 	try:
 		global defaultarch,defaultdicc
 		if run!=1:
-			actions=raw_input(d.prompt("fle/rar"))
+			actions=raw_input(d.prompt("fle/bruterar"))
 		else:
 			actions="run"
 		if actions == "show options" or actions == "sop":
