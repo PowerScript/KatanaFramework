@@ -4,7 +4,7 @@
 #
 
 version="0.0.0.7"
-date="29/03/2015 - 13/09/2015"
-modules="28"
+date="29/03/2015 - 02/10/2015"
+modules="29"
 tema="Warrior theme"
-build="0002"
+build="0048"

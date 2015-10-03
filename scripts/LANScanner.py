@@ -19,16 +19,18 @@ import subprocess               #
 # Default                       #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 defaultnet=MY_IP
+defaulttyp="fast"
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
-def run(para):
-	global defaultnet
-	defaultnet=para
+def run(nets, types):
+	global defaultnet,defaulttyp
+	defaultnet=nets
+	defaulttyp=types
 	hostl(1)
 
 
 def hostl(run):
-	global defaultnet
+	global defaultnet,defaulttyp
 	try:
 		if run!=1:
 			actions=raw_input(d.prompt("net/lanlive"))
@@ -37,17 +39,21 @@ def hostl(run):
 		if actions == "show options" or actions == "sop":
 			d.option()
 			d.descrip("nets","yes","Local area net",defaultnet)
+			#d.descrip("type","no","type scan",defaulttyp)
 			d.helpAUX()
 			if ping.conneted()!=False:
 				print " You IP     : ",ping.myip()
 			else:
 				print d.noconnect()
+			#print " Type       :  {fast}{intense}"
 			d.space()
 			hostl(0)
 		elif actions[0:8] == "set nets":
-			defaultnet = actions[9:]
+			defaultnet=ping.update(defaultnet,actions,"nets")
 			d.change("nets",defaultnet)
-			hostl(0)
+		elif actions[0:8] == "set type":
+			defaulttyp=ping.update(defaulttyp,actions,"type")
+			d.change("type",defaulttyp)
 		elif actions=="exit" or actions=="x":
 			d.goodbye()
 			exit()
@@ -62,7 +68,7 @@ def hostl(run):
 				ping.lan_ips(1)
 				d.space()
 			except:
-				Errors.Errors(event=sys.exc_info()[0], info=False)
+				Errors.Errors(event=sys.exc_info(), info=False)
 		else:
 			d.No_actions()
 	except:

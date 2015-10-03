@@ -10,6 +10,7 @@ from core.Setting import *#
 from core import Errors   #
 from core import help     #
 from core import ping     #
+import sys
 d=DESIGN()                #
 # :-:-:-:-:-:-:-:-:-:-:-: #
 # Libraries               #
@@ -22,6 +23,7 @@ import time
 # :-:-:-:-:-:-:-:-:-:-:-: #
 # Default                 #
 # :-:-:-:-:-:-:-:-:-:-:-: #
+defautlany="if i believed in god, i'll be his slave."
 # :-:-:-:-:-:-:-:-:-:-:-: #
 
 def run():
@@ -57,26 +59,30 @@ def arplook(run):
                                         print "[+] No network found"
                                 pattern = r"((([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])[ (\[]?(\.|dot)[ )\]]?){3}([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5]))"
                                 if True:
-                                        try:
-                                                cmd=Popen(['arp', '-a', '-n'], stdout=PIPE, stderr=PIPE)
-                                                try:
-                					look=cmd.stdout.read()
-                			                cmd.stdout.close()
-                                                except:
-                				        error=cmd.stderr.read()
-                				        print error
-                        				cmd.stdout.close()
-                					print("     ["+R+"-"+W+"] No network found")
-                                                if(str(starting))==(str(look)): 
-                                                        print "     ["+O+"!"+W+"] Good...           ", " at: ", datetime.now().strftime('%H:%M:%S')
-                                                else: 
-                                                        print "     ["+O+"!"+W+"] ARP Table Changed ", " at: ", datetime.now().strftime('%H:%M:%S')
-                                                        print "     ["+G+"+"+W+"] Data:\n", look
-                                                time.sleep(15)
-                                        except:                                              
-                                                Errors.Errors(event=sys.exc_info()[0], info=True)
+					print " "+Alr+" Monitoring ARP's tables"
+					while(True):
+		                                try:
+		                                        cmd=Popen(['arp', '-a', '-n'], stdout=PIPE, stderr=PIPE)
+		                                        try:
+		        					look=cmd.stdout.read()
+		        			                cmd.stdout.close()
+		                                        except:
+		        				        error=cmd.stderr.read()
+		        				        #print error
+		                				cmd.stdout.close()
+		        					print(" "+Bad+" No network found")
+		                                        if(str(starting))==(str(look)): 
+		                                                print " "+Alr+" all right, the ARP/s tables have not changed... ", " at: ", datetime.now().strftime('%H:%M:%S')
+		                                        else: 
+		                                                print " "+War+" ARP Table Changed ", " at: ", datetime.now().strftime('%H:%M:%S')
+		                                                print " "+War+" Data: ---------------------------------------------"
+								print " "+look
+								print "  ----------------------------------------------------------"
+		                                        time.sleep(14)
+		                                except:                                              
+		                                        Errors.Errors(event=sys.exc_info()[0], info=True)
                         else:
-                                No_actions()
+				d.No_actions()
         except:
-                Errors.Errors(event=sys.exc_info()[0], info=False)
+                Errors.Errors(event=sys.exc_info(), info=False)
         arplook(0)

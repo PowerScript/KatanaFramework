@@ -6,9 +6,11 @@
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # Katana Core                #
 from core.design import *    #
+from core.Setting import *   #
+from core import Errors      #
 from core import help        #
 from core import ping        #
-d=DESIGN()                   #
+import sys                   #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # Libraries                  #
 import subprocess            #

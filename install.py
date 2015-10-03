@@ -26,7 +26,7 @@ print "                "+colors.R+"|"+colors.W+"  I_"+colors.R+"|"+colors.W+"KAT
 print "                "+colors.R+"|"+colors.W+"  I_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"  "+colors.R+"|"+colors.W+"               				 "#                "+colors.R+"|"+colors.W+"  I_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"  "+colors.R+"|"+colors.W+"               
 print "    __________?_________________________________  				 "#    __________?_________________________________  
 print "   {_"+colors.C+"|"+colors.W+" "+colors.C+"|"+colors.W+" "+colors.C+"|"+colors.W+" "+colors.C+"|"+colors.W+" I"+colors.GR+"#################################"+colors.W+"/  				 "#   {_"+colors.R+"|"+colors.W+" "+colors.R+"|"+colors.W+" "+colors.R+"|"+colors.W+" "+colors.R+"|"+colors.W+" I#################################/  
-print "     ^ ^ ^ ^   ,ww   "+colors.O+"FRAMEWORK"+colors.W+"   ww,                   				 "#     ^ ^ ^ ^ EHT KROWEMARF, dliuB (0.0.0.3)       
+print "     ^ ^ ^ ^   ,ww   "+colors.O+"FRAMEWORK"+colors.W+"   ww,                   				 "#     ^ ^ ^ ^ EHT KROWEMARF, dliuB      
 print "                   I_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_I                  				 "#                   I_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_I                  
 print "                   \_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_/                  				 "#                   \_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_/                  
 print ""
@@ -38,30 +38,31 @@ if os.getuid() != 0:
 print colors.O+" Wait... "
 time.sleep(2)
 print colors.B+" Katana framework, installing"
-print colors.W+" Creating Folder", ping.status_cmd('mkdir -p '+PATCH_INTALL+'katana',"\t\t\t")
-print colors.W+" Coping files ktf", ping.status_cmd('cp -r * '+PATCH_INTALL+'katana',"\t\t\t")
-print colors.W+" Giving privileges", ping.status_cmd('chmod -c -R 777 '+PATCH_INTALL+'katana/',"\t\t\t")
-print colors.W+" Creating Link 1 ", ping.status_cmd('cp core/ktfconsole /usr/bin/ktfconsole',"\t\t\t")
-print colors.W+" Creating Link 2 ", ping.status_cmd('cp core/ktfconsole /usr/bin/ktfrun',"\t\t\t")
-print colors.W+" Creating Link 3 ", ping.status_cmd('cp core/ktfconsole /usr/bin/ktflab',"\t\t\t")
-print colors.W+" Giving privileges 1", ping.status_cmd('chmod -c -R 777 /usr/bin/ktfconsole',"\t\t\t")
-print colors.W+" Giving privileges 2", ping.status_cmd('chmod -c -R 777 /usr/bin/ktflab',"\t\t\t")
-print colors.W+" Giving privileges 3", ping.status_cmd('chmod -c -R 777 /usr/bin/ktfrun',"\t\t\t")
+print " Configuration in /core/Setting.py"
+print colors.W+" Creating Folder ", ping.status_cmd('mkdir -p '+PATCH_INTALL+'katana',"\t\t\t\t\t\t")
+print colors.W+" Coping files ktf ", ping.status_cmd('cp -r * '+PATCH_INTALL+'katana',"\t\t\t\t\t\t")
+print colors.W+" Giving privileges ", ping.status_cmd('chmod -c -R 777 '+PATCH_INTALL+'katana/',"\t\t\t\t\t\t")
+print colors.W+" Creating Link [1] ", ping.status_cmd('cp core/ktf.console /usr/bin/ktf.console',"\t\t\t\t\t\t")
+print colors.W+" Creating Link [2] ", ping.status_cmd('cp core/ktf.run /usr/bin/ktf.run',"\t\t\t\t\t\t")
+print colors.W+" Creating Link [3] ", ping.status_cmd('cp core/ktf.lab /usr/bin/ktf.lab',"\t\t\t\t\t\t")
+print colors.W+" Creating Link [4] ", ping.status_cmd('cp core/ktf.linker /usr/bin/ktf.linker',"\t\t\t\t\t\t")
+print colors.W+" Giving privileges [1] ", ping.status_cmd('chmod -c 777 /usr/bin/ktf.console',"\t\t\t\t\t")
+print colors.W+" Giving privileges [2] ", ping.status_cmd('chmod -c 777 /usr/bin/ktf.lab',"\t\t\t\t\t")
+print colors.W+" Giving privileges [3] ", ping.status_cmd('chmod -c 777 /usr/bin/ktf.run',"\t\t\t\t\t")
+print colors.W+" Giving privileges [4] ", ping.status_cmd('chmod -c 777 /usr/bin/ktf.linker',"\t\t\t\t\t")
 print ""
 print " Now you can remove this diretory."
 print " Done !!!"
 print ""
 print " USE: "
 print ""
-print " ktfconsole > for mode console"
-print " ktfrun     > use modules fastly"
-print " ktflab     > start laboratory"
-#print " ktflinker  > use modules fastly and pass parameter directly"
+print " "+colors.R+"\033[1mktf.console"+colors.W+" > for mode console"
+print " "+colors.R+"\033[1mktf.run    "+colors.W+" > use modules fastly"
+print " "+colors.R+"\033[1mktf.lab    "+colors.W+" > start laboratory"
+print " "+colors.R+"\033[1mktf.linker "+colors.W+" > use modules fastly and pass parameter directly"
 print ""
 print " Path    : "+PATCH_INTALL+"katana"
 print " Modules : "+PATCH_INTALL+"katana/scripts"
 print ""
-print colors.G+" Now you can run katana directly in console #ktfconsole [ENTER]"
-print colors.G+" For update katana use 'update' when you are run it."
-print colors.O+" Completed Install"
+print " Is AWESOME tool was installed. RT."
 print ""

@@ -15,12 +15,12 @@ MY_IP="192.168.1.225"
 GATEWAY_ADR="192.168.1.254"
 
 # DEFAUTL PATCHS
-PATCH_WWW="/var/www/"
+PATCH_WWW="/var/www/html"
 PATCH_INTALL="/usr/share/"
 
 # DEFAULT DATE
 EMAIL="root@localhost"
-USERNAME="roor"
+USERNAME="root"
 PASSWORD="toor"
 TABLE_FOLDER_ADMIN="core/db/commons-dir-admin.tbl"
 DITIONARY_PASSWORDS="core/db/pass.dicc"

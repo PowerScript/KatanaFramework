@@ -137,9 +137,10 @@ def monitor():
 ### IP's SCANNING LAN ###
 def lan_ips(output):
 	test=conneted()
+	count=0
 	if test!=False:
 		array_ip=[]
-		commands.getoutput('nmap -sP '+test+'/24 -oX tmp/ips.xml > null')
+		commands.getoutput('nmap -sn '+test+'/24 -oX tmp/ips.xml > null')
 		xmldoc = minidom.parse('tmp/ips.xml')
 		itemlist = xmldoc.getElementsByTagName('address')
 		for s in itemlist:
@@ -149,12 +150,14 @@ def lan_ips(output):
 
 	if output==1 and test!=False:
 		for ip in array_ip:
+			
 			if ip.find(":") <= 0 :
 				mac=ip
 				if get_gateway(2)==mac:
 					mac+="]["+colors.B+"GATEWAY"+colors.W
 			else:
-				print " Host's up  : ["+mac+"]["+ip+"]"
+				count=count+1
+				print " [ "+str(count),"] Host's up  : ["+mac+"]["+ip+"]"
 		commands.getoutput('rm tmp/ips.xml > null')
 	else:
 		return False
@@ -163,9 +166,9 @@ def lan_ips(output):
 def status_cmd(cmd,tabulations):
 	status_1=subprocess.call(cmd+' > null', shell=True)
 	if status_1==0:
-		return tabulations+""+colors.G+"[\033[1mOK\033[0m]"+colors.W
+		return tabulations+"[\033[1m"+colors.G+"OK"+colors.W+"]"+colors.W
 	else:
-		return tabulations+""+colors.R+"[\033[1mERROR\033[0m]"+colors.B+"[WARNING]"+colors.W
+		return tabulations+"["+colors.R+"\033[1mERROR"+colors.W+"]"+colors.W+"["+colors.B+"\033[1mWARNING"+colors.W+"]"
 
 
 ### GET GATEWAY ###

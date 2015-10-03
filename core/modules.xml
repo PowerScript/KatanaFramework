@@ -57,6 +57,9 @@
     <module name="ser/ssh">
         <description>Start ssh server</description>
     </module>
+    <module name="for/imagen">
+        <description>Analicy forence to imagen</description>
+    </module>
     <module name="bt/ftp">
         <description>Brute force to ftp</description>
     </module>

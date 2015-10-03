@@ -1,6 +1,6 @@
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # @KATANA                       #
-# Modules   : FTP Brute Force   #
+# Module    : FTP Brute Force   #
 # Script by : LeSZO ZerO        #
 # Date      : 07/03/2015        #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #

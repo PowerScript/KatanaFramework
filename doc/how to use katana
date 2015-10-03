@@ -1,0 +1,32 @@
+How to ?
+
+is framework is oriented to penetration test or developing to systems.
+
+Katana is a framework made for a easy use, is based in other framework and it shall be known,
+katana have 4 main files (ktf.console.py - ktf.run.py - ktf.linker.py - ktf.lab.py) each is for
+a function specify.
+
+General Commands:
+
+	update:         update ktf
+	show modules    show modules installed
+	use 		choise a module
+	show options    show options of module 
+	set 		set up a parameter
+	run		starts module
+	back 		backing
+	exit		exit
+	clear		clear screen
+		
+
+ktf.console: 
+is file contain a menu of all modules installed, you can surf among them.
+
+ktf.run:
+run modules fastly
+
+ktf.linker:
+run modules with parameters
+
+ktf.lab:
+run laboratory
