@@ -22,6 +22,7 @@ Hlp=colors[0]+"["+colors[7]+"HLP"+colors[0]+"]"
 Got=colors[0]+"["+colors[8]+"-->"+colors[0]+"]"
 Ned=colors[0]+"["+colors[1]+"Err"+colors[0]+"]"
 Nrs=colors[0]+"["+colors[1]+"NRS"+colors[0]+"]"
+War=colors[0]+"["+colors[3]+"WAR"+colors[0]+"]"
 
 #print colors[0]+"0"+colors[1]+"1"+colors[2]+"2"+colors[3]+"3"+colors[4]+"4"+colors[5]+"5"+colors[6]+"6"+colors[7]+"7"+colors[8]+"8"+colors[9]+"9"+colors[10]+"10"
 
@@ -44,7 +45,7 @@ class DESIGN:
 	def change(self, option, value):
 		print "\n "+option+"\t\t==> "+value+"\n"
 	def goodbye(self):
-		print "\n "+colors[0]+"G"+colors[1]+"0"+colors[2]+"0"+colors[3]+"d"+colors[4]+" "+colors[5]+"B"+colors[6]+"y"+colors[7]+"e"+colors[0]+", Sr.\n"
+		print "\n "+colors[0]+"Exiting...      Goodbye, My Sr.\n"
 	def run(self):
 		print "\n "+God+" Running..."+colors[0]
 		print " "+Alr+" Checking..."+colors[0]
