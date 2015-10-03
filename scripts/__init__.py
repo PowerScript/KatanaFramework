@@ -3,6 +3,7 @@
 # @Katana Modules import
 #
 
+import forenseIMAGE
 import Whois
 import GenDic
 import Wifi_DDOS
