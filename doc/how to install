@@ -14,7 +14,7 @@ Option 1 (Github)
 
 Option 2 (Sourceforge)
 
-#git clone http://git.code.sf.net/p/katanas/code katanas-code
+#download last version in http://sourceforge.net/projects/katanas/files/
 #unzip katana(last version).zip
 #cd katana(last version)
 #sudo python install.py
