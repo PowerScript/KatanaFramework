@@ -14,18 +14,7 @@ from core import colors
 from core import updatekatana
 from core import splash
 import xml.etree.ElementTree as ET
-import random
-import subprocess            
-spa=random.randint(2,5)
-subprocess.call('clear', shell=True)
-if spa==2:
-	print splash.splash2
-elif spa==3:
-	print splash.splash3
-elif spa==4:
-	print splash.splash4
-elif spa==5:
-	print splash.splash5
+
 tree = ET.parse('core/modules.xml')
 root = tree.getroot()
 
