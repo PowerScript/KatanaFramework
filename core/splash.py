@@ -4,6 +4,11 @@
 #
 
 from core import colors
+import random
+import subprocess            
+spa=random.randint(2,5)
+subprocess.call('clear', shell=True)
+
 splash2=colors.B+"""
           mM@@MM@@MM@@MM@@MM@@MM@@@MMM@@MM@@@@Mm
          mMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMm
@@ -46,3 +51,13 @@ splash5="""
     | |k  | | |a  | | |t  | | |a  | | |n  | | |a  | |
     | +---+ | +---+ | +---+ | +---+ | +---+ | +---+ |
     |/_____\|/_____\|/_____\|/_____\|/_____\|/_____\|"""
+    
+    
+if spa==2:
+	print splash.splash2
+elif spa==3:
+	print splash.splash3
+elif spa==4:
+	print splash.splash4
+elif spa==5:
+	print splash.splash5
