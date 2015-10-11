@@ -62,4 +62,3 @@ elif spa==4:
 	print splash.splash4
 elif spa==5:
 	print splash.splash5
->>>>>>> origin/master
