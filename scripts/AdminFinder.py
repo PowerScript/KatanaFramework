@@ -25,11 +25,11 @@ defaultport=HTTP_PORT
 defaultdicc=TABLE_FOLDER_ADMIN
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 
-def run(target,port,ditionary):
+def run(target,port,dictionary):
 	global defaulthost,defaultport,defaultdicc
 	defaulthost=target
 	defaultport=port
-	defaultdicc=ditionary
+	defaultdicc=dictionary
 	adminfinder(1)
 
 def adminfinder(run):

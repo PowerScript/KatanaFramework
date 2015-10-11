@@ -14,7 +14,7 @@ Option 1 (Github)
 
 Option 2 (Sourceforge)
 
-#donwload project file of http://sourceforge.net/projects/katanas/
+#download last version in http://sourceforge.net/projects/katanas/files/
 #unzip katana(last version).zip
 #cd katana(last version)
 #sudo python install.py

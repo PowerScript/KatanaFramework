@@ -24,13 +24,13 @@
     <module name="net/lanlive">
         <description>Host live's in my Network</description>
     </module>
-    <module name="eng/gdreport">
+    <module name="set/gdreport">
         <description>Getting information with web</description>
     </module>
-    <module name="eng/mailboom">
+    <module name="set/mailboom">
         <description>E-mail boombing</description>
     </module>
-    <module name="eng/facebrok">
+    <module name="set/facebrok">
         <description>facebook phishing plataform</description>
     </module>
     <module name="fle/brutezip">
@@ -60,19 +60,19 @@
     <module name="for/imagen">
         <description>Analicy forence to imagen</description>
     </module>
-    <module name="bt/ftp">
+    <module name="fbt/ftp">
         <description>Brute force to ftp</description>
     </module>
-    <module name="bt/sql">
+    <module name="fbt/sql">
         <description>Brute force to sql</description>
     </module>
-    <module name="bt/ssh">
+    <module name="fbt/ssh">
         <description>Brute force to ssh</description>
     </module>
-    <module name="bt/pop3">
+    <module name="fbt/pop3">
         <description>Brute force to pop3</description>
     </module>
-    <module name="fz/ftp">
+    <module name="fzz/ftp">
         <description>Fuzzer to ftp</description>
     </module>
     <module name="wifi/wpabtf">

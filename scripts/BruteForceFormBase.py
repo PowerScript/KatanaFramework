@@ -26,19 +26,19 @@ defaultport=HTTP_PORT
 defaultpach="/KatanaLAB/run.php"
 defaultuser=USERNAME
 defaultdic2=DITIONARY_PASSWORDS
-defaultdat1="username"
+defaultdat1="administrator"
 defaultdat2="password"
 defaultmeth="POST"
 defaultcont="Wrong"
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:- #
 
-def run(target,port,patch,para1,valor,para2,ditionary,method,condition):
+def run(target,port,patch,para1,valor,para2,dictionary,method,condition):
 	global defaulthost,defaultport,defaultpach,defaultuser,defaultdic2,defaultdat1,defaultdat2,defaultmeth,defaultcont
 	defaulthost=target
 	defaultport=port
 	defaultpach=patch
 	defaultuser=valor
-	defaultdic2=ditionary
+	defaultdic2=dictionary
 	defaultdat1=para1
 	defaultdat2=para2
 	defaultmeth=method
@@ -58,7 +58,7 @@ def httpformbasebruteforce(run):
 			d.descrip("port","no","Port of target",defaultport)
 			d.descrip("patch","yes","Folder or dir",defaultpach)
 			d.descrip("para_1","yes","Parameter 1",defaultdat1)
- 			d.descrip("user","yes","Dictionary user",defaultuser)
+ 			d.descrip("user","yes","Username",defaultuser)
 			d.descrip("para_2","yes","Parameter 2",defaultdat2)
  			d.descrip("dict_1","yes","Dictionary pass",defaultdic2)
 			d.descrip("method","yes","POST or GET",defaultmeth)

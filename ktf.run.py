@@ -154,7 +154,7 @@ try:
 				forenseIMAGE.exiftool(0)
 				exit()
 			if h == 1:
-				print " ktfrun"
+				print " ktf.run"
 				print ""
 				print " Katana framework run, it's a sub-tool for use modules fastly"
 				print " with line command."
@@ -167,9 +167,9 @@ try:
 			else:
 				print " ["+colors.O+"!"+colors.W+"] Module not found"
 				print ""
-				print " ["+colors.O+"!"+colors.W+"] Use ktfkatana -m Module"
-				print " ["+colors.B+"*"+colors.W+"] ex: ktfkatana -m wifi/dos"
-				print " ["+colors.B+"*"+colors.W+"] ex: ktfkatana -h"
+				print " ["+colors.O+"!"+colors.W+"] Use ktf.katana -m Module"
+				print " ["+colors.B+"*"+colors.W+"] ex: ktf.katana -m wifi/dos"
+				print " ["+colors.B+"*"+colors.W+"] ex: ktf.katana -h"
 				exit()
 except:
 	print ""

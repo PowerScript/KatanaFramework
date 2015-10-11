@@ -24,6 +24,8 @@ def Errors(event, info):
 		exit(0)
 	if string.find("SystemExit") >= 0 and info==False:
 		exit(0)
+	if string.find("ValueError") >= 0:
+		d.VError()
 	else:
 		print "Event : %s \n Info: %s "  % (event,info)
 		exit(0)

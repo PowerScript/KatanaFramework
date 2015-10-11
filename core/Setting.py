@@ -3,6 +3,12 @@
 # @Katana Setting
 #
 
+# DEFAULT FILES NAME
+KTFCONSOLE="ktf.console"
+KTFLINKER="ktf.linker"
+KTFRUN="ktf.run"
+KTFLAB="ktf.lab"
+KTFGUI="ktf.gui"
 
 # DEFAULT SETTING NETWORK
 LOCAL_IP="127.0.0.1"
@@ -32,3 +38,21 @@ HTTP_PORT="80"
 POP_PORT="110"
 SQL_PORT="3306"
 SSH_PORT="22"
+SMTP_PORT="25"
+
+# PARAMETER FOR LINKER FILE
+t=""
+p=""
+f=""
+u=""
+ps=""
+m=""
+s=""
+h=""
+v=""
+z=""
+x=""
+d=""
+c=""
+q=""
+

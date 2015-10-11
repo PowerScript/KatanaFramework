@@ -158,7 +158,7 @@ if($_POST['data']!=""){
     if($_POST['url']!=""){header("location: http://".$_POST['url']);}
 }else{
 
-                                if($javascript==false and $_GET['j']==""){
+                                if($javascript==false){
                                 java(); ?>
                                 <script type="text/javascript">
                                 function Red(dates)

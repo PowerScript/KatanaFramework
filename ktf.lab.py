@@ -20,9 +20,7 @@ if True:
 	print " "+Alr+" Giving privileges to folder",ping.status_cmd("chmod -c -R 777 "+PATCH_WWW+"/KatanaLAB/","\t\t\t")
 	print " "+Alr+" Starting Apache2",ping.status_cmd("service apache2 start","\t\t\t\t")
 	print " "+Suf+" Katana Lab Started"
-	print ""
 	d.go("http://localhost/KatanaLAB")
-	print ""
 	raw_input(" "+Hlp+" Press any key for Stop Katana Lab")
 	print(" "+Alr+" Stoping Process")
 	print " "+Alr+" Removing files",ping.status_cmd("rm -R "+PATCH_WWW+"/KatanaLAB","\t\t\t\t\t")

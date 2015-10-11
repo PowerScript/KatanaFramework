@@ -31,7 +31,7 @@ class DESIGN:
 		if module == 1:
 			print " test module"
 	def prompt(self, module):
-		promp=""+colors[0]+" ktn"+colors[0]+" | "+colors[3]+module+colors[0]+" > "
+		promp=""+colors[0]+" \033[1mktn"+colors[0]+"::\033[4m"+colors[3]+module+colors[0]+" \033[1m\033[40m>"+colors[0]
 		return promp
 	def option(self):
 		print "\n [options]\t[RQ]\t[description]\t\t[value]"
@@ -79,7 +79,7 @@ class DESIGN:
 		string=" "+Ned+" Not connected to any network, this module need are connected to a network."
 		return string
 	def go(self,to):
-		print " "+Got+" Go to : "+to
+		print " "+Got+" Go to : \033[40m"+to+""+colors[0]
 	def testing(self, protocol, port):
 		print " "+Alr+" Testing "+protocol+" protocol \t\t\t ["+port+"]"
 	def live_protocol(self):
@@ -88,6 +88,8 @@ class DESIGN:
 		print ""
 	def nocommandCLT(self, string):
 		return "parameter '"+string+"' not allow."
+	def VError(self):
+		print " "+Bad+" Value Error: [LINKER] is necesary all parameters, type 'sop'."
 	def lab(self,version):
 		print """
 		   __   __  ___"""+colors[3]+"""__     __     """+colors[0]+"""
@@ -95,10 +97,10 @@ class DESIGN:
 		 /  '_/ __/ _/"""+colors[3]+""" / _ `/ _ \\   """+colors[0]+"""
 		/_/\_\\\\__/_/"""+colors[3]+"""/_/\_,_/_.__/  """+colors[0]+"""
 		Core:"""+version 
-	def linker(self,version):
+	def linker(self,version, build):
 		print """
 		   __   __  ___"""+colors[4]+"""___      __             """+colors[0]+"""
 		  / /__/ /_/ _/"""+colors[4]+""" (_)__  / /_____ ____   """+colors[0]+"""
 		 /  '_/ __/ _/"""+colors[4]+""" / / _ \/  '_/ -_) __/   """+colors[0]+"""
 		/_/\_\\\\__/_/"""+colors[4]+"""/_/_/_//_/_/\_\\\\__/_/  """+colors[0]+"""
-		Core:"""+version
+		Core:"""+version+"/Build:"+build

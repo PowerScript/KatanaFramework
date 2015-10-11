@@ -57,17 +57,11 @@ def exiftool(run):
 						if True:
 							try:
 								print "\n "+Hlp+" Forence Imagen Client help\n"
-								print "  ----------------------------------------"
-								print "  |"+colors[6]+"Command    "+colors[0]+"| "+colors[6]+"Description"+colors[0]+"    | "+colors[6]+"Examples"+colors[0]+"         |"
-								print "  ----------------------------------------"
-								print "  |extrat_all | extrat all MD  | ls               |" 
-								print "  |cd	| change dir  | cd css           |"
-								print "  |mk	| create dir  | mk images        |"
-								print "  |rm	| remove file | remove config.js | "
-								print "  |rmd  | remove dir  | remove sex       |"
-								print "  |get  | get file    | get index.php    |"
-								print "  |put  | up file     | put login.php    |"
-								print "  ----------------------------------------"
+								print "  ------------------------------------------"
+								print "  |"+colors[6]+"Command    "+colors[0]+"| "+colors[6]+"Description"+colors[0]+"    | "+colors[6]+"Examples"+colors[0]+"  |"
+								print "  ------------------------------------------"
+								print "  |extrat_all | extrat all MD  | ls        |" 
+								print "  ------------------------------------------"
 								print ""
 								cmd="nop"
 								while(cmd!="exit"):
