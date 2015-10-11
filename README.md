@@ -26,6 +26,17 @@ The Katana source code is organized as follows:
 <i>-[doc/](https://github.com/RedToor/Katana/tree/master/doc)</i> > Documentation<br>
 <i>-[scripts/](https://github.com/RedToor/Katana/tree/master/scripts)</i> > Scripts(modules)<br>
 
+# MAIN FILES
+```
+--core
+  ¬Setting.py         --- Setting varaibles
+  ¬design.py          --- Design template
+  ¬Errors.py          --- Error Debug
+  ¬ping.py            --- Funcitons
+--scripts
+  ¬__init__.py        --- Modules List
+  
+```
 # REQUIREMENTS
 OS requirement:
         <img src="http://www.question-defense.com/wp-content/themes/qd/backtrack-menu/backtrack-logo.png"> Kali Linux
@@ -61,9 +72,9 @@ web/dos|Denial of service web|Redtoor|1.0
 web/whois|Who-is web|Redtoor|1.0
 net/arpspoof|ARP-Spoofing attack|Redtoor|1.0
 net/arplook|ARP-Spoofing detector|cl34r|1.0
-eng/gdreport|Getting information with web|RedToor|3.0
-eng/mailboom|E-mail boombing SPAM|RedToor|3.0
-eng/facebrok|facebook phishing plataform|RedToor|1.7
+set/gdreport|Getting information with web|RedToor|3.0
+set/mailboom|E-mail boombing SPAM|RedToor|3.0
+set/facebrok|facebook phishing plataform|RedToor|1.7
 fle/brutezip|Brute force to zip files|LeSZO ZerO|1.0
 fle/bruterar|Brute force to rar files|LeSZO ZerO|1.0
 clt/ftp|Console ftp client|Redtoor|1.0
@@ -73,10 +84,10 @@ clt/ftp|Console ftp client|Redtoor|1.0
 ser/sql|Start SQL server|Redtoor|1.0
 ser/apache|Start Apache server|Redtoor|1.0
 ser/ssh|Start SSH server|Redtoor|1.0
-bt/ftp|Brute force to ftp|Redtoor|1.0
-bt/ssh|Brute force to ssh|Redtoor|1.0
-bt/sql|Brute force to sql|Redtoor|1.0
-bt/pop3|Brute force to pop3|Redtoor|1.0
+fbt/ftp|Brute force to ftp|Redtoor|1.0
+fbt/ssh|Brute force to ssh|Redtoor|1.0
+fbt/sql|Brute force to sql|Redtoor|1.0
+fbt/pop3|Brute force to pop3|Redtoor|1.0
 
 # LICENSE
 Katana is licensed. 
