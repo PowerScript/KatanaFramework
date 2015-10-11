@@ -48,7 +48,11 @@ def smtpbombing(run):
 		if actions == "show options" or actions == "sop":
 			d.option()
 			d.descrip("host","yes","IP or DNS",defaulthost)
+<<<<<<< HEAD
 			d.descrip("port","no","Port	",defaultport)
+=======
+			d.descrip("port","no","Port",defaultport)
+>>>>>>> origin/master
 			d.descrip("target","yes","E-mail target",defaultdest)
 			d.descrip("from","yes","E-mail fake",defaultfrom)
  			d.descrip("subjet","yes","Subject fake",defaultsubj)
