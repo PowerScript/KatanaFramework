@@ -39,7 +39,6 @@ POP_PORT="110"
 SQL_PORT="3306"
 SSH_PORT="22"
 SMTP_PORT="25"
-<<<<<<< HEAD
 
 # PARAMETER FOR LINKER FILE
 t=""
@@ -57,5 +56,3 @@ d=""
 c=""
 q=""
 
-=======
->>>>>>> origin/master
