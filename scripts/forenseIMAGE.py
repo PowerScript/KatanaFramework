@@ -57,20 +57,12 @@ def exiftool(run):
 						if True:
 							try:
 								print "\n "+Hlp+" Forence Imagen Client help\n"
-<<<<<<< HEAD
 								print "  ------------------------------------------"
 								print "  |"+colors[6]+"Command    "+colors[0]+"| "+colors[6]+"Description"+colors[0]+"    | "+colors[6]+"Examples"+colors[0]+"  |"
 								print "  ------------------------------------------"
 								print "  |extrat_all | extrat all MD  | ls        |" 
 								print "  ------------------------------------------"
-=======
-								print "  ----------------------------------------"
-								print "  |"+colors[6]+"Command    "+colors[0]+"| "+colors[6]+"Description"+colors[0]+"    | "+colors[6]+"Examples"+colors[0]+"         |"
-								print "  ----------------------------------------"
-								print "  |extrat_all | extrat all MD  | ls               |" 
-								print "  ----------------------------------------"
->>>>>>> origin/master
-								print ""
+								s.space()
 								cmd="nop"
 								while(cmd!="exit"):
 									cmd = raw_input(d.Client_prompt('forence{IMAGEN}'))
