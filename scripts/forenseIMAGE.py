@@ -62,7 +62,7 @@ def exiftool(run):
 								print "  ------------------------------------------"
 								print "  |extrat_all | extrat all MD  | ls        |" 
 								print "  ------------------------------------------"
-								s.space()
+								d.space()
 								cmd="nop"
 								while(cmd!="exit"):
 									cmd = raw_input(d.Client_prompt('forence{IMAGEN}'))
@@ -71,11 +71,11 @@ def exiftool(run):
 							except:
 								Errors.Errors(event=sys.exc_info()[0], info=False)
 				except:
-					Errors.Errors(event=sys.exc_info(), info=defaultimg)
+					Errors.Errors(event=sys.exc_info()[0], info=defaultimg)
 			except:
-				Errors.Errors(event=sys.exc_info(), info=False)
+				Errors.Errors(event=sys.exc_info()[0], info=False)
 		else:
 			d.No_actions()
 	except:
-		Errors.Errors(event=sys.exc_info(), info=False)
+		Errors.Errors(event=sys.exc_info()[0], info=False)
 	exiftool(0)
