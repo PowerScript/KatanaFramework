@@ -37,22 +37,3 @@ if spa==1:
 	print splash2
 elif spa==2:
 	print splash4
-
-splash5="""                                       
-     _______ _______ _______ _______ _______ _______ 
-    |\     /|\     /|\     /|\     /|\     /|\     /|
-    | +---+ | +---+ | +---+ | +---+ | +---+ | +---+ |
-    | |   | | |   | | |   | | |   | | |   | | |   | |
-    | |k  | | |a  | | |t  | | |a  | | |n  | | |a  | |
-    | +---+ | +---+ | +---+ | +---+ | +---+ | +---+ |
-    |/_____\|/_____\|/_____\|/_____\|/_____\|/_____\|"""
-    
-    
-if spa==2:
-	print splash.splash2
-elif spa==3:
-	print splash.splash3
-elif spa==4:
-	print splash.splash4
-elif spa==5:
-	print splash.splash5
