@@ -1,11 +1,5 @@
-#
-# Katana framework 
-# @Autor : RedToor
-# @Based : Python  
-# @Email : redtoor[at]inbox.ru
-# 
-# Made in Colombia, for Pentest Distro's
-#
+
+# ktf.console
 
 from scripts import *
 from core import info
