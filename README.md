@@ -29,7 +29,7 @@ The Katana source code is organized as follows:
 # MAIN FILES
 ```
 --core
-  ¬Setting.py         --- Setting varaibles
+  ¬Setting.py         --- Setting variables
   ¬design.py          --- Design template
   ¬Errors.py          --- Error Debug
   ¬ping.py            --- Funcitons
