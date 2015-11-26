@@ -115,7 +115,7 @@ def get_external_ip():
 
 ### INTERFACES SCANNING ###
 def interfaces(output):
-	Interfaces=commands.getoutput("airmon-ng | grep 'wlan' | awk '{print $1}'")
+	Interfaces=commands.getoutput("airmon-ng | grep 'wlan' | awk '{print $2}'")
 	Interfaces=Interfaces.replace("\n",",")
 	if output==1:
 		if Interfaces=="":
