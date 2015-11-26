@@ -8,15 +8,15 @@ a function specify.
 
 General Commands:
 
-	update:         update ktf
-	show modules    show modules installed
-	use 		choise a module
-	show options    show options of module 
-	set 		set up a parameter
-	run		starts module
-	back 		backing
-	exit		exit
-	clear		clear screen
+	update or u             update ktf
+	show modules or showm   show modules installed
+	use      		choise a module
+	show options or sop     show options of module 
+	set 		        set up a parameter
+	run or r		starts module
+	back or b		backing
+	exit or e		exit
+	clear		        clear screen
 		
 
 ktf.console: 
