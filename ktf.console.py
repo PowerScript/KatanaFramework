@@ -1,5 +1,8 @@
-
-# ktf.console
+### Katana Framework 
+### you can redistribute it and/or modify
+### it under the terms of the GNU General Public License as published by
+### the Free Software Foundation, either version 3 of the License, or
+### (at your option) any later version. 
 
 from scripts import *
 from core import info
@@ -25,7 +28,7 @@ print """
 	  """
 
 def line(module, description):
-	print  colors.P+""" |\033[4m"""+colors.R+"""=="""+colors.W+"""|::|  """+module+"\t\t"+description
+	print  colors.W+""" |\033[4m"""+colors.R+"""=="""+colors.W+"""|::|  """+module+"\t\t"+description
 def katana():
 	if True:
 		action = raw_input(colors.W+" \033[1mktf\033[40m>"+colors.W)
@@ -33,7 +36,7 @@ def katana():
 			print """ 
   ,--.-,  
  /BY/  /  \033[1m Module                   Description                """+colors.W+"""
- """+colors.P+"""|\033[4m"""+colors.R+"""=="""+colors.W+"""|::|  web/httpbt"""+colors.W+"""\t\tBrute force to HTTP 401"""+colors.W
+ """+colors.W+"""|\033[4m"""+colors.R+"""=="""+colors.W+"""|::|  web/httpbt"""+colors.W+"""\t\tBrute force to HTTP 401"""+colors.W
  			for module in root.findall('module'):
 				name = module.get('name')
 				description = module.find('description').text
@@ -63,6 +66,8 @@ def katana():
 				LANScanner.hostl(0)
 			if action[4:16] == "net/arpspoof":
 				ARPPoisoning.arpp(0)
+			if action[4:16] == "net/portscan":
+				PortScanner.PortScanner(0)
 			# SET : Social Enginnering tools
 			if action[4:17] == "set/gdreport":
 				GetDataReport.getdatareport(0)
