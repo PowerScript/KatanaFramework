@@ -1,4 +1,16 @@
 --- LOG's ---
 
-11/10/15 , 3:54
+29/11/15 
+Added Message in top file about License
+Change sys to argparse function in ktf.run.py
+Completed linker file 
+
+28/11/15 
+New Module: PortScanner
+Added Variable of scripts (NMAP)
+Change ([INF] Checking... to date current)
+
+11/10/15
 Changes in ktf.console - ktf.linker files
+
+
