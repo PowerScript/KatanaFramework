@@ -7,6 +7,8 @@
 # Core::Theme>Warrior
 #
 
+import time
+
 
 		#White    #Red          #Green      #Orange    #Blue       #Purple     #Cyan
 colors=['\033[0m', '\033[31m', '\033[32m', '\033[33m', '\033[34m', '\033[35m', '\033[36m'
@@ -48,7 +50,7 @@ class DESIGN:
 		print "\n "+colors[0]+"Exiting...      Goodbye, My Sr.\n"
 	def run(self):
 		print "\n "+God+" Running..."+colors[0]
-		print " "+Alr+" Checking..."+colors[0]
+		print " "+Alr+" "+time.strftime('%c')+colors[0]
 	def target_off(self, target):
 		print " "+Bad+" target Off-line ["+target+"]"+colors[0]+"\n"
 	def No_actions(self):
@@ -90,13 +92,13 @@ class DESIGN:
 		return "parameter '"+string+"' not allow."
 	def VError(self):
 		print " "+Bad+" Value Error: [LINKER] is necesary all parameters, type 'sop'."
-	def lab(self,version):
+	def ktflab(self,version,build):
 		print """
 		   __   __  ___"""+colors[3]+"""__     __     """+colors[0]+"""
 		  / /__/ /_/ _/"""+colors[3]+""" /__ _/ /     """+colors[0]+"""
 		 /  '_/ __/ _/"""+colors[3]+""" / _ `/ _ \\   """+colors[0]+"""
 		/_/\_\\\\__/_/"""+colors[3]+"""/_/\_,_/_.__/  """+colors[0]+"""
-		Core:"""+version 
+		Core:"""+version+"""/build:"""+build 
 	def linker(self,version, build):
 		print """
 		   __   __  ___"""+colors[4]+"""___      __             """+colors[0]+"""
@@ -104,3 +106,10 @@ class DESIGN:
 		 /  '_/ __/ _/"""+colors[4]+""" / / _ \/  '_/ -_) __/   """+colors[0]+"""
 		/_/\_\\\\__/_/"""+colors[4]+"""/_/_/_//_/_/\_\\\\__/_/  """+colors[0]+"""
 		Core:"""+version+"/Build:"+build
+	def ktfrun(self,version,build):
+		print """
+		   __   __  ___            
+		  / /__/ /_/ _/"""+colors[1]+"""_____ _____      """+colors[0]+"""
+		 /  '_/ __/ _/"""+colors[1]+"""_ __/ // / _ \\   """+colors[0]+"""
+		/_/\_\\\\_/__/ """+colors[1]+"""/_/  \_,_/_//_/  """+colors[0]+"""
+		Core:"""+version+"""/Build:"""+build+"\n"
