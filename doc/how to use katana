@@ -2,7 +2,6 @@ How to ?
 
 is framework is oriented to penetration test or developing to systems.
 
-Katana is a framework made for a easy use, is based in other framework and it shall be known,
 katana have 4 main files (ktf.console.py - ktf.run.py - ktf.linker.py - ktf.lab.py) each is for
 a function specify.
 
@@ -19,14 +18,47 @@ General Commands:
 	clear		        clear screen
 		
 
-ktf.console: 
-is file contain a menu of all modules installed, you can surf among them.
+#ktf.console
+	
+	is file contain a menu of all modules installed, you can surf among them using General commands.
 
-ktf.run:
-run modules fastly
+#ktf.linker:
 
-ktf.linker:
-run modules with parameters
+	for run modules with parameter diretly.
+	
+	python ktf.linker.py -m category/module -h <> Show parameter enables for that module
+	python ktf.linker.py -m category/module -t PARAMETER <> the module is launch with parameter
 
-ktf.lab:
-run laboratory
+	EXAMPLES;	
+
+	./python ktf.linker.py -m web/whois -h
+	
+	OUTPUT-------------------------------------------------
+	 python ktf.linker -m web/whois -t target.com -p 80
+
+	 -t [target]  IP or DNS target 
+	 -p [port]    Port target
+	-------------------------------------------------------
+
+	./python ktf.linker.py -m web/whois -t google.com -p 80
+	
+	OUTPUT-------------------------------------------------
+	Module working...
+	-------------------------------------------------------
+
+#ktf.run
+
+	for run module diretly with ktf.run.py file
+	if you want use a module without surf much -.-! you can use it
+	
+	python ktf.run.py -m category/module 
+
+	EXAMPLES;	
+
+	./python ktf.run.py -m web/whois 
+	./python ktf.run.py -m net/lanlive
+	./python ktf.run.py -m mc/i  
+
+	
+
+
