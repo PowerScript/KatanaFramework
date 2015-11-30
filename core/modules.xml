@@ -24,6 +24,9 @@
     <module name="net/lanlive">
         <description>Host live's in my Network</description>
     </module>
+    <module name="net/portscan">
+        <description>Port Scanner</description>
+    </module>
     <module name="set/gdreport">
         <description>Getting information with web</description>
     </module>
