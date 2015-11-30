@@ -1,7 +1,8 @@
-#
-# Katana framework 
-# @Katana Install
-#
+### Katana Framework Install
+### you can redistribute it and/or modify
+### it under the terms of the GNU General Public License as published by
+### the Free Software Foundation, either version 3 of the License, or
+### (at your option) any later version. 
 
 from core.Setting import * 
 from core import info
@@ -54,7 +55,7 @@ print ""
 print " Now you can remove this diretory."
 print " Done !!!"
 print ""
-print " USE: "
+print " Usage: "
 print ""
 print " "+colors.R+"\033[1mktf.console"+colors.W+" > for mode console"
 print " "+colors.R+"\033[1mktf.run    "+colors.W+" > use modules fastly"
