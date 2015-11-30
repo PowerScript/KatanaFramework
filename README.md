@@ -58,7 +58,7 @@ Commands
         ./sudo ktf.run -m net/arpspoof                       95% Builded - Enabled
         Building ----------------------------------------------------------------
         ktf.lab                                              30% Builded - No yet.
-        ktf.linker -m web/whois -t google.com -p 80          30% Builded - No yet.
+        ktf.linker -m web/whois -t google.com -p 80          80% Builded - No yet.
 ```
 # MODULES (SCRIPTS)
 
