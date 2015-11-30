@@ -3,6 +3,7 @@
 # @Katana Modules import
 #
 
+import PortScanner
 import forenseIMAGE
 import Whois
 import GenDic
