@@ -1,150 +1,114 @@
-#
-# Katana framework 
-# @Katana Run
-#
+### Katana Framework Runner
+### you can redistribute it and/or modify
+### it under the terms of the GNU General Public License as published by
+### the Free Software Foundation, either version 3 of the License, or
+### (at your option) any later version. 
 
+from core.design import *
 from scripts import *
 from core import colors
 from core import info
-import getopt
+import argparse
+import time
 import sys
 
-m=""
-h=""
-options, remainder = getopt.getopt(sys.argv[1:], 'm:h')
-for option, arg in options:
-		if option   == '-m':
-			m=arg
-		if option   == '-h':
-			h=1
-print """
-		   __   __  ___            
-		  / /__/ /_/ _/"""+colors.R+"""_____ _____      """+colors.W+"""
-		 /  '_/ __/ _/"""+colors.R+"""_ __/ // / _ \\   """+colors.W+"""
-		/_/\_\\\\_/__/ """+colors.R+"""/_/  \_,_/_//_/  """+colors.W+"""
-		Core:"""+info.version+"""
-                           
-"""
+CLASS_BANNER=DESIGN()
+CLASS_BANNER.ktfrun(info.version,info.build)
 
-if h!=1:
-	print " ktn | Checking Module"
-try:
+parser = argparse.ArgumentParser()
+parser.add_argument("-m", "--module", help=" Script module to run.")
+args = parser.parse_args()
+m=args.module
+
+if __name__=="__main__":
 	if True:
 		if True:
+			print " ktf.run | "+time.strftime('%c')
 			if m == "web/httpbt":
-				print " ktn | Running"
 				BruteForceHTTP.httpbt(0)
 				exit()
 			if m == "web/cpfinder":
-				print " ktn | Running"
 				AdminFinder.adminfinder(0)
 				exit()
 			if m == "web/formbt":
-				print " ktn | Running"
 				BruteForceFormBase.httpformbasebruteforce(0)
 				exit()
 			if m == "net/arplook":
-				print " ktn | Running"
 				ARPLooking.arplook(0)
 				exit()
-			if m == "eng/gdreport":
-				print " ktn | Running"
+			if m == "set/gdreport":
 				GetDataReport.getdatareport(0)
 				exit()
 			if m == "fle/brutezip":
-				print " ktn | Running"
 				BruteZIP.btzip(0)
 				exit()
 			if m == "fle/bruterar":
-				print " ktn | Running"
 				BruteRAR.btrar(0)
 				exit()
 			if m == "clt/ftp":
-				print " ktn | Running"
 				ClientFTP.cftp(0)
 				exit()
-			if m == "bt/ftp":
-				print " ktn | Running"
+			if m == "fbt/ftp":
 				BruteForceFTP.btftp(0)
 				exit()
 			if m == "wifi/hwifipwd":
-				print " ktn | Running"
 				WifiDetecter.hackerwifipwd()
 				exit()
-			if m == "bt/ssh":
-				print " ktn | Running"
+			if m == "fbt/ssh":
 				BruteForceSSH.btssh(0)	
 				exit()
 			if m == "clt/sql":
-				print " ktn | Running"
 				ClientMYSQL.cmysql(0)	
 				exit()
-			if m == "bt/sql":
-				print " ktn | Running"
+			if m == "fbt/sql":
 				BruteForceSQL.btsql(0)
 				exit()		
-			if m == "bt/pop3":
-				print " ktn | Running"
+			if m == "fbt/pop3":
 				BruteForcePOP3.btpop3(0)
 				exit()
 			if m == "clt/pop3":
-				print " ktn | Running"
 				ClientPOP3.cpop3(0)
 				exit()
 			if m == "mc/tlogin":
-				print " ktn | Running"
 				TLogin.tlogin(0)
 				exit()
-			if m == "fz/ftp":
-				print " ktn | Running"
+			if m == "fzz/ftp":
 				FuzzerFTP.fftp(0)
 				exit()
 			if m == "web/joomscan":
-				print " ktn | Running"
 				Joomscan.xjoomla(0)
 				exit()
 			if m == "ser/sql":
-				print " ktn | Running"
 				services.services('mysql')
 				exit()
 			if m == "ser/ssh":
-				print " ktn | Running"
 				services.services('ssh')
 				exit()
 			if m == "ser/apache":
-				print " ktn | Running"
 				services.services('apache2')
 				exit()
 			if m == "wifi/wpabtf":
-				print " ktn | Running"
 				WpaBTF.btwpa(0)
 				exit()
 			if m == "wifi/dos":
-				print " ktn | Running"
 				Wifi_DDOS.ddos(0)
 				exit()
 			if m == "mc/gendic":
-				print " ktn | Running"
 				GenDic.Gendic(0)
 				exit()
 			if m == "web/whois":
-				print " ktn | Running"
 				Whois.wuis(0)
 				exit()
 			if m == "net/lanlive":
-				print " ktn | Running"
 				LANScanner.hostl(0)
 				exit()
-			if m == "eng/facebrok":
-				print " ktn | Running"
+			if m == "set/facebrok":
 				facebrok.facebrok(0)
 				exit()
 			if m == "net/arpspoof":
-				print " ktn | Running"
 				ARPPoisoning.arpp(0)
 				exit()
-			if m == "eng/mailboom":
-				print " ktn | Running"
+			if m == "set/mailboom":
 				smtpBombing.smtpbombing(0)
 				exit()
 			if m == "mc/i":
@@ -153,24 +117,6 @@ try:
 			if m == "for/imagen":
 				forenseIMAGE.exiftool(0)
 				exit()
-			if h == 1:
-				print " ktf.run"
-				print ""
-				print " Katana framework run, it's a sub-tool for use modules fastly"
-				print " with line command."
-				print ""
-				print " Example:"
-				print ""
-				print " ktfrun -m category/module"
-				print " ktfrun -m mc/gendic"
-				print ""
-			else:
-				print " ["+colors.O+"!"+colors.W+"] Module not found"
-				print ""
-				print " ["+colors.O+"!"+colors.W+"] Use ktf.katana -m Module"
-				print " ["+colors.B+"*"+colors.W+"] ex: ktf.katana -m wifi/dos"
-				print " ["+colors.B+"*"+colors.W+"] ex: ktf.katana -h"
+			if m == "net/portscan":
+				PortScanner.PortScanner(0)
 				exit()
-except:
-	print ""
-exit()
