@@ -3,8 +3,8 @@
 </center>
 ---
 [![Gitter chat](https://badges.gitter.im/totaljs/framework.png)](https://gitter.im/RedToor/Katana) ![Supported OS](https://img.shields.io/badge/Supported%20OS-Linux-yellow.svg) ![License](https://img.shields.io/badge/license-GPLv3-blue.svg) 
-![CORE](https://img.shields.io/badge/core-0.0.0.7-green.svg) 
-![License](https://img.shields.io/badge/BUILD-0049-red.svg) 
+![CORE](https://img.shields.io/badge/core-0.0.0.8-green.svg) 
+![License](https://img.shields.io/badge/BUILD-0050-red.svg) 
 ---
 # ABOUT
 
@@ -72,6 +72,7 @@ web/dos|Denial of service web|Redtoor|1.0
 web/whois|Who-is web|Redtoor|1.0
 net/arpspoof|ARP-Spoofing attack|Redtoor|1.0
 net/arplook|ARP-Spoofing detector|cl34r|1.0
+net/portscan|Port Scanner|RedToor|1.0
 set/gdreport|Getting information with web|RedToor|3.0
 set/mailboom|E-mail boombing SPAM|RedToor|3.0
 set/facebrok|facebook phishing plataform|RedToor|1.7
