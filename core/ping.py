@@ -203,8 +203,53 @@ def my_mac_address(output):
 	            print " Mac Address:  "+maca
 	            return
 
-### UPDATE PARAMATERS ###
+
+
+
+
+
+
+
+
+
+### VARIABLES TEMP ###
+VARIABLESIP=[]
+VARIABLESMAC=[]
+
+def SaveVariable(secuence,matrix):
+	if secuence[5:8]=="IP:":
+		IPss=int(secuence[8:])-1
+		IPsaved=matrix[IPss]
+		grab = re.findall('([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)', IPsaved)
+		address = grab[0]
+		N=len(VARIABLESIP)
+		print " -->Saved variable {::IP"+str(N)+"} "+address
+		MakeVarTmpIP(Value=address)
+
+	if secuence[5:8]=="MC:":
+		IPss=int(secuence[8:])-1
+		IPsaved=matrix[IPss]
+		p = re.compile(ur'([0-9a-f]{2}(?::[0-9a-f]{2}){5})', re.IGNORECASE)
+		address=re.findall(p, IPsaved)
+		address=str(address)
+		address=address.replace("'","")
+		address=address.replace("[","")
+		address=address.replace("]","")
+		N=len(VARIABLESMAC)
+		print " -->Saved variable {::MC"+str(N)+"} "+str(address)
+		MakeVarTmpMAC(Value=address)
+
+def MakeVarTmpIP(Value):
+	VARIABLESIP.append(Value)
+def MakeVarTmpMAC(Value):
+	VARIABLESMAC.append(Value)
+
+	### UPDATE PARAMATERS ###
 def update(variable,value,name):
 	var=len(name)+5
 	value=value[var:]
-	return value
+	if value[0:4] == "::IP":
+		N=int(value[4:])-1
+		return VARIABLESIP[N]
+	else:
+		return value
