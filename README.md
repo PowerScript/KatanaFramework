@@ -4,7 +4,7 @@
 ---
 [![Gitter chat](https://badges.gitter.im/totaljs/framework.png)](https://gitter.im/RedToor/Katana) ![Supported OS](https://img.shields.io/badge/Supported%20OS-Linux-yellow.svg) ![License](https://img.shields.io/badge/license-GPLv3-blue.svg) 
 ![CORE](https://img.shields.io/badge/core-0.0.0.8-green.svg) 
-![License](https://img.shields.io/badge/BUILD-0050-red.svg) 
+![License](https://img.shields.io/badge/BUILD-0051-red.svg) 
 ---
 # ABOUT
 
@@ -71,6 +71,7 @@ web/joomscan|Scanner vul's cms joomla|Redtoor|1.0
 web/dos|Denial of service web|Redtoor|1.0
 web/whois|Who-is web|Redtoor|1.0
 net/arpspoof|ARP-Spoofing attack|Redtoor|1.0
+net/lanlive|Host's up in my LAN|Redtoor|2.0
 net/arplook|ARP-Spoofing detector|cl34r|1.0
 net/portscan|Port Scanner|RedToor|1.0
 set/gdreport|Getting information with web|RedToor|3.0
