@@ -14,12 +14,16 @@ import sys                      #
 d=DESIGN()                      #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Libraries                     #
-import subprocess               #        
+from xml.dom import minidom
+import xml.etree.ElementTree as ET
+import commands         
+import re
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Default                       #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 defaultnet=MY_IP
 defaulttyp="fast"
+IPs=[]
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
 def run(nets, types):
@@ -61,16 +65,38 @@ def hostl(run):
 			help.help()
 		elif actions=="back" or actions=="b":
 			return
+		elif actions[0:5]=="save:":
+			ping.SaveVariable(secuence=actions, matrix=IPs)
 		elif actions=="run"  or actions=="r":
 			d.run()
 			try:
 				d.space()
-				ping.lan_ips(1)
+				commands.getoutput(NMAP_PATH+' -sn '+str(defaultnet)+'/24 -oX tmp/ips.xml > null')
+				GateWay=ping.get_gateway(2)
+				tree = ET.parse('tmp/ips.xml')
+				root = tree.getroot()
+				IPf=0
+				counter=0
+				IP=""
+				for host in root.findall('host'):
+					for hosted in host.findall('address'):
+						if hosted.get('addrtype') == "ipv4":
+							IPf=hosted.get('addr')
+						else:
+							if GateWay == IPf :
+								IPf=colors[8]+colors[4]+"{GW:"+IPf+"}"+colors[0]
+							IPs.append(" "+IPf+" "+str(hosted.get('addr'))+" "+str(hosted.get('vendor')))
+				print " "+colors[10]+colors[7]+" # \t IP \t\t MAC \t\t VENDOR         "+colors[0]
+
+				for HOST in IPs:
+					counter=counter+1				
+					print " ["+str(counter)+"]"+HOST
 				d.space()
+				commands.getoutput('rm tmp/ips.xml > null')
 			except:
 				Errors.Errors(event=sys.exc_info(), info=False)
 		else:
 			d.No_actions()
 	except:
-		Errors.Errors(event=sys.exc_info()[0], info=False)
+		Errors.Errors(event=sys.exc_info(), info=False)
 	hostl(0)
