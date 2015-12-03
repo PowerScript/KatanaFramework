@@ -13,9 +13,9 @@ def Errors(event, info):
 
 	string=str(event)
 	if string.find("IOError") >= 0:
-		return d.no_file_found(info)
+		return d.no_file_found(str(info))
 	if string.find("socket") >= 0:
-		return d.target_off(info)
+		return d.target_off(str(info))
 	if string.find("KeyboardInterrupt") >= 0 and info!=False:
 		d.kbi()
 		return
