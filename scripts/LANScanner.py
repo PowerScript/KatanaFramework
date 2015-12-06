@@ -3,6 +3,7 @@
 # Modules   : Host live LAN     #
 # Script by : RedToor           #
 # Date      : 22/08/2015        #
+# Version   : 2.0               #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Katana Core                   #
 from core.design import *       #
