@@ -3,9 +3,9 @@
 # @Katana Ping functions
 #
 
+import xml.etree.ElementTree as ET
 import readline, rlcompleter
 from scapy.all import *
-import xml.etree.ElementTree as ET
 from xml.dom import minidom
 import StringIO
 import fcntl, socket, struct
@@ -19,10 +19,12 @@ import commands
 import subprocess
 import Setting
 import sys                   
-
+import colors
 
 ap_list = []
 logging.getLogger("scapy.runtime").setLevel(logging.ERROR)
+VARIABLESIP=[]
+VARIABLESMAC=[]
 
 ### PING ###
 def live(defaulthost, defaultport):
@@ -204,18 +206,7 @@ def my_mac_address(output):
 	            return
 
 
-
-
-
-
-
-
-
-
 ### VARIABLES TEMP ###
-VARIABLESIP=[]
-VARIABLESMAC=[]
-
 def SaveVariable(secuence,matrix):
 	if secuence[5:8]=="IP:":
 		IPss=int(secuence[8:])-1
@@ -223,11 +214,11 @@ def SaveVariable(secuence,matrix):
 		grab = re.findall('([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)', IPsaved)
 		address = grab[0]
 		N=len(VARIABLESIP)
-		print " -->Saved variable {::IP"+str(N)+"} "+address
+		print " -->Saved variable {\033[40m::IP"+str(N)+colors.W+"} "+address
 		MakeVarTmpIP(Value=address)
 
-	if secuence[5:8]=="MC:":
-		IPss=int(secuence[8:])-1
+	if secuence[5:9]=="MAC:":
+		IPss=int(secuence[9:])-1
 		IPsaved=matrix[IPss]
 		p = re.compile(ur'([0-9a-f]{2}(?::[0-9a-f]{2}){5})', re.IGNORECASE)
 		address=re.findall(p, IPsaved)
@@ -236,7 +227,7 @@ def SaveVariable(secuence,matrix):
 		address=address.replace("[","")
 		address=address.replace("]","")
 		N=len(VARIABLESMAC)
-		print " -->Saved variable {::MC"+str(N)+"} "+str(address)
+		print " -->Saved variable {\033[40m::MAC"+str(N)+colors.W+"} "+str(address)
 		MakeVarTmpMAC(Value=address)
 
 def MakeVarTmpIP(Value):
@@ -251,5 +242,8 @@ def update(variable,value,name):
 	if value[0:4] == "::IP":
 		N=int(value[4:])-1
 		return VARIABLESIP[N]
+	elif value[0:5] == "::MAC":
+		N=int(value[5:])-1
+		return VARIABLESMAC[N]
 	else:
 		return value
