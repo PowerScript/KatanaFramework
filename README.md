@@ -75,7 +75,7 @@ net/lanlive|Host's up in my LAN|Redtoor|2.0
 net/arplook|ARP-Spoofing detector|cl34r|1.0
 net/portscan|Port Scanner|RedToor|1.0
 set/gdreport|Getting information with web|RedToor|3.0
-set/mailboom|E-mail boombing SPAM|RedToor|3.0
+set/mailboom|E-mail boombing SPAM|RedToor|1.0
 set/facebrok|facebook phishing plataform|RedToor|1.7
 fle/brutezip|Brute force to zip files|LeSZO ZerO|1.0
 fle/bruterar|Brute force to rar files|LeSZO ZerO|1.0
@@ -90,6 +90,7 @@ fbt/ftp|Brute force to ftp|Redtoor|1.0
 fbt/ssh|Brute force to ssh|Redtoor|1.0
 fbt/sql|Brute force to sql|Redtoor|1.0
 fbt/pop3|Brute force to pop3|Redtoor|1.0
+mc/gendic|Dictionary generator|Redtoor|2.0
 
 # LICENSE
 Katana is licensed. 
