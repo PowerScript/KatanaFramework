@@ -4,6 +4,7 @@
 # Script by : Uknowk         #
 # Adated by : RedToor        #
 # Date      : 07/07/2015     #
+# Version   : 2.0            #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # Katana Core                #
 from core.design import *    #
@@ -16,10 +17,11 @@ d=DESIGN()                   #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # Libraries                  #
 import time                  #
+import os                    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # Default                    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
-defaultdic=DITIONARY_PASSWORDS
+defaultdic="/root/password-gen-katana.txt"
 defaultlon=DEFAUTL_LONGITED
 defaultstr="chars_num"
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
@@ -44,6 +46,7 @@ def Gendic(run):
 			d.descrip("long","yes","Longitude",defaultlon)
  			d.descrip("type","yes","Type matrix",defaultstr)
 			d.helpAUX()
+			print " "+colors[7]+"Type        Description"+colors[0]
 			print " chars_min = [a,b,c,...,z]"
 			print " chars_may = [A,B,C,...,Z]"
 			print " chars_num = [0,1,2,...,9]"
@@ -54,7 +57,7 @@ def Gendic(run):
 			defaultdic=ping.update(defaultdic,actions,"path")
 			d.change("path",defaultdic)
 		elif actions[0:8] == "set long":
-			defaultlon=ping.update(defaulthost,actions,"target")
+			defaultlon=ping.update(defaultstr,actions,"long")
 			d.change("long",defaultlon)
 		elif actions[0:8] == "set type":
 				defaultstr = actions[9:]
@@ -95,7 +98,6 @@ def Gendic(run):
 					permitidos +=chars_min
 					permitidos +=chars_num
 				total_chars = len(permitidos)
-				print total_chars
 				char_n_max = total_chars - 1
 				cadena = []
 				for chars in range(0, long_max):
@@ -131,21 +133,34 @@ def Gendic(run):
 							cadena[-(digito)] = 1
 							acarreo = 1
 					return cadena1
+				Maxima=toClave(cadena_max)
+				procent=int(Maxima)/10
+				counter=0
+				porcent=0
+				print " "+Alr+" Creating file...      ",ping.status_cmd("echo  >"+defaultdic, "\t\t\t")
+				print " "+Alr+" Generating... ["+str(Maxima)+"] Words to Generate "+str(porcent)+"% Complete"
 				fichero = open(defaultdic, 'w')
 				bucle = True
 				while bucle:
 				    password = toClave(cadena)
 				    fichero.write(password + '\n')
-				    print " Generating "+password
+				    counter=counter+1
+				    if procent == counter:
+				    	procent=procent+procent
+				    	porcent=porcent+20
+				    	print " "+War+" "+str(porcent)+"% Porcent Complete"
 				    if isMax(cadena):
+				    	porcent=porcent+20
+				    	print " "+War+" "+str(porcent)+"% Porcent Complete"
 				    	bucle = False
 				    cadena = aumentarCadena(cadena)
-				print(" "+Suf+" Complete, output file in "+defaultdic)
+				print(" "+Suf+" Completed, output file in "+defaultdic)
+				d.space()
 				fichero.close()
 			except:
-				Errors.Errors(event=sys.exc_info()[0], info=False)
+				Errors.Errors(event=sys.exc_info(), info=False)
 		else:
 			d.No_actions()
 	except:
-		Errors.Errors(event=sys.exc_info()[0], info=False)
+		Errors.Errors(event=sys.exc_info(), info=False)
 	Gendic(0)
