@@ -4,11 +4,11 @@
 ---
 [![Gitter chat](https://badges.gitter.im/totaljs/framework.png)](https://gitter.im/RedToor/Katana) ![Supported OS](https://img.shields.io/badge/Supported%20OS-Linux-yellow.svg) ![License](https://img.shields.io/badge/license-GPLv3-blue.svg) 
 ![CORE](https://img.shields.io/badge/core-0.0.0.8-green.svg) 
-![License](https://img.shields.io/badge/BUILD-0051-red.svg) 
+![License](https://img.shields.io/badge/BUILD-0052-red.svg) 
 ---
 # ABOUT
 
-katana is a framework written in python for making penetration testing, based on a simple and comprehensive structure for anyone to use, modify and share, the goal is to unify tools serve for professional when making a penetration test or simply as a routine tool, The current version is not completely stable, not complete. 
+katana is a framework written in python for making penetration testing, based on a simple and comprehensive structure for anyone to use, modify and share, the goal is to unify tools serve for professional when making a penetration test or simply as a routine tool, The current version is not completely stable, is recommended update ever that you use it.
 
 The project is open to partners.
 
@@ -62,7 +62,7 @@ Commands
 ```
 # MODULES (SCRIPTS)
 
-Code Name | Description | Autor | Version
+Code Name | Description | Author | Version
 ----------|-------------|-------|--------
 web/httpbt|Brute force to http 403|Redtoor|1.0
 web/formbt|Brute force to form-based|Redtoor|1.0
