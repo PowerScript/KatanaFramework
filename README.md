@@ -100,7 +100,8 @@ We need partners, if you're interested in support or help contact.
 
 # LINKS
 ```
-Project in SF : http://sourceforge.net/projects/katanas/files/
+Wiki: https://github.com/RedToor/Katana/wiki
+Project in SF: http://sourceforge.net/projects/katanas/files/
 Documentation: https://github.com/RedToor/Katana/tree/master/doc
 Blog of project [ES]: http://cave-rt.blogspot.com.co/2015/07/instalacion-y-uso-katana-framework.html
 ```
