@@ -3,8 +3,7 @@
 </center>
 ---
 [![Gitter chat](https://badges.gitter.im/totaljs/framework.png)](https://gitter.im/RedToor/Katana) ![Supported OS](https://img.shields.io/badge/Supported%20OS-Linux-yellow.svg) ![License](https://img.shields.io/badge/license-GPLv3-blue.svg) 
-![CORE](https://img.shields.io/badge/core-0.0.0.8-green.svg) 
-![License](https://img.shields.io/badge/BUILD-0052-red.svg) 
+![CORE](https://img.shields.io/badge/core-0.0.0.8-green.svg)![Build](https://img.shields.io/badge/BUILD-0052-red.svg) 
 ---
 # ABOUT
 
@@ -53,16 +52,16 @@ Installation of Katana framework:
 # USAGE
 Commands
 ```
-        Stable ------------------------------------------------------------------
-        ./sudo ktf.console                                   98% Builded - Enabled
-        ./sudo ktf.run -m net/arpspoof                       95% Builded - Enabled
-        Building ----------------------------------------------------------------
-        ktf.lab                                              30% Builded - No yet.
-        ktf.linker -m web/whois -t google.com -p 80          80% Builded - No yet.
+        Option 1) ./sudo ktf.console                                   
+        Option 2) ./sudo ktf.run -m Code-Name  
+        Option 3) ./sudo ktf.linker -m Code-Name -t localhost -p 80 
+        
+        Building (Katana Laboratory)                [ktf.lab] 
+        Building (Katana Graphical User Interface)  [ktf.gui]
 ```
 # MODULES (SCRIPTS)
 
-Code Name | Description | Author | Version
+Code-Name | Description | Author | Version
 ----------|-------------|-------|--------
 web/httpbt|Brute force to http 403|Redtoor|1.0
 web/formbt|Brute force to form-based|Redtoor|1.0
