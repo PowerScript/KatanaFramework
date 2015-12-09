@@ -1,0 +1,14 @@
+{
+    "Katana": {
+    "Description"   : "Katana Updates information",
+    "Author"        : "Redtoor",
+    "Version"       : "0.1",
+		"Update"   : {
+          "Core"    : "0.0.0.8",
+			    "Build"   : "0052",
+			    "Date"    : "06/12/15",
+			    "Modules" : "30"
+        }
+    }
+}
+Th
