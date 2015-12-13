@@ -14,8 +14,8 @@ import os
 import sys 
 
 if os.getuid() != 0:
-	print "\n ["+colors.R+"-"+colors.W+"] ERROR:"+colors.B+" Katana update"+colors.B+" must be run as "+colors.R+"root"+colors.W+"."
-	print " ["+colors.R+"-"+colors.W+"] login as root ("+colors.R+"sudo"+colors.W+") or try "+colors.W+"sudo python ktf.update.py"+colors.W+"\n"
+	print "\n ["+colors.R+"-"+colors.W+"] ERROR:"+colors.B+" Katana"+colors.B+" must be run as "+colors.R+"root"+colors.W+"."
+	print " ["+colors.R+"-"+colors.W+"] login as root ("+colors.R+"sudo"+colors.W+") or try "+colors.W+"sudo python ktf.file.py"+colors.W+"\n"
 	exit(1)
 
 def update():
