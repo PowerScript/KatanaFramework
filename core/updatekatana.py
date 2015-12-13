@@ -35,7 +35,7 @@ def update():
 			build=data_string["Katana"]["Update"]["Build"]
 			dateupdate=data_string["Katana"]["Update"]["Date"]
 			print "     ["+colors.O+"!"+colors.W+"] Last Version    : Core:%s Build:%s Date %s" % (core, build, dateupdate)
-			if (build!=info.build):
+			if (build==info.build):
 				print "     ["+colors.O+"!"+colors.W+"] katana already updated.\n"
 			else:
 				print  "     ["+colors.O+"!"+colors.W+"] Downloading Last Version"
