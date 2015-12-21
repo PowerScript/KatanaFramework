@@ -43,7 +43,7 @@ def adminfinder(run):
 			d.option()
 			d.descrip("target","yes","IP or DNS",defaulthost)
 			d.descrip("port","no","Port of target",defaultport)
-			d.descrip("table","no","Ditionary",defaultdicc)
+			d.descrip("table","no","Dictionary",defaultdicc)
 			d.space()
 		elif actions[0:10] == "set target":
 			defaulthost=defaulthost.replace("http://", "")
