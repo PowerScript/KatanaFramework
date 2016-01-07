@@ -89,7 +89,7 @@ fbt/ftp|Brute force to ftp|Redtoor|1.0
 fbt/ssh|Brute force to ssh|Redtoor|1.0
 fbt/sql|Brute force to sql|Redtoor|1.0
 fbt/pop3|Brute force to pop3|Redtoor|1.0
-mc/gendic|Dictionary generator|Redtoor|2.0
+mc/gendic|Dictionary generator|Redtoor|2.1
 
 # LICENSE
 Katana is licensed. 
