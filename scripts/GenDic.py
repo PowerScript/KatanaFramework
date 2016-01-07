@@ -4,7 +4,7 @@
 # Script by : Uknowk         #
 # Adated by : RedToor        #
 # Date      : 07/07/2015     #
-# Version   : 2.0            #
+# Version   : 2.1            #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # Katana Core                #
 from core.design import *    #
@@ -23,7 +23,7 @@ import os                    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 defaultdic="/root/password-gen-katana.txt"
 defaultlon=DEFAUTL_LONGITED
-defaultstr="chars_num"
+defaultstr="chars_min"
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 
 def run(dictionary, longitude, types):
@@ -79,6 +79,7 @@ def Gendic(run):
 		elif actions=="run"  or actions=="r":
 			d.run()
 			try:
+				Maxima=1
 				long_max = long(defaultlon) 
 				long_min = long(defaultlon)
 				char_null = ['']
@@ -113,7 +114,8 @@ def Gendic(run):
 						password += permitidos[indice]
 					return password
 				def isMax(cadena1):
-					if toClave(cadena1) != toClave(cadena_max):
+					if toClave(cadenfile:///home/red/Desktop/katana/install.py
+a1) != toClave(cadena_max):
 						return False
 					return True
 				def aumentarCadena(cadena1):
@@ -133,7 +135,8 @@ def Gendic(run):
 							cadena[-(digito)] = 1
 							acarreo = 1
 					return cadena1
-				Maxima=toClave(cadena_max)
+				for number_total in cadena_max:
+					Maxima=Maxima*number_total
 				procent=int(Maxima)/10
 				counter=0
 				porcent=0
