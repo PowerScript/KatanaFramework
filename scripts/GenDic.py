@@ -114,8 +114,7 @@ def Gendic(run):
 						password += permitidos[indice]
 					return password
 				def isMax(cadena1):
-					if toClave(cadenfile:///home/red/Desktop/katana/install.py
-a1) != toClave(cadena_max):
+					if toClave(cadena1) != toClave(cadena_max):
 						return False
 					return True
 				def aumentarCadena(cadena1):
