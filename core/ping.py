@@ -3,23 +3,24 @@
 # @Katana Ping functions
 #
 
-import xml.etree.ElementTree as ET
-import readline, rlcompleter
-from scapy.all import *
 from xml.dom import minidom
-import StringIO
+from scapy.all import *
+
+import xml.etree.ElementTree as ET
 import fcntl, socket, struct
+import readline, rlcompleter
+import subprocess
+import threading
+import StringIO
+import commands  
+import Setting
 import logging
 import urllib
-import re
 import colors
 import socket
 import time 
-import commands   
-import subprocess
-import Setting
 import sys                   
-import colors
+import re
 
 ap_list = []
 logging.getLogger("scapy.runtime").setLevel(logging.ERROR)
@@ -79,18 +80,42 @@ def savefive(module,target,port,results):
 	log.write('\n port    : '+port)
 	log.write('\n Found   : '+results)
 	log.close()
+	
+### NO USED ###
 def PacketHandler(pkt):
   if pkt.haslayer(Dot11) :
 		if pkt.type == 0 and pkt.subtype == 8 :
 			if pkt.addr2 not in ap_list :
 				ap_list.append(pkt.addr2)
 				print " BSSID: %s \t ESSID: %s " %(pkt.addr2, pkt.info)
+				#sniff(iface="mon0", prn = PacketHandler)
+### RUN TASK ###
+def Rtask(process):   
+        commands.getoutput(process)
 
-### AP's ###
-def scanwifi():
-	print " Scanning APs - "+colors.O+"Ctrl+C"+colors.W+" for Stop.\n"
-	sniff(iface="mon0", prn = PacketHandler)
+### SUBPROCESS THREAD ###
+def Subprocess(process):
+	Hire=threading.Thread(target=Rtask, args=(process,))  
+	Hire.start()
 
+### AP's SCAN ###
+def scanwifi(mon):
+	Subprocess('airodump-ng '+mon+' -w /tmp/ktf.wifi --output-format netxml --write-interval 5 > null')
+	print colors.GR+" Scanning Access Points in Interface '"+mon+"', 5s Interval ("+colors.G+"Ctrol+c"+colors.GR+") for Stop"+colors.W+"\n"
+	try:
+		numberID=0
+		while True:
+			time.sleep(5)
+			tree = ET.parse('/tmp/ktf.wifi-01.kismet.netxml')
+			root = tree.getroot()
+			for network in root.findall('wireless-network'):
+				for essid in network.findall('SSID'):
+					numberID=numberID+1
+					print " ["+str(numberID)+"] Threads"
+	except:
+		#print sys.exc_info() DEBUG
+		commands.getoutput('rm /tmp/*.netxml')
+		
 ### MY LOCAL IP ### 
 def myip():
 	s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
