@@ -46,9 +46,9 @@ def ddos(run):
 			ping.interfaces(1)
 			ping.monitor()
 			d.space()
-		elif actions[0:8] == "set interface":
-			defaultint=ping.update(defaultint,actions,"interface")
-			d.change("interface",defaultint)
+		elif actions[0:8] == "set device":
+			defaultint=ping.update(defaultint,actions,"device")
+			d.change("device",defaultint)
 		elif actions[0:9] == "set bssid":
 			defaultmac=ping.update(defaultmac,actions,"bssid")
 			d.change("bssid",defaultmac)
