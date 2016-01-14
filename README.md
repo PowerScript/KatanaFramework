@@ -93,7 +93,7 @@ mc/gendic|Dictionary generator|Redtoor|2.1
 
 # LICENSE
 Katana is licensed. 
-See [LICENSE](https://github.com/RedToor/Katana/blob/master/LICENSE) for more information.
+See [LICENSE](https://github.com/RedToor/Katana/blob/master/LICENCE) for more information.
 
 We need partners, if you're interested in support or help contact.
 
