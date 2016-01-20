@@ -91,6 +91,10 @@ fbt/sql|Brute force to sql|Redtoor|1.0
 fbt/pop3|Brute force to pop3|Redtoor|1.0
 mc/gendic|Dictionary generator|Redtoor|2.1
 
+# SUPPORT
+Questions, bugs or suggestions to : redtoor@inbox.ru
+or use "Issue" on github project
+
 # LICENSE
 Katana is licensed. 
 See [LICENSE](https://github.com/RedToor/Katana/blob/master/LICENCE) for more information.
