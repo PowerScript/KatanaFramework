@@ -3,7 +3,11 @@
 </center>
 ---
 [![Gitter chat](https://badges.gitter.im/totaljs/framework.png)](https://gitter.im/RedToor/Katana) ![Supported OS](https://img.shields.io/badge/Supported%20OS-Linux-yellow.svg) ![License](https://img.shields.io/badge/license-GPLv3-blue.svg) 
+<<<<<<< HEAD
+![CORE](https://img.shields.io/badge/core-0.0.0.8-green.svg)![Build](https://img.shields.io/badge/BUILD-0053-red.svg) 
+=======
 ![CORE](https://img.shields.io/badge/core-0.0.0.8-green.svg)![Build](https://img.shields.io/badge/BUILD-0052-red.svg) 
+>>>>>>> origin/master
 ---
 # ABOUT
 
@@ -69,6 +73,7 @@ web/cpfinder|Admin panel finder|Redtoor|1.0
 web/joomscan|Scanner vul's cms joomla|Redtoor|1.0
 web/dos|Denial of service web|Redtoor|1.0
 web/whois|Who-is web|Redtoor|1.0
+web/lfd-con|LFD vulnerability Console|Redtoor|1.0
 net/arpspoof|ARP-Spoofing attack|Redtoor|1.0
 net/lanlive|Host's up in my LAN|Redtoor|2.0
 net/arplook|ARP-Spoofing detector|cl34r|1.0

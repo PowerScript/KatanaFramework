@@ -3,6 +3,7 @@
 # @Katana Modules import
 #
 
+import LFDconsole
 import PortScanner
 import forenseIMAGE
 import Whois

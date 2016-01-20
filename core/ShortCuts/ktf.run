@@ -1,0 +1,2 @@
+cd /usr/share/katana
+python ktf.run.py -m $2

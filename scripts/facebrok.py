@@ -19,7 +19,7 @@ import subprocess             #
 # Default                     #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-: #
 username_sql="root"
-password_sql="toor"
+password_sql=""
 database_sql="facebrok_db"
 username_cp="admin"
 password_cp="admin"

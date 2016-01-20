@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 ### Katana Framework Runner
 ### you can redistribute it and/or modify
 ### it under the terms of the GNU General Public License as published by
@@ -119,4 +120,7 @@ if __name__=="__main__":
 				exit()
 			if m == "net/portscan":
 				PortScanner.PortScanner(0)
+				exit()
+			if m == "web/lfd-con":
+				LFDconsole.LFDconsole(0)
 				exit()

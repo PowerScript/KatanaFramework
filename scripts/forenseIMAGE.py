@@ -57,16 +57,11 @@ def exiftool(run):
 						if True:
 							try:
 								print "\n "+Hlp+" Forence Imagen Client help\n"
-								print "  ------------------------------------------"
-								print "  |"+colors[6]+"Command    "+colors[0]+"| "+colors[6]+"Description"+colors[0]+"    | "+colors[6]+"Examples"+colors[0]+"  |"
-								print "  ------------------------------------------"
-								print "  |extrat_all | extrat all MD  | ls        |" 
-								print "  ------------------------------------------"
-								d.space()
+								
 								cmd="nop"
 								while(cmd!="exit"):
 									cmd = raw_input(d.Client_prompt('forence{IMAGEN}'))
-									if(cmd=="extrat_all"):
+									if(cmd=="extract_all"):
 										subprocess.call("perl files/exiftool/exiftool "+defaultimg, shell=True)
 							except:
 								Errors.Errors(event=sys.exc_info()[0], info=False)

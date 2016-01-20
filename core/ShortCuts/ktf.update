@@ -1,0 +1,2 @@
+cd /usr/share/katana
+python ktf.update.py

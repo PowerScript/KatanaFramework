@@ -1,0 +1,2 @@
+cd /usr/share/katana
+python ktf.linker.py -m $2

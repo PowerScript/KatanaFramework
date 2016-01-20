@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 ### Katana Framework 
 ### you can redistribute it and/or modify
 ### it under the terms of the GNU General Public License as published by
@@ -10,27 +11,18 @@ from core import help
 from core import colors
 from core import updatekatana
 from core import splash
+from core import Errors
 import xml.etree.ElementTree as ET
+import sys 
 
 tree = ET.parse('core/modules.xml')
 root = tree.getroot()
 
-print """
-	 .-.--.  
-	 \  \==\ """+colors.O+"""Katana Framework"""+colors.W+"""
-	 /- /==/ 
-	/' /==/  """+colors.G+"""~"""+colors.R+"""Core"""+colors.W+""" = """+info.version+""", Build: """+info.build+"""
-	|,|==|   """+colors.G+"""~"""+colors.R+"""Theme"""+colors.W+""" = """+info.tema+"""
-	\  \==\  """+colors.G+"""~"""+colors.R+"""Modules"""+colors.W+""" = """+colors.G+""""""+info.modules+""""""+colors.W+"""
-	 \ ,\==\ """+colors.G+"""~"""+colors.R+"""Date"""+colors.W+""" = """+info.date+"""
-	 / -/==/ """+colors.B+""" Github: redtoor/Katana"""+colors.W+"""
-	 `-'--'  
-	  """
-
-def line(module, description):
+def Line(module, description):
 	print  colors.W+""" |\033[4m"""+colors.R+"""=="""+colors.W+"""|::|  """+module+"\t\t"+description
-def katana():
-	if True:
+
+def katanaFrameworkMainFunction():
+	try:
 		action = raw_input(colors.W+" \033[1mktf\033[40m>"+colors.W)
 		if action == "show modules" or action == "showm":
 			print """ 
@@ -40,10 +32,10 @@ def katana():
  			for module in root.findall('module'):
 				name = module.get('name')
 				description = module.find('description').text
-				line(name,description)
+				Line(name,description)
 			print """ /RT/, / 
  `--`-' \n""" 
-			katana()
+			katanaFrameworkMainFunction()
 
 		elif action[0:3] == "use":
 			# WEB : Web Tools
@@ -59,6 +51,8 @@ def katana():
 				dosweb.dosweb(0)
 			if action[4:13] == "web/whois":
 				Whois.wuis(0)
+			if action[4:15] == "web/lfd-con":
+				LFDconsole.LFDconsole(0)
 			# NET : Networks Tools
 			if action[4:16] == "net/arplook":
 				ARPLooking.arplook(0)
@@ -123,18 +117,34 @@ def katana():
 				forenseIMAGE.exiftool(0)
 				exit()
 			else:
-				katana()
+				katanaFrameworkMainFunction()
 		elif action == "exit" or action == "x":
 			exit()
 		elif action == "help" or action == "h":
 			help.help()
-			katana()
+			katanaFrameworkMainFunction()
 		elif action == "update" or action == "u":
 			updatekatana.update()
 		elif action == "clear" or action == "c":
 			subprocess.call('clear', shell=True)
-			katana()			
+			katanaFrameworkMainFunction()			
 		else:
 			print " ["+colors.R+"!"+colors.W+"] Invalid parameter use show 'help' for more information"+colors.W
-			katana()
-katana()
+			katanaFrameworkMainFunction()
+	except:
+		Errors.Errors(event=sys.exc_info()[0], info=False)
+
+print """
+	 .-.--.  
+	 \  \==\ 
+	 /- /==/ """+colors.W+"""\033[41m Katana Framework                    """+colors.W+"""
+	/' /==/  """+colors.W+"""\033[1m Core    """+colors.W+""" = """+info.version+""", Build: """+info.build+"""
+	|,|==|   """+colors.W+"""\033[1m Date    """+colors.W+""" = """+info.date+"""
+	\  \==\  """+colors.W+"""\033[1m Theme   """+colors.W+""" = """+info.tema+"""
+	 \ ,\==\ """+colors.W+"""\033[1m Modules """+colors.W+""" = """""+info.modules+""" Scritp's"""+colors.W+"""
+	 / -/==/ """+colors.W+""" By RedToor"""+colors.W+"""
+	 `-'--'  
+	  """
+	  
+if __name__=="__main__":
+	katanaFrameworkMainFunction()

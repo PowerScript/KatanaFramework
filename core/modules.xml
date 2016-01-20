@@ -15,6 +15,9 @@
     <module name="web/whois">
         <description>Who-is web</description>
     </module>
+    <module name="web/lfd-con">
+        <description>LFD vulnerability Console</description>
+    </module>
     <module name="net/arpspoof">
         <description>ARP-Spoofing attack</description>
     </module>
