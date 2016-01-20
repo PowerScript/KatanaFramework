@@ -89,6 +89,7 @@ def facebrok(run):
 						print(" "+Alr+" Installing facebrok"),ping.status_cmd('wget -b -nv --post-data "server=127.0.0.1&user='+username_sql+'&pass='+password_sql+'&data='+database_sql+'&userp='+username_cp+'&passp='+password_cp+'" 127.0.0.1/croak/install/startgame.php','\t\t\t')
 						d.space()
 						print(" "+Got+" Script Running in http://127.0.0.1/")
+						print(" "+Got+" Control Panel in http://127.0.0.1/croak/ with "+username_cp+":"+password_cp)
 						d.space()
 						raw_input(" "+Hlp+" Press any key for Stop facebrok")
 						d.space()
