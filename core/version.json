@@ -5,15 +5,13 @@
     "Version"       : "0.1",
 		"Update"   : {
           "Core"    : "0.0.0.8",
-<<<<<<< HEAD
+
 			    "Build"   : "0053",
 			    "Date"    : "14/01/16",
 			    "Modules" : "31"
-=======
 			    "Build"   : "0052",
 			    "Date"    : "06/12/15",
 			    "Modules" : "30"
->>>>>>> origin/master
         }
     }
 }
