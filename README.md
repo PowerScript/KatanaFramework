@@ -2,7 +2,7 @@
 <img src="http://web.alsa.org/images/content/pagebuilder/KTF_Logo.jpg" title="Python" align="center">
 </center>
 [![Gitter chat](https://badges.gitter.im/totaljs/framework.png)](https://gitter.im/RedToor/Katana) ![Supported OS](https://img.shields.io/badge/Supported%20OS-Linux-yellow.svg) ![License](https://img.shields.io/badge/license-GPLv3-blue.svg) 
-![CORE](https://img.shields.io/badge/core-0.0.0.8-green.svg)![Build](https://img.shields.io/badge/BUILD-0053-red.svg) 
+![CORE](https://img.shields.io/badge/core-0.0.0.8-green.svg)![Build](https://img.shields.io/badge/BUILD-0054-red.svg) 
 ---
 # ABOUT
 
@@ -72,14 +72,14 @@ web/lfd-con|LFD vulnerability Console|Redtoor|1.0
 net/arpspoof|ARP-Spoofing attack|Redtoor|1.0
 net/lanlive|Host's up in my LAN|Redtoor|2.0
 net/arplook|ARP-Spoofing detector|cl34r|1.0
-net/portscan|Port Scanner|RedToor|1.0
+net/portscan|Port Scanner|RedToor|1.1
 set/gdreport|Getting information with web|RedToor|3.0
 set/mailboom|E-mail boombing SPAM|RedToor|1.0
 set/facebrok|facebook phishing plataform|RedToor|1.7
 fle/brutezip|Brute force to zip files|LeSZO ZerO|1.0
 fle/bruterar|Brute force to rar files|LeSZO ZerO|1.0
 clt/ftp|Console ftp client|Redtoor|1.0
-clt/sql|Console sql client|Redtoor|1.0
+clt/sql|Console sql client|Redtoor|1.1
 clt/pop3|Console pop3 client|Redtoor|1.0
 clt/ftp|Console ftp client|Redtoor|1.0
 ser/sql|Start SQL server|Redtoor|1.0
@@ -90,6 +90,7 @@ fbt/ssh|Brute force to ssh|Redtoor|1.0
 fbt/sql|Brute force to sql|Redtoor|1.0
 fbt/pop3|Brute force to pop3|Redtoor|1.0
 mc/gendic|Dictionary generator|Redtoor|2.1
+wifi/dos|Denial of service wifi|Redtoor|2.0
 
 # SUPPORT
 Questions, bugs or suggestions to : redtoor@inbox.ru
