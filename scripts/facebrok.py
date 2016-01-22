@@ -38,7 +38,7 @@ def facebrok(run):
 	try:
 		global username_sql,password_sql,database_sql,username_cp,password_cp
 		if run!=1:
-			actions=raw_input(d.prompt("seng/facebrok"))
+			actions=raw_input(d.prompt("set/facebrok"))
 		else:
 			actions="run"
 		if actions == "show options" or actions == "sop":
