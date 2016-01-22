@@ -3,6 +3,7 @@
 # Modules   : Port Scanner      #
 # Script by : RedToor           #
 # Date      : 28/11/2015        #
+# Version   : 1.1               #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Katana Core                   #
 from core.design import *       #
@@ -20,7 +21,7 @@ import commands
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Default                       #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
-defaultnet="192.168.0.21"
+defaultnet="192.168.1.215"
 defaulttyp="p-0"
 parameter="-T4 -A -v"
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
@@ -45,17 +46,17 @@ def PortScanner(run):
 			d.descrip("type","no","Type of scan",defaulttyp)
 			d.space()
 			d.helpAUX()
-			print " "+colors[7]+"Type  Description"+colors[0]
-			print " [p-0] Intense scan"	
-			print " [p-1] Intense scan plus UDP"
-			print " [p-2] Intense scan, all TCP ports"	
-			print " [p-3] Intense scan, no ping"
-			print " [p-4] Ping scan"	
-			print " [p-5] Quick scan"
-			print " [p-6] Quick scan plus"	
-			print " [p-7] Quick traceroute"
-			print " [p-8] Regular scan"	
-			print " [p-9] Slow comprehensive scan"
+			print " "+colors[7]+"Type  Description                       Speed"+colors[0]
+			print " [p-0] Intense scan                       slow"	
+			print " [p-1] Intense scan plus UDP              slow"
+			print " [p-2] Intense scan, all TCP ports        very slow"	
+			print " [p-3] Intense scan, no ping              slow"
+			print " [p-4] Ping scan                          fast"	
+			print " [p-5] Quick scan                         fast"
+			print " [p-6] Quick scan plus                    fast"                        	
+			print " [p-7] Quick traceroute                   fast"
+			print " [p-8] Regular scan                       slow"	
+			print " [p-9] Slow comprehensive scan            fast"
 			d.space()
 			PortScanner(0)
 		elif actions[0:10] == "set target":
@@ -69,7 +70,7 @@ def PortScanner(run):
 				parameter="-sS -sU -T4 -A -v"
 			elif defaulttyp=="p-2":
 				parameter="-p 1-65535 -T4 -A -v"
-			if defaulttyp=="p-3":
+			elif defaulttyp=="p-3":
 				parameter="-T4 -A -v -Pn"
 			elif defaulttyp=="p-4":
 				parameter="-sn"
@@ -99,8 +100,10 @@ def PortScanner(run):
 		elif actions=="run"  or actions=="r":
 			d.run()
 			try:
+				print " "+Alr+" Scanning Target: "+defaultnet+" wait it may take a few minutes."
 				OSMATCHs=[]
 				SERVICEs=[]
+				INFORMEs=[]
 				MAC="Unknow"
 				VENDOR="Unknow"
 				d.space()
@@ -132,13 +135,22 @@ def PortScanner(run):
 									product=service.get('product')
 									version=service.get('version')
 									info=service.get('extrainfo')
+								product=str("{NULL}" if product is None else product)
+								version=str("{NULL}" if version is None else version)
+								info=str("{NULL}" if info is None else info)
 								SERVICEs.append(colors[7]+service.get('name')+colors[0]+" ["+product+"] "+version+info+" "+colors[10]+colors[3]+PROTOCOL+"-Port: "+PORT+colors[0])
+
+					for hostscript in host.findall('hostscript'):
+						for script in hostscript.findall('script'):
+							if script.get('id') == 'smb-os-discovery':
+								INFORMEs.append(script.get('output'))
+
 					for os in host.findall('os'):
 						for osmatch in os.findall('osmatch'):
 							OSMATCHs.append(osmatch.get('name'))
 
 
-				print " Ip address: "+IP
+				print " Ip address: "+defaultnet
 				print " Mac       : "+MAC
 				print " Vendor    : "+VENDOR
 				print " OS Matchs : "
@@ -146,13 +158,18 @@ def PortScanner(run):
 					print "             "+os
 				print " Services  : " 				
 				for services in SERVICEs:
-					print "             "+services 
+					print "             "+str(services) 
+				print " Report    :"
+				for informer in INFORMEs:
+					informer=str("{NULL}" if informer is Null else informer)
+					print str(informer) 
 				commands.getoutput('rm tmp/portScanner-tmp.xml > null')
 				d.space()
 			except:
-				Errors.Errors(event=sys.exc_info(), info=False)
+				Errors.Errors(event=sys.exc_info(), info=sys.exc_traceback.tb_lineno)
 		else:
 			d.No_actions()
 	except:
 		Errors.Errors(event=sys.exc_info(), info=False)
 	PortScanner(0)
+
