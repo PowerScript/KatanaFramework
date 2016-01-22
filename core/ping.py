@@ -154,11 +154,11 @@ def interfaces(output):
 def monitor():
 	Monitor=commands.getoutput("airmon-ng | grep 'mon' | awk '{print $1}'")
 	Monitor=Monitor.replace("\n",",")
-	if Monitor=="":
+	if =="":
 		Monitor="No monitor mode enabled, use 'start {Interface}' right here."
 	print " Int... Monitor  : ",Monitor
 	if Monitor!="No monitor mode enabled, use 'start {Interface}' right here.":
-		scanwifi()
+		scanwifi(Monitor)
 		print ""
 
 ### IP's SCANNING LAN ###
