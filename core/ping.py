@@ -100,8 +100,8 @@ def Subprocess(process):
 
 ### AP's SCAN ###
 def scanwifi(mon):
-	Subprocess('airodump-ng '+mon+' -w /tmp/ktf.wifi --output-format netxml --write-interval 5 > null')
-	print colors.GR+" Scanning Access Points in Interface '"+mon+"', 5s Interval ("+colors.G+"Ctrol+c"+colors.GR+") for Stop"+colors.W+"\n"
+	Subprocess('airodump-ng '+mon+' -w /tmp/ktf.wifi --output-format netxml --write-interval 10 > null')
+	print colors.GR+" Scanning Access Points in Interface '"+mon+"', 10s Interval ("+colors.G+"Ctrol+c"+colors.GR+") for Stop"+colors.W+"\n"
 	try:
 		numberID=0
 		while True:
@@ -142,7 +142,7 @@ def get_external_ip():
 
 ### INTERFACES SCANNING ###
 def interfaces(output):
-	Interfaces=commands.getoutput("airmon-ng | grep 'wlan' | awk '{print $2}'")
+	Interfaces=commands.getoutput(" netstat -i | grep 'wlan' | awk '{print $1}'")
 	Interfaces=Interfaces.replace("\n",",")
 	if output==1:
 		if Interfaces=="":
@@ -150,11 +150,19 @@ def interfaces(output):
 		else:
 			print " Interfaces : ",Interfaces
 
+### CHECK DEVICE ###
+def checkDevice(device):
+	devices=commands.getoutput("netstat -i")
+	if devices.find(device) >= 0:
+		return True
+	else:
+		return False
+
 ### GET MONITORS ###
 def monitor():
-	Monitor=commands.getoutput("airmon-ng | grep 'mon' | awk '{print $1}'")
+	Monitor=commands.getoutput("airmon-ng | grep 'mon' | awk '{print $2}'")
 	Monitor=Monitor.replace("\n",",")
-	if =="":
+	if Monitor=="":
 		Monitor="No monitor mode enabled, use 'start {Interface}' right here."
 	print " Int... Monitor  : ",Monitor
 	if Monitor!="No monitor mode enabled, use 'start {Interface}' right here.":
@@ -260,7 +268,7 @@ def MakeVarTmpIP(Value):
 def MakeVarTmpMAC(Value):
 	VARIABLESMAC.append(Value)
 
-	### UPDATE PARAMATERS ###
+### UPDATE PARAMATERS ###
 def update(variable,value,name):
 	var=len(name)+5
 	value=value[var:]
