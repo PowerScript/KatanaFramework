@@ -92,6 +92,8 @@ class DESIGN:
 		return "parameter '"+string+"' not allow."
 	def VError(self):
 		print " "+Bad+" Value Error: [LINKER] is necesary all parameters, type 'sop'."
+	def NoDeviceFound(self, device):
+		print " "+Bad+" The divice '"+device+"' not was Found.\n"
 	def ktflab(self,version,build):
 		print """
 		   __   __  ___"""+colors[3]+"""__     __     """+colors[0]+"""
