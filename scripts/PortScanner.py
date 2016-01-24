@@ -161,7 +161,7 @@ def PortScanner(run):
 					print "             "+str(services) 
 				print " Report    :"
 				for informer in INFORMEs:
-					informer=str("{NULL}" if informer is Null else informer)
+					informer=str("{NULL}" if informer is "" else informer)
 					print str(informer) 
 				commands.getoutput('rm tmp/portScanner-tmp.xml > null')
 				d.space()
