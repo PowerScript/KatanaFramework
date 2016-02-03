@@ -114,4 +114,4 @@ Blog of project [ES]: http://cave-rt.blogspot.com.co/2015/07/instalacion-y-uso-k
 
 from <img src="http://www.euromonitor.com/medialibrary/Image/Flag_20x20_Colombia.png" title="Colombia"> made in <img src="https://developer.ibm.com/predictiveanalytics/wp-content/uploads/sites/48/2015/04/python-icon.png" title="Python"> with <img src="http://cdn0.bodas.com.mx/img/smileys/smiley_heart.png" title="Love"> by <font color="red">Red</font>Toor, if you want Donate <img src="http://www.wbtcb.com/frontend/webroot/gfx/bitcoin-ico.gif" title="Bitcoins"> 1PAq7a9TqkJzEfBZGXGf2YFAU5KBZRccnW
 
-
+© 2015-2016
