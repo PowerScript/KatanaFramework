@@ -1,5 +1,0 @@
-AuthName “Restricted Area - KatanaLab”
-AuthType Basic
-AuthUserFile /var/www/KatanaLAB/dir-protected/.htpasswd
-AuthGroupFile /dev/null
-require valid-user
