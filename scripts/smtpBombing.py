@@ -42,7 +42,7 @@ def smtpbombing(run):
 	global defaulthost,defaultport,defaultfrom,defaultdest,defaultsubj,defaulttemp,defaultmany
 	try:
 		if run!=1:
-			actions=raw_input(d.prompt("eng/mailboom"))
+			actions=raw_input(d.prompt("set/mailboom"))
 		else:
 			actions="run"
 		if actions == "show options" or actions == "sop":
