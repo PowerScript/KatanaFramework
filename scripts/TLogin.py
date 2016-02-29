@@ -17,7 +17,7 @@ d=DESIGN()                   #
 #from lib import MySQLdb     #
 from lib.ftplib.ftplib import FTP
 from core import help        #
-import pxssh                 #
+from pexpect import pxssh    #
 import poplib                #
 import socket                #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
