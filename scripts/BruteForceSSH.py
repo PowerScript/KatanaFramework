@@ -16,7 +16,7 @@ d=DESIGN()                      #
 # Libraries                     #
 import time                     #
 import optparse                 #
-import pxssh                    #
+from pexpect import pxssh       #
 import os                       #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Default                       #
