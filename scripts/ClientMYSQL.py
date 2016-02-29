@@ -16,7 +16,7 @@ d=DESIGN()                   #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # Libraries                  #
 import socket                #
-from lib import MySQLdb      #
+#from lib import MySQLdb     #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # Default                    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
