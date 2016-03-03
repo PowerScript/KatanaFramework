@@ -14,7 +14,7 @@ import sys                      #
 d=DESIGN()                      #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Libraries                     #
-#from lib import MySQLdb        #
+import MySQLdb                  #
 import socket                   # 
 import time                     #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #

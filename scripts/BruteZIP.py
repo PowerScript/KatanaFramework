@@ -3,6 +3,7 @@
 # Modules   : ZIP Brute Force   #
 # Script by : LeSZO ZerO        #
 # Date      : 28/02/2015        #
+# Version   : 2.0
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Katana Core                   #
 from core.design import *       #
@@ -25,9 +26,9 @@ defaultdicc=DITIONARY_PASSWORDS
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
 
-def run(file,dictionary):
+def run(files,dictionary):
 	global defaultarch,defaultdicc
-	defaultarch=file
+	defaultarch=files
 	defaultdicc=dictionary
 	btzip(1)
 
@@ -41,15 +42,15 @@ def btzip(run):
 		if actions == "show options" or actions == "sop":
 			d.option()
 			d.descrip("file","yes","file with pass",defaultarch)
- 			d.descrip("dict_1","yes","Dictionary pass",defaultdicc)
+ 			d.descrip("dict","yes","Dictionary pass",defaultdicc)
 			print ""
 			btzip(0)
 		elif actions[0:8] == "set file":
 			defaultarch=ping.update(defaultarch,actions,"file")
 			d.change("file",defaultarch)
-		elif actions[0:10] == "set dict_1":
-			defaultdicc=ping.update(defaultdicc,actions,"dict_1")
-			d.change("dict_1",defaultdicc)
+		elif actions[0:8] == "set dict":
+			defaultdicc=ping.update(defaultdicc,actions,"dict")
+			d.change("dict",defaultdicc)
 		elif actions=="exit" or actions=="x":
 			d.goodbye()
 			exit()
@@ -64,20 +65,21 @@ def btzip(run):
 				Arch = open(defaultdicc,"r")
 				if True:
 					leeArchivo = Arch.readlines()
-					for palabra in leeArchivo:
-						palabraLlegada = palabra.split("\n")
-						try:
-							ZIParch = zipfile.ZipFile(defaultarch)
-							try:
-								ZIParch.extractall(pwd=str(palabraLlegada[0]))
-								if True:
-									ping.savetwo("BruteForceZIP",defaultarch,palabraLlegada[0])
-									print "\n-"+Suf+" file Cracked with =",str(palabraLlegada[0])+"\n"
-									return 1
-							except:
-								print " "+Alr+" Checking with ",str(palabraLlegada[0])
-						except:
-							Errors.Errors(event=sys.exc_info(), info=defaultarch)
+					try:
+						ZIParch = zipfile.ZipFile(defaultarch)
+						if True:
+							for palabra in leeArchivo:
+								palabraLlegada = palabra.split("\n")
+								try:
+									ZIParch.extractall(pwd=str(palabraLlegada[0]))
+									if True:
+										ping.savetwo("BruteForceZIP",defaultarch,palabraLlegada[0])
+										print "\n-"+Suf+" file Cracked with =",str(palabraLlegada[0])+"\n"
+										return 1
+								except:
+									print " "+Alr+" Checking with ",str(palabraLlegada[0])
+					except:
+						Errors.Errors(event=sys.exc_info(), info=defaultarch)
 			except:
 				Errors.Errors(event=sys.exc_info(), info=defaultdicc)
 		else:

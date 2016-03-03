@@ -19,16 +19,16 @@ tree = ET.parse('core/modules.xml')
 root = tree.getroot()
 
 def Line(module, description):
-	print  colors.W+""" |\033[4m"""+colors.R+"""=="""+colors.W+"""|::|  """+module+"\t\t"+description
+	print  colors.W+""" |"""+colors.R+"""=="""+colors.W+"""|::|  """+module+"\t\t"+description
 
 def katanaFrameworkMainFunction():
 	try:
-		action = raw_input(colors.W+" \033[1mktf\033[40m>"+colors.W)
+		action = raw_input(colors.GR+" KTF>"+colors.W)
 		if action == "show modules" or action == "showm":
 			print """ 
   ,--.-,  
- /BY/  /  \033[1m Module                   Description                """+colors.W+"""
- """+colors.W+"""|\033[4m"""+colors.R+"""=="""+colors.W+"""|::|  web/httpbt"""+colors.W+"""\t\tBrute force to HTTP 401"""+colors.W
+ /BY/  /  """+colors.GR+""" Module                   Description                """+colors.W+"""
+ """+colors.W+"""|"""+colors.R+"""=="""+colors.W+"""|::|  web/httpbt"""+colors.W+"""\t\tBrute force to HTTP 401"""+colors.W
  			for module in root.findall('module'):
 				name = module.get('name')
 				description = module.find('description').text
@@ -137,11 +137,11 @@ def katanaFrameworkMainFunction():
 print """
 	 .-.--.  
 	 \  \==\ 
-	 /- /==/ """+colors.W+"""\033[41m Katana Framework                    """+colors.W+"""
-	/' /==/  """+colors.W+"""\033[1m Core    """+colors.W+""" = """+info.version+""", Build: """+info.build+"""
-	|,|==|   """+colors.W+"""\033[1m Date    """+colors.W+""" = """+info.date+"""
-	\  \==\  """+colors.W+"""\033[1m Theme   """+colors.W+""" = """+info.tema+"""
-	 \ ,\==\ """+colors.W+"""\033[1m Modules """+colors.W+""" = """""+info.modules+""" Scritp's"""+colors.W+"""
+	 /- /==/ """+colors.GR+""" Katana Framework                    """+colors.W+"""
+	/' /==/  """+colors.B+""" Core    """+colors.W+""" = """+info.version+""", Build: """+info.build+"""
+	|,|==|   """+colors.B+""" Date    """+colors.W+""" = """+info.date+"""
+	\  \==\  """+colors.B+""" Theme   """+colors.W+""" = """+info.tema+"""
+	 \ ,\==\ """+colors.B+""" Modules """+colors.W+""" = """""+info.modules+""" Scritp's"""+colors.W+"""
 	 / -/==/ """+colors.W+""" By RedToor"""+colors.W+"""
 	 `-'--'  
 	  """

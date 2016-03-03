@@ -23,12 +23,12 @@ defaultuser="anonymous"
 defaultpass="pass"
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 
-def run(para,parb,parc,pard):
+def run(target,port,username,password):
 	global defaulthost,defaultport,defaultuser,defaultpass
-	defaulthost=para
-	defaultport=parb
-	defaultuser=parc
-	defaultpass=pard
+	defaulthost=target
+	defaultport=port
+	defaultuser=username
+	defaultpass=password
 	cftp(1)
 
 def cftp(run):

@@ -26,10 +26,10 @@ defaultlon=DEFAUTL_LONGITED
 defaultstr="chars_min"
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 
-def run(dictionary, longitude, types):
+def run(dictionary, length, types):
 	global defaultdic,defaultlon,defaultstr
 	defaultdic=dictionary
-	defaultlon=longitude
+	defaultlon=defaultlon
 	defaultstr=types
 	Gendic(1)
 

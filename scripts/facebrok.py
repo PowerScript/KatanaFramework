@@ -25,13 +25,13 @@ username_cp="admin"
 password_cp="admin"
 # :-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
-def run(para,parb,parc,pard,pare):
+def run(username,password,database,userp,passp):
 	global username_sql,password_sql,database_sql,username_cp,password_cp
-	username_sql=para
-	password_sql=parb
-	database_sql=parc
-	username_cp=pard
-	password_cp=pase
+	username_sql=username
+	password_sql=password
+	database_sql=database
+	username_cp=userp
+	password_cp=passp
 	facebrok(1)
 
 def facebrok(run):
@@ -89,7 +89,7 @@ def facebrok(run):
 						print(" "+Alr+" Installing facebrok"),ping.status_cmd('wget -b -nv --post-data "server=127.0.0.1&user='+username_sql+'&pass='+password_sql+'&data='+database_sql+'&userp='+username_cp+'&passp='+password_cp+'" 127.0.0.1/croak/install/startgame.php','\t\t\t')
 						d.space()
 						print(" "+Got+" Script Running in http://127.0.0.1/")
-						print(" "+Got+" Control Panel in http://127.0.0.1/croak/ with "+username_cp+":"+password_cp)
+						print(" "+Got+" Control Panel in http://127.0.0.1/croak/")
 						d.space()
 						raw_input(" "+Hlp+" Press any key for Stop facebrok")
 						d.space()

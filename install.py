@@ -59,7 +59,6 @@ Shortcuts="""
 ln -f -r -s /usr/share/katana/core/ShortCuts/ktf.console /usr/bin/ktf.console ;
 ln -f -r -s /usr/share/katana/core/ShortCuts/ktf.linker  /usr/bin/ktf.linker  ;
 ln -f -r -s /usr/share/katana/core/ShortCuts/ktf.update  /usr/bin/ktf.update  ;
-ln -f -r -s /usr/share/katana/core/ShortCuts/ktf.lab     /usr/bin/ktf.lab     ;
 ln -f -r -s /usr/share/katana/core/ShortCuts/ktf.run     /usr/bin/ktf.run     ;
 """ 
 

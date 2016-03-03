@@ -10,10 +10,11 @@
 import time
 
 
-		#White    #Red          #Green      #Orange    #Blue       #Purple     #Cyan
-colors=['\033[0m', '\033[31m', '\033[32m', '\033[33m', '\033[34m', '\033[35m', '\033[36m'
-		,'\033[1m', '\033[4m', '\033[0m', '\033[40m']
-		#Bold       #Underl     #ENDL       #BackBlack
+
+			#White    #Red          #Green      #Orange    #Blue       #Purple     #Cyan
+colors=['\033[0m', '\033[31m', '\033[32m', '\033[33m', '\033[34m', '\033[35m', '\033[36m','\033[1m', '\033[4m', '\033[0m', '\033[40m']
+			#Bold       #Underl     #ENDL       #BackBlack
+
 
 # Alerts 
 Bad=colors[0]+"["+colors[1]+"Err"+colors[0]+"]"
@@ -33,7 +34,7 @@ class DESIGN:
 		if module == 1:
 			print " test module"
 	def prompt(self, module):
-		promp=""+colors[0]+" \033[1mktn"+colors[0]+"::\033[4m"+colors[3]+module+colors[0]+" \033[1m\033[40m>"+colors[0]
+		promp=colors[0]+" "+colors[0]+"ktn"+colors[0]+"::"+colors[3]+module+colors[0]+" "+colors[0]+">"+colors[0]
 		return promp
 	def option(self):
 		print "\n [options]\t[RQ]\t[description]\t\t[value]"
@@ -115,3 +116,11 @@ class DESIGN:
 		 /  '_/ __/ _/"""+colors[1]+"""_ __/ // / _ \\   """+colors[0]+"""
 		/_/\_\\\\_/__/ """+colors[1]+"""/_/  \_,_/_//_/  """+colors[0]+"""
 		Core:"""+version+"""/Build:"""+build+"\n"
+	def ktfgui(self):
+		print """
+		   __   __  ___          _ 
+		  / /__/ /_/ _/__ ___ __(_)
+		 /  '_/ __/ _/ _ `/ // / / 
+		/_/\_\\__/_/ \_, /\_,_/_/  
+		Versio 0.0.1/___/ \n"""
+

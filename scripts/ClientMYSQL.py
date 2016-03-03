@@ -16,7 +16,7 @@ d=DESIGN()                   #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # Libraries                  #
 import socket                #
-#from lib import MySQLdb     #
+import MySQLdb               #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # Default                    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
@@ -51,7 +51,6 @@ def cmysql(run):
 			d.space()
 			cmysql(0)
 		elif actions[0:10] == "set target":
-			defaulthost=defaulthost.replace("http://", "")
 			defaulthost=ping.update(defaulthost,actions,"target")
 			d.change("target",defaulthost)
 		elif actions[0:8] == "set port":

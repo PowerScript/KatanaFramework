@@ -1,6 +1,6 @@
 #
 # Katana framework 
-# @Katana Splashs
+# @Katana Splash
 #
 
 from core import colors
@@ -12,16 +12,16 @@ subprocess.call('clear', shell=True)
 splash2=colors.B+"""
           mM@@MM@@MM@@MM@@MM@@MM@@@MMM@@MM@@@@Mm
          mMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMm
-         @MMMM"""+colors.GR+"""MMM"""+colors.B+"""MMM"""+colors.GR+"""MMM"""+colors.B+"""MM"""+colors.GR+"""MMMMMMMMM"""+colors.B+"""MMM"""+colors.GR+"""MMMMMMM"""+colors.B+"""MMMMm
-         MMMMM"""+colors.GR+"""MMM"""+colors.B+"""MM"""+colors.GR+"""MMM"""+colors.B+"""MMM"""+colors.GR+"""MMMMMMMMM"""+colors.B+"""MMM"""+colors.GR+"""MMMMMMM"""+colors.B+"""MMMM@
-         @MMMM"""+colors.GR+"""MMMMMM"""+colors.B+"""MMMMMMMM"""+colors.GR+"""MMM"""+colors.B+"""MMMMMM"""+colors.GR+"""MMM"""+colors.B+"""MMMMMMMMM
-         MMMMM"""+colors.GR+"""MMM"""+colors.B+"""MM"""+colors.GR+"""MMMM"""+colors.B+"""MMMMM"""+colors.GR+"""MMM"""+colors.B+"""MMMMMM"""+colors.GR+"""MMMMMMM"""+colors.B+"""MMMM@
-         @MMMM"""+colors.GR+"""MMM"""+colors.B+"""MMM"""+colors.GR+"""MMM"""+colors.B+"""MMMMM"""+colors.GR+"""MMM"""+colors.B+"""MMMMMM"""+colors.GR+"""MMMMMMM"""+colors.B+"""MMMMM
-         MMMMM"""+colors.GR+"""MMM"""+colors.B+"""MMM"""+colors.GR+"""MMM"""+colors.B+"""MMMMM"""+colors.GR+"""MMM"""+colors.B+"""MMMMMM"""+colors.GR+"""MMM"""+colors.B+"""MMMMMMMM@
-         @MMMM"""+colors.GR+"""MMM"""+colors.B+"""MMM"""+colors.GR+"""MMM"""+colors.B+"""MMMMM"""+colors.GR+"""MMM"""+colors.B+"""MMMMMM"""+colors.GR+"""MMM"""+colors.B+"""MMMMMMMMM
+         @MMMM"""+colors.W+"""MMM"""+colors.B+"""MMM"""+colors.W+"""MMM"""+colors.B+"""MM"""+colors.W+"""MMMMMMMMM"""+colors.B+"""MMM"""+colors.W+"""MMMMMMM"""+colors.B+"""MMMMm
+         MMMMM"""+colors.W+"""MMM"""+colors.B+"""MM"""+colors.W+"""MMM"""+colors.B+"""MMM"""+colors.W+"""MMMMMMMMM"""+colors.B+"""MMM"""+colors.W+"""MMMMMMM"""+colors.B+"""MMMM@
+         @MMMM"""+colors.W+"""MMMMMM"""+colors.B+"""MMMMMMMM"""+colors.W+"""MMM"""+colors.B+"""MMMMMM"""+colors.W+"""MMM"""+colors.B+"""MMMMMMMMM
+         MMMMM"""+colors.W+"""MMM"""+colors.B+"""MM"""+colors.W+"""MMMM"""+colors.B+"""MMMMM"""+colors.W+"""MMM"""+colors.B+"""MMMMMM"""+colors.W+"""MMMMMMM"""+colors.B+"""MMMM@
+         @MMMM"""+colors.W+"""MMM"""+colors.B+"""MMM"""+colors.W+"""MMM"""+colors.B+"""MMMMM"""+colors.W+"""MMM"""+colors.B+"""MMMMMM"""+colors.W+"""MMMMMMM"""+colors.B+"""MMMMM
+         MMMMM"""+colors.W+"""MMM"""+colors.B+"""MMM"""+colors.W+"""MMM"""+colors.B+"""MMMMM"""+colors.W+"""MMM"""+colors.B+"""MMMMMM"""+colors.W+"""MMM"""+colors.B+"""MMMMMMMM@
+         @MMMM"""+colors.W+"""MMM"""+colors.B+"""MMM"""+colors.W+"""MMM"""+colors.B+"""MMMMM"""+colors.W+"""MMM"""+colors.B+"""MMMMMM"""+colors.W+"""MMM"""+colors.B+"""MMMMMMMMM
          mMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMm
            @@MM@@MM@@MM@@MM@@MM@@MM@@MM@@MM@@Mm
-	   """+colors.GR
+	   """+colors.W
 
 
 splash4="""

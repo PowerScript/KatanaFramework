@@ -2,7 +2,7 @@
 <img src="http://web.alsa.org/images/content/pagebuilder/KTF_Logo.jpg" title="Python" align="center">
 </center>
 [![Gitter chat](https://badges.gitter.im/totaljs/framework.png)](https://gitter.im/RedToor/Katana) ![Supported OS](https://img.shields.io/badge/Supported%20OS-Linux-yellow.svg) ![License](https://img.shields.io/badge/license-GPLv3-blue.svg) 
-![CORE](https://img.shields.io/badge/core-0.0.0.8-green.svg)![Build](https://img.shields.io/badge/BUILD-0054-red.svg) 
+![CORE](https://img.shields.io/badge/core-0.0.0.8-green.svg)![Build](https://img.shields.io/badge/BUILD-0055-red.svg) 
 ---
 # ABOUT
 
@@ -55,8 +55,8 @@ Commands
         Option 2) ./sudo ktf.run -m Code-Name  
         Option 3) ./sudo ktf.linker -m Code-Name -t localhost -p 80 
         
-        Building (Katana Laboratory)                [ktf.lab] 
-        Building (Katana Graphical User Interface)  [ktf.gui]
+        Building (Katana Laboratory)       [ktf.lab] PREMIUM
+        (Katana Graphical User Interface)  [ktf.gui] PREMIUM
 ```
 # MODULES (SCRIPTS)
 
@@ -76,12 +76,11 @@ net/portscan|Port Scanner|RedToor|1.1
 set/gdreport|Getting information with web|RedToor|3.0
 set/mailboom|E-mail boombing SPAM|RedToor|1.0
 set/facebrok|facebook phishing plataform|RedToor|1.7
-fle/brutezip|Brute force to zip files|LeSZO ZerO|1.0
-fle/bruterar|Brute force to rar files|LeSZO ZerO|1.0
+fle/brutezip|Brute force to zip files|LeSZO ZerO|2.0
+fle/bruterar|Brute force to rar files|LeSZO ZerO|2.0
 clt/ftp|Console ftp client|Redtoor|1.0
 clt/sql|Console sql client|Redtoor|1.1
 clt/pop3|Console pop3 client|Redtoor|1.0
-clt/ftp|Console ftp client|Redtoor|1.0
 ser/sql|Start SQL server|Redtoor|1.0
 ser/apache|Start Apache server|Redtoor|1.0
 ser/ssh|Start SSH server|Redtoor|1.0

@@ -49,7 +49,7 @@ if __name__=="__main__":
 			if m == "clt/ftp":
 				ClientFTP.cftp(0)
 				exit()
-			if m == "fbt/ftp":
+			if m == "btf/ftp":
 				BruteForceFTP.btftp(0)
 				exit()
 			if m == "wifi/hwifipwd":

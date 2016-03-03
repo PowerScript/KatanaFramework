@@ -14,7 +14,7 @@ import getopt
 import sys
 
 CLASS_LINKER=DESIGN()
-options, remainder = getopt.getopt(sys.argv[1:], 'd:t:p:f:u:ps:m:s:c:z:x:v:q:h')
+options, remainder = getopt.getopt(sys.argv[1:], 'd:t:p:f:u:ps:m:s:c:z:x:v:q:o:l:t:i:g:h')
 for option, arg in options:
 		if option     == '-t':
 			t=arg
@@ -40,8 +40,18 @@ for option, arg in options:
 			z=arg
 		if option     == '-x':
 			x=arg
+		if option     == '-i':
+			i=arg
 		if option     == '-v':
 			v=arg
+		if option     == '-o':
+			o=arg
+		if option     == '-g':
+			g=arg
+		if option     == '-l':
+			l=arg
+		if option     == '-t':
+			t=arg
 		if option     == '-q':
 			q=arg
 
@@ -106,7 +116,7 @@ elif m == "web/dos":
 		CLASS_LINKER.space()	
 	else:
 		dosweb.run(target=t, port=p)
-elif m == "bt/pop3":
+elif m == "fbt/pop3":
 	if h==1:
 		print "\n python "+KTFLINKER+" -m bt/pop3 -t target.com -p 110 -u root@localhost -d core/db/pass.dicc\n"
 		print " -t [target]         IP or DNS target "
@@ -116,7 +126,7 @@ elif m == "bt/pop3":
 		CLASS_LINKER.space()
 	else:
 		BruteForcePOP3.run(target=t, port=p, username=u, dictionary=d)
-elif m == "bt/ftp":
+elif m == "btf/ftp":
 	if h==1:
 		print "\n python "+KTFLINKER+" -m bt/ftp -t target.com -p 21 -u root -d core/db/pass.dicc\n"
 		print " -t [target]         IP or DNS target "
@@ -155,7 +165,7 @@ elif m == "clt/sql":
 		CLASS_LINKER.space()
 	else:
 		ClientMYSQL.run(target=t,port=p,username=u,password=ps)
-elif m == "clt/pop3":
+elif m == "clt/pop":
 	if h==1:
 		print "\n python "+KTFLINKER+" -m clt/pop -t target.com -p 110 -u root@target.com -ps toor\n"
 		print " -t [target]         IP or DNS target "
@@ -165,7 +175,8 @@ elif m == "clt/pop3":
 		CLASS_LINKER.space()
 	else:
 		ClientPOP3.run(target=t,port=p,username=u,password=ps)
-elif m == "btf/sql":
+
+elif m == "fbt/sql":
 	if h==1:
 		print "\n python "+KTFLINKER+" -m btf/sql -t target.com -p 3306 -u root -d core/db/pass.dicc\n"
 		print " -t [target]         IP or DNS target "
@@ -175,7 +186,7 @@ elif m == "btf/sql":
 		CLASS_LINKER.space()
 	else:
 		BruteForceSQL.run(target=t,port=p,username=u,dictionary=d)
-elif m == "btf/ssh":
+elif m == "fbt/ssh":
 	if h==1:
 		print "\n python "+KTFLINKER+" -m btf/ssh -t target.com -p 22 -u root -d core/db/pass.dicc\n"
 		print " -t [target]         IP or DNS target "
@@ -210,11 +221,51 @@ elif m == "set/facebrok":
 		print " -z [password]         password Panel"
 		CLASS_LINKER.space()
 	else:
-		facebrok.run(username=u,password=0,database=c,userp=x,passp=z)
+		facebrok.run(username=u,password=ps,database="facebrok_db",userp=x,passp=z)
+elif m == "mc/gendic":
+	if h==1: 
+		print "\n python "+KTFLINKER+" -m mc/gendic -o /root/Desktop/dicc.cc -l 6 -t chars_min\n"
+		print " -o [output]         Patch output file"
+		print " -l [length]         length String"
+		print " -t [type]           chars_min, chars_may, chars_num , chars_mix"
+		CLASS_LINKER.space()
+	else:
+		GenDic.run(dictionary=o, length=l, types=t)
+elif m == "fle/bruterar":
+	if h==1: 
+		print "\n python "+KTFLINKER+" -m fle/bruterar -f /core/test/test.rar -d core/db/pass.dicc\n"
+		print " -f [file]          File to crack"
+		print " -d [dictionary]    Dictionary"
+		CLASS_LINKER.space()
+	else:
+		BruteRAR.run(files=f ,dictionary=d)
+elif m == "fle/brutezip":
+	if h==1: 
+		print "\n python "+KTFLINKER+" -m fle/brutezip -f /core/test/test.zip -d core/db/pass.dicc\n"
+		print " -f [file]          File to crack"
+		print " -d [dictionary]    Dictionary"
+		CLASS_LINKER.space()
+	else:
+		BruteZIP.run(files=f ,dictionary=d)
+elif m == "web/lfd-con":
+	if h==1: 
+		print "\n python "+KTFLINKER+" -m web/lfd-con -t 192.168.0.1 -p 80 -f /download.php\n"
+		print " -t [target]         IP or DNS target "
+		print " -p [port]           Port target"
+		print " -f [file]           Vulnerabled file"
+		CLASS_LINKER.space()
+	else:
+		LFDconsole.run(target=t, files=f, port=p)
+elif m == "net/arpspoof":
+	if h==1: 
+		print "\n python "+KTFLINKER+" net/arpspoof -t 192.168.0.1 -g 192.168.1.254 -i eth0\n"
+		print " -t [target]         IP or DNS target "
+		print " -g [gateway]        Gateway ip"
+		print " -i [interface]      Interface"
+		CLASS_LINKER.space()
+	else:
+		ARPPoisoning.run(target=t, source=g, interface=i)
 
-#ARPPoisoning.run("192.168.1.0","192.168.1.254","wlan0")
-#BruteZIP.run("core/db/test.zip","core/db/pass.dicc")
-#BruteRAR.run("core/db/test.rar","core/db/pass.dicc")
 #WpaBTF.run("core/test/test.cap","E8:40:F2:32:37:FD","core/db/pass.dicc")
 
 elif m == "":
