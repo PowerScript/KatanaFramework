@@ -43,19 +43,4 @@ SMTP_PORT="25"
 # PATHS SCRIPTS 
 NMAP_PATH="/usr/bin/nmap"
 
-# PARAMETER FOR LINKER FILE
-t=""
-p=""
-f=""
-u=""
-ps=""
-m=""
-s=""
-h=""
-v=""
-z=""
-x=""
-d=""
-c=""
-q=""
 
