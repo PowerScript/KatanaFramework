@@ -3,6 +3,7 @@
 # Modules   : Test Login     #
 # Script by : RedToor        #
 # Date      : 23/05/2015     #
+# Version   : 1.1            #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # Katana Core                #
 from core.design import *    #
@@ -14,7 +15,7 @@ import sys                   #
 d=DESIGN()                   #
 # :-:-:-:-:-:-:-:-:-:-:-:-:- #
 # Libraries                  #
-#from lib import MySQLdb     #
+import MySQLdb               #
 from lib.ftplib.ftplib import FTP
 from core import help        #
 from pexpect import pxssh    #
@@ -85,7 +86,7 @@ def tlogin(run):
 				if True:
 					print(" "+Suf+" Logged with "+defaultuser+"/"+defaultpass+" in SSH")
 			except:
-				Errors.Errors(event=sys.exc_info()[0], info=False)
+				print " "+Bad+" Service Off or No Logged."
 			try:
 				d.testing("FTP",FTP_PORT)
 				ftp.login(defaultuser,defaultpass)
