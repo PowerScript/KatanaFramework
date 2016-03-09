@@ -8,279 +8,69 @@
 from core.Setting import *
 from core.design import *
 from scripts import *
-from core import colors
 from core import info
-import getopt
-import sys
+import argparse
 
 CLASS_LINKER=DESIGN()
-options, remainder = getopt.getopt(sys.argv[1:], 'd:t:p:f:u:ps:m:s:c:z:x:v:q:o:l:t:i:g:h')
-for option, arg in options:
-		if option     == '-t':
-			t=arg
-		if option     == '-p':
-			p=arg
-		if option     == '-f':
-			f=arg
-		if option     == '-u':
-			u=arg
-		if option     == '-ps':
-			ps=arg
-		if option     == '-m':
-			m=arg
-		if option     == '-s':
-			s=arg
-		if option     == '-d':
-			d=arg
-		if option     == '-h':
-			h=1
-		if option     == '-c':
-			c=arg
-		if option     == '-z':
-			z=arg
-		if option     == '-x':
-			x=arg
-		if option     == '-i':
-			i=arg
-		if option     == '-v':
-			v=arg
-		if option     == '-o':
-			o=arg
-		if option     == '-g':
-			g=arg
-		if option     == '-l':
-			l=arg
-		if option     == '-t':
-			t=arg
-		if option     == '-q':
-			q=arg
+
+if __name__=="__main__":
+	parser = argparse.ArgumentParser(description='ktf.linker:'+info.version+info.build)
+	parser.add_argument("-m", "--module", help="Module")
+	parser.add_argument("-t", "--target", help="Target")        
+	parser.add_argument("-p", "--port", help="Port")            
+	parser.add_argument("-f", "--file", help="File")            
+	parser.add_argument("-u", "--user", help="Username")
+	parser.add_argument("-ps","--password", help="Password")
+	parser.add_argument("-x", "--userb", help="Usernameb")
+	parser.add_argument("-z", "--passwordb", help="Passwordb")
+	parser.add_argument("-d", "--dictionary", help="Dictionary")
+	parser.add_argument("-c", "--condition", help="Condition")
+	parser.add_argument("-i", "--interface", help="interface")
+	parser.add_argument("-v", "--valueform", help="Form Input")
+	parser.add_argument("-o", "--output", help="output")
+	parser.add_argument("-g", "--gateway", help="Gateway")
+	parser.add_argument("-l", "--length", help="Length")
+	parser.add_argument("-q", "--query", help="Query")
+	args = parser.parse_args()
+	t=args.target
+	p=args.port
+	f=args.file
+	u=args.user
+	ps=args.password
+	m=args.module
+	d=args.dictionary
+	c=args.condition
+	z=args.passwordb
+	x=args.userb
+	i=args.interface
+	v=args.valueform
+	o=args.output
+	g=args.gateway
+	l=args.length
+	q=args.query
 
 CLASS_LINKER.linker(info.version, info.build)
-
-if m == "web/whois":
-	if h==1:
-		print "\n python "+KTFLINKER+" -m web/whois -t target.com -p 80\n"
-		print " -t [target]  IP or DNS target "
-		print " -p [port]    Port target"
-		CLASS_LINKER.space()
-	else:
-		Whois.run(target=t, port=p)
-elif m == "web/joomscan":
-	if h==1:
-		print "\n python "+KTFLINKER+" -m web/joomscan -t target.com -p 80\n"
-		print " -t [target]  IP or DNS target "
-		print " -p [port]    Port target"
-		CLASS_LINKER.space()
-	else:
-		Joomscan.run(target=t, port=p)
-elif m == "web/cpfinder":
-	if h==1:
-		print "\n python "+KTFLINKER+" -m web/cpfinder -t target.com -p 80 -f core/db/commons-dir-admin.tbl\n"
-		print " -t [target]  IP or DNS target "
-		print " -p [port]    Port target"
-		print " -f [file]    Tables commons admin panel file"
-		CLASS_LINKER.space()
-	else:
-		AdminFinder.run(target=t, port=p, dictionary=f)
-elif m == "web/formbt":
-	if h==1:
-		print "\n python "+KTFLINKER+" -m web/formbt -t target.com -p 80 -f /KatanaLAB/run.php -x username -v administrator -z password -d core/db/pass.dicc -q POST -c Wrong\n"
-		print " -t [target]         IP or DNS target "
-		print " -p [port]           Port target"
-		print " -f [file]           File for petition"
-		print " -x [parameter one]  Parameter name form/input"
-		print " -v [value one]      Input value"
-		print " -z [parameter two]  Parameter name form/input"
-		print " -d [ditionary]      Dictionary"
-		print " -q [method]         POST/GET Method"
-		print " -c [condition]      Condition [IF != FAILED LOGGIN]"		
-		CLASS_LINKER.space()
-	else:		
-		BruteForceFormBase.run(target=t, port=p, patch=f, para1=x, valor=v, para2=z, dictionary=d, method=q, condition=c)
-elif m == "web/httpbt":
-	if h==1:
-		print "\n python "+KTFLINKER+" -m web/httpbt -t target.com -p 80 -f '/cpanel/' -u username -d core/db/pass.dicc\n"
-		print " -t [target]         IP or DNS target "
-		print " -p [port]           Port target"
-		print " -f [folder]         Folder"
-		print " -u [username]       Username"
-		print " -d [ditionary]      Dictionary"
-		CLASS_LINKER.space()		
-	else:
-		BruteForceHTTP.run(target=t, port=p, patch=f, username=u, dictionary=d)
-elif m == "web/dos":
-	if h==1:
-		print "\n python "+KTFLINKER+" -m web/dos -t target.com -p 80\n"
-		print " -t [target]         IP or DNS target "
-		print " -p [port]           Port target"
-		CLASS_LINKER.space()	
-	else:
-		dosweb.run(target=t, port=p)
-elif m == "fbt/pop3":
-	if h==1:
-		print "\n python "+KTFLINKER+" -m bt/pop3 -t target.com -p 110 -u root@localhost -d core/db/pass.dicc\n"
-		print " -t [target]         IP or DNS target "
-		print " -p [port]           Port target"
-		print " -u [user]           E-mail"
-		print " -d [ditionary]      Dictionary"
-		CLASS_LINKER.space()
-	else:
-		BruteForcePOP3.run(target=t, port=p, username=u, dictionary=d)
-elif m == "btf/ftp":
-	if h==1:
-		print "\n python "+KTFLINKER+" -m bt/ftp -t target.com -p 21 -u root -d core/db/pass.dicc\n"
-		print " -t [target]         IP or DNS target "
-		print " -p [port]           Port target"
-		print " -u [user]           User"
-		print " -d [ditionary]      Dictionary"
-		CLASS_LINKER.space()
-	else:
-		BruteForceFTP.run(target=t, port=p, username=u, dictionary=d)
-elif m == "set/gdreport":
-	if h==1:
-		print "\n python "+KTFLINKER+" -m set/gdreport -t youtube.com/?v=W3kr3w -q false\n"
-		print " -t [URL]            URL Redirect"
-		print " -q [Javascript]     TRUE/FALSE enable Javascript"
-		CLASS_LINKER.space()
-	else:
-		GetDataReport.run(target=t, js=q)
-
-elif m == "clt/ftp":
-	if h==1:
-		print "\n python "+KTFLINKER+" -m clt/ftp -t target.com -p 21 -u root -ps toor\n"
-		print " -t [target]         IP or DNS target "
-		print " -p [port]           Port target"
-		print " -u [username]       Username"
-		print " -ps [password]      Password"
-		CLASS_LINKER.space()
-	else:
-		ClientFTP.run(target=t,port=p,username=u,password=ps)
-elif m == "clt/sql":
-	if h==1:
-		print "\n python "+KTFLINKER+" -m clt/sql -t target.com -p 3306 -u root -ps toor\n"
-		print " -t [target]         IP or DNS target "
-		print " -p [port]           Port target"
-		print " -u [username]       Username"
-		print " -ps [password]      Password"
-		CLASS_LINKER.space()
-	else:
-		ClientMYSQL.run(target=t,port=p,username=u,password=ps)
-elif m == "clt/pop":
-	if h==1:
-		print "\n python "+KTFLINKER+" -m clt/pop -t target.com -p 110 -u root@target.com -ps toor\n"
-		print " -t [target]         IP or DNS target "
-		print " -p [port]           Port target"
-		print " -u [username]       Username"
-		print " -ps [password]      Password"
-		CLASS_LINKER.space()
-	else:
-		ClientPOP3.run(target=t,port=p,username=u,password=ps)
-
-elif m == "fbt/sql":
-	if h==1:
-		print "\n python "+KTFLINKER+" -m btf/sql -t target.com -p 3306 -u root -d core/db/pass.dicc\n"
-		print " -t [target]         IP or DNS target "
-		print " -p [port]           Port target"
-		print " -u [username]       Username"
-		print " -d [dictionary]     Password Wordlist"
-		CLASS_LINKER.space()
-	else:
-		BruteForceSQL.run(target=t,port=p,username=u,dictionary=d)
-elif m == "fbt/ssh":
-	if h==1:
-		print "\n python "+KTFLINKER+" -m btf/ssh -t target.com -p 22 -u root -d core/db/pass.dicc\n"
-		print " -t [target]         IP or DNS target "
-		print " -p [port]           Port target"
-		print " -u [username]       Username"
-		print " -d [dictionary]     Password Wordlist"
-		CLASS_LINKER.space()
-	else:
-		BruteForceSSH.run(target=t,port=p,username=u,dictionary=d)
-elif m == "net/lanlive":
-	if h==1:
-		print "\n python "+KTFLINKER+" -m net/lanlive -t 192.168.0.1\n"
-		print " -t [target]            Ip address of network to scan"
-		CLASS_LINKER.space()
-	else:
-		LANScanner.run(nets=t, types="null")
-elif m == "net/portscan":
-	if h==1:
-		print "\n python "+KTFLINKER+" -m net/portscan -t 192.168.0.1 -p [t-0 . t-9]\n"
-		print " -t [target]         IP or DNS target "
-		print " -p [profile]        type of scan [t-0,t-1,t-2,...,t-9]"
-		CLASS_LINKER.space()
-	else:
-		PortScanner.run(target=t, types=p)
-elif m == "set/facebrok":
-	if h==1:
-		print "\n python "+KTFLINKER+" -m set/facebrok -u root -p toor -c db_fbrok -x admin -z admin\n"
-		print " -u [username]         username Mysql"
-		print " -p [password]         password Mysql"
-		print " -c [database]         database Mysql"
-		print " -x [username]         username Panel"
-		print " -z [password]         password Panel"
-		CLASS_LINKER.space()
-	else:
-		facebrok.run(username=u,password=ps,database="facebrok_db",userp=x,passp=z)
-elif m == "mc/gendic":
-	if h==1: 
-		print "\n python "+KTFLINKER+" -m mc/gendic -o /root/Desktop/dicc.cc -l 6 -t chars_min\n"
-		print " -o [output]         Patch output file"
-		print " -l [length]         length String"
-		print " -t [type]           chars_min, chars_may, chars_num , chars_mix"
-		CLASS_LINKER.space()
-	else:
-		GenDic.run(dictionary=o, length=l, types=t)
-elif m == "fle/bruterar":
-	if h==1: 
-		print "\n python "+KTFLINKER+" -m fle/bruterar -f /core/test/test.rar -d core/db/pass.dicc\n"
-		print " -f [file]          File to crack"
-		print " -d [dictionary]    Dictionary"
-		CLASS_LINKER.space()
-	else:
-		BruteRAR.run(files=f ,dictionary=d)
-elif m == "fle/brutezip":
-	if h==1: 
-		print "\n python "+KTFLINKER+" -m fle/brutezip -f /core/test/test.zip -d core/db/pass.dicc\n"
-		print " -f [file]          File to crack"
-		print " -d [dictionary]    Dictionary"
-		CLASS_LINKER.space()
-	else:
-		BruteZIP.run(files=f ,dictionary=d)
-elif m == "web/lfd-con":
-	if h==1: 
-		print "\n python "+KTFLINKER+" -m web/lfd-con -t 192.168.0.1 -p 80 -f /download.php\n"
-		print " -t [target]         IP or DNS target "
-		print " -p [port]           Port target"
-		print " -f [file]           Vulnerabled file"
-		CLASS_LINKER.space()
-	else:
-		LFDconsole.run(target=t, files=f, port=p)
-elif m == "net/arpspoof":
-	if h==1: 
-		print "\n python "+KTFLINKER+" net/arpspoof -t 192.168.0.1 -g 192.168.1.254 -i eth0\n"
-		print " -t [target]         IP or DNS target "
-		print " -g [gateway]        Gateway ip"
-		print " -i [interface]      Interface"
-		CLASS_LINKER.space()
-	else:
-		ARPPoisoning.run(target=t, source=g, interface=i)
-
-#WpaBTF.run("core/test/test.cap","E8:40:F2:32:37:FD","core/db/pass.dicc")
-
-elif m == "":
-	print ""
-	print "  "+KTFLINKER+"[py]"
-	print ""
-	print "  Katana framework Linker> "
-	print "  Sub-tool for call module pass parameters diretly. "
-	print "  each module contain a function (run fuction) that "
-	print "  received this parameters for execution of module. "
-	print ""
-	print " Example:"
-	print ""
-	print "  ktf.linker -m category/module -h host -p port -d data"
-	print ""
-	print " For more information visit https://github.com/redtoor/katana/doc "
-	print ""
+if m == "web/whois":      Whois.run(target=t, port=p)
+elif m == "web/joomscan": Joomscan.run(target=t, port=p)
+elif m == "web/cpfinder": AdminFinder.run(target=t, port=p, dictionary=f)
+elif m == "web/formbt":   BruteForceFormBase.run(target=t, port=p, patch=f, para1=x, valor=v, para2=z, dictionary=d, method=q, condition=c)
+elif m == "web/httpbt":   BruteForceHTTP.run(target=t, port=p, patch=f, username=u, dictionary=d)
+elif m == "web/dos":      dosweb.run(target=t, port=p)
+elif m == "web/lfd-con":  LFDconsole.run(target=t, files=f, port=p)
+elif m == "net/lanlive":  LANScanner.run(nets=t, types="null")
+elif m == "net/portscan": PortScanner.run(target=t, types=p)
+elif m == "net/arpspoof": ARPPoisoning.run(target=t, source=g, interface=i)
+elif m == "set/facebrok": facebrok.run(username=u,password=ps,database="facebrok_db",userp=x,passp=z)
+elif m == "set/gdreport": GetDataReport.run(target=t, js=q)
+elif m == "clt/ftp":      ClientFTP.run(target=t,port=p,username=u,password=ps)
+elif m == "clt/sql":      ClientMYSQL.run(target=t,port=p,username=u,password=ps)
+elif m == "clt/pop":      ClientPOP3.run(target=t,port=p,username=u,password=ps)
+elif m == "fbt/sql":      BruteForceSQL.run(target=t,port=p,username=u,dictionary=d)
+elif m == "fbt/ssh":      BruteForceSSH.run(target=t,port=p,username=u,dictionary=d)
+elif m == "fbt/ftp":      BruteForceFTP.run(target=t, port=p, username=u, dictionary=d)
+elif m == "fbt/pop3":     BruteForcePOP3.run(target=t, port=p, username=u, dictionary=d)
+elif m == "fle/bruterar": BruteRAR.run(files=f ,dictionary=d)
+elif m == "fle/brutezip": BruteZIP.run(files=f ,dictionary=d)
+elif m == "mc/tlogin":    TLogin.run(target=t, username=u, password=ps)
+elif m == "mc/gendic":    GenDic.run(dictionary=o, length=l, types=t)
 
