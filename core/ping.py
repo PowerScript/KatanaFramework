@@ -100,21 +100,32 @@ def Subprocess(process):
 
 ### AP's SCAN ###
 def scanwifi(mon):
-	Subprocess('airodump-ng '+mon+' -w /tmp/ktf.wifi --output-format netxml --write-interval 10 > null')
-	print colors.GR+" Scanning Access Points in Interface '"+mon+"', 10s Interval ("+colors.G+"Ctrol+c"+colors.GR+") for Stop"+colors.W+"\n"
-	try:
-		numberID=0
-		while True:
-			time.sleep(5)
-			tree = ET.parse('/tmp/ktf.wifi-01.kismet.netxml')
-			root = tree.getroot()
-			for network in root.findall('wireless-network'):
-				for essid in network.findall('SSID'):
-					numberID=numberID+1
-					print " ["+str(numberID)+"] Threads"
-	except:
-		#print sys.exc_info() DEBUG
-		commands.getoutput('rm /tmp/*.netxml')
+	print " "+colors.GR+"Scanning Access Points in Interface '"+mon+"', Please wait 10s"+colors.W
+	Subprocess('airodump-ng '+mon+' -w /usr/share/katana/tmp/ktf.wifi --output-format netxml --write-interval 10')
+	time.sleep(10)
+	commands.getoutput('killall airodump-ng')
+	numberID=0
+	ESSIDs       = []
+	BSSIDs       = []
+	MANUs        = []
+	CHANNELs     = []
+	ENCRYPTAIONs = []
+	LISTAPs      = []
+	tree = ET.parse('/usr/share/katana/tmp/ktf.wifi-01.kismet.netxml')
+	root = tree.getroot()
+	print " "+colors.GR+" #\t"+colors.O+"ESSID"+colors.W+colors.GR+"\tMAC\t"+colors.P+"VENDOR"+colors.W+colors.GR+"\tCHANNEL\t"+colors.B+"ENCRYPTION"+colors.W+colors.GR+"              "+colors.W
+	for network in root.findall('wireless-network'):
+		for essid in network.findall('SSID'):
+			ESSIDs.append(essid.find('essid').text)
+			ENCRYPTAIONs.append(essid.find('encryption').text)
+		BSSIDs.append(network.find('BSSID').text)
+		MANUs.append(network.find('manuf').text)
+		CHANNELs.append(network.find('channel').text)
+	numberID=0
+	for ESSID in ESSIDs:
+		print colors.W+" ["+str(numberID)+"] "+colors.O+ESSIDs[numberID]+colors.W+" "+BSSIDs[numberID]+" "+colors.P+MANUs[numberID]+colors.W+" "+CHANNELs[numberID]+" "+colors.B+ENCRYPTAIONs[numberID]+colors.W
+		numberID=numberID+1
+	commands.getoutput('rm /usr/share/katana/tmp/*.netxml')
 		
 ### MY LOCAL IP ### 
 def myip():
