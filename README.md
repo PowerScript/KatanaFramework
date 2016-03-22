@@ -13,8 +13,6 @@ The project is open to partners.
 # SOURCE CODE ORGANIZATION
 The Katana source code is organized as follows:
 
-<i>-[KatanaGUI/](https://github.com/RedToor/Katana/tree/master/KatanaGUI)</i> > Source code for graphical user interface<br>
-<i>-[KatanaLAB/](https://github.com/RedToor/Katana/tree/master/KatanaLAB)</i> > Source code for katana laboratory<br>
 <i>-[core/](https://github.com/RedToor/Katana/tree/master/core)</i> > Source code core<br>
 <i>--[core/db/](https://github.com/RedToor/Katana/tree/master/core/db)</i> > Dictionaries and tables<br>
 <i>--[core/logs/](https://github.com/RedToor/Katana/tree/master/core/logs)</i> > Registers of modules<br>
