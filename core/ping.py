@@ -100,6 +100,7 @@ def Subprocess(process):
 
 ### AP's SCAN ###
 def scanwifi(mon):
+	commands.getoutput('rm /usr/share/katana/tmp/*')
 	print " "+colors.GR+"Scanning Access Points in Interface '"+mon+"', Please wait 10s"+colors.W
 	Subprocess('airodump-ng '+mon+' -w /usr/share/katana/tmp/ktf.wifi --output-format netxml --write-interval 10')
 	time.sleep(10)
@@ -125,8 +126,7 @@ def scanwifi(mon):
 	for ESSID in ESSIDs:
 		print colors.W+" ["+str(numberID)+"] "+colors.O+ESSIDs[numberID]+colors.W+" "+BSSIDs[numberID]+" "+colors.P+MANUs[numberID]+colors.W+" "+CHANNELs[numberID]+" "+colors.B+ENCRYPTAIONs[numberID]+colors.W
 		numberID=numberID+1
-	commands.getoutput('rm /usr/share/katana/tmp/*.netxml')
-		
+
 ### MY LOCAL IP ### 
 def myip():
 	s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
