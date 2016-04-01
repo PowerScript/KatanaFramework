@@ -1,0 +1,56 @@
+#!/usr/bin/env python
+#HEADER#######################
+# Katana framework           #
+# ktf.console File           #
+# Last Modified: 27/03/2016  #
+# Review: 0                  #
+#######################HEADER#
+
+from core.GeneralCommands import *
+from core.design import *
+from core import getFunction
+from core import colors
+from core import splash
+from core import Errors
+from core import help
+import xml.etree.ElementTree as ET
+import subprocess
+import importlib 
+import sys 
+
+Desing=DESIGN()
+tree = ET.parse('core/modules.xml')
+root = tree.getroot()
+
+def katanaFrameworkConsole():
+	try:
+		action = raw_input(Desing.MainPrompt())
+		if getFunction.KatanaCheckActionShowModules(action):
+			print """ 
+  ,--.-,  
+ /BY/  /  """+colors.GR+""" Module                   Description                """+colors.W
+ 			for modules in root.findall('module'):
+				name = modules.get('name')
+				description = modules.find('description').text
+				Desing.Line(CodeName=name,Description=description)
+			print """ /RT/, / 
+ `--`-' \n""" 
+			katanaFrameworkConsole()
+
+		if getFunction.KatanaCheckActionUseModule(action):
+			for modules in root.findall('module'):
+				if action[len(SELECT)+1:] == modules.get('name'):
+					category = modules.find('category').text
+					filename = modules.find('filename').text
+					ModuleToStart = importlib.import_module("scripts."+category+"."+filename) 
+					ModuleToStart.main(True)
+					katanaFrameworkConsole()
+			katanaFrameworkConsole()
+		else:
+			getFunction.KatanaCheckActionGlobalCommands(action)
+			katanaFrameworkConsole()
+	except:
+		Errors.Errors(event=sys.exc_info(), info=sys.exc_traceback.tb_lineno)
+	  
+if __name__=="__main__":
+	katanaFrameworkConsole()

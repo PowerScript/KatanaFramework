@@ -1,15 +1,16 @@
-#
-# Katana framework 
-# @Katana Splash
-#
+#!/usr/bin/env python
+#HEADER#######################
+# Katana framework           #
+# Splash File                #
+# Last Modified: 27/03/2016  #
+# Review: 0                  #
+#######################HEADER#
 
 from core import colors
-import random
-import subprocess            
-spa=random.randint(1,2)
-subprocess.call('clear', shell=True)
+from core import info
+print colors.B+"""
 
-splash2=colors.B+"""
+
           mM@@MM@@MM@@MM@@MM@@MM@@@MMM@@MM@@@@Mm
          mMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMm
          @MMMM"""+colors.W+"""MMM"""+colors.B+"""MMM"""+colors.W+"""MMM"""+colors.B+"""MM"""+colors.W+"""MMMMMMMMM"""+colors.B+"""MMM"""+colors.W+"""MMMMMMM"""+colors.B+"""MMMMm
@@ -19,21 +20,13 @@ splash2=colors.B+"""
          @MMMM"""+colors.W+"""MMM"""+colors.B+"""MMM"""+colors.W+"""MMM"""+colors.B+"""MMMMM"""+colors.W+"""MMM"""+colors.B+"""MMMMMM"""+colors.W+"""MMMMMMM"""+colors.B+"""MMMMM
          MMMMM"""+colors.W+"""MMM"""+colors.B+"""MMM"""+colors.W+"""MMM"""+colors.B+"""MMMMM"""+colors.W+"""MMM"""+colors.B+"""MMMMMM"""+colors.W+"""MMM"""+colors.B+"""MMMMMMMM@
          @MMMM"""+colors.W+"""MMM"""+colors.B+"""MMM"""+colors.W+"""MMM"""+colors.B+"""MMMMM"""+colors.W+"""MMM"""+colors.B+"""MMMMMM"""+colors.W+"""MMM"""+colors.B+"""MMMMMMMMM
-         mMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMm
-           @@MM@@MM@@MM@@MM@@MM@@MM@@MM@@MM@@Mm
-	   """+colors.W
-
-
-splash4="""
-     __                __                                
-    /\ \              /\ \__                             
-    \ \ \/'\      __  \ \ ,_\    __      ___      __     
-     \ \ , <    /'__`\ \ \ \/  /'__`\  /' _ `\  /'__`\   
-      \ \  \`\ /\ \L\.\_\ \ \_/\ \L\.\_/\ \/\ \/\ \L\.\_ 
-       \ \_\ \_\ \__/.\_\ \__\ \__/.\_\ \_\ \_\ \__/.\_
-        \/_/\/_/\/__/\/_/ \/__/\/__/\/_/\/_/\/_/\/__/\/_/"""
-
-if spa==1:
-	print splash2
-elif spa==2:
-	print splash4
+         """+colors.HH+"""mMMMMMMMMMMMMMMM"""+colors.W+colors.GE+"""FRAMEWORK"""+colors.W+colors.HH+colors.B+"""MMMMMMMMMMMMMMm
+        .-.--.@MM@@MM@@MM@@MM@@MM@@MM@@MM@@Mm"""+colors.W+"""
+	\  \==\ 
+	/' /==/ """+colors.HH+""" Core    """+colors.W+""" [ """+info.version+""", Build: """+info.build+""" ]
+	|,|==|  """+colors.HH+""" Date    """+colors.W+""" [ """+info.date+""" ]
+	\  \==\ """+colors.HH+""" Theme   """+colors.W+""" [ """+info.tema+""" ]
+	 \ ,\==\ """+colors.HH+""" Modules """+colors.W+""" [ """""+info.modules+""" Scritp's"""+colors.W+""" ]
+	 / -/==/"""+colors.GW+""" By RedToor"""+colors.W+"""
+	 `-'--'  
+	  """

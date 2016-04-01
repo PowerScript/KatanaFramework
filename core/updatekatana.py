@@ -1,7 +1,10 @@
-#
-# Katana framework 
-# @Katana Update
-#
+#!/usr/bin/env python
+#HEADER#######################
+# Katana framework           #
+# Update File                #
+# Last Modified: 25/03/2016  #
+# Review: 0                  #
+#######################HEADER#
 
 from core import colors
 from core import Errors
@@ -20,8 +23,8 @@ if os.getuid() != 0:
 
 def update():
 	print ""
-	print "     ["+colors.O+"!"+colors.W+"] Update - Katana framework"
-	print "     ["+colors.O+"!"+colors.W+"] Version Current : Core:"+info.version+" Build:"+info.build+" Date "+info.date
+	print " ["+colors.O+"!"+colors.W+"] Update - Katana framework"
+	print " ["+colors.O+"!"+colors.W+"] Version Current : Core:"+info.version+" Build:"+info.build+" Date "+info.date
 	try:
 		red=socket.socket(socket.AF_INET, socket.SOCK_STREAM)       
 		red.connect(("raw.githubusercontent.com", int(443))) 
@@ -34,16 +37,15 @@ def update():
 			core=data_string["Katana"]["Update"]["Core"]
 			build=data_string["Katana"]["Update"]["Build"]
 			dateupdate=data_string["Katana"]["Update"]["Date"]
-			print "     ["+colors.O+"!"+colors.W+"] Last Version    : Core:%s Build:%s Date %s" % (core, build, dateupdate)
-			if (build==info.build):
-				print "     ["+colors.O+"!"+colors.W+"] katana already updated.\n"
+			print " ["+colors.O+"!"+colors.W+"] Last Version    : Core:%s Build:%s Date %s" % (core, build, dateupdate)
+			if (build<=info.build):
+				print " ["+colors.O+"!"+colors.W+"] katana already updated.\n"
 			else:
-				print  "     ["+colors.O+"!"+colors.W+"] Downloading Last Version"
+				print  " ["+colors.O+"!"+colors.W+"] Downloading Last Version"
 				subprocess.Popen("cd /tmp;git clone https://github.com/RedToor/katana.git;cp -R /tmp/katana/* /usr/share/katana/;rm -rf /tmp/katana/*", stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True).wait()
 				subprocess.Popen("cd /usr/share/katana/core;sudo python upgrade.py", stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True).wait()
-				print "     ["+colors.O+"!"+colors.W+"] Upgrading."
-				print "     ["+colors.G+"+"+colors.W+"] Katana framework was Updated.\n"
+				print " ["+colors.O+"!"+colors.W+"] Upgrading."
+				print " ["+colors.G+"+"+colors.W+"] Katana framework was Updated.\n"
 			return
 	except:
-		#print "     Event: "+str(sys.exc_info())
-		print "     ["+colors.R+"-"+colors.W+"] Error, No connneted to Internet. \n"
+		print " ["+colors.R+"-"+colors.W+"] Error, No connneted to Internet. \n"

@@ -1,0 +1,34 @@
+#!/usr/bin/env python
+#HEADER#######################
+# Katana framework           #
+# ktf.console File           #
+# Last Modified: 25/03/2016  #
+# Review: 0                  #
+#######################HEADER#
+
+from core.design import *
+from core import info
+import xml.etree.ElementTree as ET
+import importlib 
+import argparse
+import sys
+
+CLASS_BANNER=DESIGN()
+CLASS_BANNER.ktfrun(info.version,info.build)
+tree = ET.parse('core/modules.xml')
+root = tree.getroot()
+parser = argparse.ArgumentParser()
+parser.add_argument("-m", "--module", help=" Script module to run.")
+args = parser.parse_args()
+m=args.module
+
+if __name__=="__main__":
+	CLASS_BANNER.KtfRun()
+	for modules in root.findall('module'):
+		if m == modules.get('name'):
+			category = modules.find('category').text
+			filename = modules.find('filename').text
+			ModuleToStart = importlib.import_module("scripts."+category+"."+filename) 
+			ModuleToStart.main(True)
+			exit()
+	CLASS_BANNER.ModuleNotFound(m)

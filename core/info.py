@@ -1,11 +1,14 @@
-#
-# Katana framework 
-# @Katana Information
-#
+#!/usr/bin/env python
+#HEADER#######################
+# Katana framework           #
+# Information File           #
+# Last Modified: 25/03/2016  #
+# Review: 0                  #
+#######################HEADER#
 
-version="0.0.0.8"
-date="22/01/2016 - 03/03/2016"
+version="0.0.0.9"
+date="04/03/16:30/03/16"
 modules="31"
 tema="Warrior theme"
-build="0055"
-
+build="0056"
+Type="FREE"

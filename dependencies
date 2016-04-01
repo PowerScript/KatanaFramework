@@ -1,0 +1,4 @@
+sudo gem install bundler && bundle install
+apt-get install aircrack-ng
+apt-get install nmap
+

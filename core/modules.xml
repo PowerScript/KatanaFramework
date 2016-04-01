@@ -1,99 +1,173 @@
 <?xml version="1.0"?>
 <modules>
-    <module name="web/formbt">
-        <description>Brute force to form-based</description>
+    <module name="web/cp.finder">
+        <version>1.1</version>
+        <author>RedToor</author>
+		<category>web</category>
+        <filename>adminfinder</filename>
+        <description>Administrator Panel Finder.</description>
     </module>
-    <module name="web/cpfinder">
-        <description>Admin panel finder</description>
+      <module name="web/bt.form">
+        <version>1.1</version>
+        <author>RedToor</author>
+		<category>web</category>
+        <filename>bruteforcetoformbase</filename>
+        <description>Brute force to Form-based.</description>
     </module>
-    <module name="web/joomscan">
-        <description>Scanner vul's cms joomla</description>
+      <module name="web/bt.http">
+        <version>1.1</version>
+        <author>RedToor</author>
+		<category>web</category>
+        <filename>bruteforcetohttpblock</filename>
+        <description>Brute force to Http Authentication.</description>
     </module>
-    <module name="web/dos">
-        <description>Denial of service web</description>
+      <module name="web/whois">
+        <version>1.1</version>
+        <author>RedToor</author>
+		<category>web</category>
+        <filename>whois</filename>
+        <description>Whois, DNS Lookup.</description>
     </module>
-    <module name="web/whois">
-        <description>Who-is web</description>
+      <module name="web/clt.lfd">
+        <version>1.1</version>
+        <author>RedToor</author>
+		<category>web</category>
+        <filename>cltlfd</filename>
+        <description>LFD Vulnerability Console.</description>
     </module>
-    <module name="web/lfd-con">
-        <description>LFD vulnerability Console</description>
+      <module name="web/sc.joomla">
+        <version>1.1</version>
+        <author>RedToor</author>
+		<category>web</category>
+        <filename>joomscaner</filename>
+        <description>Joomla Scan Vulnerability.</description>
     </module>
-    <module name="net/arpspoof">
-        <description>ARP-Spoofing attack</description>
+      <module name="net/sf.arp">
+        <version>1.1</version>
+        <author>cl3ar</author>
+		<category>net</category>
+        <filename>arpmon</filename>
+        <description>ARP tables Monitor.</description>
     </module>
-    <module name="net/arplook">
-        <description>ARP-Spoofing detector</description>
+      <module name="net/sc.hosts">
+        <version>2.0</version>
+        <author>Redtoor</author>
+		<category>net</category>
+        <filename>hostslive</filename>
+        <description>Host's live Scan in LAN.</description>
     </module>
-    <module name="net/lanlive">
-        <description>Host live's in my Network</description>
+    <module name="net/sc.scan">
+        <version>1.1</version>
+        <author>RedToor</author>
+        <category>net</category>
+        <filename>scan</filename>
+        <description>Scan [Ports, OS, Etc] IP.</description>
     </module>
-    <module name="net/portscan">
-        <description>Port Scanner</description>
+    <module name="net/sc.sniff">
+        <version>1.0</version>
+        <author>RedToor</author>
+        <category>net</category>
+        <filename>sniff</filename>
+        <description>Protocol Sniffer.</description>
     </module>
-    <module name="set/gdreport">
-        <description>Getting information with web</description>
+     <module name="set/facebrok">
+        <version>1.0</version>
+        <author>Redtoor</author>
+        <category>set</category>
+        <filename>facebrok</filename>
+        <description>facebook Phishing plataform.</description>
     </module>
-    <module name="set/mailboom">
-        <description>E-mail boombing</description>
+     <module name="set/hotspot">
+        <version>1.0</version>
+        <author>Redtoor</author>
+        <category>set</category>
+        <filename>getdatareport</filename>
+        <description>Gathering Information for web.</description>
     </module>
-    <module name="set/facebrok">
-        <description>facebook phishing plataform</description>
+    <module name="clt/cl.sql">
+        <version>1.1</version>
+        <author>RedToor</author>
+        <category>clt</category>
+        <filename>clientmysql</filename>
+        <description>Console Client mysql.</description>
     </module>
-    <module name="fle/brutezip">
-        <description>Brute force to zip files</description>
+    <module name="clt/cl.ftp">
+        <version>1.0</version>
+        <author>RedToor</author>
+        <category>clt</category>
+        <filename>clientftp</filename>
+        <description>Console Client FTP.</description>
     </module>
-    <module name="fle/bruterar">
-        <description>Brute force to rar files</description>
+     <module name="btf/pr.ftp">
+        <version>1.1</version>
+        <author>LeSZO ZerO</author>
+        <category>btf</category>
+        <filename>bruteforcetoftprotol</filename>
+        <description>Brute Force to FTprotocol.</description>
     </module>
-    <module name="clt/ftp">
-        <description>Console ftp client</description>
+     <module name="btf/pr.sql">
+        <version>1.1</version>
+        <author>RedToor</author>
+        <category>btf</category>
+        <filename>bruteforcetosqlprotocol</filename>
+        <description>Brute Force to SQL protocol.</description>
     </module>
-    <module name="clt/sql">
-        <description>Console sql client</description>
+     <module name="btf/pr.ssh">
+        <version>1.1</version>
+        <author>RedToor</author>
+        <category>btf</category>
+        <filename>bruteforcetosshprotocol</filename>
+        <description>Brute Force to SSH protocol.</description>
     </module>
-    <module name="clt/pop3">
-        <description>Console pop3 client</description>
+     <module name="btf/pr.pop">
+        <version>1.1</version>
+        <author>RedToor</author>
+        <category>btf</category>
+        <filename>bruteforcetopop3rotocol</filename>
+        <description>Brute Force to POP3 protocol.</description>
     </module>
-    <module name="ser/sql">
-        <description>Start sql server</description>
+     <module name="anf/af.imagen">
+        <version>1.1</version>
+        <author>RedToor</author>
+        <category>anf</category>
+        <filename>forensicimageanalysis</filename>
+        <description>Forensic image analysis.</description>
     </module>
-    <module name="ser/apache">
-        <description>Start http server</description>
+     <module name="fle/bt.rar">
+        <version>2.0</version>
+        <author>LeSZO ZerO</author>
+        <category>fle</category>
+        <filename>bruteforcetorarfile</filename>
+        <description>Brute Force to RAR file</description>
     </module>
-    <module name="ser/ssh">
-        <description>Start ssh server</description>
+     <module name="fle/bt.zip">
+        <version>2.0</version>
+        <author>LeSZO ZerO</author>
+        <category>fle</category>
+        <filename>bruteforcetozipfile</filename>
+        <description>Brute Force to ZIP file</description>
     </module>
-    <module name="for/imagen">
-        <description>Analicy forence to imagen</description>
+     <module name="mcs/gn.words">
+        <version>2.1</version>
+        <author>RedToor</author>
+        <category>mcs</category>
+        <filename>generatordictionary</filename>
+        <description>Generator Dictionaries.</description>
     </module>
-    <module name="fbt/ftp">
-        <description>Brute force to ftp</description>
+     <module name="mcs/i.settup">
+        <version>2.0</version>
+        <author>RedToor</author>
+        <category>mcs</category>
+        <filename>mysettup</filename>
+        <description>Show Properties of System Current.</description>
     </module>
-    <module name="fbt/sql">
-        <description>Brute force to sql</description>
-    </module>
-    <module name="fbt/ssh">
-        <description>Brute force to ssh</description>
-    </module>
-    <module name="fbt/pop3">
-        <description>Brute force to pop3</description>
-    </module>
-    <module name="fzz/ftp">
-        <description>Fuzzer to ftp</description>
-    </module>
-    <module name="wifi/wpabtf">
-        <description>Brute force to wpa encriptation</description>
-    </module>
-    <module name="wifi/dos">
-        <description>Denial of service wifi</description>
-    </module>
-    <module name="mc/tlogin">
-        <description>Test of credentials</description>
-    </module>
-    <module name="mc/gendic">
-        <description>Generator dictionary</description>
-    </module>
-    <module name="mc/i     ">
-        <description>My Settup</description>
+     <module name="mcs/ts.login">
+        <version>1.1</version>
+        <author>RedToor</author>
+        <category>mcs</category>
+        <filename>testcredentialtoprotocols</filename>
+        <description>Test Credentials protocols.</description>
     </module>
 </modules>
+
+

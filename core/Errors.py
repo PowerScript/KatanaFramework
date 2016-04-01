@@ -1,8 +1,10 @@
-#
-# Katana framework 
-# @Katana Errors
-#
-
+#!/usr/bin/env python
+#HEADER#######################
+# Katana framework           #
+# Error file debug           #
+# Last Modified: 27/03/2016  #
+# Review: 0                  #
+#######################HEADER#
 
 from design import *
 d=DESIGN()                   
@@ -20,6 +22,11 @@ def Errors(event, info):
 	if string.find("_mysql_exceptions.OperationalError") >= 0:
 		print ' '+Bad+' Host '+info+' is not allowed to connect to this MySQL server.\n'
 		return
+	if string.find("password refused") >= 0:
+		print ' '+Bad+' Host '+info+' is not allowed to connect to this MySQL server.\n'
+		return
+	if string.find("No such device") >= 0:
+		return d.Nosuchdevice()
 	if string.find("socket") >= 0:
 		return d.target_off(str(info))
 	if string.find("KeyboardInterrupt") >= 0 and info!=False:

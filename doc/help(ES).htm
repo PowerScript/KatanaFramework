@@ -1,0 +1,172 @@
+<html>
+<head>
+	<title> Katana Framework Support </title>
+</head>
+<style type="text/css">
+	.ENC{font-size: 30px; font-family: sans-serif; color: red; }
+</style>
+<body>
+<div class=ENC>COMO INSTALAR KATANA</div>
+para instalar katana requerimos de sistemas basados en linux, y que que tengan instalado python, asegurate bajar la ultima version del proyecto para una mejor experiencia.
+<br><br>
+Distribuciones Soportadas: backtrack, kali, wifislax, wifiway, arch.
+<pre>
+	git clone https://github.com/redtoor/katana
+	cd katana
+	sudo python install
+</pre>
+<div class=ENC>COMO CREAR UN NUEVO MODULO PARA KATANA</div>
+katana framework permite agregar nuevos modulos facilmente solo siguiendo la estructura estandar del framework,
+para hacer un nuevo modulo debes de seguir las siguiente instruciones:
+</div>
+<h2>Cabezera de archivo</h2>
+debes incluir la siguiente cabezara al principio del archivo para indentificar el modulo como parte de katana, 
+se incluyen la librerias del framework.
+<pre>
+# This module requires katana framework 
+# https://github.com/RedToor/Katana
+# :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
+# Katana Core                   #
+from core.design import *       #
+from core.Setting import *      #
+from core import Errors         #
+from core import getFunction    #
+import sys                      #
+Message=DESIGN()                #
+# :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
+</pre>
+<h2>Librerias de modulo</h2>
+lo siguiente es incluir las libreria que usaran el modulo en construccion.
+<pre>
+# Libraries                     #
+import time                     #
+import socket                   #
+# :-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
+</pre>
+<h2>Informacion de modulo</h2>
+despues de importa las libreria vamos incluir la funcion `initialize` para inizializar nuestras variables del modulo, debes de llenar todos los datos de informacion de modulo, despues vamos a crear nuestras variables
+y dar un valor predeterminado.
+<br><br>
+<pre>
+# INFORMATION MODULE
+def initialize():
+	initialize.Author             ="Anonymous"
+	initialize.Version            ="0.0"
+	initialize.Despcription       ="short Description module."
+	initialize.CodeName           ="category/name"
+	initialize.DateCreation       ="DD/MM/YY"      
+	initialize.LastModification   ="DD/MM/YY"
+
+	# DEFAULT VARIABLES             VALUE                  NAME        RQ     DESCRIPTION
+	initialize.DEFAULT_VARIABLE   =[["localhost"        , "target" , "yes" , "IP or DNS"]]         #[0][0]
+	initialize.DEFAULT_VARIABLE  +=[[80                 , "port"   , "no"  , "Service port"]]      #[1][0]
+initialize()
+# END INFORMATION MODULE
+</pre>
+* para agregar nuestras variables katana se base en matrices duplex para almacenarlas, en el codigo anterior vemos que solo existe una variable `initialize.DEFAULT_VARIABLE` en las cuales se almacenan otros datos como el valor, nombre, si es requirido y una breve descripcion.
+<br><br>
+si quisieramos agregar otra variable a nuestro modulo solo agregariamos otra matrix.
+<pre>
+	initialize.DEFAULT_VARIABLE  +=[["xss.js"         , "payload"   , "yes"  , "Payloads list"]]   #[2][0]
+</pre>
+en este caso nuestra variable esta almacenada en la matrix [2][0], cuando necesitemos esta variable en alguna parte de nuestro modulo la invocariamos de la siquiente manera `initialize.DEFAULT_VARIABLE[2][0]`.  
+<h2>Funcion MAIN de modulo</h2>
+despues de definir nuestras variables vamos a incluir la funcion `main` de la siguiente forma. 
+<pre>
+# MAIN FUNCTION
+def main(run):
+	try:
+		# HEAD MODULE
+		if run:	actions=raw_input(Message.prompt(initialize.CodeName))
+		else  : actions="run"
+		if getFunction.KatanaCheckActionShowOptions(actions)  :getFunction.ShowOptions(initialize.DEFAULT_VARIABLE)
+		elif getFunction.KatanaCheckActionSetValue(actions)   :initialize.DEFAULT_VARIABLE=getFunction.UpdateValue(actions,initialize.DEFAULT_VARIABLE)
+		elif getFunction.KatanaCheckActionisBack(actions)     :return
+		# END HEAD MODULE
+		elif getFunction.runModule(actions):
+			Message.run()
+			# CODE MODULE   ############################################################################################
+
+			# END CODE MODULE ############################################################################################
+		else:
+			getFunction.KatanaCheckActionGlobalCommands(actions)
+	# ERROR GENERAL
+	except:
+		Errors.Errors(event=sys.exc_info(), info=sys.exc_traceback.tb_lineno)
+	# END ERROR GENERAL
+	main(True)
+# END MAIN FUNCTION
+</pre>
+<h2>Codigo de modulo</h2>
+en la siguiente parte donde se comenta # CODE MODULE hasta # END CODE MODULE, vamos a agregar las tareas que va ha realizar nuestro modulo, aqui un breve ejemplo.
+<pre>
+			# CODE MODULE    ############################################################################################
+			try:
+				red=socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
+				red.connect((initialize.DEFAULT_VARIABLE[0][0], int(initialize.DEFAULT_VARIABLE[1][0]))) 
+				Message.loading_file()
+				with open(initialize.DEFAULT_VARIABLE[2][0],'r') as passwords: 
+					,,,	
+				,,,
+			exept:
+				print "My Exceptions"
+			# END CODE MODULE ############################################################################################
+
+<div class=ENC>getFUNCTION (FUNCIONES) UTILES EN KATANA</div>
+getFunction es un archivo que continen variedad de funciones que nos puede ayudar en la construcion de nuestros modulos.
+
+<pre>
+	<i>getFunction.live(host, port)</i>
+	esta funcion hace un ASK a un host en la red para verificar si esta a la escucha, si esta el host a la escucha retorna un TRUE en caso contrario FALSE. 
+	              
+	<i>getFunction.myip()</i>
+	Retorna la IP local del sistema si esta conectado a una red de lo contrario retorna `NULL`.
+
+	<i>getFunction.get_external_ip()</i>
+	Retorna la IP publica del sistema si esta conectado a una red de lo contrario retorna `NULL`.
+
+	<i>getFunction.interfaces()</i>
+	Retorna las interfaces actuales del sistema.
+
+	<i>getFunction.checkDevice(device)</i>
+	Retorna True o False segun la existencia de un dispositivo(Adaptador de red) en el sistema.
+
+	<i>getFunction.status_cmd(command,tabulations)</i>  
+	Ejecuta un commando en el sistama, Retorna Mensaje [OK] o [ERROR] al ejecutar un comando, se agrega la cantidad de tabulaciones que se desea para tener un contexto visualmente agradable. {getFunction.status_cmd('airmon-ng start '+initialize.DEFAULT_VARIABLE[2][0]),"\t\t\t\t")}
+
+	<i>getFunction.get_gateway()</i>
+	Retorna el gateway actual del sistema.
+
+	<i>getFunction.conneted()</i>
+	Retorna True o False si el equipo esta conectado a una red.
+
+	<i>getFunction.my_mac_address()</i>
+	Retorna Mac address del dispositivo actual.
+</pre>
+Ejemplos:
+<pre>
+	if getFunction.checkDevice(initialize.DEFAULT_VARIABLE[2][0]):
+		print " Continue..."
+
+	if getFunction.live(initialize.DEFAULT_VARIABLE[0][0], initialize.DEFAULT_VARIABLE[1][0]):
+		print " Continue..." 
+</pre>
+<div class=ENC>Design (Diseno) y Alertas EN KATANA</div>
+katana framework cuenta con un sistemas de alertas predeterminadas para la construcion de modulos.
+<pre>
+	[<font color=red>ERR</font>]  :  Alerta de Error
+	[<font color=blue>INF</font>]  :  Alerta de Informacion
+	[<font color=green>RUN</font>]  :  Alerta de Ejecutandose
+	[<font color=green>SUF</font>]  :  Alerta de Ejecutado correctamente
+	[<font color=grey>HLP</font>]  :  Alerta de ayuda
+	[<font color=cyan>--></font>]  :  Alerta de Direccionamiento
+	[<font color=yellow>WAR</font>]  :  Alerta de Precaucion
+</pre>
+katana tambien cuenta con un sistema de mensajes predeterminados para la construcion de modulos.
+<pre>
+	<i>Message.loading_file()</i> : Muestra el Mensaje ` [<font color=yellow>WAR</font>] Loading files...`.
+	<i>Message.loaded()</i>       : Muestra el Mensaje ` [<font color=green>SUF</font>] Loaded file...`.
+</pre>
+<br><br><br>
+</i><font color=gray> Ultima Actualicacion 01/04/2016 por RedToor.
+ Visita https://github.com/redtoor/katana/ para mas informacion y actualizaciones.

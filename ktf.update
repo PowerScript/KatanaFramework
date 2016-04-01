@@ -1,0 +1,10 @@
+#!/usr/bin/env python
+#HEADER#######################
+# Katana framework           #
+# ktf.update File            #
+# Last Modified: 27/03/2016  #
+# Review: 0                  #
+#######################HEADER#
+
+from core import updatekatana
+updatekatana.update()

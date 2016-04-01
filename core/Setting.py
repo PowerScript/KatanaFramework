@@ -42,5 +42,3 @@ SMTP_PORT="25"
 
 # PATHS SCRIPTS 
 NMAP_PATH="/usr/bin/nmap"
-
-
