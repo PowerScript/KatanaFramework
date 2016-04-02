@@ -9,12 +9,15 @@
 #
 #
 
+import os,sys
+pwd = os.path.dirname(__file__) + "/"
+os.chdir(pwd)
+
 from core.Setting import * 
 from core import info
 from core import colors
 from core import getFunction
 import time
-import os
 
 print ""
 print "                    "+colors.B+",:"+colors.W+"       "+colors.B+":,"+colors.W+"                   				 "#                    ,:       :,                   
@@ -30,7 +33,7 @@ print "                ::::\ "+colors.R+"|"+colors.W+"_____"+colors.R+"|"+colors
 print "                (+  _"+colors.R+"|"+colors.W+" __"+colors.R+"|"+colors.W+"__ "+colors.R+"|"+colors.W+"_  +)      CORE: "+info.version+", BUILD: "+info.build #                (+  _"+colors.R+"|"+colors.W+" __"+colors.R+"|"+colors.W+"__ "+colors.R+"|"+colors.W+"_  +)               
 print "        "+info.Type+"    "+colors.R+"|"+colors.W+"  I_"+colors.R+"|"+colors.W+"KATANA."+colors.R+"|"+colors.W+"_I  "+colors.R+"|"+colors.W+"                               "#                "+colors.R+"|"+colors.W+"  I_"+colors.R+"|"+colors.W+".ANATAK"+colors.R+"|"+colors.W+"_I  "+colors.R+"|"+colors.W+"               
 print "                "+colors.R+"|"+colors.W+"  I_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"  "+colors.R+"|"+colors.W+"               				 "#                "+colors.R+"|"+colors.W+"  I_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"  "+colors.R+"|"+colors.W+"               
-print "    __________?_________________________________  				 "#    __________?_________________________________  
+print "    __________?_____________________________________  				 "#    __________?_________________________________  
 print "   {_"+colors.C+"B|"+colors.W+" "+colors.C+"Y|"+colors.W+" "+colors.R+"R|"+colors.W+" "+colors.W+"T|"+colors.W+" I"+colors.GR+"#################################"+colors.W+"/  				 "#   {_"+colors.R+"|"+colors.W+" "+colors.R+"|"+colors.W+" "+colors.R+"|"+colors.W+" "+colors.R+"|"+colors.W+" I#################################/  
 print "     ^ ^ ^ ^   ,ww   "+colors.O+"FRAMEWORK"+colors.W+"   ww,                   				 "#     ^ ^ ^ ^ EHT KROWEMARF, dliuB      
 print "                   I_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_I                  				 "#                   I_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_I                  
@@ -45,18 +48,21 @@ if os.getuid() != 0:
 time.sleep(1)
 
 Shortcuts="""
-ln -f -r -s /usr/share/katana/core/shorts/ktf.console /usr/bin/ktf.console ;
-ln -f -r -s /usr/share/katana/core/shorts/ktf.linker  /usr/bin/ktf.linker  ;
-ln -f -r -s /usr/share/katana/core/shorts/ktf.update  /usr/bin/ktf.update  ;
-ln -f -r -s /usr/share/katana/core/shorts/ktf.run     /usr/bin/ktf.run     ;
+ln -f -r -s /usr/share/katana/core/shorts/ktf.console /usr/bin/ktf.console >/dev/null 2>&1;
+ln -f -r -s /usr/share/katana/core/shorts/ktf.linker  /usr/bin/ktf.linker  >/dev/null 2>&1;
+ln -f -r -s /usr/share/katana/core/shorts/ktf.update  /usr/bin/ktf.update  >/dev/null 2>&1;
+ln -f -r -s /usr/share/katana/core/shorts/ktf.run     /usr/bin/ktf.run     >/dev/null 2>&1
 """ 
 Files="cd /usr/share/katana/files;tar -xf /usr/share/katana/files/filesKatana.tar          >/dev/null 2>&1;rm -R *.tar"
 
-print colors.W+" \033[1m\033[41mKatana framework\033[49m                    date {"+time.strftime('%c')+"}"
-print colors.W+"\n Creating Folder. ",    getFunction.status_cmd('mkdir -p '+PATCH_INTALL+'katana',   "\t\t\t\t\t\t")
+print colors.W+" \033[1m\033[41mKatana framework\033[49m                    date {"+time.strftime('%c')+"}"+colors.W
+print " INSTALLING........................................................."
+print " Checking dependencies. ",         getFunction.status_cmd('sudo bash dependencies',            "\t\t\t\t\t")
+print " Creating Folder. ",               getFunction.status_cmd('mkdir -p '+PATCH_INTALL+'katana',   "\t\t\t\t\t\t")
 print " Coping files. ",                  getFunction.status_cmd('cp -r * '+PATCH_INTALL+'katana',    "\t\t\t\t\t\t")
 print " Creating Shortcuts. ",            getFunction.status_cmd(Shortcuts,                           "\t\t\t\t\t\t")
 print " Extracting Files. ",              getFunction.status_cmd(Files,                               "\t\t\t\t\t\t")
 print " Giving privileges. ",             getFunction.status_cmd('chmod -R -c 777 /usr/share/katana/',"\t\t\t\t\t\t")
-print "\n Done, Enjoy. !!!\n"
+print " DONE..............................................................."
 
+print "\n Done, Enjoy. !!!\n"
