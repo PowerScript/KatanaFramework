@@ -22,6 +22,8 @@ The Katana source code is organized as follows:
 <i>-[doc/](https://github.com/RedToor/Katana/tree/master/doc)</i> > Documentation<br>
 <i>-[scripts/](https://github.com/RedToor/Katana/tree/master/scripts)</i> > Scripts(modules)<br>
 
+# SUPPORTED DISTRIBUTIONS
+Ubuntu <img src="https://iperf.fr/images/logo_ubuntu.png" title="ubuntu">
 
 # INSTALLATION
 Installation of Katana framework:
