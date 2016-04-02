@@ -1,4 +1,35 @@
-sudo gem install bundler && bundle install
-apt-get install aircrack-ng
-apt-get install nmap
+#! /bin/sh
+#HEADER#######################
+# Katana framework           #
+# dependencies File          #
+# Last Modified: 02/04/2016  #
+# Review: 0                  #
+#######################HEADER#
 
+
+	if ! hash aircrack-ng 2>/dev/null; then 
+		sudo apt-get install --yes aircrack-ng
+	fi
+
+	if ! hash nmap 2>/dev/null; then 
+		sudo apt-get install --yes nmap
+	fi
+
+	if ! hash apache2 2>/dev/null; then 
+		sudo apt-get install --yes apache2
+		sudo apt-get install --yes php5
+		sudo apt-get install --yes libapache2-mod-php5
+	fi
+
+	if ! hash git 2>/dev/null; then 
+		sudo apt-get install --yes git
+	fi
+
+	if ! hash ettercap 2>/dev/null; then 
+		sudo apt-get install ettercap-text-only
+	fi
+
+DIR=$(dirname $0)
+sudo gem install bundler && bundle install
+cd $DIR/lib/scapy/
+sudo python setup.py install
