@@ -294,7 +294,7 @@ def get_gateway():
 		if "default" in line:
 			gateway = re.search(r'\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b',line).group(0)
 			return gateway
-	return False
+	return "NULL"
 
 ### am I Connected? ###
 def isConect():
