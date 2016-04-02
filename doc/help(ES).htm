@@ -3,7 +3,7 @@
 	<title> Katana Framework Support </title>
 </head>
 <style type="text/css">
-	.ENC{font-size: 30px; font-family: sans-serif; color: red; }
+	.ENC{font-size: 15px; font-family: sans-serif; color: red; }
 </style>
 <body>
 <div class=ENC>COMO INSTALAR KATANA</div>
@@ -111,7 +111,11 @@ en la siguiente parte donde se comenta # CODE MODULE hasta # END CODE MODULE, va
 			exept:
 				print "My Exceptions"
 			# END CODE MODULE ############################################################################################
-
+</pre>
+Despues de crear nuestro modulo vamos a instaralo de la siguiente manera.
+<pre>
+	sudo ktf.tool --import-module /root/Desktop/mymodule.py --to-category web
+</pre>
 <div class=ENC>getFUNCTION (FUNCIONES) UTILES EN KATANA</div>
 getFunction es un archivo que continen variedad de funciones que nos puede ayudar en la construcion de nuestros modulos.
 
@@ -168,5 +172,5 @@ katana tambien cuenta con un sistema de mensajes predeterminados para la constru
 	<i>Message.loaded()</i>       : Muestra el Mensaje ` [<font color=green>SUF</font>] Loaded file...`.
 </pre>
 <br><br><br>
-</i><font color=gray> Ultima Actualicacion 01/04/2016 por RedToor.
+</i><font color=gray> Ultima Actualicacion 01/04/2016 por RedToor.<br>
  Visita https://github.com/redtoor/katana/ para mas informacion y actualizaciones.
