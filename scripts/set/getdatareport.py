@@ -51,7 +51,7 @@ def main(run):
 					print " "+Alr+" Starting Apache Server",getFunction.status_cmd("service apache2 start","\t\t\t")
 					print " "+Alr+" Starting Script Server",getFunction.status_cmd("sudo fuser -kuv 6464/tcp > null","\t\t\t")
 					Message.space()
-					Message.go("Link HOT http://127.0.0.1/r/link.php?lKsm#s92Sa")
+					Message.go(" HOTLink http://127.0.0.1/r/link.php?lKsm#s92Sa")
 					print (" "+Hlp+" to stop the module press "+colors[13]+"[Ctrl+c]"+colors[0])
 					server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 					server.bind(("", 6464))

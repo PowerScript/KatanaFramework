@@ -20,7 +20,7 @@ def initialize():
 	initialize.Despcription       ="Forensic Image Analysis with exiftool."
 	initialize.CodeName           ="anf/af.imagen"
 	initialize.DateCreation       ="28/09/2015"      
-	initialize.LastModification   ="31/03/2016"
+	initialize.LastModification   ="04/02/2016"
 
 	# DEFAULT VARIABLES             VALUE                   NAME        RQ     DESCRIPTION
 	initialize.DEFAULT_VARIABLE   =[["core/test/test.jpg", "target" , "yes" , "Path file"]]  #[0][0]
@@ -47,7 +47,7 @@ def main(run):
 						print "\n "+Hlp+" Forensic Imagen Client help"
 						print " --------------------------------------------"
 						print " |extract_all | extract all MD  | ...       |" 
-						print " |comment     | comment some    | comment :)|" 
+						print " |comment     | comment whatever| comment :)|" 
 						print " --------------------------------------------\n"	  												
 						cmd="nop"
 						parameter="ROO"
@@ -55,8 +55,8 @@ def main(run):
 							cmd = raw_input(Message.Client_prompt('forence{IMAGEN}'))
 							if(cmd=="extract_all"):
 								subprocess.call("perl files/exiftool/exiftool "+initialize.DEFAULT_VARIABLE [0][0], shell=True)
-							elif(cmd=="comment"):
-								subprocess.call("perl files/exiftool/exiftool -comment="+parameter+" "+initialize.DEFAULT_VARIABLE [0][0], shell=True)
+							elif(cmd[:7]=="comment"):
+								subprocess.call("perl files/exiftool/exiftool -comment="+cmd[8:]+" "+initialize.DEFAULT_VARIABLE [0][0], shell=True)
 			except:
 				Errors.Errors(event=sys.exc_info()[0], info=initialize.DEFAULT_VARIABLE [0][0])
 			# END CODE MODULE ############################################################################################
