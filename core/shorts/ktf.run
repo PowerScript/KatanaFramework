@@ -1,2 +1,3 @@
+#!/bin/bash
 cd /usr/share/katana
 python ktf.run -m $2
