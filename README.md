@@ -24,6 +24,7 @@ The Katana source code is organized as follows:
 
 # SUPPORTED DISTRIBUTIONS
 Ubuntu <img src="https://iperf.fr/images/logo_ubuntu.png" title="ubuntu">
+Debian <img src="http://wiki.sugarlabs.org/images/thumb/a/a1/Debian.jpg/30px-Debian.jpg" title="debian">
 
 # INSTALLATION
 Installation of Katana framework:
