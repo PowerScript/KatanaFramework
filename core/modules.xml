@@ -70,6 +70,13 @@
         <filename>sniff</filename>
         <description>Protocol Sniffer.</description>
     </module>
+    <module name="net/at.arpsp">
+        <version>3.0</version>
+        <author>RedToor</author>
+        <category>net</category>
+        <filename>arpoisoning</filename>
+        <description>ARP poisoning Attack.</description>
+    </module>
      <module name="set/facebrok">
         <version>1.0</version>
         <author>Redtoor</author>
