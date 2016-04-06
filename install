@@ -9,7 +9,7 @@
 #
 #
 
-import os,sys
+import os
 from core.Setting import * 
 from core import info
 from core import colors
