@@ -10,9 +10,6 @@
 #
 
 import os,sys
-pwd = os.path.dirname(__file__) + "/"
-os.chdir(pwd)
-
 from core.Setting import * 
 from core import info
 from core import colors
