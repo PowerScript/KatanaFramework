@@ -86,6 +86,8 @@ def callback(pkt):
 			return " "+colors[12]+str(pkt[IP].id)+"\t"+str(pkt[IP].proto)+"\t\t"+str(pkt[IP].src)+"\t"+str(pkt[IP].dst)+"\t"+pkt[Raw].load.replace("\n", ".")+colors[0]
 		if pkt.dport == 3306:
 			return " "+colors[11]+str(pkt[IP].id)+"\t"+str(pkt[IP].proto)+"\t\t"+str(pkt[IP].src)+"\t"+colors[0]
+		else:
+			return " "+colors[9]+str(pkt[IP].id)+"\t"+str(pkt[IP].proto)+"\t\t"+str(pkt[IP].src)+"\t"+colors[0]
 	except:
 		f=1
 
