@@ -18,7 +18,7 @@ def initialize():
 	initialize.Author             ="RedToor"
 	initialize.Version            ="1.1"
 	initialize.Despcription       ="Brute Force to POP protocol."
-	initialize.CodeName           ="fbt/pc.pop"
+	initialize.CodeName           ="fbt/pr.pop"
 	initialize.DateCreation       ="22/03/2015"      
 	initialize.LastModification   ="25/03/2016"
 
