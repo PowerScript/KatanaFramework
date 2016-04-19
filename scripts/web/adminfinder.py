@@ -20,7 +20,7 @@ def initialize():
 	initialize.Author             ="RedToor"
 	initialize.Version            ="1.1"
 	initialize.Despcription       ="Administrator Panel finder, Search for Brute force possibles Cpanels."
-	initialize.CodeName           ="anf/af.imagen"
+	initialize.CodeName           ="web/cp.finder"
 	initialize.DateCreation       ="28/09/2015"      
 	initialize.LastModification   ="31/03/2016"
 
