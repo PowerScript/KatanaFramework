@@ -18,7 +18,7 @@ def initialize():
 	initialize.Author             ="RedToor"
 	initialize.Version            ="1.1"
 	initialize.Despcription       ="Brute Force to SSH protocol."
-	initialize.CodeName           ="btf/pc.ssh"
+	initialize.CodeName           ="btf/pr.ssh"
 	initialize.DateCreation       ="07/03/2015"      
 	initialize.LastModification   ="25/03/2016"
 
