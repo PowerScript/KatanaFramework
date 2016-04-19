@@ -2,18 +2,23 @@
 #HEADER#######################
 # Katana framework           #
 # ktf.linker File            #
-# Last Modified: 31/03/2016  #
-# Review: 0                  #
+# Last Modified: 19/04/2016  #
+# Review: 1                  #
 #######################HEADER#
 
-from scripts.web import whois
+from scripts.web import whois,adminfinder,bruteforcetoformbase,bruteforcetohttpblock,cltlfd,joomscaner
+from scripts.btf import bruteforcetoftprotol,bruteforcetopop3rotocol,bruteforcetosqlprotocol,bruteforcetosshprotocol
+from scripts.net import hostslive
+
+
 from core.design import *
 from core import info
 import argparse
 CLASS_LINKER=DESIGN()
 
 if __name__=="__main__":
-	CLASS_LINKER.linker(info.version, info.build)
+	# For GUI not show this.
+	# CLASS_LINKER.linker(info.version, info.build)
 	parser = argparse.ArgumentParser(description='ktf.linker:'+info.version+info.build)
 	parser.add_argument("-m", "--module", help="Module")
 	parser.add_argument("-t", "--target", help="Target")        
@@ -32,14 +37,21 @@ if __name__=="__main__":
 	parser.add_argument("-l", "--length", help="Length")
 	parser.add_argument("-q", "--query", help="Query")
 	args = parser.parse_args()	
-	if args.module == "web/whois":      whois.run(target=args.target, port=args.port)
-	elif args.module == "web/joomscan": Joomscan.run(target=args.target, port=args.port)
-	elif args.module == "web/cpfinder": AdminFinder.run(target=args.target, port=args.port, dictionary=args.file)
-	elif args.module == "web/formbt":   BruteForceFormBase.run(target=args.target, port=args.port, patch=args.file, para1=args.userb, valor=args.valueform, para2=args.passwordb, dictionary=args.dictionary, method=args.query, condition=args.condition)
-	elif args.module == "web/httpbt":   BruteForceHTTP.run(target=args.target, port=args.port, patch=args.file, username=args.user, dictionary=args.dictionary)
-	elif args.module == "web/dos":      dosweb.run(target=args.target, port=args.port)
-	elif args.module == "web/lfd-con":  LFDconsole.run(target=args.target, files=args.file, port=args.port)
-	elif args.module == "net/lanlive":  LANScanner.run(nets=args.target, types="null")
+	# WEB 
+	if args.module == "web/whois":         whois.run(target=args.target, port=args.port)
+	elif args.module == "web/sc.joomla":   joomscaner.run(target=args.target, port=args.port)
+	elif args.module == "web/cp.finder":   adminfinder.run(target=args.target, port=args.port, dictionary=args.file)
+	elif args.module == "web/bt.http":     bruteforcetohttpblock.run(target=args.target, port=args.port, patch=args.file, username=args.user, dictionary=args.dictionary)
+	elif args.module == "web/clt.lfd":     cltlfd.run(target=args.target, port=args.port, files=args.file)
+	elif args.module == "web/bt.form":     bruteforcetoformbase.run(target=args.target, port=args.port, patch=args.file, para1=args.userb, valor=args.valueform, para2=args.passwordb, dictionary=args.dictionary, method=args.query, condition=args.condition)
+	# BTF 
+	elif args.module == "btf/pr.ftp":      bruteforcetoftprotol.run(target=args.target,port=args.port,username=args.user,dictionary=args.dictionary)
+	elif args.module == "btf/pr.ssh":      bruteforcetosshprotocol.run(target=args.target,port=args.port,username=args.user,dictionary=args.dictionary)
+	elif args.module == "btf/pr.sql":      bruteforcetosqlprotocol.run(target=args.target, port=args.port, username=args.user, dictionary=args.dictionary)
+	elif args.module == "btf/pr.pop3":     bruteforcetopop3rotocol.run(target=args.target, port=args.port, username=args.user, dictionary=args.dictionary)
+	# NET
+	elif args.module == "net/sc.hosts":    hostslive.run(ranges=args.target)
+	# YET NOT UPDATE
 	elif args.module == "net/portscan": PortScanner.run(target=args.target, types=args.port)
 	elif args.module == "net/arpspoof": ARPPoisoning.run(target=args.target, source=args.gateway, interface=args.interface)
 	elif args.module == "set/facebrok": facebrok.run(username=args.user,password=args.ports,database="facebrok_db",userp=args.userb,passp=args.passwordb)
@@ -47,10 +59,6 @@ if __name__=="__main__":
 	elif args.module == "clt/ftp":      ClientFTP.run(target=args.target,port=args.port,username=args.user,password=args.ports)
 	elif args.module == "clt/sql":      ClientMYSQL.run(target=args.target,port=args.port,username=args.user,password=args.ports)
 	elif args.module == "clt/pop":      ClientPOP3.run(target=args.target,port=args.port,username=args.user,password=args.ports)
-	elif args.module == "fbt/sql":      BruteForceSQL.run(target=args.target,port=args.port,username=args.user,dictionary=args.dictionary)
-	elif args.module == "fbt/ssh":      BruteForceSSH.run(target=args.target,port=args.port,username=args.user,dictionary=args.dictionary)
-	elif args.module == "fbt/ftp":      BruteForceFTP.run(target=args.target, port=args.port, username=args.user, dictionary=args.dictionary)
-	elif args.module == "fbt/pop3":     BruteForcePOP3.run(target=args.target, port=args.port, username=args.user, dictionary=args.dictionary)
 	elif args.module == "fle/bruterar": BruteRAR.run(files=args.file ,dictionary=args.dictionary)
 	elif args.module == "fle/brutezip": BruteZIP.run(files=args.file ,dictionary=args.dictionary)
 	elif args.module == "wifi/dos":     Wifi_DDOS.run(interface=args.interface, bssid=args.userb, channel=args.condition)
