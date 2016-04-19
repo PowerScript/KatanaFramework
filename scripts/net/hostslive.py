@@ -22,7 +22,7 @@ def initialize():
 	initialize.Author             ="RedToor"
 	initialize.Version            ="2.0"
 	initialize.Despcription       ="Host's live scanner in LAN"
-	initialize.CodeName           ="net/cs.hosts"
+	initialize.CodeName           ="net/sc.hosts"
 	initialize.DateCreation       ="22/08/2015"      
 	initialize.LastModification   ="24/03/2016"
 
