@@ -18,7 +18,7 @@ def initialize():
 	initialize.Author             ="LeSZO ZerO"
 	initialize.Version            ="1.1"
 	initialize.Despcription       ="Brute Force to FTP protocol."
-	initialize.CodeName           ="btf/pc.ftp"
+	initialize.CodeName           ="btf/pr.ftp"
 	initialize.DateCreation       ="07/03/2015"      
 	initialize.LastModification   ="25/03/2016"
 
