@@ -20,7 +20,7 @@ def initialize():
 	initialize.Author             ="RedToor"
 	initialize.Version            ="1.1"
 	initialize.Despcription       ="Brute Force to HTTP folder block."
-	initialize.CodeName           ="web/fb.http"
+	initialize.CodeName           ="web/bt.http"
 	initialize.DateCreation       ="27/02/2015"      
 	initialize.LastModification   ="24/03/2016"
 
