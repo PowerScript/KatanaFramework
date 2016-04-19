@@ -58,7 +58,7 @@ def main(run):
 # END MAIN FUNCTION
 
 # LINKER FUNCTION
-def run(target,port,dictionary):
+def run(target,port):
 	initialize.DEFAULT_VARIABLE [0][0] = target
 	initialize.DEFAULT_VARIABLE [1][0] = port
 	main(False)
