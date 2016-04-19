@@ -18,7 +18,7 @@ def initialize():
 	initialize.Author             ="RedToor"
 	initialize.Version            ="1.1"
 	initialize.Despcription       ="Brute Force to SQL protocol."
-	initialize.CodeName           ="btf/pc.sql"
+	initialize.CodeName           ="btf/pr.sql"
 	initialize.DateCreation       ="16/05/2015"      
 	initialize.LastModification   ="25/03/2016"
 
