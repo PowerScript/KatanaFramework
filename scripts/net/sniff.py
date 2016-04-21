@@ -58,7 +58,7 @@ def main(run):
 			if getFunction.checkDevice(initialize.DEFAULT_VARIABLE[0][0]):
 				print " "+colors[10]+" #\t"+colors[4]+"PROTOCOL\tSOURCE\t\tDESTINE\t\tDATA          "+colors[0]
 				while True:
-    					sniff(filter=FILTER, prn=callback, store=0, iface="wlan0")
+    					sniff(filter=FILTER, prn=callback, store=0, iface=initialize.DEFAULT_VARIABLE[0][0])
 			else:
 				Messages.NoDeviceFound(initialize.DEFAULT_VARIABLE[0][0])
 			# END CODE MODULE ############################################################################################
