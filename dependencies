@@ -2,8 +2,8 @@
 #HEADER#######################
 # Katana framework           #
 # dependencies File          #
-# Last Modified: 02/04/2016  #
-# Review: 0                  #
+# Last Modified: 28/04/2016  #
+# Review: 1                  #
 #######################HEADER#
 
 
@@ -19,10 +19,6 @@
 		sudo apt-get install --yes apache2
 		sudo apt-get install --yes php5
 		sudo apt-get install --yes libapache2-mod-php5
-	fi
-
-	if ! hash git 2>/dev/null; then 
-		sudo apt-get install --yes git
 	fi
 
 	if ! hash ettercap 2>/dev/null; then 
