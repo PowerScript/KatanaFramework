@@ -2,8 +2,8 @@
 #HEADER#######################
 # Katana framework           #
 # Functions File             #
-# Last Modified: 25/03/2016  #
-# Review: 0                  #
+# Last Modified: 30/04/2016  #
+# Review: 1                  #
 #######################HEADER#
 
 import logging
@@ -314,3 +314,64 @@ def my_mac_address():
 	        if(maca != "00:00:00:00:00:00"):
 	            return maca
 	return "NULL"
+
+### STATUS HTTP ###
+def checkStatus(code):
+	if code == 200 : description = [ "OK"                                       , "Suf" ]
+	if code == 201 : description = [ "Created"                                  , "Suf" ]
+	if code == 202 : description = [ "Accepted"                                 , "Suf" ]
+	if code == 203 : description = [ "Non/Authoritative Information (HTTP/1.1)" , "Suf" ]
+	if code == 204 : description = [ "No Content"                               , "Suf" ]
+	if code == 205 : description = [ "Reset Content"                            , "Suf" ]
+	if code == 206 : description = [ "Partial Content"                          , "Suf" ]
+	if code == 207 : description = [ "Multi/Status (Multi/Status, WebDAV)"      , "Suf" ]
+	if code == 208 : description = [ "Already Reported (WebDAV)"                , "Suf" ]
+	if code == 300 : description = [ "Multiple Choices"                         , "Inf:Redirection" ]
+	if code == 301 : description = [ "Moved Permanently"                        , "Inf:Redirection" ]
+	if code == 302 : description = [ "Found"                                    , "Inf:Redirection" ]
+	if code == 303 : description = [ "See Other (from HTTP/1.1)"                , "Inf:Redirection" ]
+	if code == 304 : description = [ "Not Modified"                             , "Inf:Redirection" ]
+	if code == 305 : description = [ "Use Proxy (desde HTTP/1.1)"               , "Inf:Redirection" ]
+	if code == 306 : description = [ "Switch Proxy"                             , "Inf:Redirection" ]
+	if code == 307 : description = [ "Temporary Redirect (desde HTTP/1.1)"      , "Inf:Redirection" ]
+	if code == 308 : description = [ "Permanent Redirect"                       , "Inf:Redirection" ]                
+	if code == 400 : description = [ "Bad Request"                              , "Inf:Redirection" ]
+	if code == 401 : description = [ "Unauthorized"                             , "Err:Client" ]
+	if code == 402 : description = [ "Payment Required"                         , "Err:Client" ]
+	if code == 403 : description = [ "Forbidden"                                , "Err:Client" ]
+	if code == 404 : description = [ "Not Found"                                , "Err:Client" ]
+	if code == 405 : description = [ "Method Not Allowed"                       , "Err:Client" ]
+	if code == 406 : description = [ "Not Acceptable"                           , "Err:Client" ]
+	if code == 407 : description = [ "Proxy Authentication Required"            , "Err:Client" ]
+	if code == 408 : description = [ "Request Timeout"                          , "Err:Client" ]
+	if code == 409 : description = [ "Conflict"                                 , "Err:Client" ]
+	if code == 410 : description = [ "Gone"                                     , "Err:Client" ]
+	if code == 411 : description = [ "Length Required"                          , "Err:Client" ]
+	if code == 412 : description = [ "Precondition Failed"                      , "Err:Client" ]
+	if code == 413 : description = [ "Request Entity Too Large"                 , "Err:Client" ]
+	if code == 414 : description = [ "Request/URI Too Long"                     , "Err:Client" ]
+	if code == 415 : description = [ "Unsupported Media Type"                   , "Err:Client" ]
+	if code == 416 : description = [ "Requested Range Not Satisfiable"          , "Err:Client" ]
+	if code == 417 : description = [ "Expectation Failed"                       , "Err:Client" ]
+	if code == 418 : description = [ "I'm a teapot"                             , "Err:Client" ]
+	if code == 422 : description = [ "Unprocessable Entity (WebDAV / RFC 4918)" , "Err:Client" ]
+	if code == 423 : description = [ "Locked (WebDAV / RFC 4918)"               , "Err:Client" ]
+	if code == 424 : description = [ "Failed Dependency (WebDAV) (RFC 4918)"    , "Err:Client" ]
+	if code == 425 : description = [ "Unassigned"                               , "Err:Client" ]
+	if code == 426 : description = [ "Upgrade Required (RFC 7231)"              , "Err:Client" ]
+	if code == 428 : description = [ "Precondition Required"                    , "Err:Client" ]
+	if code == 429 : description = [ "Too Many Requests"                        , "Err:Client" ]
+	if code == 431 : description = [ "Request Header Fileds Too Large)"         , "Err:Client" ]
+	if code == 451 : description = [ "Unavailable for Legal Reasons"            , "Err:Client" ]
+	if code == 500 : description = [ "Internal Server Error"                    , "Err:Server" ]
+	if code == 501 : description = [ "Not Implemented"                          , "Err:Server" ]
+	if code == 502 : description = [ "Bad Gateway"                              , "Err:Server" ]
+	if code == 503 : description = [ "Service Unavailable"                      , "Err:Server" ]
+	if code == 504 : description = [ "Gateway Timeout"                          , "Err:Server" ]
+	if code == 505 : description = [ "HTTP Version Not Supported"               , "Err:Server" ]
+	if code == 506 : description = [ "Variant Also Negotiates (RFC 2295)"       , "Err:Server" ]
+	if code == 507 : description = [ "Insufficient Storage (WebDAV / RFC 4918)" , "Err:Server" ]
+	if code == 508 : description = [ "Loop Detected (WebDAV)"                   , "Err:Server" ]
+	if code == 510 : description = [ "Not Extended (RFC 2774)"                  , "Err:Server" ]
+	if code == 511 : description = [ "Network Authentication Required"          , "Err:Server" ]
+	return description
