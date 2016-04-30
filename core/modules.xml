@@ -8,7 +8,7 @@
         <description>Administrator Panel Finder.</description>
     </module>
       <module name="web/bt.form">
-        <version>1.1</version>
+        <version>1.2</version>
         <author>RedToor</author>
 		<category>web</category>
         <filename>bruteforcetoformbase</filename>
