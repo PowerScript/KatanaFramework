@@ -2,8 +2,8 @@
 #HEADER#######################
 # Katana framework           #
 # Design file (Theme)        #
-# Last Modified: 25/03/2016  #
-# Review: 0                  #
+# Last Modified: 30/04/2016  #
+# Review: 1                  #
 #######################HEADER#
 
 import time
@@ -105,6 +105,8 @@ class DESIGN:
 		print " "+Bad+" The device '"+device+"' not was Found.\n"
 	def Nosuchdevice(self):
 		print " "+Bad+" No such device.\n"
+	def Noresult(self):
+		print " "+Nrs+" Attack ended without any results."
 	def ktflab(self,version,build):
 		print """
 		   __   __  ___"""+colors[3]+"""__     __     """+colors[0]+"""
