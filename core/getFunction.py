@@ -208,7 +208,7 @@ def Myip():
 			return IP_Address
 	except:
 		SocCKet.close()
-		return "192.168.1.0"
+		return "NULL"
 
 ### GET EXTANAL IP ###
 def get_external_ip():
@@ -218,7 +218,7 @@ def get_external_ip():
 	    address = grab[0]
 	    return address
 	except:
-		return "null"
+		return "NULL"
 
 ### INTERFACES SCANNING ###
 def get_interfaces():
