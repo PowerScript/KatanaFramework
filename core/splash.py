@@ -20,10 +20,9 @@ print colors.B+"""
        ||========@MMMM"""+colors.W+"""MMM"""+colors.B+"""MMM"""+colors.W+"""MMM"""+colors.B+"""MMMMM"""+colors.W+"""MMM"""+colors.B+"""MMMMMM"""+colors.W+"""MMM"""+colors.B+"""MMMMMMMMM=========||
        ||         """+colors.HH+""""""+colors.W+"""/TT\\"""+colors.HH+colors.B+"""mMMMMMMMMMM"""+colors.W+colors.HH+"""FRAMEWORK"""+colors.W+colors.HH+colors.B+"""MMMMMMMMMMMMm           ||
        ||        """+colors.W+"""(____)"""+colors.HH+colors.B+"""@MM@@MM@@MM@@MMMMMM@@MM@@Mm"""+colors.W+"""                ||
-       ||        |  B |                                           ||
-       ||        |  O | """+colors.HH+""" Core    """+colors.W+""" [ """+info.version+""", Build: """+info.build+""" ]        ||
-       ||        |  M | """+colors.HH+""" Date    """+colors.W+""" [ """+info.date+"""    ]        ||
-       ||        |__B_| """+colors.HH+""" Date    """+colors.W+""" [ """+info.date+"""    ]        ||
+       ||        |  P |                                           ||
+       ||        |  W | """+colors.HH+""" Core    """+colors.W+""" [ """+info.version+""", Build: """+info.build+""" ]        ||
+       ||        |__N_| """+colors.HH+""" Date    """+colors.W+""" [ """+info.date+"""    ]        ||
        ||        |_  _| """+colors.HH+""" Theme   """+colors.W+""" [ """+info.tema+"""        ]        ||        
        ||        /|__|\\  """+colors.HH+"""Modules """+colors.W+""" [ """""+info.modules+""" Scritp's"""+colors.W+"""          ]        ||
        """+colors.GW+"""||       /__\/__\\"""+colors.GW+""" By RedToor                               ||"""+colors.W+"""
