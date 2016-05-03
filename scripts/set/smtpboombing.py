@@ -23,16 +23,7 @@ def initialize():
 	initialize.LastModification   ="03/05/2016"
 
 	# DEFAULT VARIABLES             VALUE                                       NAME        RQ     DESCRIPTION
-	initialize.DEFAULT_VARIABLE   =[["smtp.live.com"                         , "host"    ,"yes" , "Server host"]]        #[0][0]
-	initialize.DEFAULT_VARIABLE  +=[["587"                                   , "port"    ,"no"  , "Port Service"]]       #[1][0]
-	initialize.DEFAULT_VARIABLE  +=[["franco1844@hotmail.com"                , "accnt"   ,"yes" , "Account email"]]      #[2][0]
-	initialize.DEFAULT_VARIABLE  +=[["salazar"                               , "pass"    ,"yes" , "Password"]]           #[3][0]
-	initialize.DEFAULT_VARIABLE  +=[["javiefrancoq@hotmail.com"              , "target"  ,"yes" , "Account target"]]     #[4][0]
-	initialize.DEFAULT_VARIABLE  +=[["HOLA"                                  , "subj"    ,"no"  , "Subject (title)"]]    #[5][0]
-	initialize.DEFAULT_VARIABLE  +=[["files/tmtSMTP/updateTwitter.tmp"       , "file"    ,"yes" , "Message file"]]       #[6][0]
-	initialize.DEFAULT_VARIABLE  +=[["3"                                     , "amount"  ,"no"  , "Amount to send"]]     #[7][0]
-	initialize.TLS                =False                                                                                 #TLS
-initialize()
+
 # END INFORMATION MODULE
 
 # MAIN FUNCTION
