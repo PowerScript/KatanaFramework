@@ -2,8 +2,8 @@
 #HEADER#######################
 # Katana framework           #
 # Error file debug           #
-# Last Modified: 27/03/2016  #
-# Review: 0                  #
+# Last Modified: 03/05/2016  #
+# Review: 1                  #
 #######################HEADER#
 
 from design import *
@@ -27,6 +27,9 @@ def Errors(event, info):
 		return
 	if string.find("No such device") >= 0:
 		return d.Nosuchdevice()
+	if string.find("smtplib.SMTPServerDisconnected") >= 0:
+		print ' '+Bad+' Host '+info+' Connection unexpectedly closed.\n'
+		return
 	if string.find("socket") >= 0:
 		return d.target_off(str(info))
 	if string.find("KeyboardInterrupt") >= 0 and info!=False:
