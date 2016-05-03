@@ -91,6 +91,13 @@
         <filename>getdatareport</filename>
         <description>Gathering Information for web.</description>
     </module>
+     <module name="set/em.boom">
+        <version>1.0</version>
+        <author>Redtoor</author>
+        <category>set</category>
+        <filename>smtpboombing</filename>
+        <description>E-mail Boombing (SPAM).</description>
+    </module>
     <module name="clt/cl.sql">
         <version>1.1</version>
         <author>RedToor</author>
