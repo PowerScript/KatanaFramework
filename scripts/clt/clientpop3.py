@@ -1,120 +1,107 @@
-# :-:-:-:-:-:-:-:-:-:-:-:-:- #
-# @KATANA                    #
-# Modules   : Client POP3    #
-# Script by : RedToor        #
-# Date      : 22/05/2015     #
-# :-:-:-:-:-:-:-:-:-:-:-:-:- #
-# Katana Core                #
-from core.design import *    #
-from core.Setting import *   #
-from core import Errors      #
-from core import help        #
-from core import ping        #
-import sys                   #
-d=DESIGN()                   #
-# :-:-:-:-:-:-:-:-:-:-:-:-:- #
-# Libraries                  #
-import poplib                #
-# :-:-:-:-:-:-:-:-:-:-:-:-:- #
-# Default                    #
-# :-:-:-:-:-:-:-:-:-:-:-:-:- #
-defaulthost=LOCAL_IP
-defaultport=POP_PORT
-defaultuser=USERNAME
-defaultpass=PASSWORD
-# :-:-:-:-:-:-:-:-:-:-:-:-:- #
+# This module requires katana framework 
+# https://github.com/RedToor/Katana
+# :-:-:-:-:-:-:-:-:-:-:-:-:-: #
+# Katana Core                 #
+from core.design import *     #
+from core.Setting import *    #
+from core import Errors       #
+from core import getFunction  #
+import sys                    #
+Message=DESIGN()              #
+# :-:-:-:-:-:-:-:-:-:-:-:-:-: #
+# Libraries                   #
+import MySQLdb                #
+# :-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
-def run(target,port,username,password):
-	global defaulthost,defaultport,defaultuser,defaultpass
-	defaulthost=target
-	defaultport=port
-	defaultuser=username
-	defaultpass=password
-	cpop3(1)
+# INFORMATION MODULE
+def initialize():
+	initialize.Author             ="RedToor"
+	initialize.Version            ="1.1"
+	initialize.Despcription       ="Console Client for POP3 Protocol."
+	initialize.CodeName           ="clt/cl.pop"
+	initialize.DateCreation       ="22/05/2015"      
+	initialize.LastModification   ="03/06/2016"
 
-def cpop3(run):
+	# DEFAULT VARIABLES             VALUE                  NAME        RQ     DESCRIPTION
+	initialize.DEFAULT_VARIABLE   =[[LOCAL_IP            , "target" , "yes" , "IP or DNS"]]         #[0][0]
+	initialize.DEFAULT_VARIABLE  +=[[POP_PORT            , "port"   , "no"  , "Service port"]]      #[1][0]
+	initialize.DEFAULT_VARIABLE  +=[[USERNAME            , "user"   , "yes" , "Username target"]]   #[2][0]
+	initialize.DEFAULT_VARIABLE  +=[[PASSWORD            , "pass"   , "yes" , "Password target"]]   #[3][0]
+initialize()
+# END INFORMATION MODULE
+
+# MAIN FUNCTION
+def main(run):
 	try:
-		global defaulthost,defaultport,defaultuser,defaultpass
-		if run!=1:
-			actions=raw_input(d.prompt("clt/pop3"))
-		else:
-			actions="run"
-		if actions == "show options" or actions == "sop":
-			d.option()
-			d.descrip("target","yes","IP or DNS",defaulthost)
-			d.descrip("port","no","Port of target",defaultport)
- 			d.descrip("user","yes","Username",defaultuser)
- 			d.descrip("pass","yes","Password",defaultpass)
-			d.space()
-			cpop3(0)
-		elif actions[0:10] == "set target":
-			defaulthost=defaulthost.replace("http://", "")
-			defaulthost=ping.update(defaulthost,actions,"target")
-			d.change("target",defaulthost)
-		elif actions[0:8] == "set port":
-			defaultport=ping.update(defaultport,actions,"port")
-			d.change("port",defaultport)
-		elif actions[0:8] == "set user":
-			defaultuser=ping.update(defaultuser,actions,"user")
-			d.change("user",defaultuser)
-		elif actions[0:8] == "set pass":
-			defaultpass=ping.update(defaultpass,actions,"pass")
-			d.change("pass",defaultpass)
-		elif actions=="exit" or actions=="x":
-			d.goodbye()
-			exit()
-		elif actions=="help" or actions=="h":
-			help.help()
-		elif actions=="back" or actions=="b":
-			return
-		elif actions=="run"  or actions=="r":
-			d.run()
+		# HEAD MODULE
+		if run:	actions=raw_input(Message.prompt(initialize.CodeName))
+		else  : actions="run"
+		if getFunction.KatanaCheckActionShowOptions(actions)  :getFunction.ShowOptions(initialize.DEFAULT_VARIABLE)
+		elif getFunction.KatanaCheckActionSetValue(actions)   :initialize.DEFAULT_VARIABLE=getFunction.UpdateValue(actions,initialize.DEFAULT_VARIABLE)
+		elif getFunction.KatanaCheckActionisBack(actions)     :return
+		# END HEAD MODULE
+		elif getFunction.runModule(actions):
+			Message.run()
+			# CODE MODULE    ############################################################################################
 			try:
-				red=poplib.POP3(defaulthost, defaultport)
-				try:
-					red.user(defaultuser)
-					red.pass_(defaultpass)	
-					if True:
-						cmd="nop"
-						print "\n "+Hlp+" POP3 Client help\n"
-						print "  ----------------------------------------"
-						print "  |"+colors[6]+"Commd"+colors[0]+"| "+colors[6]+"Description"+colors[0]+" | "+colors[6]+"Examples"+colors[0]+"         |"
-						print "  ----------------------------------------"
-						print "  |list	| list mails  | list             |" 
-						print "  |retr	| show mail   | retr 2           |"
-						print "  |dele	| remove mail | dele 2           |"
-						print "  |quit	|exit d remove| quit             | "
-						print "  ----------------------------------------"
-						print ""
+				getFunction.live(initialize.DEFAULT_VARIABLE[0][0],initialize.DEFAULT_VARIABLE[1][0])
+				if True:
+					try:
+						con=poplib.POP3(initialize.DEFAULT_VARIABLE[0][0], initialize.DEFAULT_VARIABLE[1][0])
 						if True:
-							if True:
-								if True:
-									while(cmd!="exit"):
-										cmd = raw_input(d.Client_prompt('pop3'))
-										if cmd == "list":
-											numMessages = len(red.list()[1])
-											for i in range(numMessages):
-											    print "	mail "+str(i)
-										if cmd[0:4] == "retr":
-											for j in red.retr(int(cmd[5:])+1)[1]:
-												print j
-										if cmd[0:4] == "dele":
-											try:
-											    red.dele(int(cmd[5:])+1)[1]
-											    if True:
-											    	print " "+Alr+" email marked for delete ('quit' for exit and delete all email marked)"
-											except Exception,e:
-												 print(" "+Bad+" Error", e)
-										if cmd == "quit":
-											red.quit()
-											print " "+Alr+" Exit, bye."
-											break
-				except:
-					d.No_match()
+							try:
+								con.user(initialize.DEFAULT_VARIABLE[2][0])
+								con.pass_(initialize.DEFAULT_VARIABLE[3][0])	
+								cmd="nop"
+								print "\n "+Hlp+" POP3 Client help"
+								print " -------------------------------------------------------------------------------------------------------"
+								print " |"+colors[6]+"Command"+colors[0]+"|"+colors[6]+"Description"+colors[0]+"|"+colors[6]+"Examples"+colors[0]+"|"
+								print " -------------------------------------------------------------------------------------------------------"
+								print " |list	| list mails  | list             |" 
+								print " |retr	| show mail   | retr 2           |"
+								print " |dele	| remove mail | dele 2           |"
+								print " ---------------------------------------\n"
+								while(cmd!="exit"):
+									cmd = raw_input(d.Client_prompt('pop3'))
+									if cmd == "list":
+										numMessages = len(red.list()[1])
+										for i in range(numMessages):
+										    print "	mail "+str(i)
+									if cmd[0:4] == "retr":
+										for j in red.retr(int(cmd[5:])+1)[1]:
+											print j
+									if cmd[0:4] == "dele":
+										try:
+										    red.dele(int(cmd[5:])+1)[1]
+										    if True:
+										    	print " "+War+" email marked for delete ('quit' for exit and delete all email marked)"
+										except Exception,e:
+											 print(" "+Bad+" Error", e)
+									if cmd == "quit":
+										red.quit()
+										print " "+Alr+" Exit, bye."
+										break
+							except:
+								Errors.Errors(event=sys.exc_info(), info=False)
+					except:
+						Errors.Errors(event=sys.exc_info(), info=initialize.DEFAULT_VARIABLE[2][0]+":"+initialize.DEFAULT_VARIABLE[3][0])
 			except:
-				Errors.Errors(event=sys.exc_info()[0], info=defaulthost+":"+defaultport)
+				Errors.Errors(event=sys.exc_info(), info=initialize.DEFAULT_VARIABLE[0][0]+":"+initialize.DEFAULT_VARIABLE[1][0])			# END CODE MODULE ############################################################################################
+			# END CODE MODULE ############################################################################################
 		else:
-			d.No_actions()
+			getFunction.KatanaCheckActionGlobalCommands(actions)
+	# ERROR GENERAL
 	except:
-		Errors.Errors(event=sys.exc_info()[0], info=False)
-	cpop3(0)
+		Errors.Errors(event=sys.exc_info(), info=sys.exc_traceback.tb_lineno)
+	# END ERROR GENERAL
+	main(True)
+# END MAIN FUNCTION
+
+# LINKER FUNCTION
+def run(target,port,username,password):
+	initialize.DEFAULT_VARIABLE[0][0] = target
+	initialize.DEFAULT_VARIABLE[1][0] = port
+	initialize.DEFAULT_VARIABLE[2][0] = username
+	initialize.DEFAULT_VARIABLE[3][0] = password
+	main(False)
+# END LINKER FUNCTION
