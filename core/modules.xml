@@ -112,6 +112,13 @@
         <filename>clientftp</filename>
         <description>Console Client FTP.</description>
     </module>
+    <module name="clt/cl.pop">
+        <version>1.0</version>
+        <author>RedToor</author>
+        <category>clt</category>
+        <filename>clientpop3</filename>
+        <description>Console Client POP.</description>
+    </module>
      <module name="btf/pr.ftp">
         <version>1.1</version>
         <author>LeSZO ZerO</author>
