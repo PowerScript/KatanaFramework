@@ -39,14 +39,14 @@
         <version>1.1</version>
         <author>cl3ar</author>
 		<category>net</category>
-        <filename>arpmon</filename>
+        <filename>arp_attack_monitor</filename>
         <description>ARP tables Monitor.</description>
     </module>
       <module name="net/sc.hosts">
         <version>2.1</version>
         <author>Redtoor</author>
 		<category>net</category>
-        <filename>hostslive</filename>
+        <filename>get_hosts_live</filename>
         <description>Host's live Scan in LAN.</description>
     </module>
     <module name="net/sc.scan">
@@ -67,7 +67,7 @@
         <version>3.0</version>
         <author>RedToor</author>
         <category>net</category>
-        <filename>arpoisoning</filename>
+        <filename>arp_poisoning_attack</filename>
         <description>ARP poisoning Attack.</description>
     </module>
      <module name="set/facebrok">
@@ -95,21 +95,21 @@
         <version>1.1</version>
         <author>RedToor</author>
         <category>clt</category>
-        <filename>clientmysql</filename>
+        <filename>client_mysql</filename>
         <description>Console Client mysql.</description>
     </module>
     <module name="clt/cl.ftp">
         <version>1.0</version>
         <author>RedToor</author>
         <category>clt</category>
-        <filename>clientftp</filename>
+        <filename>client_ftp</filename>
         <description>Console Client FTP.</description>
     </module>
     <module name="clt/cl.pop">
         <version>1.0</version>
         <author>RedToor</author>
         <category>clt</category>
-        <filename>clientpop3</filename>
+        <filename>client_pop3</filename>
         <description>Console Client POP.</description>
     </module>
      <module name="btf/pr.ftp">
@@ -197,5 +197,4 @@
         <description>Access Point Phising.</description>
     </module>
 </modules>
-
 
