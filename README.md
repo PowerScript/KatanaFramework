@@ -51,6 +51,8 @@ See [LICENSE](https://github.com/PowerScript/KatanaFramework/blob/master/doc/LIC
 
 We need partners, if you're interested in support or help contact.
 
+## you are a programmer python? Join us. <img src="http://www.bennugd.org/sites/default/files/We_Need_You.jpeg" title="Love">
+
 # LINKS
 ```
 Wiki: https://github.com/PowerScript/KatanaFramework/wiki
