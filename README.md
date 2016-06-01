@@ -1,5 +1,4 @@
-[![Gitter chat](https://badges.gitter.im/totaljs/framework.png)](https://gitter.im/PowerScript/KatanaFramework) ![Supported OS](https://img.shields.io/badge/Supported%20OS-Linux-yellow.svg) ![License](https://img.shields.io/badge/license-GPLv3-blue.svg) 
-![CORE](https://img.shields.io/badge/core-0.0.1.0-green.svg)![Build](https://img.shields.io/badge/BUILD-0058-red.svg) 
+[![Gitter chat](https://badges.gitter.im/totaljs/framework.png)](https://gitter.im/PowerScript/KatanaFramework) ![Supported OS](https://img.shields.io/badge/Supported%20OS-Linux-yellow.svg) ![License](https://img.shields.io/badge/license-GPLv3-blue.svg) ![CORE](https://img.shields.io/badge/core-0.0.1.0-green.svg)![Build](https://img.shields.io/badge/BUILD-0058-red.svg) 
 ---
 # ABOUT.
 
@@ -11,7 +10,7 @@ The project is open to partners.
 The Katana source code is organized as follows:
 
 <i>-[core/](https://github.com/PowerScript/KatanaFramework/tree/master/core)</i> > Source code core<br>
-<i>--[core/db/](https://github.com/PowerScript/KatanaFramework/tree/master/core/db)</i> > Dictionaries and tables<br>
+<i>--[core/db/](https://github.com/PowerScript/KatanaFramework/tree/master/files/db)</i> > Dictionaries and tables<br>
 <i>--[core/logs/](https://github.com/PowerScript/KatanaFramework/tree/master/core/logs)</i> > Registers of modules<br>
 <i>-[files/](https://github.com/PowerScript/KatanaFramework/tree/master/files)</i> > Files necessary for some modules<br>
 <i>-[tmp/](https://github.com/PowerScript/KatanaFramework/tree/master/tmp)</i> > Temp files<br>
