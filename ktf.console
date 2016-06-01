@@ -65,7 +65,7 @@ def katanaFrameworkConsole():
 							if   KatanaCheckActionShowOptions(actions)  :ShowOptions(init)
 							elif KatanaCheckActionShowMOptions(actions) :ShowFullOptions(init)
 							elif KatanaCheckActionExefunction(actions)  :Executefunction(actions)
-							elif KatanaCheckActionSetValue(actions)     :init.options=UpdateValue(actions,init.options)
+							elif KatanaCheckActionSetValue(actions)     :init=UpdateValue(actions,init)
 							elif KatanaCheckActionGetInfo(actions)      :ShowInformationModule(init)
 							elif runModule(actions):
 								for Namevalue in init.options:
