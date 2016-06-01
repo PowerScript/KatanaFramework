@@ -1,8 +1,5 @@
-﻿<center>
-<img src="http://web.alsa.org/images/content/pagebuilder/KTF_Logo.jpg" title="Python" align="center">
-</center>
-[![Gitter chat](https://badges.gitter.im/totaljs/framework.png)](https://gitter.im/RedToor/Katana) ![Supported OS](https://img.shields.io/badge/Supported%20OS-Linux-yellow.svg) ![License](https://img.shields.io/badge/license-GPLv3-blue.svg) 
-![CORE](https://img.shields.io/badge/core-0.0.0.9-green.svg)![Build](https://img.shields.io/badge/BUILD-0057-red.svg) 
+[![Gitter chat](https://badges.gitter.im/totaljs/framework.png)](https://gitter.im/PowerScript/KatanaFramework) ![Supported OS](https://img.shields.io/badge/Supported%20OS-Linux-yellow.svg) ![License](https://img.shields.io/badge/license-GPLv3-blue.svg) 
+![CORE](https://img.shields.io/badge/core-0.0.1.0-green.svg)![Build](https://img.shields.io/badge/BUILD-0058-red.svg) 
 ---
 # ABOUT.
 
@@ -13,24 +10,26 @@ The project is open to partners.
 # SOURCE CODE ORGANIZATION
 The Katana source code is organized as follows:
 
-<i>-[core/](https://github.com/RedToor/Katana/tree/master/core)</i> > Source code core<br>
-<i>--[core/db/](https://github.com/RedToor/Katana/tree/master/core/db)</i> > Dictionaries and tables<br>
-<i>--[core/logs/](https://github.com/RedToor/Katana/tree/master/core/logs)</i> > Registers of modules<br>
-<i>-[files/](https://github.com/RedToor/Katana/tree/master/files)</i> > Files necessary for some modules<br>
-<i>-[tmp/](https://github.com/RedToor/Katana/tree/master/tmp)</i> > Temp files<br>
-<i>-[lib/](https://github.com/RedToor/Katana/tree/master/lib)</i> > Libraries<br>
-<i>-[doc/](https://github.com/RedToor/Katana/tree/master/doc)</i> > Documentation<br>
-<i>-[scripts/](https://github.com/RedToor/Katana/tree/master/scripts)</i> > Scripts(modules)<br>
+<i>-[core/](https://github.com/PowerScript/KatanaFramework/tree/master/core)</i> > Source code core<br>
+<i>--[core/db/](https://github.com/PowerScript/KatanaFramework/tree/master/core/db)</i> > Dictionaries and tables<br>
+<i>--[core/logs/](https://github.com/PowerScript/KatanaFramework/tree/master/core/logs)</i> > Registers of modules<br>
+<i>-[files/](https://github.com/PowerScript/KatanaFramework/tree/master/files)</i> > Files necessary for some modules<br>
+<i>-[tmp/](https://github.com/PowerScript/KatanaFramework/tree/master/tmp)</i> > Temp files<br>
+<i>-[lib/](https://github.com/PowerScript/KatanaFramework/tree/master/lib)</i> > Libraries<br>
+<i>-[doc/](https://github.com/PowerScript/KatanaFramework/tree/master/doc)</i> > Documentation<br>
+<i>-[scripts/](https://github.com/PowerScript/KatanaFramework/tree/master/scripts)</i> > Scripts(modules)<br>
 
 # SUPPORTED DISTRIBUTIONS
-Ubuntu <img src="https://iperf.fr/images/logo_ubuntu.png" title="ubuntu">
-Debian <img src="http://wiki.sugarlabs.org/images/thumb/a/a1/Debian.jpg/30px-Debian.jpg" title="debian">
+|Distribution | supported | status |
+----------|-------------|-------|
+|Kali Linux| yes| beta   |
+|Wifislax| yes| beta   |
 
 # INSTALLATION
 Installation of Katana framework:
 <i><b><br><br>
-	git clone https://github.com/RedToor/katana.git<br>
-        cd Katana<br>
+	git clone https://github.com/PowerScript/KatanaFramework.git<br>
+        cd KatanaFramework<br>
         chmod 777 install<br>
         python install</i>
 </i></b>
@@ -40,10 +39,6 @@ Commands
 ```
         Option 1) ./sudo ktf.console                                   
         Option 2) ./sudo ktf.run -m Code-Name  
-        Option 3) ./sudo ktf.linker -m Code-Name -t localhost -p 80 
-        
-        Building (Katana Laboratory)       [ktf.lab] PREMIUM
-        (Katana Graphical User Interface)  [ktf.gui] PREMIUM
 ```
 
 # SUPPORT
@@ -52,15 +47,15 @@ or use "Issue" on github project
 
 # LICENSE
 Katana is licensed. 
-See [LICENSE](https://github.com/RedToor/Katana/blob/master/LICENCE) for more information.
+See [LICENSE](https://github.com/PowerScript/KatanaFramework/blob/master/doc/LICENCE) for more information.
 
 We need partners, if you're interested in support or help contact.
 
 # LINKS
 ```
-Wiki: https://github.com/RedToor/Katana/wiki
+Wiki: https://github.com/PowerScript/KatanaFramework/wiki
 Project in SF: http://sourceforge.net/projects/katanas/files/
-Documentation: https://github.com/RedToor/Katana/tree/master/doc
+Documentation: https://github.com/PowerScript/KatanaFramework/tree/master/doc
 Blog of project [ES]: http://cave-rt.blogspot.com.co/2015/07/instalacion-y-uso-katana-framework.html
 Youtube Guide: https://www.youtube.com/watch?v=5JR3Lnrvmg4&list=PL6BZilIOZMcy7uG3cRqYMc69kFb7wxEDR
 ```
