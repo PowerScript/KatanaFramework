@@ -1,65 +1,71 @@
-#!/usr/bin/env python
-#HEADER#######################
-# Katana framework           #
-# ktf.linker File            #
-# Last Modified: 19/04/2016  #
-# Review: 1                  #
-#######################HEADER#
 
-from scripts.web import whois,adminfinder,bruteforcetoformbase,bruteforcetohttpblock,cltlfd,joomscaner
-from scripts.btf import bruteforcetoftprotol,bruteforcetopop3rotocol,bruteforcetosqlprotocol,bruteforcetosshprotocol
-from scripts.net import hostslive
+from scripts.web import whois
+from core import Errors 
 
+from core.Function import KatanaCheckActionShowModules,KatanaCheckActionUseModule
+from core.Function import KatanaCheckActionShowOptions
+from core.Function import KatanaCheckActionGetInfo,ShowInformationModule
+from core.Function import ShowOptions,KatanaCheckActionSetValue,UpdateValue,runModule
+from core.Function import KatanaCheckActionisBack,KatanaCheckActionGlobalCommands
 
+import xml.etree.ElementTree as ET
+import importlib 
 from core.design import *
 from core import info
 import argparse
+
 CLASS_LINKER=DESIGN()
+tree = ET.parse('core/modules.xml')
+root = tree.getroot()
+parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser(description='ktf.linker:'+info.version+info.build)
+parser.add_argument("-m", "--module", help="Module")
+parser.add_argument("-t", "--target", help="Target")        
+parser.add_argument("-p", "--port", help="Port")            
+parser.add_argument("-f", "--file", help="File")            
+parser.add_argument("-u", "--user", help="Username")
+parser.add_argument("-ps","--pass", help="Password")
+parser.add_argument("-i","--interface", help="Password")
+
+args = parser.parse_args()	
+args = parser.parse_args()
+m=args.module
 
 if __name__=="__main__":
 	# For GUI not show this.
-	# CLASS_LINKER.linker(info.version, info.build)
-	parser = argparse.ArgumentParser(description='ktf.linker:'+info.version+info.build)
-	parser.add_argument("-m", "--module", help="Module")
-	parser.add_argument("-t", "--target", help="Target")        
-	parser.add_argument("-p", "--port", help="Port")            
-	parser.add_argument("-f", "--file", help="File")            
-	parser.add_argument("-u", "--user", help="Username")
-	parser.add_argument("-ps","--password", help="Password")
-	parser.add_argument("-x", "--userb", help="Usernameb")
-	parser.add_argument("-z", "--passwordb", help="Passwordb")
-	parser.add_argument("-d", "--dictionary", help="Dictionary")
-	parser.add_argument("-c", "--condition", help="Condition")
-	parser.add_argument("-i", "--interface", help="interface")
-	parser.add_argument("-v", "--valueform", help="Form Input")
-	parser.add_argument("-o", "--output", help="output")
-	parser.add_argument("-g", "--gateway", help="Gateway")
-	parser.add_argument("-l", "--length", help="Length")
-	parser.add_argument("-q", "--query", help="Query")
-	args = parser.parse_args()	
-	# WEB 
-	if args.module == "web/whois":         whois.run(target=args.target, port=args.port)
-	elif args.module == "web/sc.joomla":   joomscaner.run(target=args.target, port=args.port)
-	elif args.module == "web/cp.finder":   adminfinder.run(target=args.target, port=args.port, dictionary=args.file)
-	elif args.module == "web/bt.http":     bruteforcetohttpblock.run(target=args.target, port=args.port, patch=args.file, username=args.user, dictionary=args.dictionary)
-	elif args.module == "web/clt.lfd":     cltlfd.run(target=args.target, port=args.port, files=args.file)
-	elif args.module == "web/bt.form":     bruteforcetoformbase.run(target=args.target, port=args.port, patch=args.file, para1=args.userb, valor=args.valueform, para2=args.passwordb, dictionary=args.dictionary, method=args.query, condition=args.condition)
-	# BTF 
-	elif args.module == "btf/pr.ftp":      bruteforcetoftprotol.run(target=args.target,port=args.port,username=args.user,dictionary=args.dictionary)
-	elif args.module == "btf/pr.ssh":      bruteforcetosshprotocol.run(target=args.target,port=args.port,username=args.user,dictionary=args.dictionary)
-	elif args.module == "btf/pr.sql":      bruteforcetosqlprotocol.run(target=args.target, port=args.port, username=args.user, dictionary=args.dictionary)
-	elif args.module == "btf/pr.pop3":     bruteforcetopop3rotocol.run(target=args.target, port=args.port, username=args.user, dictionary=args.dictionary)
-	# NET
-	elif args.module == "net/sc.hosts":    hostslive.run(ranges=args.target)
-	# YET NOT UPDATE
-	elif args.module == "net/portscan": PortScanner.run(target=args.target, types=args.port)
-	elif args.module == "net/arpspoof": ARPPoisoning.run(target=args.target, source=args.gateway, interface=args.interface)
-	elif args.module == "set/facebrok": facebrok.run(username=args.user,password=args.ports,database="facebrok_db",userp=args.userb,passp=args.passwordb)
-	elif args.module == "set/gdreport": GetDataReport.run(target=args.target, js=args.query)
-	elif args.module == "clt/ftp":      ClientFTP.run(target=args.target,port=args.port,username=args.user,password=args.ports)
-	elif args.module == "clt/sql":      ClientMYSQL.run(target=args.target,port=args.port,username=args.user,password=args.ports)
-	elif args.module == "clt/pop":      ClientPOP3.run(target=args.target,port=args.port,username=args.user,password=args.ports)
-	elif args.module == "fle/bruterar": BruteRAR.run(files=args.file ,dictionary=args.dictionary)
-	elif args.module == "fle/brutezip": BruteZIP.run(files=args.file ,dictionary=args.dictionary)
-	elif args.module == "wifi/dos":     Wifi_DDOS.run(interface=args.interface, bssid=args.userb, channel=args.condition)
-	elif args.module == "mc/gendic":    GenDic.run(dictionary=args.output, length=args.length, types=args.target)
+	CLASS_LINKER.linker(info.version, info.build)
+	for modules in root.findall('module'):
+		if m == modules.get('name'):
+			Space()
+			category = modules.find('category').text
+			filename = modules.find('filename').text
+			ModuleToStart = importlib.import_module("modules."+category+"."+filename) 
+			init=ModuleToStart.init()
+
+			for option in init.options:
+				if init.options[option] == "target":init.options[option]=[args.target    ,init.options[option][1],init.options[option][2]]
+				if init.options[option] == "port"  :init.options[option]=[args.port      ,init.options[option][1],init.options[option][2]]
+				if init.options[option] == "file"  :init.options[option]=[args.file      ,init.options[option][1],init.options[option][2]]
+				if init.options[option] == "user"  :init.options[option]=[args.user      ,init.options[option][1],init.options[option][2]]
+				if init.options[option] == "pass"  :init.options[option]=[args.interface ,init.options[option][1],init.options[option][2]]
+
+			actions = "run"
+
+			while True:
+				try:
+					if actions != "run":actions=raw_input(Prompt(init.CodeName))
+					if   KatanaCheckActionShowOptions(actions)  :ShowOptions(init)
+					elif KatanaCheckActionSetValue(actions)     :init.options=UpdateValue(actions,init.options)
+					elif KatanaCheckActionGetInfo(actions)      :ShowInformationModule(init)
+					elif runModule(actions):
+						for Namevalue in init.options:
+							init.var.update({Namevalue:init.options[Namevalue][0]})
+						ModuleToStart.main(True)
+					elif KatanaCheckActionisBack(actions)       :printAlert(6,"This Commands just work in console mode.")
+					else :
+						if a
+						ctions != "":KatanaCheckActionGlobalCommands(actions)
+					actions = ""
+				except:Errors.Errors()
+	Space()
+	ModuleNotFound(m)

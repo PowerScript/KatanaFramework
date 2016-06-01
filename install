@@ -1,20 +1,17 @@
 #!/usr/bin/env python
-#    
-#    About Author :
-#    
-#    Founder : Javier Franco (RedToor)
-#    Location : Colombia
-#    Email : redtoor[at]inbox.ru
-#    Project In Github : https://github.com/redtoor/katana
+#HEAD#########################################################
 #
+# Katana Framework | install                         
+# Install.
 #
+# 
+# Last Modified: 31/05/2016
+#
+#########################################################HEAD#
 
-import os
-from core.Setting import * 
-from core import info
-from core import colors
-from core import getFunction
-import time
+from core.Function import status_cmd
+from core import Information, colors
+import os, time
 
 print ""
 print "                    "+colors.B+",:"+colors.W+"       "+colors.B+":,"+colors.W+"                   				 "#                    ,:       :,                   
@@ -26,12 +23,12 @@ print "                    ("+colors.O+"/__\ /__\\"+colors.B+")"+colors.W+"     
 print "                    "+colors.B+"/"+colors.W+"\  .V.  /"+colors.B+"\\"+colors.W+"                   				 "#                    /\  .V.  /\                   
 print "                   "+colors.B+"/"+colors.W+"  \,---,/  "+colors.B+"\\"+colors.W+"                  				 "#                   /  \,---,/  \                  
 print "                   "+colors.B+"\\"+colors.W+"___TTTTT___"+colors.B+"/"+colors.W+"         CODE: KATANA  "#                   \___TTTTT___/                  
-print "                ::::\ "+colors.R+"|"+colors.W+"_____"+colors.R+"|"+colors.W+" /::::      DATE: "+info.date+""#                ::::\ "+colors.R+"|"+colors.W+"_____"+colors.R+"|"+colors.W+" /::::               
-print "                (+  _"+colors.R+"|"+colors.W+" __"+colors.R+"|"+colors.W+"__ "+colors.R+"|"+colors.W+"_  +)      CORE: "+info.version+", BUILD: "+info.build #                (+  _"+colors.R+"|"+colors.W+" __"+colors.R+"|"+colors.W+"__ "+colors.R+"|"+colors.W+"_  +)               
-print "        "+info.Type+"    "+colors.R+"|"+colors.W+"  I_"+colors.R+"|"+colors.W+"KATANA."+colors.R+"|"+colors.W+"_I  "+colors.R+"|"+colors.W+"                               "#                "+colors.R+"|"+colors.W+"  I_"+colors.R+"|"+colors.W+".ANATAK"+colors.R+"|"+colors.W+"_I  "+colors.R+"|"+colors.W+"               
+print "                ::::\ "+colors.R+"|"+colors.W+"_____"+colors.R+"|"+colors.W+" /::::      DATE: "+Information.date+""#                ::::\ "+colors.R+"|"+colors.W+"_____"+colors.R+"|"+colors.W+" /::::               
+print "                (+  _"+colors.R+"|"+colors.W+" __"+colors.R+"|"+colors.W+"__ "+colors.R+"|"+colors.W+"_  +)      CORE: "+Information.version+", BUILD: "+Information.build #                (+  _"+colors.R+"|"+colors.W+" __"+colors.R+"|"+colors.W+"__ "+colors.R+"|"+colors.W+"_  +)               
+print "        "+Information.Type+"    "+colors.R+"|"+colors.W+"  I_"+colors.R+"|"+colors.W+"KATANA."+colors.R+"|"+colors.W+"_I  "+colors.R+"|"+colors.W+"                               "#                "+colors.R+"|"+colors.W+"  I_"+colors.R+"|"+colors.W+".ANATAK"+colors.R+"|"+colors.W+"_I  "+colors.R+"|"+colors.W+"               
 print "                "+colors.R+"|"+colors.W+"  I_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"  "+colors.R+"|"+colors.W+"               				 "#                "+colors.R+"|"+colors.W+"  I_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"  "+colors.R+"|"+colors.W+"               
 print "    __________?_____________________________________  				 "#    __________?_________________________________  
-print "   {_"+colors.C+"B|"+colors.W+" "+colors.C+"Y|"+colors.W+" "+colors.R+"R|"+colors.W+" "+colors.W+"T|"+colors.W+" I"+colors.GR+"#################################"+colors.W+"/  				 "#   {_"+colors.R+"|"+colors.W+" "+colors.R+"|"+colors.W+" "+colors.R+"|"+colors.W+" "+colors.R+"|"+colors.W+" I#################################/  
+print "   {_"+colors.C+"B|"+colors.W+" "+colors.C+"Y|"+colors.W+" "+colors.R+"R|"+colors.W+" "+colors.W+"T|"+colors.W+" |"+colors.GR+"#################################"+colors.W+"/  				 "#   {_"+colors.R+"|"+colors.W+" "+colors.R+"|"+colors.W+" "+colors.R+"|"+colors.W+" "+colors.R+"|"+colors.W+" I#################################/  
 print "     ^ ^ ^ ^   ,ww   "+colors.O+"FRAMEWORK"+colors.W+"   ww,                   				 "#     ^ ^ ^ ^ EHT KROWEMARF, dliuB      
 print "                   I_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_I                  				 "#                   I_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_I                  
 print "                   \_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_/                  				 "#                   \_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_"+colors.R+"|"+colors.W+"_/                  
@@ -45,21 +42,30 @@ if os.getuid() != 0:
 time.sleep(1)
 
 Shortcuts="""
-ln -f -r -s /usr/share/katana/core/shorts/ktf.console /usr/bin/ktf.console >/dev/null 2>&1;
-ln -f -r -s /usr/share/katana/core/shorts/ktf.linker  /usr/bin/ktf.linker  >/dev/null 2>&1;
-ln -f -r -s /usr/share/katana/core/shorts/ktf.update  /usr/bin/ktf.update  >/dev/null 2>&1;
-ln -f -r -s /usr/share/katana/core/shorts/ktf.run     /usr/bin/ktf.run     >/dev/null 2>&1
+ln -f -r -s /usr/share/KatanaFramework/core/shorts/ktf.console /usr/bin/ktf.console ;
+ln -f -r -s /usr/share/KatanaFramework/core/shorts/ktf.linker  /usr/bin/ktf.linker  ;
+ln -f -r -s /usr/share/KatanaFramework/core/shorts/ktf.update  /usr/bin/ktf.update  ;
+ln -f -r -s /usr/share/KatanaFramework/core/shorts/ktf.tool    /usr/bin/ktf.tool    ;
+ln -f -r -s /usr/share/KatanaFramework/core/shorts/ktf.run     /usr/bin/ktf.run     
 """ 
-Files="cd /usr/share/katana/files;tar -xf /usr/share/katana/files/filesKatana.tar          >/dev/null 2>&1;rm -R *.tar"
+Files="""
+cd /usr/share/KatanaFramework/files/                                     ;
+tar xvf /usr/share/KatanaFramework/files/exiftool.tar     >/dev/null 2>&1;
+tar xvf /usr/share/KatanaFramework/files/facebrok1.8.tar  >/dev/null 2>&1;
+tar xvf /usr/share/KatanaFramework/files/getdatareport.tar>/dev/null 2>&1;
+rm -R /usr/share/KatanaFramework/files/*.tar              >/dev/null 2>&1;
+rm /usr/share/KatanaFramework/install                     >/dev/null 2>&1;
+rm /usr/share/KatanaFramework/dependencies                >/dev/null 2>&1;
+rm /usr/share/KatanaFramework/README.md                   >/dev/null 2>&1 
+"""
 
-print colors.W+" \033[1m\033[41mKatana framework\033[49m                    date {"+time.strftime('%c')+"}"+colors.W
-print " INSTALLING........................................................."
-print " Checking dependencies. ",         getFunction.status_cmd('sudo bash dependencies',            "\t\t\t\t\t")
-print " Creating Folder. ",               getFunction.status_cmd('mkdir -p '+PATCH_INTALL+'katana',   "\t\t\t\t\t\t")
-print " Coping files. ",                  getFunction.status_cmd('cp -r * '+PATCH_INTALL+'katana',    "\t\t\t\t\t\t")
-print " Creating Shortcuts. ",            getFunction.status_cmd(Shortcuts,                           "\t\t\t\t\t\t")
-print " Extracting Files. ",              getFunction.status_cmd(Files,                               "\t\t\t\t\t\t")
-print " Giving privileges. ",             getFunction.status_cmd('chmod -R -c 777 /usr/share/katana/',"\t\t\t\t\t\t")
-print " DONE..............................................................."
+print "    INSTALLING"
+print "    ["+time.strftime('%c')+"]Checking dependencies. ",status_cmd('sudo bash dependencies'    )
+print "    ["+time.strftime('%c')+"]Checking Updates.      ",status_cmd('sudo python ktf.update'    )
+print "    ["+time.strftime('%c')+"]Creating Folder.       ",status_cmd('mkdir -p /usr/share/KatanaFramework')
+print "    ["+time.strftime('%c')+"]Coping files.          ",status_cmd('cp -r * /usr/share/KatanaFramework' )
+print "    ["+time.strftime('%c')+"]Creating Shortcuts.    ",status_cmd(Shortcuts,                  )
+print "    ["+time.strftime('%c')+"]Extracting Files.      ",status_cmd(Files,                      )
+print "    ["+time.strftime('%c')+"]Giving privileges.     ",status_cmd('chmod -R -c 777 /usr/share/KatanaFramework/')
 
-print "\n Done, Enjoy. !!!\n"
+print "\n    Done, Now u are allright for the action. !!!\n"

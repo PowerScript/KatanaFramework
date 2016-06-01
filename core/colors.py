@@ -1,8 +1,10 @@
-#
-# Katana framework 
-# @Katana Colors
-#
-
+#!/usr/bin/env python
+#HEADER#######################
+# Katana framework           #
+# Colors File                #
+# Last Modified: 25/03/2016  #
+# Review: 0                  #
+#######################HEADER#
 
 W  = '\033[0m'  
 R  = '\033[31m' 

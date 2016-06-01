@@ -2,47 +2,52 @@
 #HEADER#######################
 # Katana framework           #
 # Help File                  #
-# Last Modified: 26/03/2016  #
-# Review: 0                  #
+# Last Modified: 21/05/2016  #
+# Review: 1                  #
 #######################HEADER#
 
+from GeneralCommands import *
+
 def help():
-	print """\n
-     Katana framework help, General Commands:
+	print """ 
+     #General Commands
 
-     show                              <--- Show modules 
-     use                               <--- Use modules 
-     set                               <--- Change valor of a parameter
-     run                               <--- Run Module
-     update                            <--- Update framework
-     back                              <--- Backing or return
-     exit                              <--- Exit of framework
-     help                              <--- Show help (this)
-     clear                             <--- Clear screen
-	 save                              <--- Save Variable
-    ~_______________________________________________________________~ 
+     [Command]\t\t[Quick Command]\t[Description]
+     """+SHOW_MODULES+"""\t"""+SHOW_MODULES_SHORT+"""\t\t<--- Show modules 
+     """+SHOW+"""\t"""+SHOW_SHORT+"""\t\t<--- Show options module
+     """+SHOW_MORE+"""\t"""+SHOWM_SHORT+"""\t\t<--- Show full options module
+     """+SELECT+"""\t\t"""+SELECT+"""\t\t<--- Use module 
+     """+GETINFO+"""\t\t"""+GETINFO+"""\t\t<--- Show information of module
+     """+SETET+"""\t\t"""+SETET+"""\t\t<--- Change valor of a parameter
+     """+BACKING+"""\t\t"""+BACKING+"""\t\t<--- Backing or return
+     """+RUN+"""\t\t"""+RUN+"""\t\t<--- Run Module
+     """+UPDATE+"""\t\t"""+UPDATE_SHORT+"""\t\t<--- Update framework
+     """+EXIT+"""\t\t"""+EXIT_SHORT+"""\t\t<--- Exit of framework
+     """+HELP+"""\t\t"""+HELP_SHORT+"""\t\t<--- Show help (this)
+     """+CLEAR+"""\t\t"""+CLEAR_SHORT+"""\t\t<--- Clear screen
+     """+SAVEV+"""\t\t"""+SAVEV+"""\t\t<--- Save Variable
+     """+EXECUTECOMMAND+"""\t\t"""+EXECUTECOMMAND+"""\t\t<--- Execute System Commands
+     f::\t\tf::\t\t<--- Execute Functions
 
-	 [options]	[RQ]	[description]		[value]
-	 ---------	----	-------------		-------
-	 target		yes	    IP or DNS		    127.0.0.1
-	 port		no   	Port of target		21
-    ~_______________________________________________________________~ 
+     Version\t\t\t\t<--- Show Version framework
 
-     []Section of Options
-     |target    | the parameter is target
-     |port      | the parameter is port
+     #Functions(f::)
 
-     []Section of RQ
-     |yes       | the parameter is need
-     |no        | the parameter is'n need
+     [Name]\t\t [Parameters]\t\t[Description]
+     get_aps()\t\t Interface, timeout\tScan Access point's
+     get_interfaces()\t None\t\t\tGet Network Interfaces
+     get_monitors_mode() None\t\t\tGet Monitor Interfaces Wireless
+     start_monitor()\t Interface\t\tStart Monitor Mode in Interface
+     get_local_ip()\t None\t\t\tGet local IP
+     get_external_ip()\t None\t\t\tGet External IP
+     get_gateway()\t None\t\t\tGet Gateway/Router IP
 
-     []Section of values
-     |127.0.0.1 | the value is 127.0.0..1
-     |8080      | the value is 8080
+     ##USE
+     f::Functions(Parameters)   <-->  f::get_aps(mon0,10)
+     f::Functions               <-->  f::get_local_ip
 
-     []Section of Configuration
-     |set target 127.0.0.1    | the parameter was set up in 127.0.0.1
-     |set port 80             | the parameter was set up in 80
-
-
-     for more info go to github project https://github.com/redtoor/katana\n"""
+     #LINKS
+     Please go to 
+     https://github.com/PowerScript/KatanaFramework 
+     for more information.
+     """

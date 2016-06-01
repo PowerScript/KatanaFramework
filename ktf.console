@@ -1,56 +1,84 @@
 #!/usr/bin/env python
-#HEADER#######################
-# Katana framework           #
-# ktf.console File           #
-# Last Modified: 02/04/2016  #
-# Review: 1                  #
-#######################HEADER#
+#HEAD#########################################################
+#
+# Katana Framework | ktf.console                            
+# this file automatically imports the modules according to 
+# the criteria of the user, here the user can navigate 
+# through the modules, configure and launch, and perform 
+# other characteristics of the framework tasks, 
+# use own functions to set the type of task 
+# to be performed according to the user want.
+#
+# 
+# Last Modified: 31/05/2016
+#
+#########################################################HEAD#
 
+from core.Function import KatanaCheckActionShowModules,KatanaCheckActionUseModule,KatanaCheckActionExefunction
+from core.Function import KatanaCheckActionShowOptions,LoadBuffer,ShowFullOptions,Executefunction
+from core.Function import KatanaCheckActionGetInfo,ShowInformationModule,KatanaCheckActionShowMOptions
+from core.Function import ShowOptions,KatanaCheckActionSetValue,UpdateValue,runModule
+from core.Function import KatanaCheckActionisBack,KatanaCheckActionGlobalCommands
+
+from core import Banner , Errors 
 from core.GeneralCommands import *
-from core.design import *
-from core import getFunction
-from core import colors
-from core import splash
-from core import Errors
-from core import help
+from core.Design import *
 import xml.etree.ElementTree as ET
-import subprocess
 import importlib 
-import sys 
 
+LoadBuffer()
 Desing=DESIGN()
 tree = ET.parse('core/modules.xml')
 root = tree.getroot()
 
 def katanaFrameworkConsole():
 	try:
-		action = raw_input(Desing.MainPrompt())
-		if getFunction.KatanaCheckActionShowModules(action):
-			print """ 
-  ,--.-,  
- /BY/  /  """+colors.GR+""" Module                   Description                """+colors.W
+		action = raw_input(MainPrompt())
+		if KatanaCheckActionShowModules(action):
+			print """	\\
+ 	,--.-,  
+	/BY/  /  """+colors[11]+colors[7]+""" CodeName\t\t\tDescription\t\t"""+colors[0]
+ 			space_category = "web"
+ 			print colors[0]+"	|"+colors[1]+"=="+colors[0]+"|::|"
  			for modules in root.findall('module'):
 				name = modules.get('name')
+				if space_category !=  name[:3]:
+					space_category=name[:3]
+					print colors[0]+"	|"+colors[1]+"=="+colors[0]+"|::| -----------------------------------------------"
+
 				description = modules.find('description').text
 				Desing.Line(CodeName=name,Description=description)
-			print """ /RT/, / 
- `--`-' \n""" 
+			print """	/RT/, / 
+	`--`-'\n""" 
 			katanaFrameworkConsole()
 
-		if getFunction.KatanaCheckActionUseModule(action):
+		if KatanaCheckActionUseModule(action):
 			for modules in root.findall('module'):
 				if action[len(SELECT)+1:] == modules.get('name'):
 					category = modules.find('category').text
 					filename = modules.find('filename').text
-					ModuleToStart = importlib.import_module("scripts."+category+"."+filename) 
-					ModuleToStart.main(True)
-					katanaFrameworkConsole()
+					ModuleToStart = importlib.import_module("modules."+category+"."+filename) 
+					init=ModuleToStart.init()
+					while True:
+						try:
+							actions=raw_input(Prompt(init.CodeName))
+							if   KatanaCheckActionShowOptions(actions)  :ShowOptions(init)
+							elif KatanaCheckActionShowMOptions(actions) :ShowFullOptions(init)
+							elif KatanaCheckActionExefunction(actions)  :Executefunction(actions)
+							elif KatanaCheckActionSetValue(actions)     :init.options=UpdateValue(actions,init.options)
+							elif KatanaCheckActionGetInfo(actions)      :ShowInformationModule(init)
+							elif runModule(actions):
+								for Namevalue in init.options:
+									init.var.update({Namevalue:init.options[Namevalue][0]})
+								ModuleToStart.main(True)
+							elif KatanaCheckActionisBack(actions)       :return
+							else:KatanaCheckActionGlobalCommands(actions)
+						except:Errors.Errors()
 			katanaFrameworkConsole()
-		else:
-			getFunction.KatanaCheckActionGlobalCommands(action)
-			katanaFrameworkConsole()
-	except:
-		Errors.Errors(event=sys.exc_info(), info=sys.exc_traceback.tb_lineno)
+
+		elif KatanaCheckActionExefunction(action):Executefunction(action)
+		else                                     :KatanaCheckActionGlobalCommands(action)
+		katanaFrameworkConsole()
+	except:Errors.Errors()
 	  
-if __name__=="__main__":
-	katanaFrameworkConsole()
+if __name__=="__main__":katanaFrameworkConsole()

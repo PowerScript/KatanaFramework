@@ -1,51 +1,51 @@
 #!/usr/bin/env python
-#HEADER#######################
-# Katana framework           #
-# ktf.tool File              #
-# Last Modified: 06/04/2016  #
-# Review: 0                  #
-#######################HEADER#
+#HEAD#########################################################
+#
+# Katana Framework | ktf.tool                            
+# Building...
+#
+# 
+# Last Modified: 24/05/2016
+#
+#########################################################HEAD#
 
 from core.design import *
-import importlib 
-import argparse
-import sys
-import os
+import importlib,argparse,sys,os
 
 parser = argparse.ArgumentParser()
-parser.add_argument("-i", "--import-module", help=" Script module to run.")
+parser.add_argument("-i", "--import-module", help=" file module to import.")
+parser.add_argument("-t", "--tool", help=" Tool [PL] Process List.")
 args = parser.parse_args()
 
-Alert = DESIGN()
+
+CLASS_BANNER=DESIGN()
+CLASS_BANNER.ktftool()
 
 class Tool:
-	print "\n Tool Suite for Katana Framework."
 	def ImportModule(self):
-		print "\n "+God+" Running Import Module"
-		Alert.loading_file()
+		printAlert(0,"Import Module")
+		Loadingfile(args.import_module)
 		try:
-			print " INFORMATION MODULE: "
-			os.system("cp '"+args.import_module+"' '/usr/share/katana/tmp/new.py'")
-			os.system("echo >> /usr/share/katana/tmp/__init__.py")
-			ModuleToStart = importlib.import_module("tmp.new") 
-			
-			print " |Author           : "+ModuleToStart.initialize.Author
-			print " |Version Script   : "+ModuleToStart.initialize.Version
-			print " |Description      : "+ModuleToStart.initialize.Despcription
-			print " |Code Name        : "+ModuleToStart.initialize.CodeName
-			print " |Creation         : "+ModuleToStart.initialize.DateCreation
-			print " |Last M...        : "+ModuleToStart.initialize.LastModification
-			print " ------------------- "
+			printAlert(0,"Information Module")
+			ModuleToStart = importlib.import_module(args.import_module) 
+			init=ModuleToStart.init()
+			print "       |>Author           : "+init.Author
+			print "       |>Version Script   : "+init.Version
+			print "       |>Description      : "+init.Description
+			print "       |>Code Name        : "+init.CodeName
+			print "       |>Creation         : "+init.DateCreation
+			print "       |>Last Modification: "+init.LastModification
 
-			NULL = raw_input(" Continue ? PRESS any key")
-			New = ModuleToStart.initialize.CodeName
+			New = init.CodeName
 			New = New.split("/")
-			if os.path.isdir("/usr/share/katana/scripts") == False: os.system("mkdir /usr/share/katana/scripts/"+New[0]+" & echo > /usr/share/katana/scripts/"+New[0]+"/__init__.py")
-			os.system("cp "+args.import_module+" /usr/share/katana/scripts/"+New[0]+"/")
-			
-			os.system("rm /usr/share/katana/tmp/*")
-		except Exception as e:
-			print e
+			printAlert(0,"Installing module")
+			if os.path.isdir("/usr/share/KatanaFramework/scripts/"+New[0]+"/") == False: 
+				os.system("mkdir /usr/share/KatanaFramework/scripts/"+New[0]+"/")
+				os.system("echo > /usr/share/KatanaFramework/scripts/"+New[0]+"/__init__.py")
+			os.system("cp "+args.import_module+".py /usr/share/KatanaFramework/scripts/"+New[0]+"/")
+			if True:printAlert(3,"Module installed")
+
+		except Exception as e:printAlert(1,e)
 
 RUN=Tool()
 RUN.ImportModule()

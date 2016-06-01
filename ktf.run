@@ -1,34 +1,64 @@
 #!/usr/bin/env python
-#HEADER#######################
-# Katana framework           #
-# ktf.console File           #
-# Last Modified: 02/04/2016  #
-# Review: 1                  #
-#######################HEADER#
+#HEAD#########################################################
+#
+# Katana Framework | ktf.run                            
+# this file run modules diretly.
+#
+# 
+# Last Modified: 15/05/2016
+#
+#########################################################HEAD#
 
-from core.design import *
-from core import info
+
+from core.Function import KatanaCheckActionShowModules,KatanaCheckActionUseModule,KatanaCheckActionExefunction
+from core.Function import KatanaCheckActionShowOptions,LoadBuffer,ShowFullOptions,Executefunction
+from core.Function import KatanaCheckActionGetInfo,ShowInformationModule,KatanaCheckActionShowMOptions
+from core.Function import ShowOptions,KatanaCheckActionSetValue,UpdateValue,runModule
+from core.Function import KatanaCheckActionisBack,KatanaCheckActionGlobalCommands
+
+from core.Default import *    
+from core.Design import *
+from core import Errors 
+
 import xml.etree.ElementTree as ET
 import importlib 
 import argparse
-import sys
 
+LoadBuffer()
 CLASS_BANNER=DESIGN()
-CLASS_BANNER.ktfrun(info.version,info.build)
+CLASS_BANNER.ktfrun()
+
 tree = ET.parse('core/modules.xml')
 root = tree.getroot()
 parser = argparse.ArgumentParser()
 parser.add_argument("-m", "--module", help=" Script module to run.")
 args = parser.parse_args()
-m=args.module
 
 if __name__=="__main__":
-	CLASS_BANNER.KtfRun()
 	for modules in root.findall('module'):
-		if m == modules.get('name'):
+		if args.module == modules.get('name'):
 			category = modules.find('category').text
 			filename = modules.find('filename').text
-			ModuleToStart = importlib.import_module("scripts."+category+"."+filename) 
-			ModuleToStart.main(True)
-			exit()
-	CLASS_BANNER.ModuleNotFound(m)
+			ModuleToStart = importlib.import_module("modules."+category+"."+filename) 
+			init=ModuleToStart.init()
+			while True:
+				try:
+					actions=raw_input(Prompt(init.CodeName))
+					if   KatanaCheckActionShowOptions(actions)  :ShowOptions(init)
+					elif KatanaCheckActionShowMOptions(actions) :ShowFullOptions(init)
+					elif KatanaCheckActionExefunction(actions)  :Executefunction(actions)
+					elif KatanaCheckActionSetValue(actions)     :init=UpdateValue(actions,init)
+					elif KatanaCheckActionGetInfo(actions)      :ShowInformationModule(init)
+					elif runModule(actions):
+						for Namevalue in init.options:
+							init.var.update({Namevalue:init.options[Namevalue][0]})
+						try:
+							for Namevalue in init.extra:
+								init.var.update({Namevalue:init.extra[Namevalue][0]})
+						except:Nothing=False
+						ModuleToStart.main(True)
+					elif KatanaCheckActionisBack(actions)       :printAlert(6,"This Commands just work in console mode.")
+					else :
+						if actions != "":KatanaCheckActionGlobalCommands(actions)
+				except:Errors.Errors()
+	ModuleNotFound(args.module)

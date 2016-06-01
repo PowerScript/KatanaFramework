@@ -1,12 +1,19 @@
 #!/usr/bin/env python
-#HEADER#######################
-# Katana framework           #
-# Design file (Theme)        #
-# Last Modified: 30/04/2016  #
-# Review: 1                  #
-#######################HEADER#
+#HEAD#########################################################
+#
+# Katana Framework | Design                            
+# This file contains the overall design of the framework 
+# as alerts, skills and colors.
+#
+# 
+# Last Modified: 24/05/2016
+#
+#########################################################HEAD#
 
 import time
+import Information
+from Default import VERBOSE
+
 colors=['\033[0m',   # 0}  WHITE
 		'\033[31m',  # 1}  RED
 		'\033[32m',  # 2}  YELLOW
@@ -22,109 +29,93 @@ colors=['\033[0m',   # 0}  WHITE
 		'\033[42m',  # 12} BACKGROUND GREEN
 		'\033[43m']  # 13} BACKGROUND YELLOW
 
-# ALERTs
-Bad=colors[0]+"["+colors[1]+"ERR"+colors[0]+"]"
-Alr=colors[0]+"["+colors[4]+"INF"+colors[0]+"]"
-God=colors[0]+"["+colors[2]+"RUN"+colors[0]+"]"
-Suf=colors[0]+"["+colors[2]+"SUF"+colors[0]+"]"
-Hlp=colors[0]+"["+colors[7]+"HLP"+colors[0]+"]"
+error      =colors[0]+"["+colors[7]+colors[1]+"err"+colors[0]+"]"
+step       =colors[0]+"["+colors[1]+"stp"+colors[0]+"]"
+information=colors[0]+"["+colors[4]+"inf"+colors[0]+"]"
+success    =colors[0]+"["+colors[7]+colors[2]+"suf"+colors[0]+"]"
+help       =colors[0]+"["+colors[7]+"hlp"+colors[0]+"]"
+warning    =colors[0]+"["+colors[7]+colors[3]+"war"+colors[0]+"]"
+runing     =colors[0]+"["+colors[2]+"run"+colors[0]+"]"
+waitkey    =colors[0]+"["+colors[8]+"key"+colors[0]+"]"
+
 Got=colors[0]+"["+colors[8]+"-->"+colors[0]+"]"
-Nrs=colors[0]+"["+colors[1]+"NRS"+colors[0]+"]"
-War=colors[0]+"["+colors[3]+"WAR"+colors[0]+"]"
+Nrs=colors[0]+"["+colors[1]+"nrs"+colors[0]+"]"
+
+def printAlert(typ, msg):
+		if typ == 0 : 
+			if VERBOSE==True:print " "+information+" "+str(msg)
+		if typ == 1 : print " "+error+" "+str(msg)
+		if typ == 2 : print " "+help+" "+str(msg)
+		if typ == 3 : print " "+success+" "+str(msg)
+		if typ == 4 : print " "+Nrs+" "+str(msg)
+		if typ == 5 : print " "+step+" "+str(msg)
+		if typ == 6 : print " "+warning+" "+str(msg)
+		if typ == 7 : print " "+Got+" "+str(msg)
+		if typ == 8 : return " "+waitkey+" "+str(msg)
+
+def MainPrompt()                    :return colors[7]+" [ktf]:"+colors[0]
+def ClientPrompt(module,client)     :return colors[0]+" [ktf]("+colors[7]+colors[1]+module+colors[0]+":"+colors[9]+client+colors[0]+"):"+colors[0]
+def Prompt(module)                  :return colors[0]+" [ktf]("+colors[7]+colors[1]+module+colors[0]+"):"+colors[0]
+def ChangeValue(option, value)      :print "\n "+option+"\t\t==> "+value+"\n"
+def RunModule()                     :print "\n "+runing+" Running...\n"+colors[0]+" "+information+" "+time.strftime('%c')+colors[0]
+
+def Loadingfile(filename)           :print " "+information+" Loading file ["+filename+"]"+colors[0]
+def Space()                         :print ""
+def ModuleNotFound(nameModule)      :print " "+error+" The `"+nameModule+"` is Not Installed or not Exist.\n"
+def NoExistsparameter()             :print " "+error+" The parameter is not Exist, type `show options`."
+def helpAUX()                       :print " "+help+" Auxiliar module support"
+def NoDeviceFound(device)           :print " "+error+" The device '"+device+"' not was Found.\n"
+def CommandNotFound()               :print " "+warning+" Invalid parameter use show 'help' for more information"+colors[0]
+def functionNotFound()              :print " "+warning+" The function not Exists"+colors[0]
 
 class DESIGN:
-	def Line(self,CodeName,Description):
-		print colors[0]+" |"+colors[1]+"=="+colors[0]+"|::|  "+colors[7]+CodeName+colors[0]+"\t\t"+Description
-	def MainPrompt(self):
-		return colors[11]+" KTF>"+colors[0]
-	def prompt(self, module):
-		return colors[11]+" KTF>"+colors[10]+colors[7]+module+colors[0]+">"+colors[0]
+	
+	def Line(self,CodeName,Description):print colors[0]+"	|"+colors[1]+"=="+colors[0]+"|::|  "+colors[7]+CodeName+colors[0]+"\t\t"+Description
+	
 	def option(self):
 		print "\n [options]\t[RQ]\t[description]\t\t[value]"
 		print " ---------\t----\t-------------\t\t-------"
-	def descrip(self, option, rq, description, value):
-		if rq == "yes":
+
+	def description(self, option, rq, description, value):
+		if rq == True:
 			rq=colors[2]+"yes"+colors[0]
 		else:
 			rq=colors[1]+"no"+colors[0]
-		print " "+option+"\t""\t"+rq+"\t"+description+"\t\t"+colors[8]+value+colors[0]
-	def change(self, option, value):
-		print "\n "+option+"\t\t==> "+value+"\n"
-	def goodbye(self):
-		print "\n "+colors[0]+"Exiting...      Goodbye, My Sr.\n"
-	def run(self):
-		print "\n "+God+" Running..."+colors[0]
-		print " "+Alr+" "+time.strftime('%c')+colors[0]
-	def target_off(self, target):
-		print " "+Bad+" target Off-line ["+target+"]"+colors[0]+"\n"
-	def No_actions(self):
-		print " "+Alr+" Invalid parameter use show 'help' for more information"+colors[0]
-	def kbi(self):
-		print "\n "+Alr+" Keyboard Interrupt"+colors[0]
-	def loading_file(self):
-		print " "+Alr+" Loading files..."+colors[0]
-	def loaded(self):
-		print " "+Suf+" Loaded file "+colors[0]
-	def filenot(self, files):
-		print " "+Bad+" Dictionary Not found : '"+files+"'"+colors[0]+", Check againt the parameters.\n"
-	def no_file_found(self, files):
-		print " "+Bad+" File Not found : '"+files+"'"+colors[0]+", Check againt the parameters.\n"
-	def Client_prompt(self,client):
-		return colors[11]+" KTF>"+colors[10]+colors[7]+client+colors[0]+">"+colors[0]
-	def noptions(self):
-		print "\n Options ["+colors[1]+"disabled"+colors[0]+"], you relax just "+colors[2]+"run"+colors[0]+" it...\n"
-	def Success(self, username, password):
-		print "\n-"+Suf+" Successfully with [username="+username+"][password="+password+"]\n"
-	def nodataallow(self):
-		print " "+Bad+" parameter not allow"+colors[0]
-	def ModuleNotFound(self,nameModule):
-		print " "+Bad+" The `"+nameModule+"` is Not Installed or not Exist.\n"
-	def No_match(self):
-		print " "+Bad+" Username or password no match, Check againt the parameters.\n"
-	def helpAUX(self):
-		print "\n "+Hlp+" Auxiliar Help\n"
-	def KtfRun(self):
-		print colors[11]+" KTF.RUN "+colors[0]+colors[7]+time.strftime('%c')+colors[0]
-	def Noconnect(self):
-		print " "+Ned+" Not connected to any network, this module need are connected to a network."
-	def go(self,to):
-		print " "+Got+" Go to : \033[40m"+to+""+colors[0]
-	def Helper(self):
-		print " ["+colors[1]+"!"+colors[0]+"] Invalid parameter use show 'help' for more information"+colors[0]
-	def testing(self, protocol, port):
-		print " "+Alr+" Testing "+protocol+" protocol \t\t\t ["+port+"]"
-	def live_protocol(self):
-		print " "+God+" Service LIVE "
-	def space(self):
-		print ""
-	def nocommandCLT(self, string):
-		return "parameter '"+string+"' not allow."
-	def VError(self):
-		print " "+Bad+" Value Error: [LINKER] is necesary all parameters, type 'sop'."
-	def NoDeviceFound(self, device):
-		print " "+Bad+" The device '"+device+"' not was Found.\n"
-	def Nosuchdevice(self):
-		print " "+Bad+" No such device.\n"
-	def Noresult(self):
-		print " "+Nrs+" Attack ended without any results."
-	def ktflab(self,version,build):
-		print """
-		   __   __  ___"""+colors[3]+"""__     __     """+colors[0]+"""
-		  / /__/ /_/ _/"""+colors[3]+""" /__ _/ /     """+colors[0]+"""
-		 /  '_/ __/ _/"""+colors[3]+""" / _ `/ _ \\   """+colors[0]+"""
-		/_/\_\\\\__/_/"""+colors[3]+"""/_/\_,_/_.__/  """+colors[0]+"""
-		Core:"""+version+"""/build:"""+build 
-	def linker(self,version, build):
+		
+		if len(option) > 6:
+			option=option+"  "
+		else:option=option+"\t"
+
+		if len(description) > 15:
+			description=description
+		else:description=description+"\t"
+
+		if len(description) < 8:
+			description=description+"\t"
+
+		print " "+option+"\t"+rq+"\t"+description+"\t"+colors[8]+value+colors[0]
+
+	def linker(self):
 		print """
 		   __   __  ___"""+colors[4]+"""___      __             """+colors[0]+"""
 		  / /__/ /_/ _/"""+colors[4]+""" (_)__  / /_____ ____   """+colors[0]+"""
 		 /  '_/ __/ _/"""+colors[4]+""" / / _ \/  '_/ -_) __/   """+colors[0]+"""
 		/_/\_\\\\__/_/"""+colors[4]+"""/_/_/_//_/_/\_\\\\__/_/  """+colors[0]+"""
-		Core:"""+version+"/Build:"+build
-	def ktfrun(self,version,build):
+		Core:"""+Information.version+"/Build:"+Information.build
+	
+	def ktfrun(self):
 		print """
 		   __   __  ___            
 		  / /__/ /_/ _/"""+colors[1]+"""_____ _____      """+colors[0]+"""
 		 /  '_/ __/ _/"""+colors[1]+"""_ __/ // / _ \\   """+colors[0]+"""
 		/_/\_\\\\_/__/ """+colors[1]+"""/_/  \_,_/_//_/  """+colors[0]+"""
-		Core:"""+version+"""/Build:"""+build+"\n"
+		Core:"""+Information.version+"""/Build:"""+Information.build+"\n"
+	
+	def ktftool(self):
+		print """
+		    __   __  ____"""+colors[2]+"""__              __    """+colors[0]+"""
+		   / /__/ /_/ __/"""+colors[2]+""" /_____  ____  / /    """+colors[0]+"""
+		  / //_/ __/ /_/"""+colors[2]+""" __/ __ \/ __ \/ /     """+colors[0]+"""
+		 / ,< / /_/ __/"""+colors[2]+""" /_/ /_/ / /_/ / /      """+colors[0]+"""
+		/_/|_|\__/_/  """+colors[2]+"""\__/\____/\____/_/       """+colors[0]+"""
+		Core:"""+Information.version+"""/Build:"""+Information.build+"\n"""

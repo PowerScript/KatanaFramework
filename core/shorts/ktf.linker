@@ -5,5 +5,5 @@ do
     PARAMETERS+=" "$1
     shift
 done
-cd /usr/share/katana
+cd /usr/share/KatanaFramework
 sudo python ktf.linker $PARAMETERS

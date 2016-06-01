@@ -1,47 +1,66 @@
 #!/usr/bin/env python
-#HEADER#######################
-# Katana framework           #
-# Error file debug           #
-# Last Modified: 03/05/2016  #
-# Review: 1                  #
-#######################HEADER#
+#HEAD#########################################################
+#
+# Katana Framework | Errors                           
+# Register of Errors and Event 
+#
+# 
+# Last Modified: 01/06/2016
+#
+#########################################################HEAD#
 
-from design import *
+from Design import *
+from Default import ERROR_LOG
+from Function import SaveErrorLog
+
+import sys
 d=DESIGN()                   
 
-def Errors(event, info):
-	#DEBUG
-	#print event, info
-	info=str(info)
-	string=str(event)
-	if string.find("IOError") >= 0:
-		return d.no_file_found(str(info))
-	if string.find("OperationalError(1045") >= 0:
-		d.No_match()
-		return
-	if string.find("_mysql_exceptions.OperationalError") >= 0:
-		print ' '+Bad+' Host '+info+' is not allowed to connect to this MySQL server.\n'
-		return
-	if string.find("password refused") >= 0:
-		print ' '+Bad+' Host '+info+' is not allowed to connect to this MySQL server.\n'
-		return
-	if string.find("No such device") >= 0:
-		return d.Nosuchdevice()
-	if string.find("smtplib.SMTPServerDisconnected") >= 0:
-		print ' '+Bad+' Host '+info+' Connection unexpectedly closed.\n'
-		return
-	if string.find("socket") >= 0:
-		return d.target_off(str(info))
-	if string.find("KeyboardInterrupt") >= 0 and info!=False:
-		d.kbi()
-		return
-	if string.find("KeyboardInterrupt") >= 0 and info==False:
-		d.kbi()
-		exit(0)
-	if string.find("SystemExit") >= 0 and info==False:
-		exit(0)
-	if string.find("ValueError") >= 0:
-		d.VError()
-	else:
-		print "\n Event : %s \n Info: %s "  % (event,info)
-		exit(0)
+def Errors():
+	try:
+		event = sys.exc_info()
+		Alert        = "Nothing"
+		Error        = str(event[0]).replace("<class '","").replace("'>","").replace("<type '","")
+		ClassError   = Error.split(".")
+
+		#DEBUG
+		#print event
+		#print sys.exc_traceback.tb_lineno
+		#print sys.exc_traceback.tb_frame.f_code.co_filename
+
+		if ClassError[0] == "socket"      :     
+			if ClassError[1] == "error"   : Alert = " ["+colors[3]+"Socket"+colors[0]+"]"+error
+			elif ClassError[1] == "timeout" : Alert = " ["+colors[3]+"Socket"+colors[0]+"]"+warning
+			elif ClassError[1] == "gaierror": Alert = " ["+colors[3]+"Socket"+colors[0]+"]"+warning
+
+		elif ClassError[0] == "ftplib"      :
+			if ClassError[1] == "error_perm"       : Alert = " ["+colors[3]+"Ftp"+colors[0]+"]"+warning
+
+		elif ClassError[0] == "_mysql_exceptions":
+			if ClassError[1] == "OperationalError" : Alert = " ["+colors[3]+"Sql"+colors[0]+"]"+error
+			if ClassError[1] == "ProgrammingError" : Alert = " ["+colors[3]+"Sql"+colors[0]+"]"+error
+
+		elif ClassError[0] == "exceptions"  : 
+			if ClassError[1] == "ValueError"                : Alert = " ["+colors[3]+"Exception"+colors[0]+"]"+error
+			elif ClassError[1] == "IOError"                   : Alert = " ["+colors[3]+"Exception"+colors[0]+"]"+error
+			elif ClassError[1] == "NameError"                 : Alert = " ["+colors[3]+"Exception"+colors[0]+"]"+error+"[Line #"+str(sys.exc_traceback.tb_lineno)+"]"
+			elif ClassError[1] == "UnboundLocalError"         : Alert = " ["+colors[3]+"Exception"+colors[0]+"]"+error+"[Line #"+str(sys.exc_traceback.tb_lineno)+"]"
+			elif ClassError[1] == "AttributeError"            : Alert = " ["+colors[3]+"Exception"+colors[0]+"]"+error+"[Line #"+str(sys.exc_traceback.tb_lineno)+"]"
+			elif ClassError[1] == "KeyboardInterrupt"         : Alert = "\n ["+colors[3]+"Exception"+colors[0]+"]"+warning
+			elif ClassError[1] == "DeprecationWarning"        : Alert = " ["+colors[3]+"Exception"+colors[0]+"]"+warning
+			elif ClassError[1] == "PendingDeprecationWarning" : Alert = " ["+colors[3]+"Exception"+colors[0]+"]"+warning
+			elif ClassError[1] == "RuntimeWarning"            : Alert = " ["+colors[3]+"Exception"+colors[0]+"]"+warning
+			elif ClassError[1] == "SyntaxWarning"             : Alert = " ["+colors[3]+"Exception"+colors[0]+"]"+warning
+			elif ClassError[1] == "UserWarning"               : Alert = " ["+colors[3]+"Exception"+colors[0]+"]"+warning
+			elif ClassError[1] == "FutureWarning"             : Alert = " ["+colors[3]+"Exception"+colors[0]+"]"+warning
+			elif ClassError[1] == "ImportWarning"             : Alert = " ["+colors[3]+"Exception"+colors[0]+"]"+warning
+			elif ClassError[1] == "UnicodeWarning"            : Alert = " ["+colors[3]+"Exception"+colors[0]+"]"+warning
+			elif ClassError[1] == "BytesWarning"              : Alert = " ["+colors[3]+"Exception"+colors[0]+"]"+warning
+		else:
+			print " ["+colors[3]+"Exception"+colors[0]+"]"+"("+str(event[1])+")\n"
+			return
+
+		print Alert+"("+str(event[1])+")\n"
+	except Exception as E:print E
+	finally:
+		if ERROR_LOG:SaveErrorLog(str(event)+"#"+str(sys.exc_traceback.tb_lineno)+":"+str(sys.exc_traceback.tb_frame.f_code.co_filename))

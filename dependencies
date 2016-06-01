@@ -1,11 +1,23 @@
-#! /bin/sh
-#HEADER#######################
-# Katana framework           #
-# dependencies File          #
-# Last Modified: 28/04/2016  #
-# Review: 1                  #
-#######################HEADER#
+#!/usr/bin/env python
+#HEAD#########################################################
+#
+# Katana Framework | dependencies
+# The below dependencies this installed in most pentest distros,
+# but in other distro's as UBUNTU not is installed.
+#
+# aircrack-ng for wireless modules
+# nmap for network scan modules and some functions
+# apache2 for SET modules
+# ettercap for MIMT modules
+# dhcpd for rogues AP
+#
+# 
+# Last Modified: 31/05/2016
+#
+#########################################################HEAD#
 
+#sudo apt-get update
+#sudo apt-get upgrade
 
 	if ! hash aircrack-ng 2>/dev/null; then 
 		sudo apt-get install --yes aircrack-ng
@@ -25,7 +37,10 @@
 		sudo apt-get install ettercap-text-only
 	fi
 
+	if ! hash dhcpd 2>/dev/null; then 
+		sudo apt-get install isc-dhcp-server
+	fi
+
 DIR=$(dirname $0)
-sudo gem install bundler && bundle install
 cd $DIR/lib/scapy/
 sudo python setup.py install
