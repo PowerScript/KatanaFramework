@@ -49,7 +49,7 @@ def init():
 
 # CODE MODULE    ############################################################################################
 def main(run):
-	if  CheckAPmode():
+	if checkDevice(init.var['drive']) and CheckAPmode():
 		Loadingfile(init.var['template'])
 		process=commands.getoutput("airmon-ng check $INTERFACE | tail -n +8 | grep -v \"on interface\" | awk '{ print $2 }'")
 		printAlert(0,"Killing proccess on interface")
