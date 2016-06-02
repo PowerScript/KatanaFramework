@@ -70,6 +70,10 @@ def katanaFrameworkConsole():
 							elif runModule(actions):
 								for Namevalue in init.options:
 									init.var.update({Namevalue:init.options[Namevalue][0]})
+								try:
+									for Namevalue in init.extra:
+										init.var.update({Namevalue:init.extra[Namevalue][0]})
+								except:Nothing=False
 								ModuleToStart.main(True)
 							elif KatanaCheckActionisBack(actions)       :return
 							else:KatanaCheckActionGlobalCommands(actions)
