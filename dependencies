@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/bin/bash
 #HEAD#########################################################
 #
 # Katana Framework | dependencies
@@ -12,7 +12,7 @@
 # dhcpd for rogues AP
 #
 # 
-# Last Modified: 31/05/2016
+# Last Modified: 03/06/2016
 #
 #########################################################HEAD#
 
@@ -28,9 +28,7 @@
 	fi
 
 	if ! hash apache2 2>/dev/null; then 
-		sudo apt-get install --yes apache2
-		sudo apt-get install --yes php5
-		sudo apt-get install --yes libapache2-mod-php5
+		sudo apt-get install --yes apache2 php5 libapache2-mod-php5
 	fi
 
 	if ! hash ettercap 2>/dev/null; then 
