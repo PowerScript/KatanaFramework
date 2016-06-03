@@ -8,6 +8,7 @@ from core.KATANAFRAMEWORK import *    #
 
 # LIBRARIES  
 from core.Function import checkDevice,checkMAC
+from os import system as sysc
 import random, sys, re, optparse, hashlib, re
 # END LIBRARIES 
 
