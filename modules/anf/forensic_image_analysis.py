@@ -1,76 +1,53 @@
 # This module requires katana framework 
-# https://github.com/RedToor/Katana
-# :-:-:-:-:-:-:-:-:-:-:-:-:-: #
-# Katana Core                 #
-from core.design import *     #
-from core.Setting import *    #
-from core import Errors       #
-from core import getFunction  #
-import sys                    #
-Message=DESIGN()              #
-# :-:-:-:-:-:-:-:-:-:-:-:-:-: #
-# Libraries                   #
-import subprocess             #
-# :-:-:-:-:-:-:-:-:-:-:-:-:-: #
+# https://github.com/PowerScript/KatanaFramework
+
+# :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
+# Katana Core import                  #
+from core.KATANAFRAMEWORK import *    #
+# :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
+
+# LIBRARIES 
+from core.Function import MakeTable
+import subprocess
+# END LIBRARIES
 
 # INFORMATION MODULE
-def initialize():
-	initialize.Author             ="RedToor"
-	initialize.Version            ="1.1"
-	initialize.Despcription       ="Forensic Image Analysis with exiftool."
-	initialize.CodeName           ="anf/af.imagen"
-	initialize.DateCreation       ="28/09/2015"      
-	initialize.LastModification   ="04/02/2016"
+def init():
+	init.Author             ="RedToor"
+	init.Version            ="1.1"
+	init.Description        ="Forensic Image Analysis with exiftool."
+	init.CodeName           ="anf/af.imagen"
+	init.DateCreation       ="28/09/2015"      
+	init.LastModification   ="03/02/2016"
+	init.References         =None
+	init.License            =KTF_LINCENSE
+	init.var                ={}
 
-	# DEFAULT VARIABLES             VALUE                   NAME        RQ     DESCRIPTION
-	initialize.DEFAULT_VARIABLE   =[["core/test/test.jpg", "target" , "yes" , "Path file"]]  #[0][0]
-initialize()
+	# DEFAULT OPTIONS MODULE
+	init.options = {
+		# NAME    VALUE                 RQ     DESCRIPTION
+		'target':["files/test/test.jpg",True ,'Path file']
+	}
+	return init
 # END INFORMATION MODULE
 
-# MAIN FUNCTION
+# CODE MODULE    ############################################################################################
 def main(run):
-	try:
-		# HEAD MODULE
-		if run:	actions=raw_input(Message.prompt(initialize.CodeName))
-		else  : actions="run"
-		if   getFunction.KatanaCheckActionShowOptions(actions):getFunction.ShowOptions(initialize.DEFAULT_VARIABLE)
-		elif getFunction.KatanaCheckActionSetValue(actions)   :initialize.DEFAULT_VARIABLE=getFunction.UpdateValue(actions,initialize.DEFAULT_VARIABLE)
-		elif getFunction.KatanaCheckActionisBack(actions)     :return
-		# END HEAD MODULE
-		elif getFunction.runModule(actions):
-			Message.run()
-			# CODE MODULE    ############################################################################################
-			try:
-				Message.loading_file()
-				with open(initialize.DEFAULT_VARIABLE [0][0],'r') as comprossed:
-					if True:
-						print "\n "+Hlp+" Forensic Imagen Client help"
-						print " --------------------------------------------"
-						print " |extract_all | extract all MD  | ...       |" 
-						print " |comment     | comment whatever| comment :)|" 
-						print " --------------------------------------------\n"	  												
-						cmd="nop"
-						parameter="ROO"
-						while(cmd!="exit"):
-							cmd = raw_input(Message.Client_prompt('forence{IMAGEN}'))
-							if(cmd=="extract_all"):
-								subprocess.call("perl files/exiftool/exiftool "+initialize.DEFAULT_VARIABLE [0][0], shell=True)
-							elif(cmd[:7]=="comment"):
-								subprocess.call("perl files/exiftool/exiftool -comment="+cmd[8:]+" "+initialize.DEFAULT_VARIABLE [0][0], shell=True)
-			except:
-				Errors.Errors(event=sys.exc_info()[0], info=initialize.DEFAULT_VARIABLE [0][0])
-			# END CODE MODULE ############################################################################################
-		else:
-			getFunction.KatanaCheckActionGlobalCommands(actions)
-	# ERROR GENERAL
-	except:
-		Errors.Errors(event=sys.exc_info(), info=sys.exc_traceback.tb_lineno)
-	# END ERROR GENERAL
-	main(True)
-# END MAIN FUNCTION
+	Loadingfile(init.var['target'])
+	open(init.var['target'],'rw')
+	printAlert(2,"Forensic Image Analysis Console [exiftool]")
+	HelpBanner  = [["Commands","Description","Example"]]
+	HelpBanner += [["extract_all","extract all MD","extract_all"]]
+	HelpBanner += [["comment","comment whatever","comment Hello zzz"]]
+	MakeTable(HelpBanner)
+												
+	cmd="nop"
+	parameter="ROO"
+	while(cmd!="exit"):
+		cmd = raw_input(ClientPrompt(init.CodeName,"anf.imagen"))
+		if(cmd=="extract_all"):
+			subprocess.call("perl files/exiftool/exiftool "+init.var['target'], shell=True)
+		elif(cmd[:7]=="comment"):
+			subprocess.call("perl files/exiftool/exiftool -comment="+cmd[8:]+" "+initialize.var['target'], shell=True)
 
-# LINKER FUNCTION
-def run(target):
-	initialize.DEFAULT_VARIABLE [0][0] = target
-	main(False)
-# END LINKER FUNCTION
+# END CODE MODULE ############################################################################################
