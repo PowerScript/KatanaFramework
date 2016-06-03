@@ -419,6 +419,12 @@ def get_monitors_mode():
 		return Monitor
 	return "NULL"
 
+
+### VALIDATE MAC ###
+def checkMAC(mac):
+	if re.match("[0-9a-f]{2}([-:])[0-9a-f]{2}(\\1[0-9a-f]{2}){4}$", mac.lower()): return True
+	printAlert(1,"is not MAC address")
+
 ### IP's SCANNING LAN ###
 def get_lan_ips(output):
 	test=isConect()
