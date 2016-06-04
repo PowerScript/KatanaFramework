@@ -479,6 +479,7 @@ def isConect():
 	for line in s:
 		if "default" in line:
 			return True
+	printAlert(1,"you not is connected to a network.\n")
 	return False
 
 
