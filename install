@@ -2,15 +2,16 @@
 #HEAD#########################################################
 #
 # Katana Framework | install                         
-# Install.
+# for install is important have internet for install the
+# dependencies.
 #
 # 
-# Last Modified: 31/05/2016
+# Last Modified: 03/06/2016
 #
 #########################################################HEAD#
 
 from core.Function import status_cmd
-from core import Information, colors
+from core import Information, colors, Update
 import os, time
 
 print ""
@@ -59,13 +60,16 @@ rm /usr/share/KatanaFramework/dependencies                >/dev/null 2>&1;
 rm /usr/share/KatanaFramework/README.md                   >/dev/null 2>&1 
 """
 
-print "    INSTALLING"
-print "    ["+time.strftime('%c')+"]Checking dependencies. ",status_cmd('sudo bash dependencies'    )
-print "    ["+time.strftime('%c')+"]Checking Updates.      ",status_cmd('sudo python ktf.update'    )
-print "    ["+time.strftime('%c')+"]Creating Folder.       ",status_cmd('mkdir -p /usr/share/KatanaFramework')
-print "    ["+time.strftime('%c')+"]Coping files.          ",status_cmd('cp -r * /usr/share/KatanaFramework' )
-print "    ["+time.strftime('%c')+"]Creating Shortcuts.    ",status_cmd(Shortcuts,                  )
-print "    ["+time.strftime('%c')+"]Extracting Files.      ",status_cmd(Files,                      )
-print "    ["+time.strftime('%c')+"]Giving privileges.     ",status_cmd('chmod -R -c 777 /usr/share/KatanaFramework/')
+print " INSTALLING"
+print " ["+time.strftime('%H:%M:%S')+"]",status_cmd('sudo bash dependencies'),"Checking dependencies."
+print " ["+time.strftime('%H:%M:%S')+"] Checking Updates."
+print  "   |"
+Update.update("installer")
+print  "   |"
+print " ["+time.strftime('%H:%M:%S')+"]",status_cmd('mkdir -p /usr/share/KatanaFramework'),"Creating Folder."
+print " ["+time.strftime('%H:%M:%S')+"]",status_cmd('cp -r * /usr/share/KatanaFramework'),"Coping files."
+print " ["+time.strftime('%H:%M:%S')+"]",status_cmd(Shortcuts),"Creating Shortcuts."
+print " ["+time.strftime('%H:%M:%S')+"]",status_cmd(Files),"Extracting Files."
+print " ["+time.strftime('%H:%M:%S')+"]",status_cmd('chmod -R -c 777 /usr/share/KatanaFramework/'),"Giving privileges."
 
-print "\n    Done, Now u are allright for the action. !!!\n"
+print "\n if all is [OK] Katana was installed, use ktf.console\n"
