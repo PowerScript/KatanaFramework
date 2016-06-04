@@ -36,10 +36,12 @@ Installation of Katana framework:
 
 # USAGE
 Commands
-```
-        Option 1) ./sudo ktf.console                                   
-        Option 2) ./sudo ktf.run -m Code-Name  
-```
+
+for modules `./sudo ktf.console ` or `ktf.run -m Code-Name`
+
+for list tools `./sudo ktf.tool -t list`
+
+for update Option `./sudo ktf.update`
 
 # SUPPORT
 Questions, bugs or suggestions to : redtoor@inbox.ru
