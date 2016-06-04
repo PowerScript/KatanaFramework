@@ -98,7 +98,7 @@ def KatanaCheckActionGlobalCommands(action):
 	if     action[:len(EXIT)]        == EXIT   or action[:len(EXIT)]        == EXIT_SHORT  : exit()
 	elif   action[:len(HELP)]        == HELP   or action[:len(HELP_SHORT)]  == HELP_SHORT  : Help.help()
 	elif   action[:len("version")]   == "version"        :printAlert(3,"V:["+version+"] B:["+build+"] D:["+date+"]")
-	elif   action[:len(UPDATE)]      == UPDATE or action[:len(UPDATE_SHORT)]== UPDATE_SHORT: update()
+	elif   action[:len(UPDATE)]      == UPDATE or action[:len(UPDATE_SHORT)]== UPDATE_SHORT: update("functions")
 	elif action[:len(EXECUTECOMMAND)]==EXECUTECOMMAND    :subprocess.call(action[len(EXECUTECOMMAND):], shell=True)
 	elif   action[:len(CLEAR)]       == CLEAR  or action[:len(CLEAR_SHORT)] == CLEAR_SHORT : subprocess.call('clear', shell=True)
 	elif   action[:len(SAVEV)]       == SAVEV            :SaveValue(action)
