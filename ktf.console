@@ -75,7 +75,7 @@ def katanaFrameworkConsole():
 										init.var.update({Namevalue:init.extra[Namevalue][0]})
 								except:Nothing=False
 								ModuleToStart.main(True)
-							elif KatanaCheckActionisBack(actions)       :return
+							elif KatanaCheckActionisBack(actions)       :katanaFrameworkConsole()
 							else:KatanaCheckActionGlobalCommands(actions)
 						except:Errors.Errors()
 			katanaFrameworkConsole()
