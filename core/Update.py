@@ -8,7 +8,7 @@
 # and proceeds to download and install.
 #
 # 
-# Last Modified: 24/05/2016
+# Last Modified: 03/06/2016
 #
 #########################################################HEAD#
 
@@ -23,7 +23,8 @@ if os.getuid() != 0:
 	printAlert(0,"login as root ("+colors[1]+"sudo"+colors[0]+") or try "+colors[0]+"sudo python ktf.file.py"+colors[0]+"\n")
 	exit(1)
 
-def update():
+
+def update(fromCall):
 	print ""
 	printAlert(0,"Update - Katana framework - Connecting with server")
 	printAlert(0,"Version Current : Core:"+Information.version+" Build:"+Information.build+" Date "+Information.date)
@@ -45,6 +46,9 @@ def update():
 		if (build<=Information.build):
 			printAlert(3,"katana already updated.\n")
 		else:
+			if fromCall == "installer":
+				printAlert(6,"Exists a New Version, you can download for update.")
+				return
 			printAlert(0,"Downloading Last Version")
 			subprocess.Popen("cd /tmp;git clone https://github.com/PowerScript/KatanaFramework.git;cp -R /tmp/KatanaFramework/* /usr/share/KatanaFramework/;rm -rf /tmp/KatanaFramework/*", stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True).wait()
 			subprocess.Popen("cd /usr/share/KatanaFramework/core;sudo python Upgrade.py", stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True).wait()
