@@ -11,8 +11,8 @@ The project is open to partners.
 The Katana source code is organized as follows:
 
 <i>-[core/](https://github.com/PowerScript/KatanaFramework/tree/master/core)</i> > Source code core<br>
-<i>--[core/db/](https://github.com/PowerScript/KatanaFramework/tree/master/files/db)</i> > Dictionaries and tables<br>
-<i>--[core/logs/](https://github.com/PowerScript/KatanaFramework/tree/master/core/logs)</i> > Registers of modules<br>
+<i>--[files/db/](https://github.com/PowerScript/KatanaFramework/tree/master/files/db)</i> > Dictionaries and tables<br>
+<i>--[files/logs/](https://github.com/PowerScript/KatanaFramework/tree/master/core/logs)</i> > Registers of modules<br>
 <i>-[files/](https://github.com/PowerScript/KatanaFramework/tree/master/files)</i> > Files necessary for some modules<br>
 <i>-[tmp/](https://github.com/PowerScript/KatanaFramework/tree/master/tmp)</i> > Temp files<br>
 <i>-[lib/](https://github.com/PowerScript/KatanaFramework/tree/master/lib)</i> > Libraries<br>
