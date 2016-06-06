@@ -50,9 +50,9 @@ def update(fromCall):
 				printAlert(6,"Exists a New Version, you can download for update.")
 				return
 			printAlert(0,"Downloading Last Version")
-			subprocess.Popen("cd /tmp;git clone https://github.com/PowerScript/KatanaFramework.git;cp -R /tmp/KatanaFramework/* /usr/share/KatanaFramework/;rm -rf /tmp/KatanaFramework/*", stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True).wait()
-			subprocess.Popen("cd /usr/share/KatanaFramework/core;sudo python Upgrade.py", stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True).wait()
+			subprocess.Popen("git clone https://github.com/PowerScript/KatanaFramework.git /tmp/katana",  stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True).wait()
 			printAlert(0,"Upgrading.")
+			subprocess.Popen("cp -R /tmp/katana/* /usr/share/KatanaFramework/ && rm -rf /tmp/katana", stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True).wait()
 			printAlert(3,"Katana framework was Updated.\n")
 		return
 
