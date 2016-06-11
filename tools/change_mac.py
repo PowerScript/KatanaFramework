@@ -39,7 +39,8 @@ def Main():
         random.randint(0x00, 0xff) ]
 
     if init.var['r'] == "enable":MAC=':'.join(map(lambda x: "%02x" % x, mac))
-    if checkMAC(init.var['m']) and init.var['m']!="null" and init.var['m']!="enable":MAC=init.var['m']
+    if init.var['m']!="null" and init.var['m']!="enable":
+        if checkMAC(init.var['m']):MAC=init.var['m']
     
     if checkDevice(init.var['i']):
         printAlert(0,"Changing MAC to "+init.var['i'])
