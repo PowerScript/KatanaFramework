@@ -10,4 +10,4 @@
 #########################################################HEAD#
 
 from core import Update
-Update.update()
+Update.update("update")
