@@ -12,7 +12,6 @@
 from core.Design import *
 import importlib,argparse,sys,os
 import xml.etree.ElementTree as ET
-import importlib , sys
 
 tree = ET.parse('core/tools.xml')
 root = tree.getroot()
@@ -28,7 +27,7 @@ try:
 	for eachArg in sys.argv:
 		if eachArg=="-t":
 			Nametool=sys.argv[VAR+1]
-		if eachArg=="-i":
+		if eachArg=="--i-module":
 			Import=sys.argv[VAR+1]
 		VAR+=1
 except:printAlert(1,"Check your Arguments")
@@ -52,13 +51,13 @@ class Tool:
 			New = init.CodeName
 			New = New.split("/")
 			printAlert(0,"Installing module")
-			if os.path.isdir("/usr/share/KatanaFramework/scripts/"+New[0]+"/") == False: 
-				os.system("mkdir /usr/share/KatanaFramework/scripts/"+New[0]+"/")
-				os.system("echo > /usr/share/KatanaFramework/scripts/"+New[0]+"/__init__.py")
-			os.system("cp "+FilenameModule+".py /usr/share/KatanaFramework/scripts/"+New[0]+"/")
+			if os.path.isdir("/usr/share/KatanaFramework/modules/"+New[0]+"/") == False: 
+				os.system("mkdir /usr/share/KatanaFramework/modules/"+New[0]+"/")
+				os.system("echo > /usr/share/KatanaFramework/modules/"+New[0]+"/__init__.py")
+			os.system("cp "+FilenameModule+".py /usr/share/KatanaFramework/modules/"+New[0]+"/")
 			if True:printAlert(3,"Module installed")
 
-		except Exception as e:printAlert(1,e)
+		except Exception as e:printAlert(1,str(e)+"\n")
 
 	def CallTool(self):
 		for tool in root.findall('tool'):
