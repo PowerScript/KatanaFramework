@@ -49,7 +49,8 @@ def katanaFrameworkConsole():
 				description = modules.find('description').text
 				Desing.Line(CodeName=name,Description=description)
 			print """	/RT/, / 
-	`--`-'\n""" 
+	`--`-'
+	/""" 
 			katanaFrameworkConsole()
 
 		if KatanaCheckActionUseModule(action):
