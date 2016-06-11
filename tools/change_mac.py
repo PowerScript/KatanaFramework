@@ -45,8 +45,8 @@ def Main():
         printAlert(0,"Changing MAC to "+init.var['i'])
         printAlert(0,"MAC to Change "+MAC)
         sysc("sudo airmon-ng check kill")
-        sysc("sudo ifconfig "+init.var['i']+" down")
-        sysc("sudo ifconfig "+init.var['i']+" hw ether") 
-        sysc("sudo ifconfig "+init.var['i']+" up") 
+        sysc("sudo ifconfig "+init.var['i']+" down >/dev/null 2>&1")
+        sysc("sudo ifconfig "+init.var['i']+" hw ether "+MAC+" >/dev/null 2>&1") 
+        sysc("sudo ifconfig "+init.var['i']+" up >/dev/null 2>&1") 
         printAlert(3,"MAC Changed")
         return
