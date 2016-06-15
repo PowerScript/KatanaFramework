@@ -70,6 +70,13 @@
         <filename>arp_poisoning_attack</filename>
         <description>ARP poisoning Attack.</description>
     </module>
+    <module name="net/arp.dos">
+        <version>1.0</version>
+        <author>RedToor</author>
+        <category>net</category>
+        <filename>arp_denegation_of_service</filename>
+        <description>ARP D.O.S Attack.</description>
+    </module>
      <module name="set/facebrok">
         <version>1.0</version>
         <author>Redtoor</author>
@@ -187,7 +194,7 @@
         <author>RedToor</author>
         <category>wifi</category>
         <filename>wifi_denegation_of_service</filename>
-        <description>Access Point DOS attack.</description>
+        <description>Access Point D.O.S attack.</description>
     </module>
      <module name="wifi/ev.twin">
         <version>1.0</version>
@@ -197,4 +204,3 @@
         <description>Access Point Phising.</description>
     </module>
 </modules>
-
