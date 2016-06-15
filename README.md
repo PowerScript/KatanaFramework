@@ -26,10 +26,11 @@ The Katana source code is organized as follows:
 |Wifislax| yes| beta   |
 
 # INSTALLATION
-Installation of Katana framework:
+Installation of Katana framework: is necesary install all dependencies for a good performance.
 <i><b><br><br>
 	git clone https://github.com/PowerScript/KatanaFramework.git<br>
         cd KatanaFramework<br>
+        sudo sh dependencies<br>
         chmod 777 install<br>
         python install</i>
 </i></b>
