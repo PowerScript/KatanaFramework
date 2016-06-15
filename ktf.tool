@@ -27,9 +27,10 @@ try:
 	for eachArg in sys.argv:
 		if eachArg=="-t":
 			Nametool=sys.argv[VAR+1]
-		if eachArg=="--i-module":
+		elif eachArg=="--i-module":
 			Import=sys.argv[VAR+1]
 		VAR+=1
+
 except:printAlert(1,"Check your Arguments")
 
 class Tool:
@@ -119,4 +120,4 @@ class Tool:
 Tool=Tool()
 if Nametool:Tool.CallTool()
 elif Import:Tool.ImportModule()
-else:printAlert(1,"Command not found.\n")
+else:printAlert(1,"Check your Arguments\n       |Use '-t list' for tools list\n       |Use '--i-module' for import modules\n       |Use '--i-tool' for import tools\n")
