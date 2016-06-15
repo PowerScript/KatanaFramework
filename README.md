@@ -22,18 +22,18 @@ The Katana source code is organized as follows:
 # SUPPORTED DISTRIBUTIONS
 |Distribution | supported | status |
 ----------|-------------|-------|
-|Kali Linux| yes| beta   |
-|Wifislax| yes| beta   |
+|Kali Linux| yes| [![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
+|Wifislax| yes| [![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
+|Raspbian| yes| [![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
 
 # INSTALLATION
 Installation of Katana framework: is necesary install all dependencies for a good performance.
-<i><b><br><br>
-	git clone https://github.com/PowerScript/KatanaFramework.git<br>
-        cd KatanaFramework<br>
-        sudo sh dependencies<br>
-        chmod 777 install<br>
-        python install</i>
-</i></b>
+
+git clone https://github.com/PowerScript/KatanaFramework.git
+cd KatanaFramework
+sudo sh dependencies
+sudo python install
+
 
 # USAGE
 Commands
