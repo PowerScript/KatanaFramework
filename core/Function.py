@@ -95,7 +95,7 @@ def ShowInformationModule(init):
 
 ### GLOBAL COMMANDS ###
 def KatanaCheckActionGlobalCommands(action):
-	if     action[:len(EXIT)]        == EXIT   or action[:len(EXIT)]        == EXIT_SHORT  : exit()
+	if     action[:len(EXIT)]        == EXIT   or action[:len(EXIT)]        == EXIT_SHORT  : sys.exit()
 	elif   action[:len(HELP)]        == HELP   or action[:len(HELP_SHORT)]  == HELP_SHORT  : Help.help()
 	elif   action[:len("version")]   == "version"        :printAlert(3,"V:["+version+"] B:["+build+"] D:["+date+"]")
 	elif   action[:len(UPDATE)]      == UPDATE or action[:len(UPDATE_SHORT)]== UPDATE_SHORT: update("functions")
