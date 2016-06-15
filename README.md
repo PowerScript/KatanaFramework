@@ -1,5 +1,5 @@
 <img src="https://4.bp.blogspot.com/-qZDqDJu1j-k/V09AEAbLBeI/AAAAAAAAAR0/YX_M7a12s2URf-vzcaghv_ZDIvuy9b39QCLcB/s320/Sin%2Bt%25C3%25ADtulo.png" title="Katana">
-[![Gitter chat](https://badges.gitter.im/totaljs/framework.png)](https://gitter.im/PowerScript/KatanaFramework) ![Supported OS](https://img.shields.io/badge/Supported%20OS-Linux-yellow.svg) ![License](https://img.shields.io/badge/license-GPLv3-blue.svg) ![CORE](https://img.shields.io/badge/core-0.0.1.0-green.svg)![Build](https://img.shields.io/badge/BUILD-0059-red.svg) 
+[![Gitter chat](https://badges.gitter.im/totaljs/framework.png)](https://gitter.im/PowerScript/KatanaFramework) ![Supported OS](https://img.shields.io/badge/Supported%20OS-Linux-yellow.svg) ![License](https://img.shields.io/badge/license-GPLv3-blue.svg) ![CORE](https://img.shields.io/badge/core-0.0.1.0-green.svg)![Build](https://img.shields.io/badge/BUILD-0060-red.svg) 
 ---
 # ABOUT.
 
@@ -27,7 +27,7 @@ The Katana source code is organized as follows:
 |Raspbian| yes| [![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
 
 # INSTALLATION
-Installation of Katana framework: is necesary install all dependencies for a good performance.
+Installation of Katana framework: is necesary install all [dependencies](https://github.com/PowerScript/KatanaFramework/wiki/Requisites) for a good performance.
 <pre><i><n>
 git clone https://github.com/PowerScript/KatanaFramework.git
 cd KatanaFramework
