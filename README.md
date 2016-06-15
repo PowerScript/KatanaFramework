@@ -28,12 +28,12 @@ The Katana source code is organized as follows:
 
 # INSTALLATION
 Installation of Katana framework: is necesary install all dependencies for a good performance.
-
+<pre><i><n>
 git clone https://github.com/PowerScript/KatanaFramework.git
 cd KatanaFramework
 sudo sh dependencies
 sudo python install
-
+</pre></i></n>
 
 # USAGE
 Commands
