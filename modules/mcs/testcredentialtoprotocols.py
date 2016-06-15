@@ -1,100 +1,68 @@
 # This module requires katana framework 
-# https://github.com/RedToor/Katana
-# :-:-:-:-:-:-:-:-:-:-:-:-:-: #
-# Katana Core                 #
-from core.design import *     #
-from core.Setting import *    #
-from core import Errors       #
-from core import getFunction  #
-import sys                    #
-Message=DESIGN()              #
-# :-:-:-:-:-:-:-:-:-:-:-:-:-: #
-# Libraries                   #
-import MySQLdb                #
+# https://github.com/PowerScript/KatanaFramework
+
+# :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
+# Katana Core import                  #
+from core.KATANAFRAMEWORK import *    #
+# :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
+
+# LIBRARIES  
 from lib.ftplib.ftplib import FTP
-from core import help         #
-from pexpect import pxssh     #
-import poplib                 #
-import socket                 #
-# :-:-:-:-:-:-:-:-:-:-:-:-:-: #
+from pexpect import pxssh
+import poplib,MySQLdb,socket
+# END LIBRARIES 
 
 # INFORMATION MODULE
-def initialize():
-	initialize.Author             ="RedToor"
-	initialize.Version            ="1.1"
-	initialize.Despcription       ="Test Credentials protocols."
-	initialize.CodeName           ="mcs/ts.login"
-	initialize.DateCreation       ="03/05/2015"      
-	initialize.LastModification   ="27/03/2016"
+def init():
+	init.Author             ="RedToor"
+	init.Version            ="1.1"
+	init.Descrition         ="Test Credentials protocols."
+	init.CodeName           ="mcs/ts.login"
+	init.DateCreation       ="03/05/2015"      
+	init.LastModification   ="14/06/2016"
+	init.References         =None
+	init.License            =KTF_LINCENSE
+	init.var                ={}
 
-	# DEFAULT VARIABLES             VALUE                NAME        RQ     DESCRIPTION
-	initialize.DEFAULT_VARIABLE   =[[LOCAL_IP          , "target" , "yes" , "IP or DNS"]]  #[0][0]
-	initialize.DEFAULT_VARIABLE  +=[[USERNAME          , "user"   , "yes" , "Username"]]   #[1][0]
-	initialize.DEFAULT_VARIABLE  +=[["anonymous"       , "pass"   , "yes" , "Password"]]   #[2][0]
-initialize()
+	# DEFAULT OPTIONS MODULE
+	init.options = {
+		# NAME    VALUE     RQ     DESCRIPTION
+		'target':[LOCAL_IP,True ,'Hostname Target'],
+		'user'  :[USERNAME,False,'Username Target'],
+		'pass'  :[PASSWORD,False,'Password URL'],
+	}
+	return init
 # END INFORMATION MODULE
 
-# MAIN FUNCTION
+# CODE MODULE    ############################################################################################
 def main(run):
+
 	try:
-		# HEAD MODULE
-		if run:	actions=raw_input(Message.prompt(initialize.CodeName))
-		else  : actions="run"
-		if   getFunction.KatanaCheckActionShowOptions(actions):getFunction.ShowOptions(initialize.DEFAULT_VARIABLE)
-		elif getFunction.KatanaCheckActionSetValue(actions)   :initialize.DEFAULT_VARIABLE=getFunction.UpdateValue(actions,initialize.DEFAULT_VARIABLE)
-		elif getFunction.KatanaCheckActionisBack(actions)     :return
-		# END HEAD MODULE
-		elif getFunction.runModule(actions):
-			Message.run()
-			# CODE MODULE    ############################################################################################
-			try:
-				Message.testing("Mysql","3306")
-				MySQLdb.connect(initialize.DEFAULT_VARIABLE[0][0],initialize.DEFAULT_VARIABLE[1][0],initialize.DEFAULT_VARIABLE[2][0],'')
-				Message.live_protocol()
-				if True:
-					print(" "+Suf+" Logged with "+initialize.DEFAULT_VARIABLE[1][0]+"/"+initialize.DEFAULT_VARIABLE[2][0]+" in Mysql")
-			except:
-				print " "+Bad+" Service Off or No Logged."
+		printAlert(0,"Testing Mysql protocol [3306]")
+		MySQLdb.connect(init.var['target'],init.var['user'],init.var['pass'],'')
+		printAlert(3,"Logged with "+init.var['user']+"/"+init.var['pass']+" in Mysql")
+	except:printAlert(1,"Service Off or No Logged.")
 
-			try:
-				Message.testing("SSH",SSH_PORT)
-				connect = pxssh.pxssh()
-				connect.login(initialize.DEFAULT_VARIABLE[0][0],initialize.DEFAULT_VARIABLE[1][0],initialize.DEFAULT_VARIABLE[2][0])
-				d.live_protocol()
-				if True:
-					print(" "+Suf+" Logged with "+initialize.DEFAULT_VARIABLE[1][0]+"/"+initialize.DEFAULT_VARIABLE[2][0]+" in SSH")
-			except:
-				print " "+Bad+" Service Off or No Logged."
-			try:
-				Message.testing("FTP",FTP_PORT)
-				ftp.login(initialize.DEFAULT_VARIABLE[1][0],initialize.DEFAULT_VARIABLE[2][0])
-				if True:
-					print(" "+Suf+" Logged with "+initialize.DEFAULT_VARIABLE[1][0]+"/"+initialize.DEFAULT_VARIABLE[2][0]+" in FTP")
-			except:
-				print " "+Bad+" Service Off or No Logged."
-			try:
-				Message.testing("POP3",POP_PORT)
-				red=poplib.POP3(initialize.DEFAULT_VARIABLE[0][0], 110)
-				red.user(initialize.DEFAULT_VARIABLE[1][0]+"@"+initialize.DEFAULT_VARIABLE[0][0])
-				red.pass_(initialize.DEFAULT_VARIABLE[2][0])
-				if True:
-					print(" "+Suf+" Logged with "+initialize.DEFAULT_VARIABLE[1][0]+"/"+initialize.DEFAULT_VARIABLE[2][0]+" in POP3")
-			except:
-				print " "+Bad+" Service Off or No Logged."
-			# END CODE MODULE ############################################################################################
-		else:
-			getFunction.KatanaCheckActionGlobalCommands(actions)
-	# ERROR GENERAL
-	except:
-		Errors.Errors(event=sys.exc_info(), info=sys.exc_traceback.tb_lineno)
-	# END ERROR GENERAL
-	main(True)
-# END MAIN FUNCTION
+	try:
+		printAlert(0,"Testing SSH protocol [22]")
+		connect = pxssh.pxssh()
+		connect.login(init.var['target'],init.var['user'],init.var['pass'])
+		printAlert(3,"Logged with "+init.var['user']+"/"+init.var['pass']+" in SSH")
+	except:printAlert(1,"Service Off or No Logged.")
 
-# LINKER FUNCTION
-def run(target,username,password):
-	initialize.DEFAULT_VARIABLE [0][0] = target
-	initialize.DEFAULT_VARIABLE [1][0] = username
-	initialize.DEFAULT_VARIABLE [2][0] = password
-	main(False)
-# END LINKER FUNCTION
+	try:
+		printAlert(0,"Testing FTP protocol [21]")
+		ftp.login(init.var['user'],init.var['pass'])
+		printAlert(3,"Logged with "+init.var['user']+"/"+init.var['pass']+" in FTP")
+	except:printAlert(1,"Service Off or No Logged.")
+
+	try:
+		printAlert(0,"Testing POP3 protocol [110]")
+		red=poplib.POP3(init.var['target'], 110)
+		red.user(init.var['user']+"@"+init.var['target'])
+		red.pass_(init.var['pass'])
+		printAlert(3,"Logged with "+init.var['user']+"/"+init.var['pass']+" in POP3")
+	except:printAlert(1,"Service Off or No Logged.")
+	Space()
+
+# END CODE MODULE ############################################################################################
