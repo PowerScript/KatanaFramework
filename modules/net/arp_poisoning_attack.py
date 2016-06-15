@@ -26,7 +26,7 @@ def init():
 	# DEFAULT OPTIONS MODULE
 	init.options = {
 		# NAME      VALUE            RQ     DESCRIPTION
-		'interface':["eth0"         ,True ,'Range Scan'],
+		'interface':["eth0"         ,True ,'Interface'],
 		'target'   :["192.168.1.223",True ,'Target IP'],
 		'gateway'  :[get_gateway()  ,True ,'Gateway IP']
 	}
