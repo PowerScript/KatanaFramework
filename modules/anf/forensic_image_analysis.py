@@ -40,12 +40,11 @@ def main(run):
 	HelpBanner += [["extract_all","extract all MD","extract_all"]]
 	HelpBanner += [["comment","comment whatever","comment Hello zzz"]]
 	MakeTable(HelpBanner)
-			#extract_all									
 	cmd="nop"
 	parameter="ROO"
 	while(cmd!="exit"):
 		cmd = raw_input(ClientPrompt(init.CodeName,"anf.imagen"))
-		if(cmd=="a"):
+		if(cmd=="extract_all"):
 			output=commands.getoutput("perl files/exiftool/exiftool "+init.var['target'])
 			output=output.split("\n")
 			for lineperline in output:
