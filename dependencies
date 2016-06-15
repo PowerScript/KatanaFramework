@@ -39,6 +39,10 @@
 		sudo apt-get install isc-dhcp-server
 	fi
 
+	if ! hash hostapd 2>/dev/null; then 
+		sudo apt-get install hostapd
+	fi
+	
 DIR=$(dirname $0)
 cd $DIR/lib/scapy/
 sudo python setup.py install
