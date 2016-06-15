@@ -8,7 +8,7 @@ from core.KATANAFRAMEWORK import *    #
 
 # LIBRARIES  
 from core.Function import get_external_ip,get_local_ip,get_interfaces,get_gateway,get_my_mac_address
-from core import info
+from core import Information
 import commands
 # END LIBRARIES 
 
@@ -43,7 +43,7 @@ def main(run):
 	print "       | OS         : ",commands.getoutput('uname')
 	print "       | Version    : ",commands.getoutput('uname -r')
 	printAlert(3,"Katana")
-	print "       | Core       : ",info.version
-	print "       | Build      : ",info.build
+	print "       | Core       : ",Information.version
+	print "       | Build      : ",Information.build
 	Space()
 # END CODE MODULE ############################################################################################
