@@ -17,7 +17,7 @@ The Katana source code is organized as follows:
 <i>-[tmp/](https://github.com/PowerScript/KatanaFramework/tree/master/tmp)</i> > Temp files<br>
 <i>-[lib/](https://github.com/PowerScript/KatanaFramework/tree/master/lib)</i> > Libraries<br>
 <i>-[doc/](https://github.com/PowerScript/KatanaFramework/tree/master/doc)</i> > Documentation<br>
-<i>-[scripts/](https://github.com/PowerScript/KatanaFramework/tree/master/scripts)</i> > Scripts(modules)<br>
+<i>-[modules/](https://github.com/PowerScript/KatanaFramework/tree/master/scripts)</i> > Scripts(modules)<br>
 
 # SUPPORTED DISTRIBUTIONS
 |Distribution | supported | status |
@@ -28,8 +28,7 @@ The Katana source code is organized as follows:
 
 # INSTALLATION
 Installation of Katana framework: is necesary install all [dependencies](https://github.com/PowerScript/KatanaFramework/wiki/Requisites) for a good performance.
-<pre><i><n>
-git clone https://github.com/PowerScript/KatanaFramework.git
+<pre><i><n>git clone https://github.com/PowerScript/KatanaFramework.git
 cd KatanaFramework
 sudo sh dependencies
 sudo python install
@@ -53,8 +52,6 @@ Katana is licensed.
 See [LICENSE](https://github.com/PowerScript/KatanaFramework/blob/master/doc/LICENCE) for more information.
 
 We need partners, if you're interested in support or help contact.
-
-## you are a programmer python? Join us. <img src="http://www.bennugd.org/sites/default/files/We_Need_You.jpeg" title="Love">
 
 # LINKS
 ```
