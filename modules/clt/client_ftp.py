@@ -8,8 +8,9 @@ from core.KATANAFRAMEWORK import *    #
 
 # LIBRARIES  
 from core.Function import MakeTable
+from core.Errors import Errors
 from ftplib import FTP
-import subprocess
+import commands, os
 # END LIBRARIES 
 
 # INFORMATION MODULE
@@ -19,7 +20,7 @@ def init():
 	init.Description        ="Console Client for FTProtocol."
 	init.CodeName           ="clt/cl.ftp"
 	init.DateCreation       ="03/03/2015"      
-	init.LastModification   ="18/05/2016"
+	init.LastModification   ="20/07/2016"
 	init.References         =None
 	init.License            =KTF_LINCENSE
 	init.var                ={}
@@ -41,56 +42,50 @@ def main(run):
 	ftp.connect(init.var['target'],int(init.var['port'])) 
 	ftp.login(init.var['user'],init.var['pass'])
 
-	cmd="nop"
-	patch=""
-
 	printAlert(2,"FTP Console")
 	HelpBanner  = [["Commands","Description","Example"]]
 	HelpBanner += [["ls","list files","ls"]]
 	HelpBanner += [["cd","change dir","cd css"]]
 	HelpBanner += [["mk","create dir","mk images"]]
 	HelpBanner += [["rm","remove file","remove config.js"]]
+	HelpBanner += [["rnm","rename file","rnm maria.jpg"]]
 	HelpBanner += [["rmd","remove dir","remove sex"]]
-	HelpBanner += [["get","get file","get index.php"]]
-	HelpBanner += [["put","up file","put login.php"]]
+	HelpBanner += [["get","download file","get index.php"]]
+	HelpBanner += [["put","upload file","put login.php"]]
 	MakeTable(HelpBanner)
 
+	cmd="nop"
+	path=""
+
 	while(cmd!="exit"):
-		cmd = raw_input(ClientPrompt(init.CodeName,"ftp"))
-		if cmd == "ls":
-			Space()
-			ftp.retrlines("LIST")
-			Space()
-		elif cmd[0:2] == "cd":
-			try:
+		try:
+			cmd = raw_input(ClientPrompt(init.CodeName,"ftp/"+path))
+			if cmd == "ls":
+				Space()
+				ftp.retrlines("LIST")
+				Space()
+			elif cmd[0:2] == "cd":
 				ftp.cwd(cmd[3:])
-				if True:patch=cmd[3:]
-				if patch == "..":patch=""
-			except:printAlert(1,"Error: directory wrong.")
-		elif cmd[0:3] == "get":
-			lfile=cmd[4:].replace("\n","")
-			try:
+				if cmd[3:] != "..": path+=cmd[3:]+"/"
+				if cmd[3:] == "..": 
+					head, tail = os.path.split(os.path.split(path)[0])
+					path=str(head)
+			elif cmd[0:3] == "get":
+				lfile=cmd[4:].replace("\n","")
 				ftp.retrbinary('RETR '+lfile,open(lfile,'wb').write)
-				subprocess.Popen("cp "+lfile+" /root/Desktop/;rm "+lfile+"", stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True).wait()
-				printAlert(3,"Saved, /root/Desktop/"+lfile)
-			except:printAlert(1,"Error: file not found.")
-		elif cmd[0:3] == "put":
-			lfile=cmd[4:].replace("\n","")
-			w = open(lfile, 'rb')
-			try:
-				ftp.storbinary("STOR r.r",w)
-			except:printAlert(1,"Error: file wrong.")
-		elif cmd[0:2] == "rm":
-			try:
-				ftp.delete(cmd[3:])
-			except:printAlert(1,"Error: file not found.")
-		elif cmd[0:3] == "rmd":
-				pat=cmd[4:].replace("\n","")
-				ftp.rmd(pat)
-		elif cmd[0:2] == "mk":
-			try:
-				ftp.mkd(cmd[3:])
-			except:printAlert(1,"Error: directory wrong.")
-		elif cmd == "help":MakeTable(HelpBanner)
+				commands.getoutput("cp "+lfile+" /root/Desktop/;rm "+lfile)
+				printAlert(3,"File was Saved, /root/Desktop/"+lfile)
+			elif cmd[0:3] == "put":
+				lfile=cmd[4:].replace("\n","")
+				w = open(lfile, 'rb')
+				ftp.storbinary("STOR "+os.path.basename(w.name),w)
+			elif cmd[0:3] == "rnm":
+				newname=raw_input(" New name:")
+				ftp.rename(cmd[4:],newname)
+			elif cmd[0:3] == "rmd":ftp.rmd(cmd[4:])
+			elif cmd[0:2] == "rm" :ftp.delete(cmd[3:])
+			elif cmd[0:2] == "mk" :ftp.mkd(cmd[3:])
+			elif cmd == "help":MakeTable(HelpBanner)
+		except : Errors() 
 
 # END CODE MODULE ############################################################################################
