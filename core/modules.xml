@@ -77,6 +77,13 @@
         <filename>arp_denegation_of_service</filename>
         <description>ARP D.O.S Attack.</description>
     </module>
+    <module name="net/dns.fake">
+        <version>1.0</version>
+        <author>Dimitrios Kanellopoulos | Adated by RedToor</author>
+        <category>net</category>
+        <filename>dns_fake</filename>
+        <description>DNS fake Server Spoof.</description>
+    </module>
      <module name="set/facebrok">
         <version>1.0</version>
         <author>Redtoor</author>
