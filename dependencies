@@ -12,7 +12,7 @@
 # dhcpd for rogues AP
 #
 # 
-# Last Modified: 03/06/2016
+# Last Modified: 25/07/2016
 #
 #########################################################HEAD#
 
@@ -45,4 +45,8 @@
 	
 DIR=$(dirname $0)
 cd $DIR/lib/scapy/
+sudo python setup.py install
+cd $DIR/lib/dnslib/
+sudo python setup.py install
+cd $DIR/lib/IPy/
 sudo python setup.py install
