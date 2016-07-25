@@ -1,0 +1,4 @@
+* 21/07/16
+  Added New module : dns.fake, dns server for spoof dns
+  List Reset in module net/sc.hosts
+  Fixed errors in clt/clt.ftp module 
