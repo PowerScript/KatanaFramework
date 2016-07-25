@@ -1,0 +1,74 @@
+.TH ktf.console 1 "03/06/2016" "0.0.1.0"
+.SH NAME
+	ktf.console - Katana Framework
+.br
+.SH DESCRIPTION
+	The Katana Framework is the sword a good pentester can put to use, it does this with modules.
+.br
+	If the modules have a shorter way of being called (like showm instead of 'show modules'), it is listed in () after the name of the module
+	show modules(showm) - Show modules
+.br
+.br
+.SH BASIC USAGE
+.br
+	show options(sop) - Show options module
+.br
+	show full options(sfop) - Show full options module
+.br
+	use - Use module
+.br
+	getinfo - Show information of module
+.br
+	set - Change value of a parameter
+.br
+	back - Go back
+.br
+	run - run Module
+.br
+	update(u) - Update framework
+.br
+	exit(x) - Exit of framework
+.br
+	help(h) - Show help
+.br
+	clear(c) - Clear screen
+.br
+.br
+.SH EXTRA MODULES
+.br
+s:: - Save Variable
+.br
+x:: - Execute System Commands
+.br
+f:: - Execute Functions
+.br
+.SH FUNCTIONS
+.br
+Can be called with 'f::',They allow the user to do more complex things from within the framework. 
+.br
+If the function has arguments, they are listed after the().
+.br
+	get_aps() Interface, timeout - Scan Access point's
+.br
+	get_interfaces() - Get Network Interfaces
+.br
+	get_monitors_mode() - Get Monitor Interfaces Wireless
+.br
+	start_monitor() Interface - Start Monitor Mode in Interface
+.br
+	get_local_ip() - Get local IP
+.br
+	get_external_ip() - Get External IP
+.br
+	get_gateway() - Get Gateway/Router IP
+.br
+.SH EXAMPLE
+.br
+.br
+f::Functions(Parameters)   =  f::get_aps(mon0,10)
+.br
+f::Functions               =  f::get_local_ip
+.br
+.SH SEE ALSO
+.br
+ktf.run
