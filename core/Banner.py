@@ -1,16 +1,34 @@
-#!/usr/bin/env python
+#!/usr/bin/python
+# -*- coding: latin-1 -*-
 #HEADER#######################
 # Katana framework           #
 # Splash File                #
-# Last Modified: 24/05/2016  #
-# Review: 0                  #
+# Last Modified: 27/07/2016  #
+# Review: 1                  #
 #######################HEADER#
 
 from core import colors,Information
 from Function import get_number_modules,get_number_tools
-tema="Space...theme"
+import random          
 
-print colors.B+"""
+tema="Army ...theme"
+
+Banner1="""
+
+	 		     ██╗  ██╗████████╗███████╗
+			     ██║ ██╔╝╚══██╔══╝██╔════╝
+	 ░░░░░░███████ ]▄▄▄▄▄█████╔╝    ██║   █████╗  
+	 ▂▄▅█████████▅▄▃▂    ██╔═██╗    ██║   ██╔══╝  
+	 I█████████████████].██║  ██╗   ██║   ██║     
+	 ◥⊙▲⊙▲⊙▲⊙▲⊙▲⊙▲⊙◤     ╚═╝  ╚═╝   ╚═╝   ╚═╝
+		          The Hacking Framework 
+       
+	       """+colors.HH+""" Core    """+colors.W+""" [ """+Information.version+""", Build: """+Information.build+""" ]
+	       """+colors.HH+""" Date    """+colors.W+""" [ """+Information.date+"""    ]
+	       """+colors.HH+""" Theme   """+colors.W+""" [ """+tema+"""        ]
+	       """+colors.HH+""" Modules """+colors.W+"""    [ """""+str(get_number_modules())+""" ] """+colors.HH+"""Tools """+colors.W+"""[ """+str(get_number_tools())+""" ]\n"""
+
+Banner2=colors.B+"""
                    mM@@MM@@MM@@MM@@MM@@MM@@@MMMMM@@@@Mm              
        ||========mMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMm===========||        
        ||        @MMMM"""+colors.W+"""MMM"""+colors.B+"""MMM"""+colors.W+"""MMM"""+colors.B+"""MM"""+colors.W+"""MMMMMMMMM"""+colors.B+"""MMM"""+colors.W+"""MMMMMMM"""+colors.B+"""MMMMm         ||
@@ -27,5 +45,11 @@ print colors.B+"""
        ||        |#_N_| """+colors.HH+""" Date    """+colors.W+""" [ """+Information.date+"""    ]        ||
        ||        |_  _| """+colors.HH+""" Theme   """+colors.W+""" [ """+tema+"""        ]        ||        
        ||        /|__|\\  """+colors.HH+"""Modules """+colors.W+""" [ """""+str(get_number_modules())+""" ] """+colors.HH+"""Tools """+colors.W+"""[ """+str(get_number_tools())+""" ]              ||
-       """+colors.GW+"""||       /__\/__\\"""+colors.GW+""" The hacking framework                    ||"""+colors.W+"""
+       """+colors.GW+"""||       /__\/__\\"""+colors.GW+""" The Hacking Framework                    ||"""+colors.W+"""
                  ()  ()\n"""
+
+def LoadBanner():
+	RamdonBanner=random.randint(1,2)
+	if RamdonBanner==1:print Banner1
+	if RamdonBanner==2:print Banner2
+

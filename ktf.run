@@ -14,7 +14,7 @@ from core.Function import KatanaCheckActionShowModules,KatanaCheckActionUseModul
 from core.Function import KatanaCheckActionShowOptions,LoadBuffer,ShowFullOptions,Executefunction
 from core.Function import KatanaCheckActionGetInfo,ShowInformationModule,KatanaCheckActionShowMOptions
 from core.Function import ShowOptions,KatanaCheckActionSetValue,UpdateValue,runModule
-from core.Function import KatanaCheckActionisBack,KatanaCheckActionGlobalCommands
+from core.Function import KatanaCheckActionisBack,KatanaCheckActionGlobalCommands,GetRootModules
 
 from core.Default import *    
 from core.Design import *
@@ -28,13 +28,13 @@ LoadBuffer()
 CLASS_BANNER=DESIGN()
 CLASS_BANNER.ktfrun()
 
-tree = ET.parse('core/modules.xml')
-root = tree.getroot()
+
 parser = argparse.ArgumentParser()
 parser.add_argument("-m", "--module", help=" Script module to run.")
 args = parser.parse_args()
 
 if __name__=="__main__":
+	root=GetRootModules()
 	for modules in root.findall('module'):
 		if args.module == modules.get('name'):
 			category = modules.find('category').text

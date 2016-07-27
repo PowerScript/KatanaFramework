@@ -5,7 +5,7 @@
 # Main library
 #
 # 
-# Last Modified: 01/06/2016
+# Last Modified: 27/07/2016
 #
 #########################################################HEAD#
 
@@ -691,3 +691,29 @@ def CheckAPmode():
 	if len(output) > 0 : return True
 	printAlert(1,"You device not support AP mode.")
 	return False
+
+### LIST MODULES INSTALLED ###
+def ListModules():
+	tree = ET.parse('core/modules.xml')
+	root = tree.getroot()
+	print """	\\
+ 	,--.-,  
+	/BY/  /  """+colors[11]+colors[7]+""" CodeName\t\t\tDescription\t\t"""+colors[0]
+ 	space_category = "web"
+ 	print colors[0]+"	|"+colors[1]+"=="+colors[0]+"|::|"
+ 	for modules in root.findall('module'):
+		name = modules.get('name')
+		if space_category !=  name[:3]:
+			space_category=name[:3]
+			print colors[0]+"	|"+colors[1]+"=="+colors[0]+"|::| -----------------------------------------------"
+		description = modules.find('description').text
+		Desing.Line(CodeName=name,Description=description)
+	print """	/RT/, / 
+	`--`-'
+	/"""
+
+### GET ROOT VARIABLE MODULES INSTALLED ###
+def GetRootModules():
+	tree = ET.parse('core/modules.xml')
+	root = tree.getroot()
+	return root
