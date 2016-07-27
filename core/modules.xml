@@ -64,7 +64,7 @@
         <description>Protocol Sniffer.</description>
     </module>
     <module name="net/at.arpsp">
-        <version>3.0</version>
+        <version>3.1</version>
         <author>RedToor</author>
         <category>net</category>
         <filename>arp_poisoning_attack</filename>

@@ -1,3 +1,6 @@
+* 27/07/16
+  Update Module: net/at.arpsp module was update to 3.1 version {SSL protocol capturing with ssltrip}
+
 * 26/07/16
   Added New module : px.checker, Proxy List check HTTP, SOCK4, SOCK5 protocolos
   Added New library: pysock, Necesary for the new module
