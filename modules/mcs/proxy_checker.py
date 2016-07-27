@@ -7,11 +7,11 @@ from core.KATANAFRAMEWORK import *    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
 # LIBRARIES  
-
-# END LIBRARIES
 from core.Function import Maquetar
-import urllib2,socket,urllib
 from lib.pysock import socks
+import urllib2,socket,urllib
+# END LIBRARIES
+
 # INFORMATION MODULE
 def init():
 	init.Author             ="RedToor"
