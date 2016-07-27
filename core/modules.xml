@@ -196,6 +196,13 @@
         <filename>credentials_test</filename>
         <description>Test Credentials protocols.</description>
     </module>
+     <module name="mcs/px.checker">
+        <version>1.0</version>
+        <author>RedToor</author>
+        <category>mcs</category>
+        <filename>proxy_checker</filename>
+        <description>Proxy list checker.</description>
+    </module>
      <module name="wifi/ap.dos">
         <version>1.1</version>
         <author>RedToor</author>

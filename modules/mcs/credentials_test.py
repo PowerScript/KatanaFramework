@@ -16,7 +16,7 @@ import poplib,MySQLdb,socket
 def init():
 	init.Author             ="RedToor"
 	init.Version            ="1.1"
-	init.Descrition         ="Test Credentials protocols."
+	init.Description        ="Test Credentials protocols."
 	init.CodeName           ="mcs/ts.login"
 	init.DateCreation       ="03/05/2015"      
 	init.LastModification   ="14/06/2016"

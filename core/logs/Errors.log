@@ -1,0 +1,87 @@
+
+ Date    : Tue Jul 26 20:26:46 2016
+ info    : (<type 'exceptions.KeyboardInterrupt'>, KeyboardInterrupt(), <traceback object at 0xb68a439c>)#36:ktf.console
+ Date    : Tue Jul 26 20:33:39 2016
+ info    : (<type 'exceptions.AttributeError'>, AttributeError("'function' object has no attribute 'Description'",), <traceback object at 0xb68a6bbc>)#51:ktf.run
+ Date    : Tue Jul 26 20:37:38 2016
+ info    : (<type 'exceptions.KeyboardInterrupt'>, KeyboardInterrupt(), <traceback object at 0xb67bee14>)#46:ktf.run
+ Date    : Tue Jul 26 20:40:38 2016
+ info    : (<type 'exceptions.AttributeError'>, AttributeError("'file' object has no attribute 'split'",), <traceback object at 0xb6938dc4>)#59:ktf.run
+ Date    : Tue Jul 26 20:41:28 2016
+ info    : (<type 'exceptions.IndexError'>, IndexError('list index out of range',), <traceback object at 0xb68f5dc4>)#59:ktf.run
+ Date    : Tue Jul 26 20:42:27 2016
+ info    : (<type 'exceptions.AttributeError'>, AttributeError("'list' object has no attribute 'replace'",), <traceback object at 0xb68eae14>)#59:ktf.run
+ Date    : Tue Jul 26 20:42:50 2016
+ info    : (<type 'exceptions.AttributeError'>, AttributeError("'list' object has no attribute 'replace'",), <traceback object at 0xb68eadc4>)#59:ktf.run
+ Date    : Tue Jul 26 20:42:52 2016
+ info    : (<type 'exceptions.AttributeError'>, AttributeError("'list' object has no attribute 'replace'",), <traceback object at 0xb68a6dec>)#59:ktf.run
+ Date    : Tue Jul 26 20:47:35 2016
+ info    : (<type 'exceptions.NameError'>, NameError("global name 'pip' is not defined",), <traceback object at 0xb67e4c5c>)#59:ktf.run
+ Date    : Tue Jul 26 20:49:41 2016
+ info    : (<class 'urllib2.URLError'>, URLError(error(111, 'Connection refused'),), <traceback object at 0xb68360a4>)#59:ktf.run
+ Date    : Tue Jul 26 20:50:17 2016
+ info    : (<class 'urllib2.URLError'>, URLError(error(111, 'Connection refused'),), <traceback object at 0xb6845054>)#59:ktf.run
+ Date    : Tue Jul 26 20:50:46 2016
+ info    : (<class 'urllib2.URLError'>, URLError(error(111, 'Connection refused'),), <traceback object at 0xb68470a4>)#59:ktf.run
+ Date    : Tue Jul 26 20:50:48 2016
+ info    : (<class 'urllib2.URLError'>, URLError(error(111, 'Connection refused'),), <traceback object at 0xb688b054>)#59:ktf.run
+ Date    : Tue Jul 26 20:51:07 2016
+ info    : (<type 'exceptions.NameError'>, NameError("global name 'urlopen' is not defined",), <traceback object at 0xb68d4f7c>)#59:ktf.run
+ Date    : Tue Jul 26 20:51:17 2016
+ info    : (<class 'urllib2.URLError'>, URLError(error(111, 'Connection refused'),), <traceback object at 0xb68bd054>)#59:ktf.run
+ Date    : Tue Jul 26 20:51:43 2016
+ info    : (<class 'urllib2.URLError'>, URLError(error(111, 'Connection refused'),), <traceback object at 0xb681d054>)#59:ktf.run
+ Date    : Tue Jul 26 20:51:55 2016
+ info    : (<class 'urllib2.URLError'>, URLError(error(111, 'Connection refused'),), <traceback object at 0xb6840054>)#59:ktf.run
+ Date    : Tue Jul 26 20:52:04 2016
+ info    : (<class 'urllib2.URLError'>, URLError(error(111, 'Connection refused'),), <traceback object at 0xb6895054>)#59:ktf.run
+ Date    : Tue Jul 26 20:52:39 2016
+ info    : (<class 'urllib2.URLError'>, URLError(error(111, 'Connection refused'),), <traceback object at 0xb6877054>)#59:ktf.run
+ Date    : Tue Jul 26 20:54:08 2016
+ info    : (<type 'exceptions.KeyboardInterrupt'>, KeyboardInterrupt(), <traceback object at 0xb68defa4>)#46:ktf.run
+ Date    : Tue Jul 26 20:54:10 2016
+ info    : (<type 'exceptions.NameError'>, NameError("global name 'checksLogger' is not defined",), <traceback object at 0xb6815fcc>)#59:ktf.run
+ Date    : Tue Jul 26 20:56:08 2016
+ info    : (<type 'exceptions.KeyboardInterrupt'>, KeyboardInterrupt(), <traceback object at 0xb6846fcc>)#46:ktf.run
+ Date    : Tue Jul 26 20:56:47 2016
+ info    : (<type 'exceptions.TypeError'>, TypeError("cannot concatenate 'str' and 'error' objects",), <traceback object at 0xb6851f7c>)#59:ktf.run
+ Date    : Tue Jul 26 21:02:49 2016
+ info    : (<type 'exceptions.TypeError'>, TypeError("unhashable type: 'list'",), <traceback object at 0xb68de234>)#59:ktf.run
+ Date    : Tue Jul 26 21:04:39 2016
+ info    : (<type 'exceptions.KeyboardInterrupt'>, KeyboardInterrupt(), <traceback object at 0xb688e554>)#59:ktf.run
+ Date    : Tue Jul 26 21:06:21 2016
+ info    : (<type 'exceptions.KeyboardInterrupt'>, KeyboardInterrupt(), <traceback object at 0xb68d0554>)#59:ktf.run
+ Date    : Tue Jul 26 21:06:48 2016
+ info    : (<class 'socket.timeout'>, timeout('timed out',), <traceback object at 0xb68c3784>)#59:ktf.run
+ Date    : Tue Jul 26 21:09:55 2016
+ info    : (<class 'socket.timeout'>, timeout('timed out',), <traceback object at 0xb6866554>)#59:ktf.run
+ Date    : Tue Jul 26 21:16:11 2016
+ info    : (<type 'exceptions.KeyboardInterrupt'>, KeyboardInterrupt(), <traceback object at 0xb6880fa4>)#46:ktf.run
+ Date    : Tue Jul 26 21:16:19 2016
+ info    : (<class 'socket.timeout'>, timeout('timed out',), <traceback object at 0xb685e054>)#59:ktf.run
+ Date    : Tue Jul 26 21:18:36 2016
+ info    : (<type 'exceptions.AttributeError'>, AttributeError("'exceptions.NameError' object has no attribute 'reason'",), <traceback object at 0xb68e40f4>)#59:ktf.run
+ Date    : Tue Jul 26 21:18:39 2016
+ info    : (<type 'exceptions.KeyboardInterrupt'>, KeyboardInterrupt(), <traceback object at 0xb68cb9b4>)#46:ktf.run
+ Date    : Tue Jul 26 21:18:50 2016
+ info    : (<type 'exceptions.KeyboardInterrupt'>, KeyboardInterrupt(), <traceback object at 0xb68e40f4>)#59:ktf.run
+ Date    : Tue Jul 26 21:26:52 2016
+ info    : (<type 'exceptions.KeyboardInterrupt'>, KeyboardInterrupt(), <traceback object at 0xb6770f2c>)#46:ktf.run
+ Date    : Tue Jul 26 21:26:53 2016
+ info    : (<type 'exceptions.TypeError'>, TypeError('an integer is required',), <traceback object at 0xb6a3dcd4>)#59:ktf.run
+ Date    : Tue Jul 26 21:27:09 2016
+ info    : (<class 'lib.pysock.socks.ProxyConnectionError'>, ProxyConnectionError(), <traceback object at 0xb6af2cd4>)#59:ktf.run
+ Date    : Tue Jul 26 21:27:26 2016
+ info    : (<class 'lib.pysock.socks.ProxyConnectionError'>, ProxyConnectionError(), <traceback object at 0xb6a50fcc>)#59:ktf.run
+ Date    : Tue Jul 26 21:28:12 2016
+ info    : (<class 'lib.pysock.socks.ProxyConnectionError'>, ProxyConnectionError(), <traceback object at 0xb6af5fcc>)#59:ktf.run
+ Date    : Tue Jul 26 21:28:35 2016
+ info    : (<class 'lib.pysock.socks.ProxyConnectionError'>, ProxyConnectionError(), <traceback object at 0xb6849fcc>)#59:ktf.run
+ Date    : Tue Jul 26 21:29:43 2016
+ info    : (<class 'lib.pysock.socks.ProxyConnectionError'>, ProxyConnectionError(), <traceback object at 0xb6a3efcc>)#59:ktf.run
+ Date    : Tue Jul 26 21:32:42 2016
+ info    : (<type 'exceptions.KeyboardInterrupt'>, KeyboardInterrupt(), <traceback object at 0xb6abc9dc>)#59:ktf.run
+ Date    : Tue Jul 26 21:44:43 2016
+ info    : (<type 'exceptions.TypeError'>, TypeError('list indices must be integers, not list',), <traceback object at 0xb6ab3c84>)#59:ktf.run
+ Date    : Tue Jul 26 21:46:22 2016
+ info    : (<type 'exceptions.TypeError'>, TypeError("object of type 'bool' has no len()",), <traceback object at 0xb6a7bc84>)#59:ktf.run
