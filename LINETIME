@@ -1,3 +1,6 @@
+* 28/07/16
+  Upgrading to Core:0.0.0.1 Build:0062
+
 * 27/07/16
   Update Module: net/at.arpsp module was update to 3.1 version {SSL protocol capturing with ssltrip}
   Added Args to ktf.console for not show banner or list modules

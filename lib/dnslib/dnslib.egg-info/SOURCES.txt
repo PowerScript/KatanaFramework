@@ -3,6 +3,7 @@ README
 README.github
 fuzz.py
 run_tests.sh
+setup.cfg
 setup.py
 dnslib/__init__.py
 dnslib/bimap.py
