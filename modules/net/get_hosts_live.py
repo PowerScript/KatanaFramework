@@ -36,7 +36,6 @@ def init():
 
 # CODE MODULE    ############################################################################################
 def main(run):
-	KTFVAR=[]
 	commands.getoutput(NMAP_PATH+' -sn '+str(init.var['range'])+' -oX tmp/KTFVAR.xml > null')
 	GateWay=get_gateway()
 	tree = ET.parse('tmp/KTFVAR.xml')

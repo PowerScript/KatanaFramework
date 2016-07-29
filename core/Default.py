@@ -6,7 +6,7 @@
 # change value of variables for adapter to your system.
 #
 # 
-# Last Modified: 01/06/2016
+# Last Modified: 29/27/2016
 #
 #########################################################HEAD#
 
@@ -50,6 +50,7 @@ PATCH_INTALL       ="/usr/share/"
 NMAP_PATH          ="/usr/bin/nmap"
 """Commons"""
 LOCAL_IP           ="127.0.0.1"
+INTERFACE_ETHERNET ="eth0"
 INTERFACE_DEVICE   ="wlan0"
 INTERFACE_MONITOR  ="wlan0mon"
 MAC_TARGET         ="AA:A1:BB:B2:CC:C1"

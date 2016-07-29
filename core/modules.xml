@@ -63,7 +63,7 @@
         <filename>sniff</filename>
         <description>Protocol Sniffer.</description>
     </module>
-    <module name="net/at.arpsp">
+    <module name="net/arp.pson">
         <version>3.1</version>
         <author>RedToor</author>
         <category>net</category>
@@ -76,6 +76,13 @@
         <category>net</category>
         <filename>arp_denegation_of_service</filename>
         <description>ARP D.O.S Attack.</description>
+    </module>
+    <module name="net/dns.spoof">
+        <version>1.0</version>
+        <author>RedToor</author>
+        <category>net</category>
+        <filename>dns_spoofing</filename>
+        <description>DNS Spoofing.</description>
     </module>
     <module name="net/dns.fake">
         <version>1.0</version>

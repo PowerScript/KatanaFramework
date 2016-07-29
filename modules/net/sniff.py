@@ -25,9 +25,9 @@ def init():
 
 	# DEFAULT OPTIONS MODULE
 	init.options = {
-		# NAME    VALUE             RQ     DESCRIPTION
-		'drive' :[INTERFACE_MONITOR,True ,'Monitor Interface'],
-		'filter':["ALL"            ,False,'Filter sniff']
+		# NAME       VALUE               RQ     DESCRIPTION
+		'interface' :[INTERFACE_ETHERNET,True ,'Monitor Interface'],
+		'filter'    :["ALL"             ,False,'Filter sniff']
 	}
 	
 	init.aux = """
