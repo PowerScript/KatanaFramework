@@ -2,7 +2,7 @@
 #HEAD#########################################################
 #
 # Katana Framework | dependencies
-# Last Modified: 27/07/2016
+# Last Modified: 29/07/2016
 #
 #########################################################HEAD#
 
@@ -19,7 +19,9 @@ if ! hash apache2 2>/dev/null; then sudo apt-get install --yes apache2 php5 liba
 if ! hash ettercap 2>/dev/null; then sudo apt-get install ettercap-text-only ; fi
 if ! hash dhcpd 2>/dev/null; then sudo apt-get install isc-dhcp-server ; fi
 if ! hash hostapd 2>/dev/null; then sudo apt-get install hostapd ; fi
-	
+if ! hash arpspoof 2>/dev/null; then sudo apt-get install arpspoof ; fi
+if ! hash dnsspoof 2>/dev/null; then sudo apt-get install dnsspoof ; fi
+
 DIR=$(dirname $0)
 cd lib/scapy/
 sudo python setup.py install

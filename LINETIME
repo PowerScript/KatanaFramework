@@ -1,6 +1,7 @@
 * 29/07/16
   Change Name-Code Module : at.arpsp -> net/arp.pson
   Adedd New Module: dns.spoof, dns spoofing attack
+  Added New Dependecies: arpspoof, dnsspoof
 
 * 28/07/16
   Upgrading to Core:0.0.0.1 Build:0062
