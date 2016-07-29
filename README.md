@@ -20,11 +20,12 @@ The Katana source code is organized as follows:
 <i>-[modules/](https://github.com/PowerScript/KatanaFramework/tree/master/scripts)</i> > Scripts(modules)<br>
 
 # SUPPORTED DISTRIBUTIONS
-|Distribution | supported | status |
-----------|-------------|-------|
-|Kali Linux| yes| [![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
-|Wifislax| yes| [![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
-|Raspbian| yes| [![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
+|Distribution | Version Check | supported | status |
+----------|-------|------|-------|
+|Kali Linux|4.4.0 | yes| [![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
+|Wifislax| |yes| [![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
+|Raspbian| |yes| [![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
+|Ubuntu| |yes| [![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
 
 # INSTALLATION
 Installation of Katana framework: is necesary install all [dependencies](https://github.com/PowerScript/KatanaFramework/wiki/Requisites) for a good performance.
