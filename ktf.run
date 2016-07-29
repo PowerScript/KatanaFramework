@@ -2,19 +2,29 @@
 #HEAD#########################################################
 #
 # Katana Framework | ktf.run                            
-# this file run modules diretly.
-#
-# 
-# Last Modified: 15/05/2016
+# Last Modified: 29/07/2016
 #
 #########################################################HEAD#
 
 
-from core.Function import KatanaCheckActionShowModules,KatanaCheckActionUseModule,KatanaCheckActionExefunction
-from core.Function import KatanaCheckActionShowOptions,LoadBuffer,ShowFullOptions,Executefunction
-from core.Function import KatanaCheckActionGetInfo,ShowInformationModule,KatanaCheckActionShowMOptions
-from core.Function import ShowOptions,KatanaCheckActionSetValue,UpdateValue,runModule
-from core.Function import KatanaCheckActionisBack,KatanaCheckActionGlobalCommands,GetRootModules
+from core.Function import (
+	KatanaCheckActionShowModules,
+	KatanaCheckActionUseModule,
+	KatanaCheckActionExefunction,
+	KatanaCheckActionShowOptions,
+	KatanaCheckActionisBack,
+	KatanaCheckActionShowMOptions,
+	KatanaCheckActionGlobalCommands,
+	KatanaCheckActionSetValue,
+	KatanaCheckActionGetInfo,
+	LoadBuffer,
+	ShowFullOptions,
+	Executefunction,
+	ShowInformationModule,
+	ShowOptions,
+	UpdateValue,
+	runModule,
+	GetRootModules)
 
 from core.Default import *    
 from core.Design import *
@@ -27,7 +37,6 @@ import argparse
 LoadBuffer()
 CLASS_BANNER=DESIGN()
 CLASS_BANNER.ktfrun()
-
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-m", "--module", help=" Script module to run.")
