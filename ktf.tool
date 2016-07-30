@@ -107,9 +107,9 @@ class Tool:
 				return
 
 		if Nametool=="list":
-			print " \t\t"+colors[7]+colors[2]+"CodeName\t\tDescription"+colors[0]
+			print " \t"+colors[7]+colors[2]+"CodeName\t\tDescription"+colors[0]
 			for tool in root.findall('tool'):
-				print " \t\t"+tool.get('name'),"\t\t",tool.find('description').text
+				print " \t"+tool.get('name'),"\t\t",tool.find('description').text
 			Space()
 			return
 		printAlert(1,"The Tool not exists\n")
