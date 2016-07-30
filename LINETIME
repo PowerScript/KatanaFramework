@@ -1,3 +1,6 @@
+* 30/07/16
+  Added New Module : net/web.dos, for web D.O.S in Local Area Network 
+
 * 29/07/16
   Change Name-Code Module : at.arpsp -> net/arp.pson
   Adedd New Module: dns.spoof, dns spoofing attack

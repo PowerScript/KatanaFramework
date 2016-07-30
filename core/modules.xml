@@ -91,6 +91,13 @@
         <filename>dns_fake</filename>
         <description>DNS fake Server Spoof.</description>
     </module>
+    <module name="net/web.dos">
+        <version>1.0</version>
+        <author>RedToor</author>
+        <category>net</category>
+        <filename>web_killer</filename>
+        <description>Web D.O.S Attack in LAN.</description>
+    </module>
      <module name="set/facebrok">
         <version>1.0</version>
         <author>Redtoor</author>
@@ -103,7 +110,7 @@
         <author>Redtoor</author>
         <category>set</category>
         <filename>hotspot_web</filename>
-        <description>Gathering Information for web.</description>
+        <description>Gathering Information with web.</description>
     </module>
      <module name="set/em.boom">
         <version>1.0</version>
