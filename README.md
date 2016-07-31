@@ -11,8 +11,8 @@ The project is open to partners.
 The Katana source code is organized as follows:
 
 <i>-[core/](https://github.com/PowerScript/KatanaFramework/tree/master/core)</i> > Source code core<br>
+<i>--[core/logs/](https://github.com/PowerScript/KatanaFramework/tree/master/core/logs)</i> > Registers of modules<br>
 <i>--[files/db/](https://github.com/PowerScript/KatanaFramework/tree/master/files/db)</i> > Dictionaries and tables<br>
-<i>--[files/logs/](https://github.com/PowerScript/KatanaFramework/tree/master/core/logs)</i> > Registers of modules<br>
 <i>-[files/](https://github.com/PowerScript/KatanaFramework/tree/master/files)</i> > Files necessary for some modules<br>
 <i>-[tmp/](https://github.com/PowerScript/KatanaFramework/tree/master/tmp)</i> > Temp files<br>
 <i>-[lib/](https://github.com/PowerScript/KatanaFramework/tree/master/lib)</i> > Libraries<br>
@@ -25,7 +25,7 @@ The Katana source code is organized as follows:
 |Kali Linux|4.4.0 | yes| [![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
 |Wifislax| |yes| [![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
 |Raspbian| |yes| [![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
-|Ubuntu| |yes| [![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
+|Ubuntu|14.04 |yes| [![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
 
 # INSTALLATION
 Installation of Katana framework: is necesary install all [dependencies](https://github.com/PowerScript/KatanaFramework/wiki/Requisites) for a good performance.
