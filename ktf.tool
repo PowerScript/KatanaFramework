@@ -18,45 +18,16 @@ CLASS_BANNER.ktftool()
 
 VAR=0
 Nametool=False
-Import=False
 
 try:
 	for eachArg in sys.argv:
 		if eachArg=="-t":
 			Nametool=sys.argv[VAR+1]
-		elif eachArg=="--i-module":
-			Import=sys.argv[VAR+1]
 		VAR+=1
 
 except:printAlert(1,"Check your Arguments")
 
 class Tool:
-	def ImportModule(self):
-		FilenameModule=Import
-		printAlert(0,"Import Module")
-		Loadingfile(FilenameModule)
-		try:
-			printAlert(0,"Information Module")
-			ModuleToStart = importlib.import_module(FilenameModule) 
-			init=ModuleToStart.init()
-			print "       |>Author           : "+init.Author
-			print "       |>Version Script   : "+init.Version
-			print "       |>Description      : "+init.Description
-			print "       |>Code Name        : "+init.CodeName
-			print "       |>Creation         : "+init.DateCreation
-			print "       |>Last Modification: "+init.LastModification
-
-			New = init.CodeName
-			New = New.split("/")
-			printAlert(0,"Installing module")
-			if os.path.isdir("/usr/share/KatanaFramework/modules/"+New[0]+"/") == False: 
-				os.system("mkdir /usr/share/KatanaFramework/modules/"+New[0]+"/")
-				os.system("echo > /usr/share/KatanaFramework/modules/"+New[0]+"/__init__.py")
-			os.system("cp "+FilenameModule+".py /usr/share/KatanaFramework/modules/"+New[0]+"/")
-			if True:printAlert(3,"Module installed")
-
-		except Exception as e:printAlert(1,str(e)+"\n")
-
 	def CallTool(self):
 		for tool in root.findall('tool'):
 			if Nametool == tool.get('name'):
@@ -98,7 +69,7 @@ class Tool:
 								else:p+="["+eachArg+"]"
 
 				if p!="":
-					printAlert(1,"These args is necesay '"+p+" use -h for more help.'\n")
+					printAlert(1,"these arguments are necessary: '"+p+" use -h for more help.'\n")
 					exit()
 
 
@@ -116,5 +87,4 @@ class Tool:
 
 Tool=Tool()
 if Nametool:Tool.CallTool()
-elif Import:Tool.ImportModule()
-else:printAlert(1,"Check your Arguments\n       |Use '-t list' for tools list\n       |Use '--i-module' for import modules\n       |Use '--i-tool' for import tools\n")
+else:printAlert(1,"Check your Arguments\n       |Use '-t list' for tools list\n")

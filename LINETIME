@@ -1,3 +1,8 @@
+* 01/08/16
+  New Class : ktf.ktf, for functions of framework (import, export, setting, etc)
+  Change of banner for ktf.tool, ktf.run, ktf.linker
+  Change of functions in ktf.tool, now to is just for tools use.
+
 * 30/07/16
   Added New Module : net/web.dos, for web D.O.S in Local Area Network 
 

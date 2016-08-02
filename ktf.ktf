@@ -1,0 +1,89 @@
+#!/usr/bin/env python
+#HEAD#########################################################
+#
+# Katana Framework | ktf.ktf                            
+# Last Modified: 01/08/2016
+#
+#########################################################HEAD#
+
+from core.Function import GetRootModules,status_cmd
+from core.Design import *
+import importlib,argparse,sys,os
+
+VAR=0
+Namektf=False
+Import=False
+CLASS_BANNER=DESIGN()
+CLASS_BANNER.ktfktf()
+
+try:
+	for eachArg in sys.argv:
+		if eachArg=="--i-module":
+			Import=sys.argv[VAR+1]
+		VAR+=1
+
+except:printAlert(1,"Check your Arguments")
+
+class ktf:
+	def ImportModule(self):
+		FilenameModule=Import
+		printAlert(0,"Importing Module")
+		Loadingfile(FilenameModule)
+		try:
+			printAlert(0,"Information Module")
+			os.system("cp "+FilenameModule+".py tmp/")
+			os.system("echo > tmp/__init__.py")
+			FilenameModule=os.path.basename(FilenameModule)
+			ModuleToStart = importlib.import_module("tmp."+FilenameModule) 
+			init=ModuleToStart.init()
+			print "       |>Author           : "+init.Author
+			print "       |>Version Script   : "+init.Version
+			print "       |>Description      : "+init.Description
+			print "       |>Code Name        : "+init.CodeName
+			print "       |>Creation         : "+init.DateCreation
+			print "       |>Last Modification: "+init.LastModification
+			New = init.CodeName
+			New = New.split("/")
+			printAlert(0,"Installing module")
+			printAlert(0,"Checking if exists module")
+			root=GetRootModules()
+			for modules in root.findall('module'):
+				if modules.get('name') == init.CodeName:
+					printAlert(1,"the CodeName is already being used by another module. ")
+					exit()
+			if os.path.isdir("modules/"+New[0]+"/") == False: 
+				printAlert(0,status_cmd("mkdir modules/"+New[0]+"/")+" Crating a new category")
+				os.system("echo > modules/"+New[0]+"/__init__.py")
+			printAlert(0,status_cmd("cp tmp/"+FilenameModule+".py modules/"+New[0]+"/")+" Coping files")
+			printAlert(0,"Adding a module list")
+			inFile = open('core/modules.xml', 'rw')
+			data = inFile.readlines()
+			LineNumber=0
+			LastModuleofCategory=0
+			for LineperLine in data:
+				if LineperLine.find("name=\""+New[0]) >= 0:LastModuleofCategory=LineNumber+7
+				LineNumber+=1
+			InsertNewModule="""	<module name=\""""+init.CodeName+"""\">
+        <version>"""+init.Version+"""</version>
+        <author>"""+init.Author+"""</author>
+        <category>"""+New[0]+"""</category>
+        <filename>"""+FilenameModule+"""</filename>
+        <description>"""+init.Description+"""</description>
+    </module>
+"""
+			if LastModuleofCategory==0:LastModuleofCategory=LineNumber-1
+			data.insert(LastModuleofCategory,InsertNewModule)
+			inFile.close()
+			outFile = open('core/modules.xml', 'w')
+			outFile.writelines(data)
+			outFile.close()
+			printAlert(3,"Module installed")
+			Space()
+			os.system("rm tmp/__init__.py")
+			os.system("rm tmp/"+FilenameModule+".py")
+			os.system("rm tmp/*.pyc")
+		except Exception as e:printAlert(1,str(e)+"\n")
+
+ktf=ktf()
+if Import:ktf.ImportModule()
+else:printAlert(1,"Check your Arguments\n       |Use '--i-module' for import modules\n       |Use '--i-tool' for import tools\n")
