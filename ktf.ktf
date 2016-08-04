@@ -2,24 +2,27 @@
 #HEAD#########################################################
 #
 # Katana Framework | ktf.ktf                            
-# Last Modified: 01/08/2016
+# Last Modified: 04/08/2016
 #
 #########################################################HEAD#
 
 from core.Function import GetRootModules,status_cmd
 from core.Design import *
-import importlib,argparse,sys,os
+import importlib,argparse,sys,os,urllib2,json
 
 VAR=0
 Namektf=False
 Import=False
+isRemote=False
 CLASS_BANNER=DESIGN()
 CLASS_BANNER.ktfktf()
 
 try:
 	for eachArg in sys.argv:
-		if eachArg=="--i-module":
+		if eachArg=="--i-module"       :Import=sys.argv[VAR+1]
+		if eachArg=="--i-module-remote":
 			Import=sys.argv[VAR+1]
+			isRemote=True
 		VAR+=1
 
 except:printAlert(1,"Check your Arguments")
@@ -31,7 +34,7 @@ class ktf:
 		Loadingfile(FilenameModule)
 		try:
 			printAlert(0,"Information Module")
-			os.system("cp "+FilenameModule+".py tmp/")
+			os.system("cp "+FilenameModule+".py tmp/ >/dev/null 2>&1")
 			os.system("echo > tmp/__init__.py")
 			FilenameModule=os.path.basename(FilenameModule)
 			ModuleToStart = importlib.import_module("tmp."+FilenameModule) 
@@ -49,7 +52,7 @@ class ktf:
 			root=GetRootModules()
 			for modules in root.findall('module'):
 				if modules.get('name') == init.CodeName:
-					printAlert(1,"the CodeName is already being used by another module. ")
+					printAlert(1,"the CodeName is already being used by another module.\n")
 					exit()
 			if os.path.isdir("modules/"+New[0]+"/") == False: 
 				printAlert(0,status_cmd("mkdir modules/"+New[0]+"/")+" Crating a new category")
@@ -84,6 +87,25 @@ class ktf:
 			os.system("rm tmp/*.pyc")
 		except Exception as e:printAlert(1,str(e)+"\n")
 
+	def RemoteImport(self):
+		u = urllib2.urlopen("https://raw.githubusercontent.com/PowerScript/rmfktf/master/modules.js")
+		data_string = json.loads(u.read())
+		for module in data_string['Modules']:
+			if module['CodeName'] == Import:
+				printAlert(0,"Downloading Module : "+Import)
+				d = urllib2.urlopen("https://raw.githubusercontent.com/PowerScript/rmfktf/master/"+module['Filename'])
+				outFile = open(module['Filename'], 'w')
+				outFile.writelines(d.read())
+				outFile.close
+				return module['Filename'][:-3]
+		printAlert(1,"Module not found or server is down\n")
+		exit()
+
 ktf=ktf()
-if Import:ktf.ImportModule()
-else:printAlert(1,"Check your Arguments\n       |Use '--i-module' for import modules\n       |Use '--i-tool' for import tools\n")
+if  Import and isRemote:
+	Import=ktf.RemoteImport()
+	ktf.ImportModule()
+
+elif Import             :ktf.ImportModule()
+else:
+	printAlert(1,"Check your Arguments\n       |Use '--i-module' for import modules\n       |Use '--i-module-remote' for import remote modules\n       |Use '--i-tool' for import tools\n")

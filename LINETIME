@@ -1,3 +1,7 @@
+* 04/08/16
+  Added New Option to ktf.ktf class: import remote modules
+  Create New Repository : rmfktf, for remote modules and tools
+
 * 01/08/16
   New Class : ktf.ktf, for functions of framework (import, export, setting, etc)
   Change of banner for ktf.tool, ktf.run, ktf.linker
