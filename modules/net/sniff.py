@@ -57,7 +57,7 @@ def main(run):
 	
 	if checkDevice(init.var['interface']):
 		print " "+colors[10]+" #\t"+colors[4]+"PROTOCOL    SOURCE\t\tDESTINE\t\tDATA          "+colors[0]
-		while True:sniff(filter=FILTER, prn=callback, store=0, iface=init.var['drive'])
+		while True:sniff(filter=FILTER, prn=callback, store=0, iface=init.var['interface'])
 
 # END CODE MODULE ############################################################################################
 
