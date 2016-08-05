@@ -36,13 +36,7 @@ sudo python install
 </pre></i></n>
 
 # USAGE
-Commands
-
-for modules `./sudo ktf.console ` or `ktf.run -m Code-Name`
-
-for list tools `./sudo ktf.tool -t list`
-
-for update Option `./sudo ktf.update`
+Please go to the [Wiki](https://github.com/PowerScript/KatanaFramework/wiki/How-to-use).
 
 # SUPPORT
 Questions, bugs or suggestions to : redtoor@inbox.ru
