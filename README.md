@@ -23,6 +23,7 @@ The Katana source code is organized as follows:
 |Distribution | Version Check | supported | status |
 ----------|-------|------|-------|
 |Kali Linux|4.4.0 | yes| [![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
+|Parrot OS| |yes| [![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
 |Wifislax| |yes| [![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
 |Raspbian|4.1.7 |yes| [![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
 |Ubuntu|14.04 |yes| [![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
