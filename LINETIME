@@ -1,3 +1,7 @@
+* 18/08/16
+  Added New Module : clt/clt.adb, ADB console Client for android
+  Change of style of Helper commands 
+
 * 04/08/16
   Added New Option to ktf.ktf class: import remote modules
   Create New Repository : rmfktf, for remote modules and tools

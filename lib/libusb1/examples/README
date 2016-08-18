@@ -1,0 +1,11 @@
+More concrete uses:
+- USB protocol analyser driver in userland (the protocol analyser is itself an
+  USB device). Rather simple code, uses synchronous and asynchronous bulk
+  transfers.
+    https://github.com/vpelletier/ITI1480A-linux/blob/master/iti1480a/capture.py
+- Tinkerforge's brickd
+  They since switched to all-C to fit into embedded devices.
+    https://github.com/Tinkerforge/brickd/tree/v1.x.y/src/brickd
+- NetMDPython
+  Tools to control NetMD Mindisk players by USB.
+    https://wiki.physik.fu-berlin.de/linux-minidisc/doku.php?id=netmdpython

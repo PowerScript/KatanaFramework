@@ -33,4 +33,7 @@ cd ..
 cd ..
 cd lib/IPy/
 sudo python setup.py install
-
+cd ..
+cd ..
+cd lib/libusb1/
+sudo python setup.py install

@@ -2,10 +2,7 @@
 #HEAD#########################################################
 #
 # Katana Framework | Function                           
-# Main library
-#
-# 
-# Last Modified: 27/07/2016
+# Last Modified: 18/08/2016
 #
 #########################################################HEAD#
 
@@ -20,6 +17,7 @@ import xml.etree.ElementTree as ET
 from xml.dom import minidom
 from scapy.all import *
 from Information import version,build,date
+from lib.adb.adb import adb_commands            
 import fcntl        ,struct   ,readline,rlcompleter,subprocess
 import threading    ,StringIO ,httplib ,commands   ,random ,re
 import logging      ,urllib   ,Help    ,socket     ,time   ,sys, readline
@@ -582,6 +580,7 @@ def RamdonAgent():
 
 ### MAKE TABLES ###
 def MakeTable(matriz):
+	print "   "+colors[7]+"|"+colors[0]+" "
 	MMM = len(matriz[0])
 	NNN = len(matriz)
 	MAY = []
@@ -604,14 +603,14 @@ def MakeTable(matriz):
 		VAR+=1
 
 	VAR = 0
-	R=" ----"
+	R="----------"
 	while VAR != SUM:
 		R+="-"
 		VAR+=1
-	print R
+	print "   "+colors[7]+R+colors[0]
 
 	VAR = 0
-	LINE = " |"
+	LINE = "   "+colors[7]+"|"+colors[0]
 	while VAR != MMM:
 		VARC=0
 		ADDS=""
@@ -620,14 +619,14 @@ def MakeTable(matriz):
 			while VARC != DIF:
 				ADDS+=" "
 				VARC+=1
-		LINE += colors[13]+colors[8]+colors[11]+matriz[0][VAR]+ADDS+colors[0]+"|"
+		LINE += " "+colors[7]+colors[3]+matriz[0][VAR]+ADDS+colors[0]+" |"
 		VAR+=1
 	print LINE
-	print R
+	print "   "+colors[7]+R+colors[0]
 
 	VAR = 1
 	VARB = 0
-	LINE = " |"
+	LINE = "   "+colors[7]+"|"+colors[0]
 	while VAR != NNN:
 		while VARB != MMM:
 			ADDS =""
@@ -637,13 +636,13 @@ def MakeTable(matriz):
 				while VARC != DIF:
 					ADDS+=" "
 					VARC+=1
-			LINE += matriz[VAR][VARB]+ADDS+"|"
+			LINE += colors[8]+" "+matriz[VAR][VARB]+ADDS+" "+colors[0]+colors[7]+"|"+colors[0]
 			VARB+=1
-		LINE+="\n |"
+		LINE+="\n   "+colors[7]+"|"+colors[0]
 		VARB=0
 		VAR+=1
 
-	print LINE+R[:-2].replace(" ","")+"|\n"
+	print LINE+colors[7]+R[:-2].replace(" ","")+"|\n   |"+colors[0]
 
 ### GET NUMBER MODULES INSTALLED ###
 def get_number_modules():
@@ -717,3 +716,14 @@ def GetRootModules():
 	tree = ET.parse('core/modules.xml')
 	root = tree.getroot()
 	return root
+
+### LIST DEVICES CONNECTED (ADB) ###
+def ListDevicesConnectADB():
+	try:
+		NumberDevice=0
+		LIST = ""
+		for d in adb_commands.AdbCommands.Devices():
+			NumberDevice+=1
+			LIST += (' %s) %s\t device\t%s' % (NumberDevice, d.serial_number, ','.join(str(p) for p in d.port_path)))
+		return LIST
+	except:N=2

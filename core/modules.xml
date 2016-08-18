@@ -123,22 +123,29 @@
         <version>1.1</version>
         <author>RedToor</author>
         <category>clt</category>
-        <filename>client_mysql</filename>
+        <filename>mysql_client</filename>
         <description>Console Client mysql.</description>
     </module>
     <module name="clt/cl.ftp">
         <version>1.0</version>
         <author>RedToor</author>
         <category>clt</category>
-        <filename>client_ftp</filename>
+        <filename>ftp_client</filename>
         <description>Console Client FTP.</description>
     </module>
     <module name="clt/cl.pop">
         <version>1.0</version>
         <author>RedToor</author>
         <category>clt</category>
-        <filename>client_pop3</filename>
+        <filename>pop3_client</filename>
         <description>Console Client POP.</description>
+    </module>
+    <module name="clt/cl.adb">
+        <version>1.0</version>
+        <author>RedToor</author>
+        <category>clt</category>
+        <filename>adb_client</filename>
+        <description>Console Client ADB (Android).</description>
     </module>
      <module name="btf/pr.ftp">
         <version>1.1</version>
