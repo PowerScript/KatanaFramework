@@ -2,17 +2,19 @@
 #HEAD#########################################################
 #
 # Katana Framework | install                         
-# for install is important have internet for install the
-# dependencies.
-#
-# 
-# Last Modified: 03/06/2016
+# Last Modified: 18/08/2016
 #
 #########################################################HEAD#
 
-from core.Function import status_cmd
 from core import Information, colors, Update
-import os, time
+import os, time, subprocess
+
+def status_cmd(cmd):
+	status_1=subprocess.call(cmd+' >/dev/null 2>&1', shell=True)
+	if status_1==0:
+		return "[\033[1m"+colors.G+"OK"+colors.W+"]"+colors.W
+	else:
+		return "["+colors.R+"\033[1mERROR"+colors.W+"]["+colors.R+"\033[1mWARNING"+colors.W+"]"
 
 print ""
 print "                    "+colors.B+",:"+colors.W+"       "+colors.B+":,"+colors.W+"                   				 "#                    ,:       :,                   
@@ -60,8 +62,17 @@ rm /usr/share/KatanaFramework/install                     >/dev/null 2>&1;
 rm /usr/share/KatanaFramework/dependencies                >/dev/null 2>&1;
 rm /usr/share/KatanaFramework/README.md                   >/dev/null 2>&1 
 """
+Preinstall="""
+rm -f /usr/bin/ktf.console;
+rm -f /usr/bin/ktf.linker;
+rm -f /usr/bin/ktf.update;
+rm -f /usr/bin/ktf.ktf;
+rm -f /usr/bin/ktf.tool;
+rm -f /usr/bin/ktf.run;
+"""
 
 print " INSTALLING"
+print " ["+time.strftime('%H:%M:%S')+"]",status_cmd(Preinstall),"Pre-installing."
 print " ["+time.strftime('%H:%M:%S')+"]",status_cmd('sudo bash dependencies'),"Checking dependencies."
 print " ["+time.strftime('%H:%M:%S')+"] Checking Updates."
 print  "   |"

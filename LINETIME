@@ -1,5 +1,6 @@
 * 18/08/16
   Added New Module : clt/clt.adb, ADB console Client for android
+  Fixed installer  : Conflicts in ubuntu
   Change of style of Helper commands 
 
 * 04/08/16
