@@ -79,7 +79,7 @@ print  "   |"
 Update.update("installer")
 print  "   |"
 print " ["+time.strftime('%H:%M:%S')+"]",status_cmd('mkdir -p /usr/share/KatanaFramework'),"Creating Folder."
-print " ["+time.strftime('%H:%M:%S')+"]",status_cmd('cp -r * /usr/share/KatanaFramework'),"Coping files."
+print " ["+time.strftime('%H:%M:%S')+"]",status_cmd('cp -r * /usr/share/KatanaFramework'),"Copying files."
 print " ["+time.strftime('%H:%M:%S')+"]",status_cmd(Shortcuts),"Creating Shortcuts."
 print " ["+time.strftime('%H:%M:%S')+"]",status_cmd(Files),"Extracting Files."
 print " ["+time.strftime('%H:%M:%S')+"]",status_cmd('chmod -R -c 777 /usr/share/KatanaFramework/'),"Giving privileges."
