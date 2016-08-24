@@ -2,8 +2,8 @@
 #HEADER#######################
 # Katana framework           #
 # General Commands File      #
-# Last Modified: 18/05/2016  #
-# Review: 1                  #
+# Last Modified: 23/08/2016  #
+# Review: 2                  #
 #######################HEADER#
 
 # Show modules installed in framework
@@ -54,3 +54,6 @@ EXECUTECOMMAND="x::"
 
 # Save Variables
 SAVEV="s::"
+
+# Invoke modules
+INVOKE="invoke"

@@ -182,6 +182,13 @@
         <filename>forensic_image_analysis</filename>
         <description>Forensic image analysis.</description>
     </module>
+     <module name="anf/af.android">
+        <version>1.0</version>
+        <author>RedToor</author>
+        <category>anf</category>
+        <filename>forensic_android_analysis</filename>
+        <description>Forensic Android analysis.</description>
+    </module>
      <module name="fle/bt.rar">
         <version>2.0</version>
         <author>LeSZO ZerO</author>

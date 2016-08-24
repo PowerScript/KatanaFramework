@@ -23,6 +23,7 @@ def help():
      """+RUN+"""\t\t"""+RUN+"""\t\t<--- Run Module
      """+UPDATE+"""\t\t"""+UPDATE_SHORT+"""\t\t<--- Update framework
      """+EXIT+"""\t\t"""+EXIT_SHORT+"""\t\t<--- Exit of framework
+     """+INVOKE+"""\t\t\t\t<--- Open a module in one new console 
      """+HELP+"""\t\t"""+HELP_SHORT+"""\t\t<--- Show help (this)
      """+CLEAR+"""\t\t"""+CLEAR_SHORT+"""\t\t<--- Clear screen
      """+SAVEV+"""\t\t"""+SAVEV+"""\t\t<--- Save Variable

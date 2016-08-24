@@ -60,6 +60,7 @@ def Errors():
 			print " ["+colors[3]+"Exception"+colors[0]+"]"+"("+str(event[1])+")\n"
 			return
 
+		if str(event[1]) == "1995" : sys.exit(0)
 		print Alert+"("+str(event[1])+")\n"
 	except Exception as E:print E
 	finally:

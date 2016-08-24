@@ -2,7 +2,7 @@
 #HEAD#########################################################
 #
 # Katana Framework | Function                           
-# Last Modified: 18/08/2016
+# Last Modified: 23/08/2016
 #
 #########################################################HEAD#
 
@@ -71,6 +71,8 @@ def KatanaCheckActionShowMOptions(action):
 	if action == SHOW_MORE or action == SHOWM_SHORT: return True
 def KatanaCheckActionExefunction(action):
 	if action[:len("f::")] == "f::"          : return True
+def KatanaCheckActionInvoke(action):
+	if action[:len(INVOKE)]==INVOKE          : return True
 def KatanaCheckActionSaveValue(action):
 	if action[:4] == SAVEV                   : return True
 def KatanaCheckActionisBack(action):
@@ -93,7 +95,7 @@ def ShowInformationModule(init):
 
 ### GLOBAL COMMANDS ###
 def KatanaCheckActionGlobalCommands(action):
-	if     action[:len(EXIT)]        == EXIT   or action[:len(EXIT)]        == EXIT_SHORT  : sys.exit()
+	if     action[:len(EXIT)]        == EXIT   or action[:len(EXIT)]        == EXIT_SHORT  : sys.exit(1995)
 	elif   action[:len(HELP)]        == HELP   or action[:len(HELP_SHORT)]  == HELP_SHORT  : Help.help()
 	elif   action[:len("version")]   == "version"        :printAlert(3,"V:["+version+"] B:["+build+"] D:["+date+"]")
 	elif   action[:len(UPDATE)]      == UPDATE or action[:len(UPDATE_SHORT)]== UPDATE_SHORT: update("functions")
@@ -126,9 +128,20 @@ def Executefunction(query):
 		else:functionNotFound()                                                                                 
 	except:printAlert(6,"Check Again your Functions command.")
 
+### CALL MODULE ###
+def Invoke(module):
+	subprocess.Popen(["xterm","-T","Invoke["+module[len(INVOKE)+1:]+"]","-e","ktf.run","-m",module[len(INVOKE)+1:],"-q"])
+	#os.system("ktf.run -m "+module[len(INVOKE)+1:]+" -q")
+
 ### SHOW OPTIONS ###
 def ShowOptions(Options):
-	Desing.option()
+	lot = False
+	try:
+		if Options.extra : lot = True
+	except:b=0
+
+	Desing.option(lot)
+
 	for VAR in Options.options:
 	 	Desing.description(str(VAR),Options.options[VAR][1],str(Options.options[VAR][2]),str(Options.options[VAR][0]))
 	Space()
@@ -140,7 +153,7 @@ def ShowOptions(Options):
 
 ### SHOW FULL OPTIONS ###
 def ShowFullOptions(Options):
-	Desing.option()
+	Desing.option(True)
 	for VAR in Options.options:
 	 	Desing.description(str(VAR),Options.options[VAR][1],str(Options.options[VAR][2]),str(Options.options[VAR][0]))
 	Space()

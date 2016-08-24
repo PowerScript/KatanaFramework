@@ -3,7 +3,7 @@
 #HEAD#########################################################
 #
 # Katana Framework | Design                            
-# Last Modified: 01/08/2016
+# Last Modified: 23/08/2016
 #
 #########################################################HEAD#
 
@@ -69,8 +69,10 @@ class DESIGN:
 	
 	def Line(self,CodeName,Description):print colors[0]+"	|"+colors[1]+"=="+colors[0]+"|::|  "+colors[7]+CodeName+colors[0]+"\t\t"+Description
 	
-	def option(self):
-		print "\n [options]\t[RQ]\t[description]\t\t[value]"
+	def option(self,lot):
+		more=""
+		if lot == True : more = "["+colors[1]+"+"+colors[0]+"]"
+		print "\n [options]\t[RQ]\t[description]\t\t[value]"+more
 		print " ---------\t----\t-------------\t\t-------"
 
 	def description(self, option, rq, description, value):

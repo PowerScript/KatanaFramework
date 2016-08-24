@@ -1,0 +1,57 @@
+
+ Date    : Tue Aug 23 21:46:39 2016
+ info    : (<type 'exceptions.NameError'>, NameError("global name 'Invoke' is not defined",), <traceback object at 0xb6600dec>)#60:ktf.console
+ Date    : Tue Aug 23 22:04:31 2016
+ info    : (<type 'exceptions.OSError'>, OSError(2, 'No such file or directory'), <traceback object at 0xb7018aa4>)#61:ktf.console
+ Date    : Tue Aug 23 22:05:46 2016
+ info    : (<type 'exceptions.TypeError'>, TypeError("'function' object has no attribute '__getitem__'",), <traceback object at 0xb70ece64>)#61:ktf.console
+ Date    : Tue Aug 23 22:21:40 2016
+ info    : (<type 'exceptions.SystemExit'>, SystemExit(0,), <traceback object at 0xb6731acc>)#77:ktf.console
+ Date    : Tue Aug 23 22:21:50 2016
+ info    : (<type 'exceptions.SystemExit'>, SystemExit(0,), <traceback object at 0xb6623464>)#73:ktf.console
+ Date    : Tue Aug 23 22:22:51 2016
+ info    : (<type 'exceptions.SystemExit'>, SystemExit(0,), <traceback object at 0xb668fa7c>)#77:ktf.console
+ Date    : Tue Aug 23 22:22:59 2016
+ info    : (<type 'exceptions.SystemExit'>, SystemExit(0,), <traceback object at 0xb668ef7c>)#73:ktf.console
+ Date    : Tue Aug 23 22:23:49 2016
+ info    : (<type 'exceptions.SystemExit'>, SystemExit(0,), <traceback object at 0xb6782a7c>)#77:ktf.console
+ Date    : Tue Aug 23 22:24:03 2016
+ info    : (<type 'exceptions.SystemExit'>, SystemExit(0,), <traceback object at 0xb6620f7c>)#73:ktf.console
+ Date    : Tue Aug 23 22:24:05 2016
+ info    : (<type 'exceptions.SystemExit'>, SystemExit(0,), <traceback object at 0xb70978ec>)#73:ktf.console
+ Date    : Tue Aug 23 22:24:25 2016
+ info    : (<type 'exceptions.SystemExit'>, SystemExit(0,), <traceback object at 0xb65bff7c>)#63:/root/katanaframework/core/Errors.py
+ Date    : Tue Aug 23 22:24:29 2016
+ info    : (<type 'exceptions.SystemExit'>, SystemExit(0,), <traceback object at 0xb70378ec>)#63:/root/katanaframework/core/Errors.py
+ Date    : Tue Aug 23 22:24:47 2016
+ info    : (<type 'exceptions.SystemExit'>, SystemExit(0,), <traceback object at 0xb66e5a7c>)#63:/root/katanaframework/core/Errors.py
+ Date    : Tue Aug 23 22:25:01 2016
+ info    : (<type 'exceptions.SystemExit'>, SystemExit(0,), <traceback object at 0xb6768a7c>)#63:/root/katanaframework/core/Errors.py
+ Date    : Tue Aug 23 22:25:08 2016
+ info    : (<type 'exceptions.SystemExit'>, SystemExit(0,), <traceback object at 0xb65bbf7c>)#63:/root/katanaframework/core/Errors.py
+ Date    : Tue Aug 23 22:25:08 2016
+ info    : (<type 'exceptions.SystemExit'>, SystemExit(0,), <traceback object at 0xb7032914>)#63:/root/katanaframework/core/Errors.py
+ Date    : Tue Aug 23 22:25:38 2016
+ info    : (<type 'exceptions.SystemExit'>, SystemExit(1995,), <traceback object at 0xb667cacc>)#77:ktf.console
+ Date    : Tue Aug 23 22:25:55 2016
+ info    : (<type 'exceptions.SystemExit'>, SystemExit(1995,), <traceback object at 0xb66e7acc>)#63:/root/katanaframework/core/Errors.py
+ Date    : Tue Aug 23 22:29:33 2016
+ info    : (<type 'exceptions.SystemExit'>, SystemExit(1995,), <traceback object at 0xb669593c>)#63:/root/katanaframework/core/Errors.py
+ Date    : Tue Aug 23 22:41:58 2016
+ info    : (<type 'exceptions.TypeError'>, TypeError('option() takes exactly 2 arguments (1 given)',), <traceback object at 0xb667e914>)#63:ktf.run
+ Date    : Tue Aug 23 22:42:08 2016
+ info    : (<type 'exceptions.TypeError'>, TypeError('option() takes exactly 2 arguments (1 given)',), <traceback object at 0xb676fa04>)#63:ktf.run
+ Date    : Tue Aug 23 22:43:29 2016
+ info    : (<type 'exceptions.TypeError'>, TypeError('option() takes exactly 2 arguments (1 given)',), <traceback object at 0xb66a4a2c>)#63:ktf.run
+ Date    : Tue Aug 23 22:50:52 2016
+ info    : (<type 'exceptions.KeyboardInterrupt'>, KeyboardInterrupt(), <traceback object at 0xb665b39c>)#57:ktf.console
+ Date    : Tue Aug 23 22:50:56 2016
+ info    : (<type 'exceptions.SystemExit'>, SystemExit(1995,), <traceback object at 0xb665b75c>)#63:/root/katanaframework/core/Errors.py
+ Date    : Tue Aug 23 22:50:56 2016
+ info    : (<type 'exceptions.SystemExit'>, SystemExit(0,), <traceback object at 0xb665b7ac>)#74:ktf.console
+ Date    : Tue Aug 23 22:51:11 2016
+ info    : (<type 'exceptions.SystemExit'>, SystemExit(1995,), <traceback object at 0xb665b784>)#63:/root/katanaframework/core/Errors.py
+ Date    : Tue Aug 23 22:51:11 2016
+ info    : (<type 'exceptions.SystemExit'>, SystemExit(0,), <traceback object at 0xb665b70c>)#78:ktf.console
+ Date    : Tue Aug 23 22:51:13 2016
+ info    : (<type 'exceptions.SystemExit'>, SystemExit(1995,), <traceback object at 0xb66c1a7c>)#63:/root/katanaframework/core/Errors.py

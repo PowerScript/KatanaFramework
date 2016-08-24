@@ -16,6 +16,7 @@ from core.Function import (
 	KatanaCheckActionShowMOptions,
 	KatanaCheckActionGetInfo,
 	KatanaCheckActionSetValue,
+	KatanaCheckActionInvoke,
 	LoadBuffer,
 	ShowFullOptions,
 	Executefunction,
@@ -24,7 +25,8 @@ from core.Function import (
 	UpdateValue,
 	runModule,
 	GetRootModules,
-	ListModules)
+	ListModules,
+	Invoke)
 
 from core import Banner , Errors 
 from core.GeneralCommands import *
@@ -56,6 +58,7 @@ def katanaFrameworkConsole():
 							if   KatanaCheckActionShowOptions(actions)  :ShowOptions(init)
 							elif KatanaCheckActionShowMOptions(actions) :ShowFullOptions(init)
 							elif KatanaCheckActionExefunction(actions)  :Executefunction(actions)
+							elif KatanaCheckActionInvoke(actions)       :Invoke(actions)
 							elif KatanaCheckActionSetValue(actions)     :init=UpdateValue(actions,init)
 							elif KatanaCheckActionGetInfo(actions)      :ShowInformationModule(init)
 							elif runModule(actions):
