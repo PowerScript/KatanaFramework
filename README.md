@@ -55,7 +55,7 @@ Wiki: https://github.com/PowerScript/KatanaFramework/wiki
 Project in SF: http://sourceforge.net/projects/katanas/files/
 Documentation: https://github.com/PowerScript/KatanaFramework/tree/master/doc
 Blog of project [ES]: http://cave-rt.blogspot.com.co/2015/07/instalacion-y-uso-katana-framework.html
-Youtube Guide: https://www.youtube.com/watch?v=5JR3Lnrvmg4&list=PL6BZilIOZMcy7uG3cRqYMc69kFb7wxEDR
+Youtube Guide: https://www.youtube.com/playlist?list=PL6BZilIOZMcy7uG3cRqYMc69kFb7wxEDR
 ```
 [![Download katana](https://a.fsdn.com/con/app/sf-download-button)](https://sourceforge.net/projects/katanas/files/latest/download)
 [![OHCS](http://www.ciberseguridadhispana.com/img/logo/ohcs.png)](http://www.ciberseguridadhispana.com/)
