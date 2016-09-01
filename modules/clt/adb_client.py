@@ -19,7 +19,7 @@ def init():
 	init.Description        ="Console Client for ADB."
 	init.CodeName           ="clt/cl.adb"
 	init.DateCreation       ="18/08/2015"      
-	init.LastModification   ="18/08/2016"
+	init.LastModification   ="31/08/2016"
 	init.References         =None
 	init.License            =KTF_LINCENSE
 	init.var                ={}
@@ -66,11 +66,10 @@ def main(run):
 	HelpBanner  = [["Commands","Description","Example"]]
 	HelpBanner += [["devices","list devices","devices"]]
 	HelpBanner += [["reboot","reboot device","reboot"]]
-	HelpBanner += [["shutdown","shutdown device","shutdown"]]
-	HelpBanner += [["push","push a file to the device","push /root/text.txt /sdcard"]]	
-	HelpBanner += [["pull","pull a file from the device","pull /sdcard/text.txt /root/text.txt"]]	
+	HelpBanner += [["push","push a file to the device","push /root/text.txt /text.txt"]]	
+	HelpBanner += [["pull","pull a file from the device","pull /text.txt /root/text.txt"]]	
 	HelpBanner += [["cd","browser directories","cd data"]]
-	HelpBanner += [["ls","list files","ls ./"]]
+	HelpBanner += [["ls","list files","ls"]]
 	MakeTable(HelpBanner)
 
 	cmd="nop"
@@ -79,7 +78,7 @@ def main(run):
 	while(cmd!="exit"):
 		main.command_name='list'
 		main.positional=[path]
-		main.auth_timeout_s=60.0
+		main.auth_timeout_s=600.0
 		main.timeout_ms=10000
 		main.device_path=None
 		main.rsa_key_path=[]
@@ -94,7 +93,7 @@ def main(run):
 			if cmd[3:] != "..": path+=cmd[3:]+"/"
 			if cmd[3:] == "..": 
 				head, tail = os.path.split(os.path.split(path)[0])
-				path=str(head)
+				path=str(head)+"/"
 			main.positional=[path]
 			Execute(main)
 		if cmd[:2] == "ls":
@@ -118,6 +117,7 @@ def main(run):
 			main.method=adb_commands.AdbCommands.Reboot
 			Execute(main)
 		if cmd == "devices":print ListDevicesConnectADB()
+		if cmd[:3] == "cat":print "ver"
 		if cmd == "help"   :MakeTable(HelpBanner)
 
 # END CODE MODULE ###########################################################################################

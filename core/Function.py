@@ -2,7 +2,7 @@
 #HEAD#########################################################
 #
 # Katana Framework | Function                           
-# Last Modified: 23/08/2016
+# Last Modified: 31/08/2016
 #
 #########################################################HEAD#
 
@@ -41,8 +41,10 @@ def UpdateValue(action,matriz):
 	for Namevalue in matriz.options:
 		if action[len(SETET)+1:len(SETET)+1+len(Namevalue)] == Namevalue:
 			checkValue=action[len(SETET)+2+len(Namevalue):]
-			if checkValue[0:4] == "::IP" : checkValue = VARIABLESIP[int(checkValue[4:])-1]
-			if checkValue[0:5] == "::MAC": checkValue = VARIABLESMAC[int(checkValue[5:])-1]
+			try:
+				if checkValue[0:4] == "::IP" : checkValue = VARIABLESIP[int(checkValue[4:])-1]
+				if checkValue[0:5] == "::MAC": checkValue = VARIABLESMAC[int(checkValue[5:])-1]
+			except:printAlert(6,"this value is recognized as an internal command but as it is not assigned to be used as value.")
 			ChangeValue(Namevalue,checkValue)
 			matriz.options[Namevalue] = [checkValue,matriz.options[Namevalue][1],matriz.options[Namevalue][2]]
 			return matriz
@@ -131,7 +133,6 @@ def Executefunction(query):
 ### CALL MODULE ###
 def Invoke(module):
 	subprocess.Popen(["xterm","-T","Invoke["+module[len(INVOKE)+1:]+"]","-e","ktf.run","-m",module[len(INVOKE)+1:],"-q"])
-	#os.system("ktf.run -m "+module[len(INVOKE)+1:]+" -q")
 
 ### SHOW OPTIONS ###
 def ShowOptions(Options):

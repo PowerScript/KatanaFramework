@@ -1,11 +1,11 @@
 #!/usr/bin/python
 # -*- coding: latin-1 -*-
-#HEADER#######################
-# Katana framework           #
-# Splash File                #
-# Last Modified: 27/07/2016  #
-# Review: 1                  #
-#######################HEADER#
+#HEAD#########################################################
+#
+# Katana Framework | Banners                           
+# Last Modified: 31/08/2016
+#
+#########################################################HEAD#
 
 from core import colors,Information
 from Function import get_number_modules,get_number_tools
@@ -15,13 +15,13 @@ tema="Army ...theme"
 
 Banner1="""
 
-	 		     ██╗  ██╗████████╗███████╗
-			     ██║ ██╔╝╚══██╔══╝██╔════╝
-	 ░░░░░░███████ ]▄▄▄▄▄█████╔╝    ██║   █████╗  
-	 ▂▄▅█████████▅▄▃▂    ██╔═██╗    ██║   ██╔══╝  
-	 I█████████████████].██║  ██╗   ██║   ██║     
-	 ◥⊙▲⊙▲⊙▲⊙▲⊙▲⊙▲⊙◤     ╚═╝  ╚═╝   ╚═╝   ╚═╝
-		          The Hacking Framework 
+            	 		     ██╗  ██╗████████╗███████╗
+            			     ██║ ██╔╝╚══██╔══╝██╔════╝
+            	 ░░░░░░███████ ]▄▄▄▄▄█████╔╝    ██║   █████╗  
+            	 ▂▄▅█████████▅▄▃▂    ██╔═██╗    ██║   ██╔══╝  
+            	 I█████████████████].██║  ██╗   ██║   ██║     
+            	 ◥⊙▲⊙▲⊙▲⊙▲⊙▲⊙▲⊙◤     ╚═╝  ╚═╝   ╚═╝   ╚═╝
+            		          The Hacking Framework 
        
 	       """+colors.HH+""" Core    """+colors.W+""" [ """+Information.version+""", Build: """+Information.build+""" ]
 	       """+colors.HH+""" Date    """+colors.W+""" [ """+Information.date+"""    ]

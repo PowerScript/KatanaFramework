@@ -25,7 +25,7 @@ import usb1
 
 import usb_exceptions
 
-DEFAULT_TIMEOUT_MS = 1000
+DEFAULT_TIMEOUT_MS = 10000
 
 _LOG = logging.getLogger('android_usb')
 
