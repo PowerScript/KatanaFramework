@@ -151,28 +151,28 @@
         <version>1.1</version>
         <author>LeSZO ZerO</author>
         <category>btf</category>
-        <filename>bruteforcetoftprotol</filename>
+        <filename>brute_force_to_ftp_protocol</filename>
         <description>Brute Force to FTprotocol.</description>
     </module>
      <module name="btf/pr.sql">
         <version>1.1</version>
         <author>RedToor</author>
         <category>btf</category>
-        <filename>bruteforcetosqlprotocol</filename>
+        <filename>brute_force_to_sql_protocol</filename>
         <description>Brute Force to SQL protocol.</description>
     </module>
      <module name="btf/pr.ssh">
         <version>1.1</version>
         <author>RedToor</author>
         <category>btf</category>
-        <filename>bruteforcetosshprotocol</filename>
+        <filename>brute_force_to_ssh_protocol</filename>
         <description>Brute Force to SSH protocol.</description>
     </module>
      <module name="btf/pr.pop">
         <version>1.1</version>
         <author>RedToor</author>
         <category>btf</category>
-        <filename>bruteforcetopop3rotocol</filename>
+        <filename>brute_force_to_pop3_protocol</filename>
         <description>Brute Force to POP3 protocol.</description>
     </module>
      <module name="anf/af.imagen">

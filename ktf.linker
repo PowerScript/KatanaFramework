@@ -1,71 +1,7 @@
-
-from scripts.web import whois
-from core import Errors 
-
-from core.Function import KatanaCheckActionShowModules,KatanaCheckActionUseModule
-from core.Function import KatanaCheckActionShowOptions
-from core.Function import KatanaCheckActionGetInfo,ShowInformationModule
-from core.Function import ShowOptions,KatanaCheckActionSetValue,UpdateValue,runModule
-from core.Function import KatanaCheckActionisBack,KatanaCheckActionGlobalCommands
-
-import xml.etree.ElementTree as ET
-import importlib 
-from core.design import *
-from core import info
-import argparse
-
-CLASS_LINKER=DESIGN()
-tree = ET.parse('core/modules.xml')
-root = tree.getroot()
-parser = argparse.ArgumentParser()
-parser = argparse.ArgumentParser(description='ktf.linker:'+info.version+info.build)
-parser.add_argument("-m", "--module", help="Module")
-parser.add_argument("-t", "--target", help="Target")        
-parser.add_argument("-p", "--port", help="Port")            
-parser.add_argument("-f", "--file", help="File")            
-parser.add_argument("-u", "--user", help="Username")
-parser.add_argument("-ps","--pass", help="Password")
-parser.add_argument("-i","--interface", help="Password")
-
-args = parser.parse_args()	
-args = parser.parse_args()
-m=args.module
-
-if __name__=="__main__":
-	# For GUI not show this.
-	CLASS_LINKER.linker(info.version, info.build)
-	for modules in root.findall('module'):
-		if m == modules.get('name'):
-			Space()
-			category = modules.find('category').text
-			filename = modules.find('filename').text
-			ModuleToStart = importlib.import_module("modules."+category+"."+filename) 
-			init=ModuleToStart.init()
-
-			for option in init.options:
-				if init.options[option] == "target":init.options[option]=[args.target    ,init.options[option][1],init.options[option][2]]
-				if init.options[option] == "port"  :init.options[option]=[args.port      ,init.options[option][1],init.options[option][2]]
-				if init.options[option] == "file"  :init.options[option]=[args.file      ,init.options[option][1],init.options[option][2]]
-				if init.options[option] == "user"  :init.options[option]=[args.user      ,init.options[option][1],init.options[option][2]]
-				if init.options[option] == "pass"  :init.options[option]=[args.interface ,init.options[option][1],init.options[option][2]]
-
-			actions = "run"
-
-			while True:
-				try:
-					if actions != "run":actions=raw_input(Prompt(init.CodeName))
-					if   KatanaCheckActionShowOptions(actions)  :ShowOptions(init)
-					elif KatanaCheckActionSetValue(actions)     :init.options=UpdateValue(actions,init.options)
-					elif KatanaCheckActionGetInfo(actions)      :ShowInformationModule(init)
-					elif runModule(actions):
-						for Namevalue in init.options:
-							init.var.update({Namevalue:init.options[Namevalue][0]})
-						ModuleToStart.main(True)
-					elif KatanaCheckActionisBack(actions)       :printAlert(6,"This Commands just work in console mode.")
-					else :
-						if a
-						ctions != "":KatanaCheckActionGlobalCommands(actions)
-					actions = ""
-				except:Errors.Errors()
-	Space()
-	ModuleNotFound(m)
+#!/usr/bin/env python
+#HEAD#########################################################
+#
+# Katana Framework | ktf.linker                            
+# Last Modified: 21/09/2016
+#
+#########################################################HEAD#

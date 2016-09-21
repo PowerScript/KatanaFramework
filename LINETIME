@@ -1,3 +1,10 @@
+* 21/09/16
+  Added the GUI!!!
+  Install : Install man files
+  Doc     : Added new paper (Spanish)
+  Fixed Module : fbt/pr.pop
+  Fixed Import modules installed
+
 * 23/08/16
   Added New Function : Invoke, to call module within another module.
   Added New Dependence : xterm, For open news consoles in other windows

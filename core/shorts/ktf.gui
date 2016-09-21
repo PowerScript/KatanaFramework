@@ -1,0 +1,3 @@
+#!/bin/bash
+cd /usr/share/KatanaFramework
+java -jar ktf.gui.jar
