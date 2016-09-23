@@ -27,6 +27,7 @@ The Katana source code is organized as follows:
 |Wifislax| |yes| [![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
 |Raspbian|4.1.7 |yes| [![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
 |Ubuntu|14.04 |yes| [![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
+|Xbuntu|4.4.0 |yes| [![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
 
 # INSTALLATION
 Installation of Katana framework: is necesary install all [dependencies](https://github.com/PowerScript/KatanaFramework/wiki/Requisites) for a good performance.

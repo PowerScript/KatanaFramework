@@ -1,3 +1,7 @@
+* 23/09/16
+  Added New Dependence : default-jre, for run ktg.gui
+  Added New Lib ; setuptools, for usblib lib
+
 * 21/09/16
   Added the GUI!!!
   Install : Install man files

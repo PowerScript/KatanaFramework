@@ -2,7 +2,7 @@
 #HEAD#########################################################
 #
 # Katana Framework | dependencies
-# Last Modified: 23/08/2016
+# Last Modified: 23/09/2016
 #
 #########################################################HEAD#
 
@@ -22,6 +22,7 @@ if ! hash hostapd 2>/dev/null; then sudo apt-get install hostapd ; fi
 if ! hash arpspoof 2>/dev/null; then sudo apt-get install arpspoof ; fi
 if ! hash dnsspoof 2>/dev/null; then sudo apt-get install dnsspoof ; fi
 if ! hash xterm 2>/dev/null; then sudo apt-get install xterm ; fi
+if ! hash default-jre 2>/dev/null; then sudo apt-get install default-jre ; fi
 
 DIR=$(dirname $0)
 cd lib/scapy/
@@ -33,6 +34,11 @@ sudo python setup.py install
 cd ..
 cd ..
 cd lib/IPy/
+sudo python setup.py install
+cd ..
+cd ..
+cd lib/setuptools/
+sudo python bootstrap.py
 sudo python setup.py install
 cd ..
 cd ..
