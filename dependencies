@@ -16,7 +16,6 @@
 if ! hash aircrack-ng 2>/dev/null; then sudo apt-get install --yes aircrack-ng ; fi
 if ! hash nmap 2>/dev/null; then sudo apt-get install --yes nmap ; fi
 if ! hash apache2 2>/dev/null; then sudo apt-get install --yes apache2 php5 libapache2-mod-php5 ; fi
-
 if ! hash ettercap 2>/dev/null; then sudo apt-get install ettercap-text-only ; fi
 if ! hash dhcpd 2>/dev/null; then sudo apt-get install isc-dhcp-server ; fi
 if ! hash hostapd 2>/dev/null; then sudo apt-get install hostapd ; fi
@@ -24,12 +23,6 @@ if ! hash arpspoof 2>/dev/null; then sudo apt-get install arpspoof ; fi
 if ! hash dnsspoof 2>/dev/null; then sudo apt-get install dnsspoof ; fi
 if ! hash xterm 2>/dev/null; then sudo apt-get install xterm ; fi
 if ! hash default-jre 2>/dev/null; then sudo apt-get install default-jre ; fi
-if ! hash ettercap 2>/dev/null; then sudo apt-get install --yes ettercap-text-only ; fi
-if ! hash dhcpd 2>/dev/null; then sudo apt-get install --yes isc-dhcp-server ; fi
-if ! hash hostapd 2>/dev/null; then sudo apt-get install --yes hostapd ; fi
-if ! hash arpspoof 2>/dev/null; then sudo apt-get install --yes arpspoof ; fi
-if ! hash dnsspoof 2>/dev/null; then sudo apt-get install --yes dnsspoof ; fi
-if ! hash xterm 2>/dev/null; then sudo apt-get install --yes xterm ; fi
 
 
 DIR=$(dirname $0)
