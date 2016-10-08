@@ -19,6 +19,7 @@ from core.Function import (
 	KatanaCheckActionInvoke,
 	KatanaCheckSession,
 	LoadBuffer,
+	ListModules,
 	ShowFullOptions,
 	Executefunction,
 	ShowInformationModule,
