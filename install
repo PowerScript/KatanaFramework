@@ -2,7 +2,7 @@
 #HEAD#########################################################
 #
 # Katana Framework | install                         
-# Last Modified: 21/09/2016
+# Last Modified: 08/10/2016
 #
 #########################################################HEAD#
 
@@ -71,6 +71,7 @@ rm -f /usr/bin/ktf.update;
 rm -f /usr/bin/ktf.ktf;
 rm -f /usr/bin/ktf.tool;
 rm -f /usr/bin/ktf.run;
+rm -f /usr/bin/ktf.gui;
 """
 
 print " INSTALLING"
