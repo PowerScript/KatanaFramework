@@ -739,7 +739,7 @@ def ListDevicesConnectADB():
 		NumberDevice=0
 		LIST = ""
 		for d in adb_commands.AdbCommands.Devices():
-			NumberDevitce+=1
+			NumberDevice+=1
 			LIST += (' %s) %s\t device\t%s' % (NumberDevice, d.serial_number, ','.join(str(p) for p in d.port_path)))
 		return LIST
 	except:N=2
