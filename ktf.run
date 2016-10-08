@@ -18,6 +18,7 @@ from core.Function import (
 	KatanaCheckActionSetValue,
 	KatanaCheckActionGetInfo,
 	KatanaCheckActionInvoke,
+	KatanaCheckSession,
 	LoadBuffer,
 	ShowFullOptions,
 	Executefunction,
@@ -26,7 +27,9 @@ from core.Function import (
 	UpdateValue,
 	runModule,
 	GetRootModules,
-	Invoke)
+	Invoke,
+	SaveSession,
+	SessionInterative)
 
 from core.Default import *    
 from core.Design import *
@@ -63,6 +66,7 @@ if __name__=="__main__":
 					elif KatanaCheckActionShowMOptions(actions) :ShowFullOptions(init)
 					elif KatanaCheckActionExefunction(actions)  :Executefunction(actions)
 					elif KatanaCheckActionInvoke(actions)       :Invoke(actions)
+					elif KatanaCheckSession(actions)            :init=SessionInterative(actions,init)
 					elif KatanaCheckActionSetValue(actions)     :init=UpdateValue(actions,init)
 					elif KatanaCheckActionGetInfo(actions)      :ShowInformationModule(init)
 					elif runModule(actions):
@@ -72,6 +76,7 @@ if __name__=="__main__":
 							for Namevalue in init.extra:
 								init.var.update({Namevalue:init.extra[Namevalue][0]})
 						except:Nothing=False
+						SaveSession(init)
 						ModuleToStart.main(True)
 					elif KatanaCheckActionisBack(actions)       :printAlert(6,"This Commands just work in ktf.console mode.")
 					else :

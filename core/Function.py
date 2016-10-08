@@ -2,7 +2,7 @@
 #HEAD#########################################################
 #
 # Katana Framework | Function                           
-# Last Modified: 31/08/2016
+# Last Modified: 08/10/2016
 #
 #########################################################HEAD#
 
@@ -19,7 +19,7 @@ from scapy.all import *
 from Information import version,build,date
 from lib.adb.adb import adb_commands            
 import fcntl        ,struct   ,readline,rlcompleter,subprocess
-import threading    ,StringIO ,httplib ,commands   ,random ,re
+import threading    ,StringIO ,httplib ,commands   ,random ,re , json
 import logging      ,urllib   ,Help    ,socket     ,time   ,sys, readline
 
 
@@ -79,6 +79,8 @@ def KatanaCheckActionSaveValue(action):
 	if action[:4] == SAVEV                   : return True
 def KatanaCheckActionisBack(action):
 	if action==BACKING                       : return True
+def KatanaCheckSession(action):
+	if action[:len(SESSION)]==SESSION        : return True
 def runModule(action):
 	if action=="run"                         : 
 		RunModule()
@@ -737,7 +739,91 @@ def ListDevicesConnectADB():
 		NumberDevice=0
 		LIST = ""
 		for d in adb_commands.AdbCommands.Devices():
-			NumberDevice+=1
+			NumberDevitce+=1
 			LIST += (' %s) %s\t device\t%s' % (NumberDevice, d.serial_number, ','.join(str(p) for p in d.port_path)))
 		return LIST
 	except:N=2
+
+### CHECK IF A PROJECT IS INSTALLED ###
+def CheckProjectInstalled(project):
+	status=subprocess.call("if ! hash "+project+" 2>/dev/null; then echp 3 >/dev/null 2>&1 ; fi", shell=True)
+	if status==0:
+		return project+" is installed"
+	else:
+		return project+" is not installed"
+
+
+### SAVE SESSIONS ###
+def SaveSession(init):
+	time_current=time.strftime('%c')
+	log="{ \"Session\" : {  \"Module\" : \""+init.CodeName+"\", \"Time\" : \""+time_current+"\" , \"Options\" : ["
+	for option in init.options:
+		log+="{ \""+option+"\" : \""+init.var[option]+"\"},"
+	log += "{\"ktf\":\"ktf\"}] , \"Extra\" : ["
+	try:
+		for option in init.extra:
+			log+="{ \""+option+"\" : \""+init.var[option]+"\"},"
+		log += "{\"ktf\":\"ktf\"}"
+	except:value=False
+	log += "]}}"
+	time_current=time_current.replace(" ","_")
+	Modules = str(init.CodeName)
+	Modules = Modules.split("/")
+	time_file_name=time.strftime('%d:%m:%Y_%H:%M:%S')
+	logs=open('core/sessions/'+time_file_name+'_'+Modules[0]+"-"+Modules[1]+'.session','a')
+	logs.write(log)
+	logs.close()
+
+### SESSION OPTIONS ###
+def SessionInterative(action,init):
+	Array_list = []
+	counter = 0
+	if True:
+		module = init.CodeName
+		module = module.replace("/","-")+".session"
+		ArrayList = os.listdir("core/sessions/")
+		for FileName in sorted(ArrayList):
+			ope = len(FileName)-(len(module))
+			if FileName[ope:]==module:
+				Array_list.append(FileName)
+
+	if action[(len(SESSION)+1):(len(SESSION)+3)] == "-l":
+		for FileName in Array_list:
+			print " #"+str(counter)+" "+FileName
+			counter+=1
+
+	if action[(len(SESSION)+1):(len(SESSION)+3)] == "-v":
+		index = action[(len(SESSION)+4):]
+		data_file   = open('core/sessions/'+Array_list[int(index)],'r')
+		data_string = json.loads(data_file.read())
+		data_file.close()
+		print " Session -> "+data_string['Session']['Time']
+		for opt in data_string['Session']['Options']:
+			for key, value in opt.items():
+				print " Name = "+key+" --> "+value
+		try:
+			for opt in data_string['Session']['Extra']:
+				for key, value in opt.items():
+					print " Name = "+key+" --> "+value
+		except:extra=False
+
+	if action[(len(SESSION)+1):(len(SESSION)+3)] == "-d":
+		index = action[(len(SESSION)+4):]
+		subprocess.call('rm core/sessions/'+Array_list[int(index)], shell=True)
+
+	if action[(len(SESSION)+1):(len(SESSION)+3)] == "-i":
+		index = action[(len(SESSION)+4):]
+		data_file   = open('core/sessions/'+Array_list[int(index)],'r')
+		data_string = json.loads(data_file.read())
+		data_file.close()
+		for opt in data_string['Session']['Options']:
+			for key, value in opt.items():
+				if key != "ktf" and value != "ktf":init.options[key]=[value,init.options[key][1],init.options[key][2]]
+		try:
+			for opt in data_string['Session']['Extra']:
+				for key, value in opt.items():
+					if key != "ktf" and value != "ktf":init.options[key]=[value,init.options[key][1],init.options[key][2]]
+		except:extra=False
+	return init
+
+

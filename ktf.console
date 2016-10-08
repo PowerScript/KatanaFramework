@@ -12,11 +12,12 @@ from core.Function import (
 	KatanaCheckActionExefunction,
 	KatanaCheckActionShowOptions,
 	KatanaCheckActionisBack,
-	KatanaCheckActionGlobalCommands,
 	KatanaCheckActionShowMOptions,
-	KatanaCheckActionGetInfo,
+	KatanaCheckActionGlobalCommands,
 	KatanaCheckActionSetValue,
+	KatanaCheckActionGetInfo,
 	KatanaCheckActionInvoke,
+	KatanaCheckSession,
 	LoadBuffer,
 	ShowFullOptions,
 	Executefunction,
@@ -25,8 +26,9 @@ from core.Function import (
 	UpdateValue,
 	runModule,
 	GetRootModules,
-	ListModules,
-	Invoke)
+	Invoke,
+	SaveSession,
+	SessionInterative)
 
 from core import Banner , Errors 
 from core.GeneralCommands import *
@@ -59,15 +61,18 @@ def katanaFrameworkConsole():
 							elif KatanaCheckActionShowMOptions(actions) :ShowFullOptions(init)
 							elif KatanaCheckActionExefunction(actions)  :Executefunction(actions)
 							elif KatanaCheckActionInvoke(actions)       :Invoke(actions)
+							elif KatanaCheckSession(actions)            :init=SessionInterative(actions,init)
 							elif KatanaCheckActionSetValue(actions)     :init=UpdateValue(actions,init)
 							elif KatanaCheckActionGetInfo(actions)      :ShowInformationModule(init)
 							elif runModule(actions):
+								SaveSession(init)
 								for Namevalue in init.options:
 									init.var.update({Namevalue:init.options[Namevalue][0]})
 								try:
 									for Namevalue in init.extra:
 										init.var.update({Namevalue:init.extra[Namevalue][0]})
 								except:Nothing=False
+								SaveSession(init)
 								ModuleToStart.main(True)
 							elif KatanaCheckActionisBack(actions)       :katanaFrameworkConsole()
 							else:KatanaCheckActionGlobalCommands(actions)

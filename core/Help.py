@@ -2,7 +2,7 @@
 #HEADER#######################
 # Katana framework           #
 # Help File                  #
-# Last Modified: 21/05/2016  #
+# Last Modified: 08/10/2016  #
 # Review: 1                  #
 #######################HEADER#
 
@@ -27,6 +27,7 @@ def help():
      """+HELP+"""\t\t"""+HELP_SHORT+"""\t\t<--- Show help (this)
      """+CLEAR+"""\t\t"""+CLEAR_SHORT+"""\t\t<--- Clear screen
      """+SAVEV+"""\t\t"""+SAVEV+"""\t\t<--- Save Variable
+     """+SESSION+"""\t\t""""""\t\t<--- Session
      """+EXECUTECOMMAND+"""\t\t"""+EXECUTECOMMAND+"""\t\t<--- Execute System Commands
      f::\t\tf::\t\t<--- Execute Functions
 
@@ -46,6 +47,12 @@ def help():
      ##USE
      f::Functions(Parameters)   <-->  f::get_aps(mon0,10)
      f::Functions               <-->  f::get_local_ip
+
+     #Session
+     session -l                 <--> list sessions of module
+     session -v {ID}            <--> view a session
+     session -i {ID}            <--> Use a session
+     session -d {ID}            <--> Delete a session
 
      #LINKS
      Please go to 

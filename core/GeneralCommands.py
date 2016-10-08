@@ -10,50 +10,53 @@
 SHOW_MODULES="show modules"
 SHOW_MODULES_SHORT="showm"
 
-# Run module
+# Run module command
 RUN="run"
 
 # Select a module
 SELECT="use"
 
-# Exit of ktf
+# Exit of ktf command
 EXIT="exit"
 EXIT_SHORT="x"
 
-# Helper
+# Help command
 HELP="help"
 HELP_SHORT="h"
 
-# Update
+# Update command
 UPDATE="update"
 UPDATE_SHORT="u"
 
-# Clear
+# Clear command
 CLEAR="clear"
 CLEAR_SHORT="c"
 
-# Show Options
+# Show Options command
 SHOW="show options"
 SHOW_SHORT="sop"
 
-# Show Avanced Options
+# Show Avanced Options command
 SHOW_MORE="show full options"
 SHOWM_SHORT="sfop"
 
-# SET Value
+# SET Value command
 SETET="set"
 
-# Back
+# Back command
 BACKING="back"
 
-# Get Info
+# Get Info command
 GETINFO="getinfo"
 
 # Execute Commands
 EXECUTECOMMAND="x::"
 
-# Save Variables
+# Save Variables command
 SAVEV="s::"
 
-# Invoke modules
+# Invoke modules command
 INVOKE="invoke"
+
+# Session command
+SESSION="session"

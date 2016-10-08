@@ -6,7 +6,7 @@
 # change value of variables for adapter to your system.
 #
 # 
-# Last Modified: 23/08/2016
+# Last Modified: 08/10/2016
 #
 #########################################################HEAD#
 
@@ -20,6 +20,10 @@ VERBOSE            =True
 # Errors Log
 """Saves all error events in a log."""
 ERROR_LOG          =True
+
+# Enable Auto-load Session
+"""Load last session in the module"""
+AUTO_LOAD_SESSION  =False
 
 # Apache Folder
 """Path of Apache2"""

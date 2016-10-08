@@ -1,3 +1,8 @@
+* 08/10/16
+  Added New Module : msf/back.door, Gnerator of backdoor with Metasploit
+  Added New Function : session, save and load session
+  Upgrading to Core:0.0.0.1 Build:0065
+
 * 23/09/16
   Added New Dependence : default-jre, for run ktg.gui
   Added New Lib ; setuptools, for usblib lib

@@ -98,6 +98,13 @@
         <filename>web_killer</filename>
         <description>Web D.O.S Attack in LAN.</description>
     </module>
+    <module name="msf/back.door">
+        <version>1.0</version>
+        <author>RedToor</author>
+        <category>msf</category>
+        <filename>msf_venom</filename>
+        <description>Generate backdoors with MSF.</description>
+    </module>
      <module name="set/facebrok">
         <version>1.0</version>
         <author>Redtoor</author>
