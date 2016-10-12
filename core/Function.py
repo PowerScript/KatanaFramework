@@ -696,7 +696,7 @@ class MyCompleter(object):
 
 ### LOAD BUFFER ###
 def LoadBuffer():
-	completer = MyCompleter([SETET, GETINFO, EXECUTECOMMAND, CLEAR, SHOW_MODULES, "target", "port", "version", "f::",RUN, UPDATE, SHOW_MORE])
+	completer = MyCompleter([SETET, GETINFO, EXECUTECOMMAND, CLEAR, SHOW_MODULES, "target", "port", "version", "f::",RUN, UPDATE, SHOW_MORE, SESSION])
 	readline.set_completer(completer.complete)
 	readline.parse_and_bind('tab: complete')
 
@@ -782,7 +782,7 @@ def SessionInterative(action,init):
 		module = init.CodeName
 		module = module.replace("/","-")+".session"
 		ArrayList = os.listdir("core/sessions/")
-		for FileName in sorted(ArrayList):
+		for FileName in ArrayList:
 			ope = len(FileName)-(len(module))
 			if FileName[ope:]==module:
 				Array_list.append(FileName)
@@ -825,5 +825,12 @@ def SessionInterative(action,init):
 					if key != "ktf" and value != "ktf":init.options[key]=[value,init.options[key][1],init.options[key][2]]
 		except:extra=False
 	return init
+
+### LOAD SESSIONS ###
+def LoadSession(init):
+	if AUTO_LOAD_SESSION:init=SessionInterative("session -i 0",init)
+	return init
+
+
 
 

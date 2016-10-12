@@ -2,35 +2,11 @@
 #HEAD#########################################################
 #
 # Katana Framework | ktf.console                            
-# Last Modified: 29/07/2016
+# Last Modified: 11/10/2016
 #
 #########################################################HEAD#
 
-from core.Function import (
-	KatanaCheckActionShowModules,
-	KatanaCheckActionUseModule,
-	KatanaCheckActionExefunction,
-	KatanaCheckActionShowOptions,
-	KatanaCheckActionisBack,
-	KatanaCheckActionShowMOptions,
-	KatanaCheckActionGlobalCommands,
-	KatanaCheckActionSetValue,
-	KatanaCheckActionGetInfo,
-	KatanaCheckActionInvoke,
-	KatanaCheckSession,
-	LoadBuffer,
-	ListModules,
-	ShowFullOptions,
-	Executefunction,
-	ShowInformationModule,
-	ShowOptions,
-	UpdateValue,
-	runModule,
-	GetRootModules,
-	Invoke,
-	SaveSession,
-	SessionInterative)
-
+from core.MainListLibrary import *
 from core import Banner , Errors 
 from core.GeneralCommands import *
 from core.Design import *
@@ -55,6 +31,7 @@ def katanaFrameworkConsole():
 					filename = modules.find('filename').text
 					ModuleToStart = importlib.import_module("modules."+category+"."+filename) 
 					init=ModuleToStart.init()
+					init=LoadSession(init)
 					while True:
 						try:
 							actions=raw_input(Prompt(init.CodeName))

@@ -23,7 +23,7 @@ ERROR_LOG          =True
 
 # Enable Auto-load Session
 """Load last session in the module"""
-AUTO_LOAD_SESSION  =False
+AUTO_LOAD_SESSION  =True
 
 # Apache Folder
 """Path of Apache2"""

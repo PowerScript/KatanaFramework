@@ -2,43 +2,18 @@
 #HEAD#########################################################
 #
 # Katana Framework | ktf.run                            
-# Last Modified: 29/07/2016
+# Last Modified: 11/10/2016
 #
 #########################################################HEAD#
 
 
-from core.Function import (
-	KatanaCheckActionShowModules,
-	KatanaCheckActionUseModule,
-	KatanaCheckActionExefunction,
-	KatanaCheckActionShowOptions,
-	KatanaCheckActionisBack,
-	KatanaCheckActionShowMOptions,
-	KatanaCheckActionGlobalCommands,
-	KatanaCheckActionSetValue,
-	KatanaCheckActionGetInfo,
-	KatanaCheckActionInvoke,
-	KatanaCheckSession,
-	LoadBuffer,
-	ShowFullOptions,
-	Executefunction,
-	ShowInformationModule,
-	ShowOptions,
-	UpdateValue,
-	runModule,
-	GetRootModules,
-	Invoke,
-	SaveSession,
-	SessionInterative)
-
+from core.MainListLibrary import *
 from core.Default import *    
 from core.Design import *
 from core import Errors 
 
 import xml.etree.ElementTree as ET
-import importlib 
-import argparse
-
+import importlib,argparse
 LoadBuffer()
 
 parser = argparse.ArgumentParser()
@@ -59,6 +34,7 @@ if __name__=="__main__":
 			filename = modules.find('filename').text
 			ModuleToStart = importlib.import_module("modules."+category+"."+filename) 
 			init=ModuleToStart.init()
+			init=LoadSession(init)
 			while True:
 				try:
 					actions=raw_input(Prompt(init.CodeName))
