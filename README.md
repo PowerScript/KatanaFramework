@@ -48,17 +48,27 @@ sudo python install
 # USAGE
 Please go to the [Wiki](https://github.com/PowerScript/KatanaFramework/wiki/How-to-use).
 
-# SUPPORT
+___
+
+### RECOMMEND IN
+[![blackarch](http://blackarch.org/images/favicon.ico)](http://blackarch.org/tools.html)
+[![hackersonlineclub](http://blog.hackersonlineclub.com/favicon.ico)](http://blog.hackersonlineclub.com/2016/01/katana-framework-for-hackers-and.html)
+[![seclist](http://site-images.similarcdn.com/image?url=seclist.us&t=2&s=10&h=4400631751509865780)](http://seclist.us/katana-v-0-0-0-6-released-framework-multi-tool-for-hackers-professional-security-and-developers.html)
+[![kitploit](http://www.kitploit.com/favicon.ico)](http://www.kitploit.com/2015/12/katana-framework-for-hackers.html)
+[![toolwar](http://www.toolwar.com/favicon.ico)](http://www.toolwar.com/2016/08/katana-penetration-testing-framework.html)
+
+
+### SUPPORT
 Questions, bugs or suggestions to : redtoor@inbox.ru
 or use "Issue" on github project
 
-# LICENSE
+### LICENSE
 Katana is licensed. 
 See [LICENSE](https://github.com/PowerScript/KatanaFramework/blob/master/doc/LICENCE) for more information.
 
 We need partners, if you're interested in support or help contact.
 
-# LINKS
+### LINKS
 ```
 Wiki: https://github.com/PowerScript/KatanaFramework/wiki
 Project in SF: http://sourceforge.net/projects/katanas/files/
