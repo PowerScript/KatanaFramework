@@ -1,5 +1,5 @@
 <img src="https://4.bp.blogspot.com/-qZDqDJu1j-k/V09AEAbLBeI/AAAAAAAAAR0/YX_M7a12s2URf-vzcaghv_ZDIvuy9b39QCLcB/s320/Sin%2Bt%25C3%25ADtulo.png" title="Katana">
-[![Gitter chat](https://badges.gitter.im/totaljs/framework.png)](https://gitter.im/PowerScript/KatanaFramework) ![Supported OS](https://img.shields.io/badge/Supported%20OS-Linux-yellow.svg) ![License](https://img.shields.io/badge/license-GPLv3-blue.svg) ![CORE](https://img.shields.io/badge/core-0.0.1.0-green.svg)![Build](https://img.shields.io/badge/BUILD-0065-red.svg) 
+[![Gitter chat](https://badges.gitter.im/totaljs/framework.png)](https://gitter.im/PowerScript/KatanaFramework) ![Supported OS](https://img.shields.io/badge/Supported%20OS-Linux-yellow.svg) ![License](https://img.shields.io/badge/license-GPLv3-blue.svg) ![CORE](https://img.shields.io/badge/core-0.0.1.0-green.svg)![Build](https://img.shields.io/badge/BUILD-0065-red.svg)![Modules](https://img.shields.io/badge/modules-35-green.svg) 
 ---
 # ABOUT.
 
@@ -20,14 +20,14 @@ The Katana source code is organized as follows:
 <i>-[modules/](https://github.com/PowerScript/KatanaFramework/tree/master/scripts)</i> > Scripts(modules)<br>
 
 # SUPPORTED DISTRIBUTIONS
-|Distribution | Version Check | supported | status |
-----------|-------|------|-------|
-|Kali Linux|4.4.0 | yes| [![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
-|Parrot OS| |yes| [![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
-|Wifislax| |yes| [![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
-|Raspbian|4.1.7 |yes| [![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
-|Ubuntu|14.04 |yes| [![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
-|Xbuntu|4.4.0 |yes| [![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
+|Distribution | Version Check | supported | dependencies already installed |status |
+----------|-------|------|------|-------|
+|Kali Linux|4.4.0 | yes| yes | [![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
+|Parrot OS| |yes|yes|[![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
+|Wifislax| |yes|yes|[![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
+|Raspbian|4.1.7 |yes|No|[![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
+|Ubuntu|14.04 |yes|No|[![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
+|Xbuntu|4.4.0 |yes|No|[![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
 
 # INSTALLATION
 Installation of Katana framework: is necesary install all [dependencies](https://github.com/PowerScript/KatanaFramework/wiki/Requisites) for a good performance.
@@ -38,11 +38,11 @@ sudo python install
 </pre></i></n>
 
 # FEATURES
- *SESSIONS* Using sessions in each module to not waste time.
- *VARIABLES TEMP* Save results in variables for use in other modules.
- *SYSTEM COMMANDS* Execute System commands through the console.
- *INTERNAL FUNCTIONS* Run internal functions from console.
- *GUI* Graphical User interface.
+ *SESSIONS* Using sessions in each module to not waste time,
+ *VARIABLES TEMP* Save results in variables for use in other modules,
+ *SYSTEM COMMANDS* Execute System commands through the console,
+ *INTERNAL FUNCTIONS* Run internal functions from console,
+ *GUI* Graphical User interface,
  *SETTINGS* Enable and disable features easily.
   
 # USAGE
