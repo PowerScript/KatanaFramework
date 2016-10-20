@@ -1,0 +1,16 @@
+#!/bin/sh
+#HEAD#########################################################
+#
+# Katana Framework | uninstall
+# Last Modified: 20/10/2016
+#
+#########################################################HEAD#
+
+rm -f /usr/bin/ktf.console;
+rm -f /usr/bin/ktf.linker;
+rm -f /usr/bin/ktf.update;
+rm -f /usr/bin/ktf.ktf;
+rm -f /usr/bin/ktf.tool;
+rm -f /usr/bin/ktf.run;
+rm -f /usr/bin/ktf.gui;
+rm -r *
