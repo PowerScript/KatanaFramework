@@ -2,7 +2,7 @@
 #HEAD#########################################################
 #
 # Katana Framework | Function                           
-# Last Modified: 19/10/2016
+# Last Modified: 20/10/2016
 #
 #########################################################HEAD#
 
@@ -37,7 +37,7 @@ def KatanaCheckActionShowModules(action):
 	if action == SHOW_MODULES or action == SHOW_MODULES_SHORT: return True
 
 ### UPDATE VARIABLES MODULE
-def UpdateValue(action,matriz):
+def UpdateValue(action,matriz,real):
 	for Namevalue in matriz.options:
 		if action[len(SETET)+1:len(SETET)+1+len(Namevalue)] == Namevalue:
 			checkValue=action[len(SETET)+2+len(Namevalue):]
@@ -46,6 +46,16 @@ def UpdateValue(action,matriz):
 				if checkValue[0:5] == "::MAC": checkValue = VARIABLESMAC[int(checkValue[5:])-1]
 			except:printAlert(6,"this value is recognized as an internal command but as it is not assigned to be used as value.")
 			ChangeValue(Namevalue,checkValue)
+			if real.options[Namevalue][0].isdigit():type_of_parameter = "integer"
+			elif real.options[Namevalue][0] == "true" or real.options[Namevalue][0] == "false" : type_of_parameter = "boolean"
+			else: type_of_parameter = "string"
+			
+			if checkValue.isdigit():type_of_value = "integer"
+			elif checkValue == "true" or checkValue == "false" : type_of_value = "boolean"
+			else: type_of_value = "string"
+			
+			if type_of_value != type_of_parameter:printAlert(6,"the value you entered is not the same data type parameter.")
+
 			matriz.options[Namevalue] = [checkValue,matriz.options[Namevalue][1],matriz.options[Namevalue][2]]
 			return matriz
 	try:
@@ -833,7 +843,6 @@ def LoadSession(init):
 			init=SessionInterative("session -i 0",init)
 		except:extra=False
 	return init
-
 
 
 
