@@ -43,7 +43,7 @@ if __name__=="__main__":
 					elif KatanaCheckActionExefunction(actions)  :Executefunction(actions)
 					elif KatanaCheckActionInvoke(actions)       :Invoke(actions)
 					elif KatanaCheckSession(actions)            :init=SessionInterative(actions,init)
-					elif KatanaCheckActionSetValue(actions)     :init=UpdateValue(actions,init)
+					elif KatanaCheckActionSetValue(actions)     :init=UpdateValue(actions,init,ModuleToStart.init())
 					elif KatanaCheckActionGetInfo(actions)      :ShowInformationModule(init)
 					elif runModule(actions):
 						for Namevalue in init.options:
