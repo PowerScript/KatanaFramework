@@ -791,7 +791,7 @@ def SessionInterative(action,init):
 		module = init.CodeName
 		module = module.replace("/","-")+".session"
 		ArrayList = os.listdir("core/sessions/")
-		for FileName in ArrayList:
+		for FileName in reversed(ArrayList):
 			ope = len(FileName)-(len(module))
 			if FileName[ope:]==module:
 				Array_list.append(FileName)
