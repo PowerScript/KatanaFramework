@@ -43,7 +43,6 @@ def katanaFrameworkConsole():
 							elif KatanaCheckActionSetValue(actions)     :init=UpdateValue(actions,init)
 							elif KatanaCheckActionGetInfo(actions)      :ShowInformationModule(init)
 							elif runModule(actions):
-								SaveSession(init)
 								for Namevalue in init.options:
 									init.var.update({Namevalue:init.options[Namevalue][0]})
 								try:
