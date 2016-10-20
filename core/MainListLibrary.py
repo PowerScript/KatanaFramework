@@ -29,5 +29,6 @@ from Function import (
 	GetRootModules,
 	Invoke,
 	SaveSession,
+	ListModules,
 	LoadSession,
 	SessionInterative)
