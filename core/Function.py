@@ -46,8 +46,8 @@ def UpdateValue(action,matriz,real):
 				if checkValue[0:5] == "::MAC": checkValue = VARIABLESMAC[int(checkValue[5:])-1]
 			except:printAlert(6,"this value is recognized as an internal command but as it is not assigned to be used as value.")
 			ChangeValue(Namevalue,checkValue)
-			if real.options[Namevalue][0].isdigit():type_of_parameter = "integer"
-			elif real.options[Namevalue][0] == "true" or real.options[Namevalue][0] == "false" : type_of_parameter = "boolean"
+			if real[Namevalue][0].isdigit():type_of_parameter = "integer"
+			elif real[Namevalue][0] == "true" or real[Namevalue][0] == "false" : type_of_parameter = "boolean"
 			else: type_of_parameter = "string"
 			
 			if checkValue.isdigit():type_of_value = "integer"
@@ -55,7 +55,6 @@ def UpdateValue(action,matriz,real):
 			else: type_of_value = "string"
 			
 			if type_of_value != type_of_parameter:printAlert(6,"the value you entered is not the same data type parameter.")
-
 			matriz.options[Namevalue] = [checkValue,matriz.options[Namevalue][1],matriz.options[Namevalue][2]]
 			return matriz
 	try:
@@ -843,6 +842,7 @@ def LoadSession(init):
 			init=SessionInterative("session -i 0",init)
 		except:extra=False
 	return init
+
 
 
 
