@@ -2,7 +2,7 @@
 #HEAD#########################################################
 #
 # Katana Framework | Function                           
-# Last Modified: 08/10/2016
+# Last Modified: 19/10/2016
 #
 #########################################################HEAD#
 
@@ -828,7 +828,10 @@ def SessionInterative(action,init):
 
 ### LOAD SESSIONS ###
 def LoadSession(init):
-	if AUTO_LOAD_SESSION:init=SessionInterative("session -i 0",init)
+	if AUTO_LOAD_SESSION:
+		try:
+			init=SessionInterative("session -i 0",init)
+		except:extra=False
 	return init
 
 
