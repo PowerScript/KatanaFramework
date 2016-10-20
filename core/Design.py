@@ -52,8 +52,8 @@ def printAlert(typ, msg):
 
 def MainPrompt()                    :return colors[7]+" [ktf]:"+colors[0]
 def ClientPrompt(module,client)     :return colors[0]+" [ktf]("+colors[7]+colors[1]+module+colors[0]+":"+colors[9]+client+colors[0]+"):"+colors[0]
-def Prompt(module)                  :return colors[0]+" [ktf]("+colors[7]+colors[1]+module+colors[0]+"):"+colors[0]
-def ChangeValue(option, value)      :print "\n "+option+"\t\t==> "+value+"\n"
+def Prompt(module)                  :return colors[0]+"  ↳[ktf]("+colors[7]+colors[1]+module+colors[0]+"):"+colors[0]
+def ChangeValue(option, value)      :print "\n "+option+"\t\t⋙ "+value+"\n"
 def RunModule()                     :print "\n "+runing+" Running...\n"+colors[0]+" "+information+" "+time.strftime('%c')+colors[0]
 
 def Loadingfile(filename)           :print " "+information+" Loading file ["+filename+"]"+colors[0]
@@ -95,42 +95,20 @@ class DESIGN:
 		print " "+option+"\t"+rq+"\t"+description+"\t"+colors[8]+value+colors[0]
 
 	def linker(self):
-		print colors[8]+"""
-		██╗  ██╗████████╗███████╗██╗     ██╗███╗   ██╗██╗  ██╗███████╗██████╗ 
-		██║ ██╔╝╚══██╔══╝██╔════╝██║     ██║████╗  ██║██║ ██╔╝██╔════╝██╔══██╗
-		█████╔╝    ██║   █████╗  ██║     ██║██╔██╗ ██║█████╔╝ █████╗  ██████╔╝
-		██╔═██╗    ██║   ██╔══╝  ██║     ██║██║╚██╗██║██╔═██╗ ██╔══╝  ██╔══██╗
-		██║  ██╗   ██║   ██║██╗  ███████╗██║██║ ╚████║██║  ██╗███████╗██║  ██║
-		╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚══════╝╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
-		ore:"""+Information.version+"""/Build:"""+Information.build+colors[0]+"\n"
+		print " \n [ktf]↣[linker]↘"
 	
 	def ktfrun(self):
-		print colors[8]+"""
-		██╗  ██╗████████╗███████╗██████╗ ██╗   ██╗███╗   ██╗
-		██║ ██╔╝╚══██╔══╝██╔════╝██╔══██╗██║   ██║████╗  ██║
-		█████╔╝    ██║   █████╗  ██████╔╝██║   ██║██╔██╗ ██║
-		██╔═██╗    ██║   ██╔══╝  ██╔══██╗██║   ██║██║╚██╗██║
-		██║  ██╗   ██║   ██║██╗  ██║  ██║╚██████╔╝██║ ╚████║
-		╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝
-		Core:"""+Information.version+"""/Build:"""+Information.build+colors[0]+"\n"
+		print """
+  _              ___                  
+ | |      _     / __)                 
+ | |  _ _| |_ _| |__ ____ _   _ ____  
+ | |_/ |_   _|_   __) ___) | | |  _ \ 
+ |  _ (  | |_  | |_| |   | |_| | | | |
+ |_| \_)  \__) |_(_)_|   |____/|_| |_|
+\n [ktf]↣[run]↘"""
 	
 	def ktftool(self):
-		print colors[8]+"""
-		██╗  ██╗████████╗███████╗████████╗ ██████╗  ██████╗ ██╗     
-		██║ ██╔╝╚══██╔══╝██╔════╝╚══██╔══╝██╔═══██╗██╔═══██╗██║     
-		█████╔╝    ██║   █████╗     ██║   ██║   ██║██║   ██║██║     
-		██╔═██╗    ██║   ██╔══╝     ██║   ██║   ██║██║   ██║██║     
-		██║  ██╗   ██║   ██║██╗     ██║   ╚██████╔╝╚██████╔╝███████╗
-		╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝     ╚═╝    ╚═════╝  ╚═════╝ ╚══════╝
-		Core:"""+Information.version+"""/Build:"""+Information.build+colors[0]+"\n"
+		print " \n [ktf]↣[tool]↘"
 	
 	def ktfktf(self):
-		print colors[8]+"""
-		██╗  ██╗████████╗███████╗██╗  ██╗████████╗███████╗
-		██║ ██╔╝╚══██╔══╝██╔════╝██║ ██╔╝╚══██╔══╝██╔════╝
-		█████╔╝    ██║   █████╗  █████╔╝    ██║   █████╗  
-		██╔═██╗    ██║   ██╔══╝  ██╔═██╗    ██║   ██╔══╝  
-		██║  ██╗   ██║   ██║██╗  ██║  ██╗   ██║   ██║     
-		╚═╝  ╚═╝   ╚═╝   ╚═╝╚═╝  ╚═╝  ╚═╝   ╚═╝   ╚═╝     
-		Core:"""+Information.version+"""/Build:"""+Information.build+colors[0]+"\n"
-
+		print " \n [ktf]↣[ktf]↘"
