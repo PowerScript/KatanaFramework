@@ -3,7 +3,7 @@
 #HEAD#########################################################
 #
 # Katana Framework | Banners                           
-# Last Modified: 31/08/2016
+# Last Modified: 20/10/2016
 #
 #########################################################HEAD#
 
@@ -11,7 +11,6 @@ from core import colors,Information
 from Function import get_number_modules,get_number_tools
 import random          
 
-tema="Army ...theme"
 
 Banner1="""
 
@@ -25,7 +24,7 @@ Banner1="""
        
 	       """+colors.HH+""" Core    """+colors.W+""" [ """+Information.version+""", Build: """+Information.build+""" ]
 	       """+colors.HH+""" Date    """+colors.W+""" [ """+Information.date+"""    ]
-	       """+colors.HH+""" Theme   """+colors.W+""" [ """+tema+"""        ]
+	       """+colors.HH+""" Banner  """+colors.W+""" [          WAR         ]
 	       """+colors.HH+""" Modules """+colors.W+"""    [ """""+str(get_number_modules())+""" ] """+colors.HH+"""Tools """+colors.W+"""[ """+str(get_number_tools())+""" ]\n"""
 
 Banner2=colors.B+"""
@@ -43,13 +42,42 @@ Banner2=colors.B+"""
        ||        |# P |                                           ||
        ||        |# W | """+colors.HH+""" Core    """+colors.W+""" [ """+Information.version+""", Build: """+Information.build+""" ]        ||
        ||        |#_N_| """+colors.HH+""" Date    """+colors.W+""" [ """+Information.date+"""    ]        ||
-       ||        |_  _| """+colors.HH+""" Theme   """+colors.W+""" [ """+tema+"""        ]        ||        
+       ||        |_  _| """+colors.HH+""" Banner  """+colors.W+""" [         SPACE        ]        ||        
        ||        /|__|\\  """+colors.HH+"""Modules """+colors.W+""" [ """""+str(get_number_modules())+""" ] """+colors.HH+"""Tools """+colors.W+"""[ """+str(get_number_tools())+""" ]              ||
        """+colors.GW+"""||       /__\/__\\"""+colors.GW+""" The Hacking Framework                    ||"""+colors.W+"""
                  ()  ()\n"""
 
+Banner3 = """    
+ -----+-----+-----+-----+-----+north+-----+-----+-----+-----+-----+-----
+           , _-\','|~\~      ~/      ;-'_   _-'     ,;_;_,    ~~-
+  /~~-\_/-'~'--' \          ,'      /  / ~|-_\_/~/~      ~~--~~~~'--_
+  /                         ,'    , '|,'|~                   ._/-, /~
+  ~/-'~\_,               . '      ,\ /'~                /    /_  /~
+         '|        '',\~|\       _\~     ,_  ,               /|
+          '\        /'~          |_/~\\,-,~  \ "         ,_,/ |
+           |       /            ._-~'\_ _~|              \ ) /
+            \   __-\           '/      ~ |\  \_          /  ~
+             '\ |,  ~-_     """+colors.HH+"KATANA FRAMEWORK"""+colors.W+"""|  /\  \~ ,
+               ~-_'  _;       '\           '-,   \,' /\/  |
+                 '\_,~'\_       \_ _,       /'    '  |, /|'
+                   /     \_       ~ |      /         \  ~'; -,_.
+                   |       ~\        |    |  ,        '-_, ,; ~ ~\
+                            \,      /        \    / /|            ,-, ,   -,
+ """+colors.HH+"""C"""+colors.W+"""["""+Information.version+"""]B["""+Information.build+"""]   |    ,/          |  |' |/          ,-   ~ \   '.
+ """+colors.HH+"""D"""+colors.W+"""["""+Information.date+"""]|   ,/           \ ,/              \       |
+ """+colors.HH+"""M"""+colors.W+"""["""""+str(get_number_modules())+"""]               /    |             ~                 -~~-, /   _
+ """+colors.HH+"""B"""+colors.W+"""[MAP]             |  ,-'                                    ~    /
+                    / ,'                                      ~
+                    ',|   
+                      ~' 
+ -----+-----+-----+-----+-----+south+-----+-----+-----+-----+-----+-----"""
+
+
+
 def LoadBanner():
-	RamdonBanner=random.randint(1,2)
+	RamdonBanner=random.randint(1,3)
 	if RamdonBanner==1:print Banner1
 	if RamdonBanner==2:print Banner2
+	if RamdonBanner==3:print Banner3
+
 
