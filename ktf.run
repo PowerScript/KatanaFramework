@@ -2,7 +2,7 @@
 #HEAD#########################################################
 #
 # Katana Framework | ktf.run                            
-# Last Modified: 11/10/2016
+# Last Modified: 20/10/2016
 #
 #########################################################HEAD#
 
@@ -13,7 +13,7 @@ from core.Design import *
 from core import Errors 
 
 import xml.etree.ElementTree as ET
-import importlib,argparse
+import importlib,argparse,copy
 LoadBuffer()
 
 parser = argparse.ArgumentParser()
@@ -34,7 +34,9 @@ if __name__=="__main__":
 			filename = modules.find('filename').text
 			ModuleToStart = importlib.import_module("modules."+category+"."+filename) 
 			init=ModuleToStart.init()
+			real_init = init.options.copy()
 			init=LoadSession(init)
+
 			while True:
 				try:
 					actions=raw_input(Prompt(init.CodeName))
@@ -43,7 +45,7 @@ if __name__=="__main__":
 					elif KatanaCheckActionExefunction(actions)  :Executefunction(actions)
 					elif KatanaCheckActionInvoke(actions)       :Invoke(actions)
 					elif KatanaCheckSession(actions)            :init=SessionInterative(actions,init)
-					elif KatanaCheckActionSetValue(actions)     :init=UpdateValue(actions,init,ModuleToStart.init())
+					elif KatanaCheckActionSetValue(actions)     :init=UpdateValue(actions,init,real_init)
 					elif KatanaCheckActionGetInfo(actions)      :ShowInformationModule(init)
 					elif runModule(actions):
 						for Namevalue in init.options:
