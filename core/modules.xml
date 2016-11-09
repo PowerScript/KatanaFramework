@@ -203,6 +203,13 @@
         <filename>brute_force_to_rar_file</filename>
         <description>Brute Force to RAR file.</description>
     </module>
+     <module name="fle/scan.file">
+        <version>1.0</version>
+        <author>RedToor</author>
+        <category>fle</category>
+        <filename>report_virus_total</filename>
+        <description>Report of Virus Scan file.</description>
+    </module>
      <module name="fle/bt.zip">
         <version>2.0</version>
         <author>LeSZO ZerO</author>
