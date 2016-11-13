@@ -1,5 +1,6 @@
 * 13/11/16
   Deleted a Module : set/facebrok, is not appropriated.
+  Added New Module : net/http.sniff, HTTP sniffer.
   Added Parameter to update : -f , Force to update the framework.
   Added Python2 version instance to head files.
   Added Collaborators variable in head modules.
@@ -8,7 +9,7 @@
   Added New Module : fle/scan.virus, Report of Virus Scan file API (VirusTotal.com).
 
 * 08/10/16
-  Added New Module : msf/back.door, Gnerator of backdoor with Metasploit
+  Added New Module : msf/back.door, Generator of backdoor with Metasploit
   Added New Function : session, save and load session
   Upgrading to Core:0.0.0.1 Build:0065
 
