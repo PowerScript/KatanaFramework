@@ -1,9 +1,10 @@
-#!/usr/bin/env python
-#HEADER#######################
-# Katana framework           #
-# Information File           #
-# Last Modified: 17/10/2016  #
-#######################HEADER#
+#!/usr/bin/env python2
+#HEAD#########################################################
+#
+# Katana Framework | Information File                        
+# Last Modified: 13/11/2016
+#
+#########################################################HEAD#
 
 __nickname__   = 'Katana'
 __author__     = 'RedToor'
@@ -13,6 +14,6 @@ __facebook__   = 'https://facebook.com/redtoor'
 __license__    = 'GPLv3'
 
 version        = "0.0.1.0"
-date           = "21/09/16:08/10/16"
-build          = "0065"
+date           = "08/10/16:13/11/16"
+build          = "0066"
 Type           = "FREE"

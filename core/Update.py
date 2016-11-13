@@ -1,14 +1,8 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 #HEAD#########################################################
 #
 # Katana Framework | Update File                             
-# this file reviews the file (core/version.json) on server
-# the latest version of the framework and compares 
-# with the current version (core/Information.py) on the host
-# and proceeds to download and install.
-#
-# 
-# Last Modified: 03/06/2016
+# Last Modified: 13/11/2016
 #
 #########################################################HEAD#
 
@@ -20,11 +14,11 @@ if os.getuid() != 0:
 	Space()
 	printAlert(5,"Katana Framework.")
 	printAlert(1,"this must be run as "+colors[7]+"root"+colors[0]+".")
-	printAlert(0,"login as root ("+colors[1]+"sudo"+colors[0]+") or try "+colors[0]+"sudo python ktf.file.py"+colors[0]+"\n")
+	printAlert(0,"login as root ("+colors[1]+"sudo"+colors[0]+") or try "+colors[0]+"sudo python ktf.update"+colors[0]+"\n")
 	exit(1)
 
 
-def update(fromCall):
+def update(fromCall,force):
 	print ""
 	printAlert(0,"Update - Katana framework - Connecting with server")
 	printAlert(0,"Version Current : Core:"+Information.version+" Build:"+Information.build+" Date "+Information.date)
@@ -43,7 +37,7 @@ def update(fromCall):
 		dateupdate=data_string["Katana"]["Update"]["Date"]
 		printAlert(0,"Last Version    : Core:%s Build:%s Date %s" % (core, build, dateupdate))
 
-		if (build<=Information.build):
+		if (build<=Information.build) and force!=False:
 			printAlert(3,"katana already updated.\n")
 		else:
 			if fromCall == "installer":

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 #HEAD#########################################################
 #
 # Katana Framework | ktf.update                         
@@ -7,4 +7,11 @@
 #########################################################HEAD#
 
 from core import Update
-Update.update("update")
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("-f", "--force"  , action='store_false', default=True, help="Force to update the framework.")
+args = parser.parse_args()
+
+
+Update.update("update",args.force)

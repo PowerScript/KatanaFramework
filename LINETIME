@@ -1,3 +1,9 @@
+* 13/11/16
+  Deleted a Module : set/facebrok, is not appropriated.
+  Added Parameter to update : -f , Force to update the framework.
+  Added Python2 version instance to head files.
+  Added Collaborators variable in head modules.
+
 * 08/11/16
   Added New Module : fle/scan.virus, Report of Virus Scan file API (VirusTotal.com).
 

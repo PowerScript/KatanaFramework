@@ -63,6 +63,13 @@
         <filename>sniff</filename>
         <description>Protocol Sniffer.</description>
     </module>
+    <module name="net/http.sniff">
+        <version>1.0</version>
+        <author>Thomas TJ 2016 (TTJ)</author>
+        <category>net</category>
+        <filename>http_sniff</filename>
+        <description>HTTP sniffer.</description>
+    </module>
     <module name="net/arp.pson">
         <version>3.1</version>
         <author>RedToor</author>
@@ -104,13 +111,6 @@
         <category>msf</category>
         <filename>msf_venom</filename>
         <description>Generate backdoors with MSF.</description>
-    </module>
-     <module name="set/facebrok">
-        <version>1.0</version>
-        <author>Redtoor</author>
-        <category>set</category>
-        <filename>facebrok</filename>
-        <description>facebook Phishing plataform.</description>
     </module>
      <module name="set/web.hot">
         <version>1.0</version>

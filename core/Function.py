@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 #HEAD#########################################################
 #
 # Katana Framework | Function                           
@@ -111,7 +111,7 @@ def KatanaCheckActionGlobalCommands(action):
 	if     action[:len(EXIT)]        == EXIT   or action[:len(EXIT)]        == EXIT_SHORT  : sys.exit(1995)
 	elif   action[:len(HELP)]        == HELP   or action[:len(HELP_SHORT)]  == HELP_SHORT  : Help.help()
 	elif   action[:len("version")]   == "version"        :printAlert(3,"V:["+version+"] B:["+build+"] D:["+date+"]")
-	elif   action[:len(UPDATE)]      == UPDATE or action[:len(UPDATE_SHORT)]== UPDATE_SHORT: update("functions")
+	elif   action[:len(UPDATE)]      == UPDATE or action[:len(UPDATE_SHORT)]== UPDATE_SHORT: update("functions",False)
 	elif action[:len(EXECUTECOMMAND)]==EXECUTECOMMAND    :subprocess.call(action[len(EXECUTECOMMAND):], shell=True)
 	elif   action[:len(CLEAR)]       == CLEAR  or action[:len(CLEAR_SHORT)] == CLEAR_SHORT : subprocess.call('clear', shell=True)
 	elif   action[:len(SAVEV)]       == SAVEV            :SaveValue(action)
@@ -143,7 +143,7 @@ def Executefunction(query):
 
 ### CALL MODULE ###
 def Invoke(module):
-	subprocess.Popen(["xterm","-T","Invoke["+module[len(INVOKE)+1:]+"]","-e","ktf.run","-m",module[len(INVOKE)+1:],"-q"])
+	subprocess.Popen(["xterm","-T","Invoke["+module[len(INVOKE)+1:]+"]","-e","python2","ktf.run","-m",module[len(INVOKE)+1:],"-q"])
 
 ### SHOW OPTIONS ###
 def ShowOptions(Options):

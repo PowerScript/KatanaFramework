@@ -22,6 +22,7 @@ def init():
 	init.CodeName           ="net/sc.hosts"
 	init.DateCreation       ="22/08/2015"      
 	init.LastModification   ="16/05/2016"
+	init.Collaborators      =None
 	init.References         =None
 	init.License            =KTF_LINCENSE
 	init.var                ={}

@@ -2,7 +2,7 @@
 #HEAD#########################################################
 #
 # Katana Framework | install                         
-# Last Modified: 08/10/2016
+# Last Modified: 13/11/2016
 #
 #########################################################HEAD#
 
@@ -40,7 +40,7 @@ print ""
 
 if os.getuid() != 0:
 	print " ["+colors.R+"-"+colors.W+"] ERROR:"+colors.B+" Katana Install"+colors.B+" must be run as "+colors.R+"root"+colors.W+"."
-	print " ["+colors.R+"-"+colors.W+"] login as root ("+colors.R+"sudo"+colors.W+") or try "+colors.W+"sudo python install.py"+colors.W+"\n"
+	print " ["+colors.R+"-"+colors.W+"] login as root ("+colors.R+"sudo"+colors.W+") or try "+colors.W+"sudo python install"+colors.W+"\n"
 	exit(1)
 time.sleep(1)
 
@@ -57,7 +57,6 @@ Files="""
 cp -r * /usr/share/KatanaFramework/doc/man/ /usr/local/share/man/man1/   ;
 cd /usr/share/KatanaFramework/files/                                     ;
 tar xvf /usr/share/KatanaFramework/files/exiftool.tar     >/dev/null 2>&1;
-tar xvf /usr/share/KatanaFramework/files/facebrok1.8.tar  >/dev/null 2>&1;
 tar xvf /usr/share/KatanaFramework/files/getdatareport.tar>/dev/null 2>&1;
 rm -R /usr/share/KatanaFramework/files/*.tar              >/dev/null 2>&1;
 rm /usr/share/KatanaFramework/install                     >/dev/null 2>&1;
@@ -79,7 +78,7 @@ print " ["+time.strftime('%H:%M:%S')+"]",status_cmd(Preinstall),"Pre-installing.
 print " ["+time.strftime('%H:%M:%S')+"]",status_cmd('sudo bash dependencies'),"Checking dependencies."
 print " ["+time.strftime('%H:%M:%S')+"] Checking Updates."
 print  "   |"
-Update.update("installer")
+Update.update("installer",False)
 print  "   |"
 print " ["+time.strftime('%H:%M:%S')+"]",status_cmd('mkdir -p /usr/share/KatanaFramework'),"Creating Folder."
 print " ["+time.strftime('%H:%M:%S')+"]",status_cmd('cp -r * /usr/share/KatanaFramework'),"Copying files."
