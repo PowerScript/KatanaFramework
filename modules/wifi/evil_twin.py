@@ -56,7 +56,7 @@ def main(run):
 		printAlert(0,"Killing proccess on interface")
 		process=process.split("\n")
 		for p in process:
-			commands.getoutput("kilall "+p)
+			commands.getoutput("killall "+p)
 
 		rangos=init.var['ip_range'].split(".")
 		rango=rangos[0]+"."+rangos[1]+"."+rangos[3]+".1"
