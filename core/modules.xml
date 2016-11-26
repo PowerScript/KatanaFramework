@@ -105,6 +105,13 @@
         <filename>web_killer</filename>
         <description>Web D.O.S Attack in LAN.</description>
     </module>
+	<module name="net/bettercap">
+        <version>1.0</version>
+        <author>Thomas TJ (TTJ)</author>
+        <category>net</category>
+        <filename>bettercap_integration</filename>
+        <description>Bettercap integration</description>
+    </module>
     <module name="msf/back.door">
         <version>1.0</version>
         <author>RedToor</author>
