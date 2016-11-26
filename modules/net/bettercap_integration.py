@@ -9,7 +9,6 @@ from core.KATANAFRAMEWORK import *    #
 # LIBRARIES
 from time import sleep
 from core.Function import get_interfaces,checkDevice,get_monitors_mode,get_gateway
-from scapy.all import *
 # END LIBRARIES
 
 # END LIBRARIES
