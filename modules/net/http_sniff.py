@@ -296,13 +296,13 @@ def callback(pkt):
 			return ' '+colors[3]+'['+ time.strftime("%H:%M:%S")+']'+colors[0]+" "+("%-*s  Other  SRC: %-*s DST: %-*s PORT: %-*s" % (6, str(pkt[IP].id),16, str(pkt[IP].src), 16, str(pkt[IP].dst), 5, raw_dport))+host+colors[2]+post+path+colors[0]
 
 		else:
-			if init.var['ignore'] == "yes":
+			if init.var['ignore'] == "true":
 				# Create for loop checking each user input ignore files instead of static
 				#if re.search('(\.jpg)', post, re.IGNORECASE) is not None or re.search('(\.js)', post, re.IGNORECASE) is not None or re.search('(\.css)', post, re.IGNORECASE) is not None:
 				if re.search('(\.jpg|\.js|\.css|\.jpeg|\.svg|\.png)', post, re.IGNORECASE) is not None:
 					return None
 
-			if init.var['hideempty'] == "yes":
+			if init.var['hideempty'] == "true":
 				#if raw != "" or payload != "":
 				if post != "":
 					return colors[9]+" ["+ time.strftime("%H:%M:%S")+"] "+("%-*s  Other  SRC: %-*s DST: %-*s PORT: %-*s" % (6, str(pkt[IP].id),16, str(pkt[IP].src), 16, str(pkt[IP].dst), 5, raw_dport))+host+post+path
