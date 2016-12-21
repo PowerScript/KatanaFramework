@@ -209,10 +209,23 @@ def SaveValue(secuence):
 ### PING ###
 def isLive(defaulthost, defaultport):
 	if True:
-		redTEST=socket.socket(socket.AF_INET, socket.SOCK_STREAM)      
+		
+		redTEST=socket.socket(socket.AF_INET, socket.SOCK_STREAM)   
 		redTEST.connect((defaulthost, int(defaultport))) 
 		redTEST.close()
 		return True
+	return False
+
+### PING PORT ###
+def isPortOpen(defaulthost, defaultport):
+	if True:
+		try:
+			redTEST=socket.socket(socket.AF_INET, socket.SOCK_STREAM)   
+			redTEST.settimeout(5)
+			redTEST.connect((defaulthost, int(defaultport))) 
+			redTEST.close()
+			return True
+		except:return False
 	return False
 
 ### START MONITOR INTERFACE ###
