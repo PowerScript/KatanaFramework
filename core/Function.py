@@ -2,7 +2,7 @@
 #HEAD#########################################################
 #
 # Katana Framework | Function                           
-# Last Modified: 20/10/2016
+# Last Modified: 21/12/2016
 #
 #########################################################HEAD#
 
@@ -798,7 +798,7 @@ def SessionInterative(action,init):
 
 	if action[(len(SESSION)+1):(len(SESSION)+3)] == "-l":
 		for FileName in Array_list:
-			print " #"+str(counter)+" "+FileName
+			print "  #"+str(counter)+" "+FileName
 			counter+=1
 
 	if action[(len(SESSION)+1):(len(SESSION)+3)] == "-v":
@@ -809,11 +809,11 @@ def SessionInterative(action,init):
 		print " Session -> "+data_string['Session']['Time']
 		for opt in data_string['Session']['Options']:
 			for key, value in opt.items():
-				print " Name = "+key+" --> "+value
+				print " | Parameter = "+key+" --> "+value
 		try:
 			for opt in data_string['Session']['Extra']:
 				for key, value in opt.items():
-					print " Name = "+key+" --> "+value
+					print " | Parameter = "+key+" --> "+value
 		except:extra=False
 
 	if action[(len(SESSION)+1):(len(SESSION)+3)] == "-d":
