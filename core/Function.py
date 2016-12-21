@@ -721,18 +721,19 @@ def ListModules():
 	tree = ET.parse('core/modules.xml')
 	root = tree.getroot()
 	print """	\\
- 	,--.-,  
-	/BY/  /  """+colors[11]+colors[7]+""" CodeName\t\t\tDescription\t\t"""+colors[0]
+ 	,--.,  
+	\\BY\\\\  """+colors[7]+""" CodeName\t\tDescription"""+colors[0]
+	print colors[0]+"	|"+colors[1]+"=="+colors[0]+"|:| -----------------------------------------------"
  	space_category = "web"
- 	print colors[0]+"	|"+colors[1]+"=="+colors[0]+"|::|"
+ 	print colors[0]+"	|"+colors[1]+"="+colors[0]+"|:|"
  	for modules in root.findall('module'):
 		name = modules.get('name')
 		if space_category !=  name[:3]:
 			space_category=name[:3]
-			print colors[0]+"	|"+colors[1]+"=="+colors[0]+"|::| -----------------------------------------------"
+			print colors[0]+"	|"+colors[1]+"=="+colors[0]+"|:| -----------------------------------------------"
 		description = modules.find('description').text
 		Desing.Line(CodeName=name,Description=description)
-	print """	/RT/, / 
+	print """	/RT/,/ 
 	`--`-'
 	/"""
 
@@ -790,15 +791,19 @@ def SessionInterative(action,init):
 	if True:
 		module = init.CodeName
 		module = module.replace("/","-")+".session"
-		ArrayList = os.listdir("core/sessions/")
-		for FileName in reversed(ArrayList):
+
+		a = [s for s in os.listdir("core/sessions/")
+			if os.path.isfile(os.path.join("core/sessions/", s))]
+		a.sort(key=lambda s: os.path.getmtime(os.path.join("core/sessions/", s)))
+
+		for FileName in reversed(a):
 			ope = len(FileName)-(len(module))
 			if FileName[ope:]==module:
 				Array_list.append(FileName)
 
 	if action[(len(SESSION)+1):(len(SESSION)+3)] == "-l":
 		for FileName in Array_list:
-			print "  #"+str(counter)+" "+FileName
+			print "     | #"+str(counter)+" "+FileName
 			counter+=1
 
 	if action[(len(SESSION)+1):(len(SESSION)+3)] == "-v":
@@ -806,19 +811,20 @@ def SessionInterative(action,init):
 		data_file   = open('core/sessions/'+Array_list[int(index)],'r')
 		data_string = json.loads(data_file.read())
 		data_file.close()
-		print " Session -> "+data_string['Session']['Time']
+		print "     | Session   ["+data_string['Session']['Time']+"]"
 		for opt in data_string['Session']['Options']:
 			for key, value in opt.items():
-				print " | Parameter = "+key+" --> "+value
+				print "     | Parameter = "+key+" --> "+value
 		try:
 			for opt in data_string['Session']['Extra']:
 				for key, value in opt.items():
-					print " | Parameter = "+key+" --> "+value
+					print "     | Parameter = "+key+" --> "+value
 		except:extra=False
 
 	if action[(len(SESSION)+1):(len(SESSION)+3)] == "-d":
 		index = action[(len(SESSION)+4):]
-		subprocess.call('rm core/sessions/'+Array_list[int(index)], shell=True)
+		if index=="*" : subprocess.call('rm core/sessions/*.session', shell=True)
+		else:subprocess.call('rm core/sessions/'+Array_list[int(index)], shell=True)
 
 	if action[(len(SESSION)+1):(len(SESSION)+3)] == "-i":
 		index = action[(len(SESSION)+4):]
@@ -842,7 +848,6 @@ def LoadSession(init):
 			init=SessionInterative("session -i 0",init)
 		except:extra=False
 	return init
-
 
 
 
