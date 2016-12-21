@@ -7,7 +7,7 @@ from core.KATANAFRAMEWORK import *    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
 # LIBRARIES  
-from core.Function import isLive,RamdonAgent,saveRegister
+from core.Function import isLive,RamdonAgent,saveRegister,isPortOpen
 from bs4 import BeautifulSoup
 import httplib                
 # END LIBRARIES 
@@ -19,17 +19,17 @@ def init():
 	init.Description        ="Administrator Panel finder, Brute Force + Google Dork + Port Scan."
 	init.CodeName           ="web/cp.finder"
 	init.DateCreation       ="28/09/2015"      
-	init.LastModification   ="14/05/2016"
+	init.LastModification   ="21/12/2016"
 	init.References         =None
 	init.License            =KTF_LINCENSE
 	init.var                ={}
 
 	# DEFAULT OPTIONS MODULE
 	init.options = {
-		# NAME    VALUE     RQ     DESCRIPTION
-		'target':[LOCAL_IP ,True ,'Host Target'],
-		'port'  :[HTTP_PORT,False,'Port Target'],
-		'file'  :[TABLE_FOLDER_ADMIN ,False,'Tables URL'],
+		# NAME    VALUE                RQ     DESCRIPTION
+		'target':[LOCAL_IP           ,True , 'Host Target'],
+		'port'  :[HTTP_PORT          ,False, 'Port Target'],
+		'file'  :[TABLE_FOLDER_ADMIN ,False, 'Tables URL']
 	}
 	return init
 # END INFORMATION MODULE
@@ -54,7 +54,7 @@ def main(run):
 			else:printAlert(0," | Checking `"+colors[0]+path+"` Response:"+str(response.status))
 			
 	printAlert(5,"[2] Step : Starting Google Dorking...")
-	connection = httplib.HTTPConnection("www.google.com",80)
+	connection = httplib.HTTPSConnection("www.google.com")
 	connection.request("GET", "/search?q=inurl:admin+site:"+str(init.var['target']))
 	connection.addheaders=[('User-agent', RamdonAgent())]
 	response = connection.getresponse()
@@ -68,7 +68,7 @@ def main(run):
 	commonports = [2082,2083,2095,2096]
 	for port in commonports:
 		printAlert(0," | Testing Port "+str(port))
-		if isLive(init.var['target'],port):
+		if isPortOpen(init.var['target'],port):
 			printAlert(3," | "+str(port)+" Port Open!")
 			Totalresults+="\t|"+str(port)+" Open! \n"
 
