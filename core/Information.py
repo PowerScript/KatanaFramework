@@ -2,7 +2,7 @@
 #HEAD#########################################################
 #
 # Katana Framework | Information File                        
-# Last Modified: 13/11/2016
+# Last Modified: 21/12/2016
 #
 #########################################################HEAD#
 
@@ -14,6 +14,6 @@ __facebook__   = 'https://facebook.com/redtoor'
 __license__    = 'GPLv3'
 
 version        = "0.0.1.0"
-date           = "08/10/16:13/11/16"
-build          = "0066"
+date           = "13/11/16:21/12/16"
+build          = "0067"
 Type           = "FREE"
