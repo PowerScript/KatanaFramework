@@ -2,12 +2,14 @@
 #HEAD#########################################################
 #
 # Katana Framework | ktf.ktf                            
-# Last Modified: 04/08/2016
+# Last Modified: 21/12/2016
 #
 #########################################################HEAD#
 
 from core.Function import GetRootModules,status_cmd
 from core.Design import *
+from core import Errors 
+
 import importlib,argparse,sys,os,urllib2,json
 
 VAR=0
@@ -101,11 +103,13 @@ class ktf:
 		printAlert(1,"Module not found or server is down\n")
 		exit()
 
-ktf=ktf()
-if  Import and isRemote:
-	Import=ktf.RemoteImport()
-	ktf.ImportModule()
+try:
+	ktf=ktf()
+	if  Import and isRemote:
+		Import=ktf.RemoteImport()
+		ktf.ImportModule()
 
-elif Import             :ktf.ImportModule()
-else:
-	printAlert(1,"Check your Arguments\n       |Use '--i-module' for import modules\n       |Use '--i-module-remote' for import remote modules\n       |Use '--i-tool' for import tools\n")
+	elif Import:ktf.ImportModule()
+	else:printAlert(1,"Check your Arguments\n       |Use '--i-module' for import modules\n       |Use '--i-module-remote' for import remote modules\n       |Use '--i-tool' for import tools\n")
+		
+except:Errors.Errors()
