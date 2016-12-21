@@ -2,7 +2,7 @@
 #HEAD#########################################################
 #
 # Katana Framework | ktf.console                            
-# Last Modified: 07/11/2016
+# Last Modified: 21/12/2016
 #
 #########################################################HEAD#
 
@@ -11,11 +11,6 @@ from core import Banner , Errors
 from core.GeneralCommands import *
 from core.Design import *
 import importlib, argparse
-
-parser = argparse.ArgumentParser(description='Args for Console mode.',epilog='for More information go to https://github.com/powerscript/katanaframework')
-parser.add_argument("-l", "--list", action='store_true', default=False, help="List Modules installed")
-parser.add_argument("-q", "--quit", action='store_false', default=True, help="No show Banner")
-args = parser.parse_args()
 
 def katanaFrameworkConsole():
 	try:
@@ -27,9 +22,7 @@ def katanaFrameworkConsole():
 			root=GetRootModules()
 			for modules in root.findall('module'):
 				if action[len(SELECT)+1:] == modules.get('name'):
-					category = modules.find('category').text
-					filename = modules.find('filename').text
-					ModuleToStart = importlib.import_module("modules."+category+"."+filename) 
+					ModuleToStart = importlib.import_module("modules."+modules.find('category').text+"."+modules.find('filename').text) 
 					init=ModuleToStart.init()
 					real_init = init.options.copy()
 					init=LoadSession(init)
@@ -62,9 +55,6 @@ def katanaFrameworkConsole():
 	except:Errors.Errors()
 	  
 if __name__=="__main__":
+	
 	LoadBuffer()
-	if args.quit:Banner.LoadBanner()
-	if args.list:
-		ListModules()
-		exit()
 	katanaFrameworkConsole()
