@@ -1,3 +1,9 @@
+* 21/12/16
+  Added New Banner : Chapecoense commemoration
+  Added New Function : isPortLive, check port services.
+  Upgrading to Core:0.0.0.1 Build:0067
+  Happy New Years my friends.
+  
 * 13/11/16
   Deleted a Module : set/facebrok, is not appropriated.
   Added New Module : net/http.sniff, HTTP sniffer.
