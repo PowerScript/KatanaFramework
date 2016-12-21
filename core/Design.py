@@ -67,7 +67,7 @@ def functionNotFound()              :print " "+warning+" The function not Exists
 
 class DESIGN:
 	
-	def Line(self,CodeName,Description):print colors[0]+"	|"+colors[1]+"=="+colors[0]+"|::|  "+colors[7]+CodeName+colors[0]+"\t\t"+Description
+	def Line(self,CodeName,Description):print colors[0]+"	|"+colors[1]+"="+colors[0]+"|:|  "+colors[7]+CodeName+colors[0]+"\t\t"+Description
 	
 	def option(self,lot):
 		more=""
