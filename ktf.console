@@ -57,4 +57,5 @@ def katanaFrameworkConsole():
 if __name__=="__main__":
 	
 	LoadBuffer()
+	Banner.LoadBanner()
 	katanaFrameworkConsole()
