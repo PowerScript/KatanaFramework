@@ -44,10 +44,13 @@ def main(run):
 	with open(init.var['file'],'r') as list_path:
 		for path in list_path:
 			path="/"+path.replace("\n","")
-			connection = httplib.HTTPConnection(init.var['target'],init.var['port'])
+			if init.var['port'] == "443" : 
+				connection = httplib.HTTPSConnection(init.var['target'])
+			else : connection = httplib.HTTPConnection(init.var['target'],int(init.var['port']))
 			connection.addheaders=[('User-agent', RamdonAgent())]
 			connection.request("GET",path)
 			response = connection.getresponse()
+
 			if response.status == 200 or response.status == 301:
 				printAlert(3," | Response "+init.var['target']+path)
 				Totalresults+="\t|"+init.var['target']+path+"\n"
