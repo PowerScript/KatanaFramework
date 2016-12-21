@@ -1,10 +1,10 @@
 #!/usr/bin/env python2
-#HEADER#######################
-# Katana framework           #
-# Help File                  #
-# Last Modified: 08/10/2016  #
-# Review: 1                  #
-#######################HEADER#
+#HEAD#########################################################
+#
+# Katana Framework | Help File                         
+# Last Modified: 21/12/2016
+#
+#########################################################HEAD#
 
 from GeneralCommands import *
 
@@ -26,7 +26,7 @@ def help():
      """+INVOKE+"""\t\t\t\t<--- Open a module in one new console 
      """+HELP+"""\t\t"""+HELP_SHORT+"""\t\t<--- Show help (this)
      """+CLEAR+"""\t\t"""+CLEAR_SHORT+"""\t\t<--- Clear screen
-     """+SAVEV+"""\t\t"""+SAVEV+"""\t\t<--- Save Variable
+     """+SAVEV+"""\t\t"""+SAVEV+"""\t\t<--- Save Result
      """+SESSION+"""\t\t""""""\t\t<--- Session
      """+EXECUTECOMMAND+"""\t\t"""+EXECUTECOMMAND+"""\t\t<--- Execute System Commands
      f::\t\tf::\t\t<--- Execute Functions
@@ -47,15 +47,29 @@ def help():
      ##USE
      f::Functions(Parameters)   <-->  f::get_aps(mon0,10)
      f::Functions               <-->  f::get_local_ip
-
+     
+     #Save Result("""+SAVEV+""")
+     if exist a output list in a module, you can save a item of list.
+     
+     Elements |#| ip        | mac               | ...
+     item 0   [0] 127.0.0.1 | FF:FF:FF:FF:FF:FF | ...
+     item 1   [1] 10.10.1.1 | FF:FF:FF:FF:FF:FC | ...
+     
+     ##USE (Type of elements allowed.)
+     ip:{index}                 <--> """+SAVEV+"""ip:0  --> save <-- 127.0.0.1
+     mac:{index}                <--> """+SAVEV+"""mac:1 --> save <-- FF:FF:FF:FF:FF:FC
+     
+     for invoke this variable saved.
+     set {parameter} ::{element}{index} 
+     set target ::IP{index}
+     
      #Session
-     session -l                 <--> list sessions of module
-     session -v {ID}            <--> view a session
-     session -i {ID}            <--> Use a session
-     session -d {ID}            <--> Delete a session
+     """+SESSION+""" -l                 <--> list sessions of module
+     """+SESSION+""" -v {ID}            <--> view a session
+     """+SESSION+""" -i {ID}            <--> Use a session
+     """+SESSION+""" -d {ID}            <--> Delete a session
 
-     #LINKS
-     Please go to 
-     https://github.com/PowerScript/KatanaFramework 
-     for more information.
+     #TODO
+     Please go to https://github.com/PowerScript/KatanaFramework 
+     for more information go to doc folder.
      """
