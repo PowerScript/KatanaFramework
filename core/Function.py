@@ -9,6 +9,7 @@
 import logging
 logging.getLogger("scapy.runtime").setLevel(logging.ERROR)
 from scapy.all import *
+from Design import *
 from lib.adb.adb import adb_commands
 import xml.etree.ElementTree as ET
 
