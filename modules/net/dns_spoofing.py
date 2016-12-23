@@ -31,7 +31,7 @@ def init():
 	}
 
 	init.aux =  "\n Devices Founds: """+str(get_interfaces())
-	init.aux += "Functions     : to edit the DNS rules. 'x::nano "+init.options['hostfile'][0]+"'\n"
+	init.aux += " Functions     : to edit the DNS rules. 'x::nano "+init.options['hostfile'][0]+"'\n"
 	return init
 # END INFORMATION MODULE
 
