@@ -19,7 +19,7 @@ VERBOSE            =True
 
 # Errors Log
 """Saves all error events in a log."""
-ERROR_LOG          =True
+ERROR_LOG          =False
 
 # Enable Auto-load Session
 """Load last session in the module"""
