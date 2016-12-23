@@ -30,15 +30,14 @@ def init():
 		'hostfile' :["files/test/host" ,True ,'DNS\'s Spoofed File']
 	}
 
-	init.aux = """
- Devices Founds: """+str(get_interfaces())+"""
- Functions     : to edit the DNS rules. 'x::nano """+init.options['hostfile'][0]+"""'
-	"""
+	init.aux =  "\n Devices Founds: """+str(get_interfaces())
+	init.aux += "Functions     : to edit the DNS rules. 'x::nano "+init.options['hostfile'][0]+"'\n"
 	return init
 # END INFORMATION MODULE
 
 # CODE MODULE    ############################################################################################
 def main(run):
+	
 	if isConect() and checkDevice(init.var['interface']):
 		Loadingfile(init.var['hostfile'])
 		open(init.var['hostfile'],'r')
