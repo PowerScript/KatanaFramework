@@ -3,12 +3,12 @@
 #HEAD#########################################################
 #
 # Katana Framework | Banners                           
-# Last Modified: 09/11/2016
+# Last Modified: 23/12/2016
 #
 #########################################################HEAD#
 
 from core import colors,Information
-from Function import get_number_modules,get_number_tools
+from Internal import get_number_modules,get_number_tools
 import random          
 
 

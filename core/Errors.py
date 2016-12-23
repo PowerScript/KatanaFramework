@@ -2,16 +2,13 @@
 #HEAD#########################################################
 #
 # Katana Framework | Errors                           
-# Register of Errors and Event 
-#
-# 
-# Last Modified: 01/06/2016
+# Last Modified: 23/12/2016
 #
 #########################################################HEAD#
 
 from Design import *
 from Default import ERROR_LOG
-from Function import SaveErrorLog
+from Internal import SaveErrorLog
 
 import sys
 d=DESIGN()                   

@@ -2,12 +2,12 @@
 #HEAD#########################################################
 #
 # Katana Framework                        
-# Last Modified: 13/12/2016
+# Last Modified: 23/12/2016
 #
 #########################################################HEAD#
 
 
-from Function import (
+from Internal import (
 	KatanaCheckActionShowModules,
 	KatanaCheckActionUseModule,
 	KatanaCheckActionExefunction,
@@ -21,7 +21,6 @@ from Function import (
 	KatanaCheckSession,
 	LoadBuffer,
 	ShowFullOptions,
-	Executefunction,
 	ShowInformationModule,
 	ShowOptions,
 	UpdateValue,
@@ -34,4 +33,5 @@ from Function import (
 	SessionInterative,
 	LoadGlobalVariables)
 
+from Function import Executefunction
 import importlib
