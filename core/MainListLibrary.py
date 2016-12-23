@@ -2,7 +2,7 @@
 #HEAD#########################################################
 #
 # Katana Framework                        
-# Last Modified: 11/10/2016
+# Last Modified: 13/12/2016
 #
 #########################################################HEAD#
 
@@ -31,4 +31,7 @@ from Function import (
 	SaveSession,
 	ListModules,
 	LoadSession,
-	SessionInterative)
+	SessionInterative,
+	LoadGlobalVariables)
+
+import importlib

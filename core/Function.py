@@ -2,7 +2,7 @@
 #HEAD#########################################################
 #
 # Katana Framework | Function                           
-# Last Modified: 21/12/2016
+# Last Modified: 23/12/2016
 #
 #########################################################HEAD#
 
@@ -182,18 +182,36 @@ def ShowFullOptions(Options):
 			print Options.aux
 	except:b=0
 
-### VARIABLES TEMP ###
+### GLOBALS VARIABLES ###
 def SaveValue(secuence):
 	try:
-		if secuence[len(SAVEV):len(SAVEV)+2]=="ip":
+		if secuence[len(SAVEV):len(SAVEV)+2].lower()=="ip":
 			nID  = int(secuence[len(SAVEV)+3:])-1
 		 	grab = re.findall('([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)', KTFVAR[nID])
 		 	address = grab[0]
 			VARIABLESIP.append(address)
 		 	N=len(VARIABLESIP)
-			print " ---> variable Saved {"+colors[8]+"::IP"+str(N)+colors[0]+"} "+address
+		 	GlobalVariable("+","IP",address)
+			printAlert(3,"---> variable Saved {"+colors[8]+"::IP"+str(N)+colors[0]+"} "+address)
 
-		if secuence[len(SAVEV):len(SAVEV)+3]=="mac":
+		if secuence[len(SAVEV):len(SAVEV)+4].lower()=="list":
+			print "    |-->VARIABLES IP"
+			index = 1 
+			for value in VARIABLESIP:
+				print "    | ::IP"+str(index)+" --> "+value
+				index+=1
+			print "    |-->VARIABLES MAC"
+			index = 1 
+			for value in VARIABLESMAC:
+				print "    | ::MAC"+str(index)+" --> "+value
+				index+=1
+
+		if secuence[len(SAVEV):len(SAVEV)+3].lower()=="del":
+			if secuence[len(SAVEV)+4 : len(SAVEV)+6].upper() == "IP"  : GlobalVariable("-", "IP", secuence[len(SAVEV)+6 : ])
+			if secuence[len(SAVEV)+4 : len(SAVEV)+7].upper() == "MAC" : GlobalVariable("-","MAC", secuence[len(SAVEV)+7 : ])
+			LoadGlobalVariables()
+
+		if secuence[len(SAVEV):len(SAVEV)+3].lower()=="mac":
 		 	nID  = int(secuence[len(SAVEV)+4:])-1
 		 	p = re.compile(ur'([0-9a-f]{2}(?::[0-9a-f]{2}){5})', re.IGNORECASE)
 		 	address=re.findall(p, KTFVAR[nID])
@@ -203,8 +221,10 @@ def SaveValue(secuence):
 		 	address=address.replace("]","")
 		 	VARIABLESMAC.append(address)
 		 	N=len(VARIABLESMAC)
+		 	GlobalVariable("+","MAC",address)
 			printAlert(3,"---> variable Saved {"+colors[8]+"::MAC"+str(N)+colors[0]+"} "+address)
-	except:printAlert(6,"Check Again your Command for TEMP variables.")
+
+	except : printAlert(6,"Check Again your Command for Global variables.")
 
 ### PING ###
 def isLive(defaulthost, defaultport):
@@ -862,5 +882,41 @@ def LoadSession(init):
 		except:extra=False
 	return init
 
+### LOAD GLOBAL VARIABLES ###
+def LoadGlobalVariables():
 
+	for value in  VARIABLESIP:
+		VARIABLESIP.remove(value)
+
+	for value in  VARIABLESMAC:
+		VARIABLESMAC.remove(value)
+
+	data_file   = open('core/logs/variables.globals.json','r')
+	data_string = json.loads(data_file.read())
+
+	for value in  data_string['variable_IP']:
+		VARIABLESIP.append(str(value))
+	for value in  data_string['variable_MAC']:
+		VARIABLESMAC.append(str(value))
+
+### ADD NEW GLOBAL VARIABLE ###
+def GlobalVariable(action,typev,variable):
+	try:
+		with open('core/logs/variables.globals.json', 'r+') as jsond:
+			data = json.load(jsond)
+
+			if action == "+":
+				if typev == "IP"  : data["variable_IP"].append(variable)
+				if typev == "MAC" : data["variable_MAC"].append(variable)
+
+			if action == "-":
+				if typev == "IP"  : del data["variable_IP"][(int(variable) - 1)]
+				if typev == "MAC" : del data["variable_MAC"][(int(variable) - 1)]
+
+
+			jsond.seek(0)  
+			jsond.write(json.dumps(data))
+			jsond.truncate()
+
+	except Exception as Error: printAlert(1,Error)
 

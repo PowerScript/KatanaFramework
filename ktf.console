@@ -2,15 +2,14 @@
 #HEAD#########################################################
 #
 # Katana Framework | ktf.console                            
-# Last Modified: 21/12/2016
+# Last Modified: 23/12/2016
 #
 #########################################################HEAD#
 
 from core.MainListLibrary import *
-from core import Banner , Errors 
 from core.GeneralCommands import *
+from core import Banner , Errors 
 from core.Design import *
-import importlib
 
 def katanaFrameworkConsole():
 	try:
@@ -49,13 +48,14 @@ def katanaFrameworkConsole():
 							else:KatanaCheckActionGlobalCommands(actions)
 						except:Errors.Errors()
 			katanaFrameworkConsole()
-		elif KatanaCheckActionExefunction(action):Executefunction(action)
-		else                                     :KatanaCheckActionGlobalCommands(action)
+		elif KatanaCheckActionExefunction(action)                       :Executefunction(action)
+		else                                                            :KatanaCheckActionGlobalCommands(action)
 		katanaFrameworkConsole()
-	except:Errors.Errors()
+	except                                                              :Errors.Errors()
 	  
 if __name__=="__main__":
 	
 	LoadBuffer()
+	LoadGlobalVariables()
 	Banner.LoadBanner()
 	katanaFrameworkConsole()

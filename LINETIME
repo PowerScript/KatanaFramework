@@ -1,3 +1,7 @@
+* 23/12/16
+  Added New Dependence : bs4, html parsing.
+  improvement in the function Global variables
+
 * 21/12/16
   Added New Banner : Chapecoense commemoration
   Added New Function : isPortLive, check port services.

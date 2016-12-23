@@ -2,7 +2,7 @@
 #HEAD#########################################################
 #
 # Katana Framework | ktf.run                            
-# Last Modified: 20/10/2016
+# Last Modified: 23/12/2016
 #
 #########################################################HEAD#
 
@@ -15,7 +15,7 @@ from core import Errors
 import xml.etree.ElementTree as ET
 import importlib,argparse,copy
 LoadBuffer()
-
+LoadGlobalVariables()
 parser = argparse.ArgumentParser()
 parser.add_argument("-m", "--module", help=" Script module to run.")
 parser.add_argument("-q", "--quit"  , action='store_false', default=True, help="No show Banner")
@@ -58,6 +58,6 @@ if __name__=="__main__":
 						ModuleToStart.main(True)
 					elif KatanaCheckActionisBack(actions)       :printAlert(6,"This Commands just work in ktf.console mode.")
 					else :
-						if actions != "":KatanaCheckActionGlobalCommands(actions)
-				except:Errors.Errors()
+						if actions != ""                        :KatanaCheckActionGlobalCommands(actions)
+				except                                          :Errors.Errors()
 	ModuleNotFound(args.module)
