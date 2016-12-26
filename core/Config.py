@@ -30,7 +30,7 @@ XTERM_OPTION       =False
 
 # SESSIONS SAVE
 """Not save Sessions"""
-SAVE_SESSIONS       =False
+SAVE_SESSIONS       =True
 
 
 ### END SETTING FRAMEWORK ###
