@@ -2,7 +2,7 @@
 #HEAD#########################################################
 #
 # Katana Framework | install                         
-# Last Modified: 23/12/2016
+# Last Modified: 25/12/2016
 #
 #########################################################HEAD#
 
@@ -11,18 +11,17 @@ import os, time, subprocess
 from sys import stdout
 
 
-def Command_exe(msg,cmd,std):
+
+def Command_exe(msg,cmd):
 	i = "\033[1mSTATUS"+colors.W+":[Processing]"
-	stdout.write(" " + information + " " + msg + " %s" % i)
+	stdout.write(" " + msg + " %s" % i)
 	stdout.flush()
-	status_1=subprocess.call(cmd+' >/dev/null 2>&1', shell=True)
-	if status_1==0:
+	if subprocess.call(cmd+' >/dev/null 2>&1', shell=True)==0:
 		i = "[\033[1m"+colors.G+"OK"+colors.W+"]"
 	else:
 		i = "["+colors.R+"\033[1mERROR"+colors.W+"]["+colors.O+"\033[1mWARNING"+colors.W+"]"
-
-	stdout.write("\r" + " " + information + " " + msg +" STATUS:%s                      \r" % i)
-
+		
+	stdout.write("\r " + msg +" STATUS:%s" % i)
 
 print ""
 print "                    "+colors.B+",:"+colors.W+"       "+colors.B+":,"+colors.W+"                   				 "#                    ,:       :,                   
@@ -52,34 +51,9 @@ if os.getuid() != 0:
 	exit(1)
 time.sleep(1)
 
-Shortcuts="""
-ln -f -r -s /usr/share/KatanaFramework/core/shorts/ktf.console /usr/bin/ktf.console ;
-ln -f -r -s /usr/share/KatanaFramework/core/shorts/ktf.linker  /usr/bin/ktf.linker  ;
-ln -f -r -s /usr/share/KatanaFramework/core/shorts/ktf.update  /usr/bin/ktf.update  ;
-ln -f -r -s /usr/share/KatanaFramework/core/shorts/ktf.ktf     /usr/bin/ktf.ktf     ;
-ln -f -r -s /usr/share/KatanaFramework/core/shorts/ktf.tool    /usr/bin/ktf.tool    ;
-ln -f -r -s /usr/share/KatanaFramework/core/shorts/ktf.gui     /usr/bin/ktf.gui     ;
-ln -f -r -s /usr/share/KatanaFramework/core/shorts/ktf.run     /usr/bin/ktf.run     
-""" 
-Files="""
-cp -r * /usr/share/KatanaFramework/doc/man/ /usr/local/share/man/man1/   ;
-cd /usr/share/KatanaFramework/files/                                     ;
-tar xvf /usr/share/KatanaFramework/files/exiftool.tar     >/dev/null 2>&1;
-tar xvf /usr/share/KatanaFramework/files/getdatareport.tar>/dev/null 2>&1;
-rm -R /usr/share/KatanaFramework/files/*.tar              >/dev/null 2>&1;
-rm /usr/share/KatanaFramework/install                     >/dev/null 2>&1;
-rm /usr/share/KatanaFramework/dependencies                >/dev/null 2>&1;
-rm /usr/share/KatanaFramework/README.md                   >/dev/null 2>&1 
-"""
-Preinstall="""
-rm -f /usr/bin/ktf.console;
-rm -f /usr/bin/ktf.linker;
-rm -f /usr/bin/ktf.update;
-rm -f /usr/bin/ktf.ktf;
-rm -f /usr/bin/ktf.tool;
-rm -f /usr/bin/ktf.run;
-rm -f /usr/bin/ktf.gui;
-"""
+Shortcuts ="ln -f -r -s /usr/share/KatanaFramework/core/shorts/ktf.console /usr/bin/ktf.console ; ln -f -r -s /usr/share/KatanaFramework/core/shorts/ktf.linker  /usr/bin/ktf.linker  ; ln -f -r -s /usr/share/KatanaFramework/core/shorts/ktf.update  /usr/bin/ktf.update  ; ln -f -r -s /usr/share/KatanaFramework/core/shorts/ktf.ktf     /usr/bin/ktf.ktf     ; ln -f -r -s /usr/share/KatanaFramework/core/shorts/ktf.tool    /usr/bin/ktf.tool    ; ln -f -r -s /usr/share/KatanaFramework/core/shorts/ktf.gui     /usr/bin/ktf.gui     ; ln -f -r -s /usr/share/KatanaFramework/core/shorts/ktf.run     /usr/bin/ktf.run "
+Files     ="cp -r * /usr/share/KatanaFramework/doc/man/ /usr/local/share/man/man1/   ; cd /usr/share/KatanaFramework/files/                                     ; tar xvf /usr/share/KatanaFramework/files/exiftool.tar >/dev/null 2>&1    ; tar xvf /usr/share/KatanaFramework/files/getdatareport.tar >/dev/null 2>&1; rm -R /usr/share/KatanaFramework/files/*.tar              ; rm /usr/share/KatanaFramework/install                     ; rm /usr/share/KatanaFramework/dependencies                ; rm /usr/share/KatanaFramework/README.md "
+Preinstall="rm -f /usr/bin/ktf.console; rm -f /usr/bin/ktf.linker; rm -f /usr/bin/ktf.update; rm -f /usr/bin/ktf.ktf; rm -f /usr/bin/ktf.tool; rm -f /usr/bin/ktf.run; rm -f /usr/bin/ktf.gui; "
 
 print " INSTALLING"
 print Command_exe("["+time.strftime('%H:%M:%S')+"] Pre-installing.                  ",Preinstall)
