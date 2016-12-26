@@ -2,7 +2,7 @@
 #HEAD#########################################################
 #
 # Katana Framework | ktf.console                            
-# Last Modified: 23/12/2016
+# Last Modified: 24/12/2016
 #
 #########################################################HEAD#
 
@@ -18,11 +18,10 @@ def katanaFrameworkConsole():
 			ListModules()
 			katanaFrameworkConsole()
 		if KatanaCheckActionUseModule(action):
-			root=GetRootModules()
-			for modules in root.findall('module'):
+			for modules in GetRootModules().findall('module'):
 				if action[len(SELECT)+1:] == modules.get('name'):
-					ModuleToStart = importlib.import_module("modules."+modules.find('category').text+"."+modules.find('filename').text) 
-					init=ModuleToStart.init()
+					InstanceModule = import_module("modules."+modules.find('category').text+"."+modules.find('filename').text) 
+					init=InstanceModule.init()
 					real_init = init.options.copy()
 					init=LoadSession(init)
 					while True:
@@ -35,15 +34,10 @@ def katanaFrameworkConsole():
 							elif KatanaCheckSession(actions)            :init=SessionInterative(actions,init)
 							elif KatanaCheckActionSetValue(actions)     :init=UpdateValue(actions,init,real_init)
 							elif KatanaCheckActionGetInfo(actions)      :ShowInformationModule(init)
-							elif runModule(actions):
-								for Namevalue in init.options:
-									init.var.update({Namevalue:init.options[Namevalue][0]})
-								try:
-									for Namevalue in init.extra:
-										init.var.update({Namevalue:init.extra[Namevalue][0]})
-								except:Nothing=False
+							elif runModule(actions)                     :
 								SaveSession(init)
-								ModuleToStart.main(True)
+								init = UpdateInternalModule(init)
+								InstanceModule.main(True)
 							elif KatanaCheckActionisBack(actions)       :katanaFrameworkConsole()
 							else:KatanaCheckActionGlobalCommands(actions)
 						except:Errors.Errors()

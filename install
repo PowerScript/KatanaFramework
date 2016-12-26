@@ -2,19 +2,27 @@
 #HEAD#########################################################
 #
 # Katana Framework | install                         
-# Last Modified: 13/11/2016
+# Last Modified: 23/12/2016
 #
 #########################################################HEAD#
 
 from core import Information, colors, Update
 import os, time, subprocess
+from sys import stdout
 
-def status_cmd(cmd):
+
+def Command_exe(msg,cmd,std):
+	i = "\033[1mSTATUS"+colors.W+":[Processing]"
+	stdout.write(" " + information + " " + msg + " %s" % i)
+	stdout.flush()
 	status_1=subprocess.call(cmd+' >/dev/null 2>&1', shell=True)
 	if status_1==0:
-		return "[\033[1m"+colors.G+"OK"+colors.W+"]"+colors.W
+		i = "[\033[1m"+colors.G+"OK"+colors.W+"]"
 	else:
-		return "["+colors.R+"\033[1mERROR"+colors.W+"]["+colors.R+"\033[1mWARNING"+colors.W+"]"
+		i = "["+colors.R+"\033[1mERROR"+colors.W+"]["+colors.O+"\033[1mWARNING"+colors.W+"]"
+
+	stdout.write("\r" + " " + information + " " + msg +" STATUS:%s                      \r" % i)
+
 
 print ""
 print "                    "+colors.B+",:"+colors.W+"       "+colors.B+":,"+colors.W+"                   				 "#                    ,:       :,                   
@@ -74,16 +82,16 @@ rm -f /usr/bin/ktf.gui;
 """
 
 print " INSTALLING"
-print " ["+time.strftime('%H:%M:%S')+"]",status_cmd(Preinstall),"Pre-installing."
-print " ["+time.strftime('%H:%M:%S')+"]",status_cmd('sudo bash dependencies'),"Checking dependencies."
+print Command_exe("["+time.strftime('%H:%M:%S')+"] Pre-installing.                  ",Preinstall)
+print Command_exe("["+time.strftime('%H:%M:%S')+"] Checking dependencies.           ",'sudo bash dependencies')
 print " ["+time.strftime('%H:%M:%S')+"] Checking Updates."
 print  "   |"
 Update.update("installer",False)
 print  "   |"
-print " ["+time.strftime('%H:%M:%S')+"]",status_cmd('mkdir -p /usr/share/KatanaFramework'),"Creating Folder."
-print " ["+time.strftime('%H:%M:%S')+"]",status_cmd('cp -r * /usr/share/KatanaFramework'),"Copying files."
-print " ["+time.strftime('%H:%M:%S')+"]",status_cmd(Shortcuts),"Creating Shortcuts."
-print " ["+time.strftime('%H:%M:%S')+"]",status_cmd(Files),"Extracting Files."
-print " ["+time.strftime('%H:%M:%S')+"]",status_cmd('chmod -R -c 777 /usr/share/KatanaFramework/'),"Giving privileges."
+print Command_exe("["+time.strftime('%H:%M:%S')+"] Creating Folder.                 ",'mkdir -p /usr/share/KatanaFramework')
+print Command_exe("["+time.strftime('%H:%M:%S')+"] Copying files.                   ",'cp -r * /usr/share/KatanaFramework')
+print Command_exe("["+time.strftime('%H:%M:%S')+"] Creating Shortcuts.              ",Shortcuts)
+print Command_exe("["+time.strftime('%H:%M:%S')+"] Extracting Files.                ",Files)
+print Command_exe("["+time.strftime('%H:%M:%S')+"] Giving privileges.               ",'chmod -R -c 777 /usr/share/KatanaFramework/')
 
 print "\n if all is [OK] Katana was installed, use ktf.console\n"

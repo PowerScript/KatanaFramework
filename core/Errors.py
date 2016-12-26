@@ -7,7 +7,7 @@
 #########################################################HEAD#
 
 from Design import *
-from Default import ERROR_LOG
+from Config import ERROR_LOG
 from Internal import SaveErrorLog
 
 import sys

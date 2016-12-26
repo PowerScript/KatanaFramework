@@ -62,13 +62,13 @@ def help():
      Variable saved in ::{element}{index} <---------!
 
      list                       <--> List Global variables
-     del:{element}:{index}      <--> delete a Global variable
+     del:{element}:{index}      <--> delete a Global variable, (*) for all
      
      ### Examples.
      """+SAVEV+"""ip:0
      set target ::IP4
      """+SAVEV+"""list
-     """+SAVEV+"""del:IP4
+     """+SAVEV+"""del:IP4 or """+SAVEV+"""del:*
 
      #Session.
      """+SESSION+""" -l                 <--> list sessions of module

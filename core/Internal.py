@@ -2,7 +2,7 @@
 #HEAD#########################################################
 #
 # Katana Framework | Internal Core Intructions                           
-# Last Modified: 23/12/2016
+# Last Modified: 24/12/2016
 #
 #########################################################HEAD#
 
@@ -10,7 +10,9 @@
 
 from GeneralCommands import *
 from Default import *
+from Config import *
 from Design import *
+
 from Update import update
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
@@ -24,7 +26,8 @@ VARIABLESIP=[]
 VARIABLESMAC=[]
 
 Desing=DESIGN()
-KTFVAR=[]
+printk=printk()
+G_KTFVAR=[]
 
 ### GENERAL ###
 def KatanaCheckActionShowModules(action):
@@ -38,7 +41,7 @@ def UpdateValue(action,matriz,real):
 			try:
 				if checkValue[0:4] == "::IP" : checkValue = VARIABLESIP[int(checkValue[4:])-1]
 				if checkValue[0:5] == "::MAC": checkValue = VARIABLESMAC[int(checkValue[5:])-1]
-			except:printAlert(6,"this value is recognized as an internal command but as it is not assigned to be used as value.")
+			except:printk.war("this value is recognized as an internal command but as it is not assigned to be used as value.")
 			ChangeValue(Namevalue,checkValue)
 			if real[Namevalue][0].isdigit():type_of_parameter = "integer"
 			elif real[Namevalue][0] == "true" or real[Namevalue][0] == "false" : type_of_parameter = "boolean"
@@ -48,7 +51,7 @@ def UpdateValue(action,matriz,real):
 			elif checkValue == "true" or checkValue == "false" : type_of_value = "boolean"
 			else: type_of_value = "string"
 			
-			if type_of_value != type_of_parameter:printAlert(6,"the value you entered is not the same data type parameter.")
+			if type_of_value != type_of_parameter:printk.war("the value you entered is not the same data type parameter.")
 			matriz.options[Namevalue] = [checkValue,matriz.options[Namevalue][1],matriz.options[Namevalue][2]]
 			return matriz
 	try:
@@ -104,7 +107,7 @@ def ShowInformationModule(init):
 def KatanaCheckActionGlobalCommands(action):
 	if     action[:len(EXIT)]        == EXIT   or action[:len(EXIT)]        == EXIT_SHORT  : sys.exit(1995)
 	elif   action[:len(HELP)]        == HELP   or action[:len(HELP_SHORT)]  == HELP_SHORT  : Help.help()
-	elif   action[:len("version")]   == "version"        :printAlert(3,"V:["+version+"] B:["+build+"] D:["+date+"]")
+	elif   action[:len("version")]   == "version"        :printk.suff("V:["+version+"] B:["+build+"] D:["+date+"]")
 	elif   action                    == UPDATE or action                    == UPDATE_SHORT: update("functions",True)
 	elif action[:len(EXECUTECOMMAND)]==EXECUTECOMMAND    :subprocess.call(action[len(EXECUTECOMMAND):], shell=True)
 	elif   action[:len(CLEAR)]       == CLEAR  or action[:len(CLEAR_SHORT)] == CLEAR_SHORT : subprocess.call('clear', shell=True)
@@ -159,34 +162,35 @@ def SaveValue(secuence):
 	try:
 		if secuence[len(SAVEV):len(SAVEV)+2].lower()=="ip":
 			nID  = int(secuence[len(SAVEV)+3:])-1
-		 	grab = re.findall('([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)', KTFVAR[nID])
+		 	grab = re.findall('([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)', G_KTFVAR[nID])
 		 	address = grab[0]
 			VARIABLESIP.append(address)
 		 	N=len(VARIABLESIP)
 		 	GlobalVariable("+","IP",address)
-			printAlert(3,"---> variable Saved {"+colors[8]+"::IP"+str(N)+colors[0]+"} "+address)
+			printk.suff("---> variable Saved {"+colors[8]+"::IP"+str(N)+colors[0]+"} "+address)
 
 		if secuence[len(SAVEV):len(SAVEV)+4].lower()=="list":
-			print "    |-->VARIABLES IP"
+			print "     |-->VARIABLES IP"
 			index = 1 
 			for value in VARIABLESIP:
-				print "    | ::IP"+str(index)+" --> "+value
+				print "     | ::IP"+str(index)+" --> "+value
 				index+=1
-			print "    |-->VARIABLES MAC"
+			print "     |-->VARIABLES MAC"
 			index = 1 
 			for value in VARIABLESMAC:
-				print "    | ::MAC"+str(index)+" --> "+value
+				print "     | ::MAC"+str(index)+" --> "+value
 				index+=1
 
 		if secuence[len(SAVEV):len(SAVEV)+3].lower()=="del":
 			if secuence[len(SAVEV)+4 : len(SAVEV)+6].upper() == "IP"  : GlobalVariable("-", "IP", secuence[len(SAVEV)+6 : ])
 			if secuence[len(SAVEV)+4 : len(SAVEV)+7].upper() == "MAC" : GlobalVariable("-","MAC", secuence[len(SAVEV)+7 : ])
+			if secuence[len(SAVEV)+4 : len(SAVEV)+5].upper() == "*"   : GlobalVariable("-", "*" , "*")
 			LoadGlobalVariables()
 
 		if secuence[len(SAVEV):len(SAVEV)+3].lower()=="mac":
 		 	nID  = int(secuence[len(SAVEV)+4:])-1
 		 	p = re.compile(ur'([0-9a-f]{2}(?::[0-9a-f]{2}){5})', re.IGNORECASE)
-		 	address=re.findall(p, KTFVAR[nID])
+		 	address=re.findall(p, G_KTFVAR[nID])
 		 	address=str(address)
 		 	address=address.replace("'","")
 		 	address=address.replace("[","")
@@ -194,9 +198,9 @@ def SaveValue(secuence):
 		 	VARIABLESMAC.append(address)
 		 	N=len(VARIABLESMAC)
 		 	GlobalVariable("+","MAC",address)
-			printAlert(3,"---> variable Saved {"+colors[8]+"::MAC"+str(N)+colors[0]+"} "+address)
+			printk.suff("---> variable Saved {"+colors[8]+"::MAC"+str(N)+colors[0]+"} "+address)
 
-	except : printAlert(6,"Check Again your Command for Global variables.")
+	except : printk.war("Check Again your Command for Global variables.")
 
 ### MAQUETAR ###
 def Maquetar(matriz):
@@ -256,16 +260,6 @@ def Maquetar(matriz):
 
 	print LINE+"\n"
 
-### RUN TASK ###
-def Rtask(process):
-	xtem="" 
-	if XTERM_OPTION:xtem="xterm -e "
-	commands.getoutput(xtem+process)
-
-### SUBPROCESS THREAD ###
-def Subprocess(process):
-	Hire=threading.Thread(target=Rtask, args=(process,))  
-	Hire.start()
 
 ### LOG's ###
 def saveRegister(init, data):  
@@ -422,35 +416,27 @@ def GetRootModules():
 	return root
 
 
-### CHECK IF A PROJECT IS INSTALLED ###
-def CheckProjectInstalled(project):
-	status=subprocess.call("if ! hash "+project+" 2>/dev/null; then echp 3 >/dev/null 2>&1 ; fi", shell=True)
-	if status==0:
-		return project+" is installed"
-	else:
-		return project+" is not installed"
-
-
 ### SAVE SESSIONS ###
 def SaveSession(init):
-	time_current=time.strftime('%c')
-	log="{ \"Session\" : {  \"Module\" : \""+init.CodeName+"\", \"Time\" : \""+time_current+"\" , \"Options\" : ["
-	for option in init.options:
-		log+="{ \""+option+"\" : \""+init.var[option]+"\"},"
-	log += "{\"ktf\":\"ktf\"}] , \"Extra\" : ["
-	try:
-		for option in init.extra:
+	if SAVE_SESSIONS:
+		time_current=time.strftime('%c')
+		log="{ \"Session\" : {  \"Module\" : \""+init.CodeName+"\", \"Time\" : \""+time_current+"\" , \"Options\" : ["
+		for option in init.options:
 			log+="{ \""+option+"\" : \""+init.var[option]+"\"},"
-		log += "{\"ktf\":\"ktf\"}"
-	except:value=False
-	log += "]}}"
-	time_current=time_current.replace(" ","_")
-	Modules = str(init.CodeName)
-	Modules = Modules.split("/")
-	time_file_name=time.strftime('%d:%m:%Y_%H:%M:%S')
-	logs=open('core/sessions/'+time_file_name+'_'+Modules[0]+"-"+Modules[1]+'.session','a')
-	logs.write(log)
-	logs.close()
+		log += "{\"ktf\":\"ktf\"}] , \"Extra\" : ["
+		try:
+			for option in init.extra:
+				log+="{ \""+option+"\" : \""+init.var[option]+"\"},"
+			log += "{\"ktf\":\"ktf\"}"
+		except:value=False
+		log += "]}}"
+		time_current=time_current.replace(" ","_")
+		Modules = str(init.CodeName)
+		Modules = Modules.split("/")
+		time_file_name=time.strftime('%d:%m:%Y_%H:%M:%S')
+		logs=open('core/sessions/'+time_file_name+'_'+Modules[0]+"-"+Modules[1]+'.session','a')
+		logs.write(log)
+		logs.close()
 
 ### SESSION OPTIONS ###
 def SessionInterative(action,init):
@@ -511,11 +497,13 @@ def SessionInterative(action,init):
 
 ### LOAD SESSIONS ###
 def LoadSession(init):
+	original = init
 	if AUTO_LOAD_SESSION:
 		try:
 			init=SessionInterative("session -i 0",init)
+			return original
 		except:extra=False
-	return init
+	return original
 
 ### LOAD GLOBAL VARIABLES ###
 def LoadGlobalVariables():
@@ -534,7 +522,7 @@ def LoadGlobalVariables():
 	for value in  data_string['variable_MAC']:
 		VARIABLESMAC.append(str(value))
 
-### ADD NEW GLOBAL VARIABLE ###
+### GLOBAL VARIABLE ###
 def GlobalVariable(action,typev,variable):
 	try:
 		with open('core/logs/variables.globals.json', 'r+') as jsond:
@@ -547,11 +535,29 @@ def GlobalVariable(action,typev,variable):
 			if action == "-":
 				if typev == "IP"  : del data["variable_IP"][(int(variable) - 1)]
 				if typev == "MAC" : del data["variable_MAC"][(int(variable) - 1)]
+				if typev == "*"   :
 
+					for value in  data["variable_IP"]:
+						data["variable_IP"].remove(value)
+
+					for value in  data["variable_MAC"]:
+						data["variable_MAC"].remove(value)
 
 			jsond.seek(0)  
 			jsond.write(json.dumps(data))
 			jsond.truncate()
 
-	except Exception as Error: printAlert(1,Error)
+	except Exception as Error: printk.err(Error)
 
+### UPDATE INTERNAL VARIABLES OF MODULE ###
+def UpdateInternalModule(init):
+
+	for Namevalue in init.options:
+		init.var.update({Namevalue:init.options[Namevalue][0]})
+	
+	try:
+		for Namevalue in init.extra:
+			init.var.update({Namevalue:init.extra[Namevalue][0]})
+	except:Nothing=False
+
+	return init

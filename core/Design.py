@@ -3,13 +3,13 @@
 #HEAD#########################################################
 #
 # Katana Framework | Design                            
-# Last Modified: 23/08/2016
+# Last Modified: 24/12/2016
 #
 #########################################################HEAD#
 
 import time
 import Information
-from Default import VERBOSE
+from Config import VERBOSE
 
 colors=['\033[0m',   # 0}  WHITE
 		'\033[31m',  # 1}  RED
@@ -33,22 +33,9 @@ success    =colors[0]+"["+colors[7]+colors[2]+"suf"+colors[0]+"]"
 help       =colors[0]+"["+colors[7]+"hlp"+colors[0]+"]"
 warning    =colors[0]+"["+colors[7]+colors[3]+"war"+colors[0]+"]"
 runing     =colors[0]+"["+colors[2]+"run"+colors[0]+"]"
-waitkey    =colors[0]+"["+colors[8]+"key"+colors[0]+"]"
+wait       =colors[0]+"["+colors[8]+"wait"+colors[0]+"]"
+press      =colors[0]+"["+colors[8]+"press-key"+colors[0]+"]"
 
-Got=colors[0]+"["+colors[8]+"-->"+colors[0]+"]"
-Nrs=colors[0]+"["+colors[1]+"nrs"+colors[0]+"]"
-
-def printAlert(typ, msg):
-		if typ == 0 : 
-			if VERBOSE==True:print " "+information+" "+str(msg)
-		if typ == 1 : print " "+error+" "+str(msg)
-		if typ == 2 : print " "+help+" "+str(msg)
-		if typ == 3 : print " "+success+" "+str(msg)
-		if typ == 4 : print " "+Nrs+" "+str(msg)
-		if typ == 5 : print " "+step+" "+str(msg)
-		if typ == 6 : print " "+warning+" "+str(msg)
-		if typ == 7 : print " "+Got+" "+str(msg)
-		if typ == 8 : return " "+waitkey+" "+str(msg)
 
 def MainPrompt()                    :return colors[7]+" [ktf]:"+colors[0]
 def ClientPrompt(module,client)     :return colors[0]+" [ktf]("+colors[7]+colors[1]+module+colors[0]+":"+colors[9]+client+colors[0]+"):"+colors[0]
@@ -64,6 +51,23 @@ def helpAUX()                       :print " "+help+" Auxiliar module support"
 def NoDeviceFound(device)           :print " "+error+" The device '"+device+"' not was Found.\n"
 def CommandNotFound()               :print " "+warning+" Invalid parameter use show 'help' for more information"+colors[0]
 def functionNotFound()              :print " "+warning+" The function not Exists"+colors[0]
+def FunctionNoEnableForThisModule() :print " "+error+" This Commands just work in ktf.console mode."
+
+class printk():
+	def inf(self,msg):
+		if VERBOSE==True:print " "+information+" "+str(msg)
+	def err(self,msg):
+		print " "+error+" "+str(msg)
+	def suff(self,msg):
+		print " "+success+" "+str(msg)
+	def step(self,msg):
+		print " "+step+" "+str(msg)
+	def war(self,msg):
+		print " "+warning+" "+str(msg)
+	def wait(self,msg):
+		print " "+wait+" "+str(msg)
+	def pkey(self,msg):
+		return "   | "+press+" "+str(msg)+"\n   |"
 
 class DESIGN:
 	

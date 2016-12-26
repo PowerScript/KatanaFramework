@@ -1,40 +1,10 @@
 #!/usr/bin/env python
 #HEAD#########################################################
 #
-# Katana Framework | Default                           
-# Settings and Default Variables of Framework, here you can
-# change value of variables for adapter to your system.
-#
-# 
-# Last Modified: 08/10/2016
+# Katana Framework | Default parameters                       
+# Last Modified: 23/12/2016
 #
 #########################################################HEAD#
-
-
-### SETTING FRAMEWORK ###
-
-# Verbose Mode
-"""Show all the alert messages."""
-VERBOSE            =True
-
-# Errors Log
-"""Saves all error events in a log."""
-ERROR_LOG          =False
-
-# Enable Auto-load Session
-"""Load last session in the module"""
-AUTO_LOAD_SESSION  =True
-
-# Apache Folder
-"""Path of Apache2"""
-PATCH_WWW          ="/var/www/html/"
-
-# Enable Xterm
-"""It shows processes that are running through wires, shown with xterm"""
-XTERM_OPTION       =False
-
-### END SETTING FRAMEWORK ###
-
 
 # DEFAULT VARIABLES
 """Names of main files"""
@@ -61,7 +31,7 @@ MAC_TARGET         ="AA:A1:BB:B2:CC:C1"
 CHANNEL_TARGET     ="9"
 ESSID_TARGET       ="FUCK-ME"
 MY_IP              ="192.168.1.225"
-GATEWAY_ADR        ="192.168.1.254"
+GATEWAY            ="192.168.1.254"
 EMAIL              ="root@localhost"
 USERNAME           ="root"
 PASSWORD           ="toor"

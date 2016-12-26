@@ -2,7 +2,7 @@
 #HEAD#########################################################
 #
 # Katana Framework | ktf.run                            
-# Last Modified: 23/12/2016
+# Last Modified: 24/12/2016
 #
 #########################################################HEAD#
 
@@ -10,30 +10,24 @@
 from core.MainListLibrary import *
 from core.Default import *    
 from core.Design import *
-from core import Errors 
+from core import Banner , Errors 
 
-import xml.etree.ElementTree as ET
-import importlib,argparse,copy
 LoadBuffer()
 LoadGlobalVariables()
+
 parser = argparse.ArgumentParser()
 parser.add_argument("-m", "--module", help=" Script module to run.")
 parser.add_argument("-q", "--quit"  , action='store_false', default=True, help="No show Banner")
 args = parser.parse_args()
 
-if args.quit:
-	CLASS_BANNER=DESIGN()
-	CLASS_BANNER.ktfrun()
-
+if args.quit:Banner.LoadBanner()
 
 if __name__=="__main__":
-	root=GetRootModules()
-	for modules in root.findall('module'):
+	for modules in GetRootModules().findall('module'):
 		if args.module == modules.get('name'):
-			category = modules.find('category').text
-			filename = modules.find('filename').text
-			ModuleToStart = importlib.import_module("modules."+category+"."+filename) 
-			init=ModuleToStart.init()
+
+			InstanceModule = import_module("modules."+modules.find('category').text+"."+modules.find('filename').text) 
+			init=InstanceModule.init()
 			real_init = init.options.copy()
 			init=LoadSession(init)
 
@@ -47,17 +41,12 @@ if __name__=="__main__":
 					elif KatanaCheckSession(actions)            :init=SessionInterative(actions,init)
 					elif KatanaCheckActionSetValue(actions)     :init=UpdateValue(actions,init,real_init)
 					elif KatanaCheckActionGetInfo(actions)      :ShowInformationModule(init)
-					elif runModule(actions):
-						for Namevalue in init.options:
-							init.var.update({Namevalue:init.options[Namevalue][0]})
-						try:
-							for Namevalue in init.extra:
-								init.var.update({Namevalue:init.extra[Namevalue][0]})
-						except:Nothing=False
+					elif runModule(actions)                     :
 						SaveSession(init)
-						ModuleToStart.main(True)
-					elif KatanaCheckActionisBack(actions)       :printAlert(6,"This Commands just work in ktf.console mode.")
+						init = UpdateInternalModule(init)
+						InstanceModule.main(True)
+					elif KatanaCheckActionisBack(actions)       :FunctionNoEnableForThisModule()
 					else :
-						if actions != ""                        :KatanaCheckActionGlobalCommands(actions)
+						if actions                              :KatanaCheckActionGlobalCommands(actions)
 				except                                          :Errors.Errors()
 	ModuleNotFound(args.module)

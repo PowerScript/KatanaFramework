@@ -56,18 +56,11 @@
         <filename>scan</filename>
         <description>Scan [Ports, OS, Etc] IP.</description>
     </module>
-    <module name="net/sc.sniff">
-        <version>1.0</version>
-        <author>RedToor</author>
-        <category>net</category>
-        <filename>sniff</filename>
-        <description>Protocol Sniffer.</description>
-    </module>
-    <module name="net/http.sniff">
-        <version>1.0</version>
+    <module name="net/work.sniff">
+        <version>2.0</version>
         <author>Thomas TJ 2016 (TTJ)</author>
         <category>net</category>
-        <filename>http_sniff</filename>
+        <filename>network_sniff</filename>
         <description>HTTP sniffer.</description>
     </module>
     <module name="net/arp.pson">
@@ -188,13 +181,6 @@
         <category>anf</category>
         <filename>forensic_image_analysis</filename>
         <description>Forensic image analysis.</description>
-    </module>
-     <module name="anf/af.android">
-        <version>1.0</version>
-        <author>RedToor</author>
-        <category>anf</category>
-        <filename>forensic_android_analysis</filename>
-        <description>Forensic Android analysis.</description>
     </module>
      <module name="fle/bt.rar">
         <version>2.0</version>

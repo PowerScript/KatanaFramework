@@ -2,7 +2,7 @@
 #HEAD#########################################################
 #
 # Katana Framework                        
-# Last Modified: 23/12/2016
+# Last Modified: 24/12/2016
 #
 #########################################################HEAD#
 
@@ -31,7 +31,9 @@ from Internal import (
 	ListModules,
 	LoadSession,
 	SessionInterative,
-	LoadGlobalVariables)
+	LoadGlobalVariables,
+	UpdateInternalModule)
 
-from Function import Executefunction
-import importlib
+import xml.etree.ElementTree as ET
+from  importlib import import_module
+import argparse,copy
