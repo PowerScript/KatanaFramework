@@ -3,25 +3,23 @@
 
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Katana Core import                  #
-from core.KATANAFRAMEWORK import *    #
+from core.KatanaFramework import *    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
 # LIBRARIES  
-from core.Function import get_gateway,get_local_ip,KTFVAR
 from xml.dom import minidom
 import xml.etree.ElementTree as ET
-import commands
 import re
 # END LIBRARIES 
 
 # INFORMATION MODULE
 def init():
 	init.Author             ="RedToor"
-	init.Version            ="2.1"
+	init.Version            ="3.0"
 	init.Description        ="Host's live scanner in LAN"
 	init.CodeName           ="net/sc.hosts"
 	init.DateCreation       ="22/08/2015"      
-	init.LastModification   ="16/05/2016"
+	init.LastModification   ="12/25/2016"
 	init.Collaborators      =None
 	init.References         =None
 	init.License            =KTF_LINCENSE
@@ -29,34 +27,38 @@ def init():
 
 	# DEFAULT OPTIONS MODULE
 	init.options = {
-		# NAME    VALUE     RQ     DESCRIPTION
-		'range':[get_local_ip()+"/24" ,True ,'Range Scan'],
+		# NAME    VALUE           RQ     DESCRIPTION
+		'range':[LOCAL_IP+"/24" ,True ,'Range Scan']
 	}
 	return init
 # END INFORMATION MODULE
 
 # CODE MODULE    ############################################################################################
 def main(run):
-	commands.getoutput(NMAP_PATH+' -sn '+str(init.var['range'])+' -oX tmp/KTFVAR.xml > null')
-	GateWay=get_gateway()
-	tree = ET.parse('tmp/KTFVAR.xml')
-	root = tree.getroot()
-	IPf=0
-	counter=0
-	for host in root.findall('host'):
+	printk.wait("Scanning range of Targets: "+str(init.var['range'])+" wait it may take a few minutes.")
+	SYSTEM.Command_exe("Scanning with Nmap                                ","nmap -sn "+str(init.var['range'])+" -oX tmp/resultnmap.xml", std=False)
+	GateWay_d=NET.GetGateway()
+	MY_IP    =NET.GetLocalIp()
+	C  = 0
+	IP = ""
+	MAC= ""
+	VENDOR=""
+	for host in ET.parse('tmp/resultnmap.xml').getroot().findall('host'):
 		for hosted in host.findall('address'):
 			if hosted.get('addrtype') == "ipv4":
-				IPf=hosted.get('addr')
-			else:
-				if GateWay == IPf :
-					IPf=colors[8]+colors[4]+"{GW:"+IPf+"}"+colors[0]
-				KTFVAR.append(" "+IPf+"\t"+str(hosted.get('addr'))+"\t"+str(hosted.get('vendor')))
-	Space()
-	print " "+colors[10]+colors[7]+" # \t IP \t\t     MAC    \t\t      VENDOR          "+colors[0]
-	for HOST in KTFVAR:
-		counter+=1				
-		print " ["+str(counter)+"]"+HOST
-	Space()
-	commands.getoutput('rm tmp/KTFVAR.xml > null')
+				IP = hosted.get('addr')
+			
+				if GateWay_d == IP :IP=colors[4]+"{G:"+IP+"}"+colors[0]
+				if MY_IP == IP     :IP=colors[3]+"{I:"+IP+"}"+colors[0]	
+
+				C += 1
+
+			if hosted.get('addrtype') == "mac":
+				MAC = hosted.get('addr')
+				VENDOR = hosted.get('vendor')
+
+		print "  | #" + str(C) + " --> IP: " + IP + " \t< MAC: " + str(MAC) + " " + str(VENDOR)
+		G_KTFVAR.append(str(IP)+":"+str(MAC))
+	SYSTEM.Command_exe("Clearning Temp files                              ","rm tmp/resultnmap.xml", std=False)
 
 # END CODE MODULE ############################################################################################

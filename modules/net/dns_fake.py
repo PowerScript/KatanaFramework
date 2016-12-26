@@ -3,11 +3,10 @@
 
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Katana Core import                  #
-from core.KATANAFRAMEWORK import *    #
+from core.KatanaFramework import *    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
 # LIBRARIES  
-from core.Function import get_local_ip
 import subprocess
 # END LIBRARIES 
 
@@ -18,7 +17,7 @@ def init():
 	init.Description        ="DNS fake Server Spoof."
 	init.CodeName           ="net/dns.fake"
 	init.DateCreation       ="21/07/2016"      
-	init.LastModification   ="21/07/2016"
+	init.LastModification   ="23/12/2016"
 	init.References         =None
 	init.License            =KTF_LINCENSE
 	init.var                ={}
@@ -26,25 +25,23 @@ def init():
 	# DEFAULT OPTIONS MODULE
 	init.options = {
 		# NAME    VALUE              RQ     DESCRIPTION
-		'dnspoof'  :[get_local_ip() ,False,'DNS/IP spoofed'],
+		'dnspoof'  :[LOCAL_IP       ,False,'DNS/IP spoofed'],
 		'dnstarget':["www.test.com" ,True ,'DNS Target\'s']
 	}
 	# EXTRA OPTIONS MODULE
 	init.extra = {
 		# NAME    VALUE              RQ     DESCRIPTION
-		'ip_server':[get_local_ip() ,True ,'Ip Server']
+		'ip_server':[LOCAL_IP        ,True ,'Ip Server']
 	}
 	# AUX INFORMATION MODULE
-	init.aux = """
- dnstarget [Separate DNS with (,)] example : google.com, gmail.com
- """
+	init.aux = "\n dnstarget [Separate DNS with (,)] example : google.com, gmail.com\n"
 	return init
 # END INFORMATION MODULE
 
 # CODE MODULE    ############################################################################################
 def main(run):
-	printAlert(0,"Starting DNS Fake server [DNSchef]")
-	printAlert(0,"to stop the module press "+colors[11]+"[Ctrl+c]"+colors[0])
+	printk.inf("Starting DNS Fake server [DNSchef]")
+	printk.pkey("if you want to stop DNS Server (PRESS [Ctrol + C])\n")
 	subprocess.call("sudo fuser -kuv 53/udp >/dev/null 2>&1 ", shell=True)
 	subprocess.call("python files/dnschef/dnschef.py --fakeip "+init.var['dnspoof']+" --fakedomains "+init.var['dnstarget']+" --interface "+init.var['ip_server']+" -q", shell=True)
 # END CODE MODULE ############################################################################################

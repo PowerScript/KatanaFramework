@@ -3,11 +3,10 @@
 
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Katana Core import                  #
-from core.KATANAFRAMEWORK import *    #
+from core.KatanaFramework import *    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
 # LIBRARIES 
-from core.Function import get_local_ip
 from xml.dom import minidom   
 import xml.etree.ElementTree as ET
 import commands               
@@ -20,7 +19,7 @@ def init():
 	init.Description        ="Ports, OS, Etc Scan to host."
 	init.CodeName           ="net/sc.scan"
 	init.DateCreation       ="28/11/2015"      
-	init.LastModification   ="18/05/2016"
+	init.LastModification   ="23/12/2016"
 	init.References         =None
 	init.License            =KTF_LINCENSE
 	init.var                ={}
@@ -28,23 +27,21 @@ def init():
 	# DEFAULT OPTIONS MODULE
 	init.options = {
 		# NAME    VALUE          RQ     DESCRIPTION
-		'target':[get_local_ip(),True ,'Host Target'],
-		'mode'  :["mode-0"      ,False,'Port Target'],
+		'target':[LOCAL_IP      ,True ,'Host Target'],
+		'mode'  :["mode-0"      ,False,'Port Target']
 	}
 
-	init.aux = """
- (mode) options
- -> [mode-0] Intense scan
- -> [mode-1] Intense scan plus UDP 
- -> [mode-2] Intense scan, all TCP ports
- -> [mode-3] Intense scan, no ping
- -> [mode-4] Ping scan
- -> [mode-5] Quick scan
- -> [mode-6] Quick scan plus                  	
- -> [mode-7] Quick traceroute 
- -> [mode-8] Regular scan
- -> [mode-9] Slow comprehensive scan
-	"""
+	init.aux = "\n (mode) options"
+	init.aux += "\n -> [mode-0] Intense scan"
+	init.aux += "\n -> [mode-1] Intense scan plus UDP "
+	init.aux += "\n -> [mode-2] Intense scan, all TCP ports"
+	init.aux += "\n -> [mode-3] Intense scan, no ping"
+	init.aux += "\n -> [mode-4] Ping scan"
+	init.aux += "\n -> [mode-5] Quick scan"
+	init.aux += "\n -> [mode-6] Quick scan plus"
+	init.aux += "\n -> [mode-7] Quick traceroute "
+	init.aux += "\n -> [mode-8] Regular scan"
+	init.aux += "\n -> [mode-9] Slow comprehensive scan\n"
 	return init
 # END INFORMATION MODULE
 
@@ -62,10 +59,10 @@ def main(run):
 	elif init.var['mode']=="mode-8":parameter=""
 	elif init.var['mode']=="mode-9":parameter="-sS -sU -T4 -A -v -PE -PP -PS80,443 -PA3389 -PU40125 -PY -g 53 --script 'default or (discovery and safe)'"
 	else:
-		printAlert(1,"Type not allow, use show options or sop and see Auxiliar help.")
+		printk.err("Type not allow, use show options or sop and see Auxiliar help.")
 		init.var['mode']="mode-0"
 		return
-	printAlert(0,"Scanning Target: "+init.var['target']+" wait it may take a few minutes.")
+	printk.wait("Scanning Target: "+init.var['target']+" wait it may take a few minutes.")
 
 	OSMATCHs=[]
 	SERVICEs=[]
@@ -73,10 +70,9 @@ def main(run):
 	MAC="Unknow"
 	VENDOR="Unknow"
 	Space()
-	commands.getoutput(NMAP_PATH+" "+parameter+" "+init.var['target']+" -oX tmp/portScanner-tmp.xml > null")
-	tree = ET.parse('tmp/portScanner-tmp.xml')
-	root = tree.getroot()
-	for host in root.findall('host'):
+	commands.getoutput("nmap "+parameter+" "+init.var['target']+" -oX tmp/portScanner-tmp.xml > null")
+
+	for host in ET.parse('tmp/portScanner-tmp.xml').getroot().findall('host'):
 		for address in host.findall('address'):
 			p=address.get('addr')
 			if not address.get('vendor'):
@@ -113,19 +109,19 @@ def main(run):
 		for os in host.findall('os'):
 			for osmatch in os.findall('osmatch'):
 				OSMATCHs.append(osmatch.get('name'))
-	print " Ip address: "+colors[2]+init.var['target']+colors[0]
-	print " Mac       : "+MAC
-	print " Vendor    : "+VENDOR
-	print " OS Matchs : "
+	print "   | Ip address: "+colors[2]+init.var['target']+colors[0]
+	print "   | Mac       : "+MAC
+	print "   | Vendor    : "+VENDOR
+	print "   | OS Matchs : "
 	for os in OSMATCHs:
-		print "             "+os
-	print " Services  : " 				
+		print "                "+os
+	print "   | Services  : " 				
 	for services in SERVICEs:
-		print "             "+str(services) 
-	print " Report    :"
+		print "                "+str(services) 
+	print "   | Report    :"
 	for informer in INFORMEs:
 		informer=str("{NULL}" if informer is "" else informer)
-		print str(informer) 
+		print "                "+str(informer) 
 	commands.getoutput('rm tmp/portScanner-tmp.xml > null')
 	Space()
 

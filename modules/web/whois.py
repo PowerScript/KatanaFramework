@@ -7,7 +7,6 @@ from core.KATANAFRAMEWORK import *    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
 # LIBRARIES
-from core.Function import isLive
 from lib import whois
 # END LIBRARIES 
 
@@ -18,7 +17,7 @@ def init():
 	init.Description        ="Whois, DNS lookup. DNS Information"
 	init.CodeName           ="web/whois"
 	init.DateCreation       ="09/07/2015"      
-	init.LastModification   ="12/06/2016"
+	init.LastModification   ="25/12/2016"
 	init.References         =None
 	init.License            =KTF_LINCENSE
 	init.var                ={}
@@ -26,14 +25,14 @@ def init():
 	# DEFAULT OPTIONS MODULE
 	init.options = {
 		# NAME    VALUE                RQ     DESCRIPTION
-		'target':[LOCAL_IP            ,True ,'Host Target'],
+		'target':[LOCAL_IP            ,True ,'Host Target']
 	}
 	return init
 # END INFORMATION MODULE
 
 # CODE MODULE    ############################################################################################
 def main(run):
-	isLive(init.var['target'],HTTP_PORT)
+	NET.CheckConnectionHost(init.var['target'],init.var['port'],5)
 
 	w = whois.whois(init.var['target'])
 	wd = w.__dict__

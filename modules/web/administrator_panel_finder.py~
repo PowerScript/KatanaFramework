@@ -3,10 +3,11 @@
 
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Katana Core import                  #
-from core.KatanaFramework import *    #
+from core.KATANAFRAMEWORK import *    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
 # LIBRARIES  
+from core.Function import isLive,RamdonAgent,saveRegister,isPortOpen
 from bs4 import BeautifulSoup
 import httplib                
 # END LIBRARIES 
@@ -18,7 +19,7 @@ def init():
 	init.Description        ="Administrator Panel finder, Brute Force + Google Dork + Port Scan."
 	init.CodeName           ="web/cp.finder"
 	init.DateCreation       ="28/09/2015"      
-	init.LastModification   ="25/12/2016"
+	init.LastModification   ="21/12/2016"
 	init.References         =None
 	init.License            =KTF_LINCENSE
 	init.var                ={}
@@ -35,47 +36,47 @@ def init():
 
 # CODE MODULE    ############################################################################################
 def main(run):
-	NET.CheckConnectionHost(init.var['target'],init.var['port'],5)
+	isLive(init.var['target'],init.var['port'])
 	Loadingfile(init.var['file'])
 	Totalresults=""
 
-	printk.step("[1] Step : Starting Brute Force...")
+	printAlert(5,"[1] Step : Starting Brute Force...")
 	with open(init.var['file'],'r') as list_path:
 		for path in list_path:
 			path="/"+path.replace("\n","")
 			if init.var['port'] == "443" : 
 				connection = httplib.HTTPSConnection(init.var['target'])
 			else : connection = httplib.HTTPConnection(init.var['target'],int(init.var['port']))
-			connection.addheaders=[('User-agent', WEB.RamdonAgent())]
+			connection.addheaders=[('User-agent', RamdonAgent())]
 			connection.request("GET",path)
 			response = connection.getresponse()
 
 			if response.status == 200 or response.status == 301:
-				printk.suff(" | Response "+init.var['target']+path)
+				printAlert(3," | Response "+init.var['target']+path)
 				Totalresults+="\t|"+init.var['target']+path+"\n"
-			else:printk.inf(" | Checking `"+colors[0]+path+"` Response:"+str(response.status))
+			else:printAlert(0," | Checking `"+colors[0]+path+"` Response:"+str(response.status))
 			
-	printk.step("[2] Step : Starting Google Dorking...")
-	connection = httplib.HTTPSConnection("www.google.com.ru")
+	printAlert(5,"[2] Step : Starting Google Dorking...")
+	connection = httplib.HTTPSConnection("www.google.com.mx")
 	connection.request("GET", "/search?q=inurl:admin+site:"+str(init.var['target']))
-	connection.addheaders=[('User-agent', WEB.RamdonAgent())]
+	connection.addheaders=[('User-agent', RamdonAgent())]
 	response = connection.getresponse()
 	soup = BeautifulSoup(response.read(), "lxml")
 	divList = soup.findAll('cite')
 	for ids in divList:
-		printk.suff("| Result  "+ids.text)
+		printAlert(3,"| Result  "+ids.text)
 		Totalresults+="\t | "+ids.text+"\n"
 
-	printk.step("[3] Step : Scanning Port commons...")
+	printAlert(5,"[3] Step : Scanning Port commons...")
 	commonports = [2082,2083,2095,2096]
 	for port in commonports:
-		printk.inf(" | Testing Port "+str(port))
-		if NET.CheckConnectionHost(init.var['target'],port,5):
-			printk.suff(" | "+str(port)+" Port Open!")
+		printAlert(0," | Testing Port "+str(port))
+		if isPortOpen(init.var['target'],port):
+			printAlert(3," | "+str(port)+" Port Open!")
 			Totalresults+="\t|"+str(port)+" Open! \n"
 
-	printk.inf("[*] Total Result")
+	printAlert(0,"[*] Total Result")
 	print Totalresults
-	UTIL.sRegister(init,Totalresults)
+	saveRegister(init,Totalresults)
 
 # END CODE MODULE ############################################################################################

