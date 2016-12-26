@@ -14,6 +14,6 @@ __facebook__   = 'https://facebook.com/redtoor'
 __license__    = 'GPLv3'
 
 version        = "1.0.0.1"
-date           = "13/11/16:21/12/16"
+date           = "21/12/16:25/12/16"
 build          = "0068"
 Type           = "FREE"
