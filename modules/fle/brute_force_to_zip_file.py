@@ -3,11 +3,10 @@
 
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Katana Core import                  #
-from core.KATANAFRAMEWORK import *    #
+from core.KatanaFramework import *    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
 # LIBRARIES
-from core.Function import saveRegister
 import zipfile
 # END LIBRARIES 
 
@@ -18,7 +17,7 @@ def init():
 	init.Description        ="Brute Force to ZIP file."
 	init.CodeName           ="fle/bt.zip"
 	init.DateCreation       ="28/02/2015"      
-	init.LastModification   ="01/06/2016"
+	init.LastModification   ="27/12/2016"
 	init.References         =None
 	init.License            =KTF_LINCENSE
 	init.var                ={}
@@ -42,11 +41,9 @@ def main(run):
 		palabraLlegada = palabra.split("\n")
 		try:
 			ZIParch.extractall(pwd=str(palabraLlegada[0]),path="/root/home/")
-			printAlert(3,"Successfully with ["+palabraLlegada[0]+"] -> /root/home/")
-			saveRegister(init,palabraLlegada[0])
-			Space()
+			printk.suff("Successfully with ["+palabraLlegada[0]+"] -> /root/home/")
+			UTIL.sRegister(init,palabraLlegada[0])
 			return
-		except:printAlert(0," | Checking '"+palabraLlegada[0]+"'")
-	printAlert(4," No Result :c\n")
+		except:printk.inf(" | Checking '"+palabraLlegada[0]+"'")
 
 # END CODE MODULE ############################################################################################
