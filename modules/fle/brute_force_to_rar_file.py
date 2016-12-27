@@ -3,11 +3,10 @@
 
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Katana Core import                  #
-from core.KATANAFRAMEWORK import *    #
+from core.KatanaFramework import *    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
 # LIBRARIES
-from core.Function import saveRegister
 from lib.rarfile.RARfile import *
 # END LIBRARIES 
 
@@ -42,11 +41,9 @@ def main(run):
 		palabraLlegada = palabra.split("\n")
 		try:
 			RARarch.extractall(pwd=str(palabraLlegada[0]),path="/root/home/")
-			printAlert(3,"Successfully with ["+palabraLlegada[0]+"] -> /root/home/")
-			saveRegister(init,palabraLlegada[0])
-			Space()
+			printk.suff("Successfully with ["+palabraLlegada[0]+"] -> /root/home/")
+			UTIL.sRegister(init,palabraLlegada[0])
 			return
-		except:printAlert(0," | Checking '"+palabraLlegada[0]+"'")
-	printAlert(4," No Result :c\n")
+		except:printk.inf(" | Checking '"+palabraLlegada[0]+"'")
 
 # END CODE MODULE ############################################################################################
