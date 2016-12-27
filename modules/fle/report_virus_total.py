@@ -3,7 +3,7 @@
 
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Katana Core import                  #
-from core.KATANAFRAMEWORK import *    #
+from core.KatanaFramework import *    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
 # LIBRARIES
@@ -17,7 +17,7 @@ def init():
 	init.Description        ="Report of Virus Scan file API (VirusTotal.com)."
 	init.CodeName           ="fle/scan.file"
 	init.DateCreation       ="09/11/2016"      
-	init.LastModification   ="09/11/2016"
+	init.LastModification   ="27/12/2016"
 	init.References         =None
 	init.License            =KTF_LINCENSE
 	init.var                ={}
