@@ -34,6 +34,7 @@ from Internal import (
 	LoadGlobalVariables,
 	UpdateInternalModule)
 
+from Function import Executefunction
 import xml.etree.ElementTree as ET
 from  importlib import import_module
 import argparse,copy
