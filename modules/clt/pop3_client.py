@@ -3,11 +3,10 @@
 
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Katana Core import                  #
-from core.KATANAFRAMEWORK import *    #
+from core.KatanaFramework import *    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
 # LIBRARIES 
-from core.Function import MakeTable
 from email import parser                 
 import poplib
 # END LIBRARIES 
@@ -19,7 +18,7 @@ def init():
 	init.Description        ="Console Client for POP3 Protocol."
 	init.CodeName           ="clt/cl.pop"
 	init.DateCreation       ="22/05/2015"      
-	init.LastModification   ="18/05/2016"
+	init.LastModification   ="25/12/2016"
 	init.References         =None
 	init.License            =KTF_LINCENSE
 	init.var                ={}
@@ -30,7 +29,7 @@ def init():
 		'target':["pop.gmail.com"     ,True ,'Host Target'],
 		'port'  :[POP_PORT            ,False,'Port Target'],
 		'user'  :["my_em@hotmail.com" ,True ,'Username'],
-		'pass'  :["password"          ,True ,'Password'],
+		'pass'  :["password"          ,True ,'Password']
 	}
 	return init
 # END INFORMATION MODULE
@@ -43,12 +42,12 @@ def main(run):
 	con.pass_(init.var['pass'])
 	cmd="nop"
 
-	printAlert(2,"POP3 Console")
+	printk.inf("POP3 Console")
 	HelpBanner  = [["Commands","Description","Example"]]
 	HelpBanner += [["list","list mails","list"]]
 	HelpBanner += [["read","show mail","retr 2"]]
 	HelpBanner += [["dele","remove mail","dele 2"]]
-	MakeTable(HelpBanner)
+	GRAPHICAL.CreateTable(HelpBanner)
 
 	while(cmd!="exit"):
 		cmd = raw_input(ClientPrompt(init.CodeName,"pop"))
@@ -63,8 +62,8 @@ def main(run):
 				print j
 		elif cmd[0:4] == "dele":
 			con.dele(int(cmd[5:])+1)[1]
-			printAlert(0,"email marked for delete ('quit' for exit and delete all email marked)")
-		elif cmd == "help":print HelpBanner
+			printk.inf("email marked for delete ('quit' for exit and delete all email marked)")
+		elif cmd == "help":GRAPHICAL.CreateTable(HelpBanner)
 		elif cmd == "quit":
 			con.quit()
 			break
