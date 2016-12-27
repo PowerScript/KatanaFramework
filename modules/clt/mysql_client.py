@@ -3,11 +3,10 @@
 
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Katana Core import                  #
-from core.KATANAFRAMEWORK import *    #
+from core.KatanaFramework import *    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
 # LIBRARIES
-from core.Function import MakeTable
 import MySQLdb                
 # END LIBRARIES 
 
@@ -29,7 +28,7 @@ def init():
 		'target':[LOCAL_IP ,True ,'Host Target'],
 		'port'  :[SQL_PORT ,False,'Port Target'],
 		'user'  :[USERNAME ,True ,'Username'],
-		'pass'  :[PASSWORD ,True ,'Password'],
+		'pass'  :[PASSWORD ,True ,'Password']
 	}
 	return init
 # END INFORMATION MODULE
@@ -40,7 +39,7 @@ def main(run):
 	con=MySQLdb.connect(init.var['target'], init.var['user'], init.var['pass'],"",int(init.var['port']))
 	cmd="nop"
 	current = "sql"
-	printAlert(2, msg="SQL Console")
+	printk.inf("SQL Console")
 	HelpBanner  = [["Commands","Description","Example"]]
 	HelpBanner += [["show databases","show databases","show databases"]]
 	HelpBanner += [["use","select database","use USERS"]]
@@ -52,10 +51,11 @@ def main(run):
 	HelpBanner += [["insert","insert data","insert into EMAILS values ( '2', 'Dean@m.ru')"]]
 	HelpBanner += [["update","update data","update EMAILS set name='Willy' where id=1"]]
 	HelpBanner += [["select","select data","select id, name from EMAILS"]]
-	MakeTable(HelpBanner)
+	GRAPHICAL.CreateTable(HelpBanner)
+
 	while(cmd!="exit"):
 		cmd = raw_input(ClientPrompt(init.CodeName,current))
-		if cmd == "help":MakeTable(HelpBanner)
+		if cmd == "help":GRAPHICAL.CreateTable(HelpBanner)
 		else:
 			try:
 				cur = con.cursor() 
@@ -64,6 +64,6 @@ def main(run):
 					print (" -%s") % cur.fetchone()
 					if cmd[:3] == "use": current = "sql:"+cmd[4:]
 				if True:printAlert(3,"------- > OK.")
-			except Exception , e:printAlert(6,e)
+			except Exception , e:printk.err(e)
 
 # END CODE MODULE ############################################################################################
