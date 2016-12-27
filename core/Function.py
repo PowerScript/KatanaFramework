@@ -2,7 +2,7 @@
 #HEAD#########################################################
 #
 # Katana Framework | API functions                         
-# Last Modified: 24/12/2016
+# Last Modified: 23/12/2016
 #
 #########################################################HEAD#
 
@@ -33,29 +33,6 @@ File_Agent_Open=False
 NUMBER_AGENTS=0
 ap_list = []
 
-### API EXECUTE FUNCTION ####################################################################################################
-def Executefunction(query):
-	try:
-
-		if query[len("f::"):len("get_aps")+len("f::")] == "get_aps": 
-			query = query[len("f::")+len("get_aps"):].replace("(","").replace(")","").split(",")
-			get_aps(str(query[0]),int(query[1]))
-
-		elif query[len("f::"):len("start_monitor")+len("f::")]== "start_monitor":
-			query = query[len("f::")+len("start_monitor"):].replace("(","").replace(")","").split(",")
-		    
-			if start_monitor(query[0]):printk.suff(query[0]+" now is in monitor mode.")
-			else:NoDeviceFound(query[0]) 
-
-		elif query[len("f::"):len("get_interfaces")+len("f::")]    == "get_interfaces":    print " ",get_interfaces()
-		elif query[len("f::"):len("get_monitors_mode")+len("f::")] == "get_monitors_mode": print " ",get_monitors_mode()
-		elif query[len("f::"):len("get_local_ip")+len("f::")]      == "get_local_ip":      print " ",get_local_ip()
-		elif query[len("f::"):len("get_external_ip")+len("f::")]   == "get_external_ip":   print " ",get_external_ip()
-		elif query[len("f::"):len("get_gateway")+len("f::")]       == "get_gateway":       print " ",get_gateway()
-
-		else:functionNotFound()                                                                                 
-	except:printk.war("Check Again your Functions command.")
-##############################################################################################################################
 
 
 class NET:
@@ -409,3 +386,30 @@ class WEB:
 		Generate = 0
 		Generate = random.randint(0, NUMBER_AGENTS)
 		return AGENT_ARRAY[Generate]
+
+
+### API EXECUTE FUNCTION ####################################################################################################
+def Executefunction(query):
+	NET_API = NET()
+	try:
+
+		if query[len("f::"):len("get_aps")+len("f::")] == "get_aps": 
+			query = query[len("f::")+len("get_aps"):].replace("(","").replace(")","").split(",")
+			get_aps(str(query[0]),int(query[1]))
+
+		elif query[len("f::"):len("start_monitor")+len("f::")]== "start_monitor":
+			query = query[len("f::")+len("start_monitor"):].replace("(","").replace(")","").split(",")
+		    
+			if start_monitor(query[0]):printk.suff(query[0]+" now is in monitor mode.")
+			else:NoDeviceFound(query[0]) 
+
+		elif query[len("f::"):len("get_interfaces")+len("f::")]    == "get_interfaces":    print " ",NET_API.GetInterfacesOnSystem()
+		elif query[len("f::"):len("get_monitors_mode")+len("f::")] == "get_monitors_mode": print " ",NET_API.GetMonitorInterfaces()
+		elif query[len("f::"):len("get_local_ip")+len("f::")]      == "get_local_ip":      print " ",NET_API.GetLocalIp()
+		elif query[len("f::"):len("get_external_ip")+len("f::")]   == "get_external_ip":   print " ",NET_API.GetPublicIp()
+		elif query[len("f::"):len("get_gateway")+len("f::")]       == "get_gateway":       print " ",NET_API.GetGateway()
+
+		else:functionNotFound()                                                                                 
+	except:print " "+warning+" Check Again your Functions command."
+##############################################################################################################################
+
