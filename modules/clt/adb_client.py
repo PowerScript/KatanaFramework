@@ -3,11 +3,10 @@
 
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Katana Core import                  #
-from core.KATANAFRAMEWORK import *    #
+from core.KatanaFramework import *    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
 # LIBRARIES
-from core.Function import ListDevicesConnectADB,MakeTable
 from lib.adb.adb import adb_commands,common_cli
 import stat,os
 # END LIBRARIES 
@@ -30,8 +29,7 @@ def init():
 		'device':["16xxxxxxxxxxxxxx" ,True ,'Device Target']
 	}
 
-	init.aux = """
- List Device Connected:\n"""+str(ListDevicesConnectADB())+"\n"
+	init.aux = "\n List Device Connected:\n "+str(COM.ListDevicesConnectADB())+"\n"
 
 	return init
 # END INFORMATION MODULE
@@ -62,7 +60,7 @@ def List(self, device_path):
 # CODE MODULE    ############################################################################################
 def main(run):
 
-	printAlert(2,"ADB Console (Android USB)")
+	printk.inf("ADB Console (Android USB)")
 	HelpBanner  = [["Commands","Description","Example"]]
 	HelpBanner += [["devices","list devices","devices"]]
 	HelpBanner += [["reboot","reboot device","reboot"]]
@@ -70,7 +68,7 @@ def main(run):
 	HelpBanner += [["pull","pull a file from the device","pull /text.txt /root/text.txt"]]	
 	HelpBanner += [["cd","browser directories","cd data"]]
 	HelpBanner += [["ls","list files","ls"]]
-	MakeTable(HelpBanner)
+	GRAPHICAL.CreateTable(HelpBanner)
 
 	cmd="nop"
 	path="/"
@@ -87,7 +85,6 @@ def main(run):
 		main.verbose=False
 
 		cmd = raw_input(ClientPrompt(init.CodeName,"adb/"+path))
-		if cmd == "device":print ListDevicesConnectADB()
 		if cmd[:2] == "cd":
 			main.method=List			
 			if cmd[3:] != "..": path+=cmd[3:]+"/"
@@ -116,9 +113,9 @@ def main(run):
 			main.command_name='reboot'
 			main.method=adb_commands.AdbCommands.Reboot
 			Execute(main)
-		if cmd == "devices":print ListDevicesConnectADB()
+		if cmd == "devices":print COM.ListDevicesConnectADB()
 		if cmd[:3] == "cat":print "ver"
-		if cmd == "help"   :MakeTable(HelpBanner)
+		if cmd == "help"   :GRAPHICAL.CreateTable(HelpBanner)
 
 # END CODE MODULE ###########################################################################################
 
