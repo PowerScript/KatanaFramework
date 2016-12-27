@@ -2,66 +2,72 @@
 #HEAD#########################################################
 #
 # Katana Framework | ktf.ktf                            
-# Last Modified: 21/12/2016
+# Last Modified: 27/12/2016
 #
 #########################################################HEAD#
 
-from core.Function import GetRootModules,status_cmd
-from core.Design import *
+from core.Internal  import GetRootModules
+from core.Function  import SYSTEM
+from core.Design    import *
+from core.Default   import FOLDER_KATANA
 from core import Errors 
 
-import importlib,argparse,sys,os,urllib2,json
+import importlib,argparse,sys,os,urllib2
 
-VAR=0
-Namektf=False
-Import=False
-isRemote=False
+
 CLASS_BANNER=DESIGN()
 CLASS_BANNER.ktfktf()
+SYSTEM      =SYSTEM()
+printk      =printk()
 
-try:
-	for eachArg in sys.argv:
-		if eachArg=="--i-module"       :Import=sys.argv[VAR+1]
-		if eachArg=="--i-module-remote":
-			Import=sys.argv[VAR+1]
-			isRemote=True
-		VAR+=1
+parser = argparse.ArgumentParser()
+parser.add_argument("-i", "--import-module"        ,action='store_true',default=False,help=" Import a local module.")
+parser.add_argument("-ir","--import-remote-module" ,action='store_true',default=False,help=" Import a remote module.")
+parser.add_argument("-p", "--path"                 ,help=" Path or URL where is the module.")
+parser.add_argument("-r", "--remove-module"        ,help=" Remove a module installed (-r CODENAME)")
 
-except:printAlert(1,"Check your Arguments")
+args = parser.parse_args()
+
 
 class ktf:
-	def ImportModule(self):
-		FilenameModule=Import
-		printAlert(0,"Importing Module")
-		Loadingfile(FilenameModule)
+	def ImportModule(self,path):
+
+		printk.inf("Importing Module")
+		Loadingfile(path)
 		try:
-			printAlert(0,"Information Module")
-			os.system("cp "+FilenameModule+".py tmp/ >/dev/null 2>&1")
-			os.system("echo > tmp/__init__.py")
-			FilenameModule=os.path.basename(FilenameModule)
-			ModuleToStart = importlib.import_module("tmp."+FilenameModule) 
+			printk.inf("Information Module")
+			SYSTEM.Command_exe("Coping module to temp folder.             ","cp "+path+" "+FOLDER_KATANA+"tmp/",std=False)
+			os.system("echo > "+FOLDER_KATANA+"tmp/__init__.py")
+			path=os.path.basename(path).replace(" ","")
+			path_import=path
+			if path[len(path)-3:] == ".py" : path_import = path[:-3]
+			ModuleToStart = importlib.import_module("tmp."+path_import) 
 			init=ModuleToStart.init()
-			print "       |>Author           : "+init.Author
-			print "       |>Version Script   : "+init.Version
-			print "       |>Description      : "+init.Description
-			print "       |>Code Name        : "+init.CodeName
-			print "       |>Creation         : "+init.DateCreation
-			print "       |>Last Modification: "+init.LastModification
+
+			printk.inf("Information Module")
+			print "   |>Author           : "+init.Author
+			print "   |>Version Script   : "+init.Version
+			print "   |>Description      : "+init.Description
+			print "   |>Code Name        : "+init.CodeName
+			print "   |>Creation         : "+init.DateCreation
+			print "   |>Last Modification: "+init.LastModification
 			New = init.CodeName
 			New = New.split("/")
-			printAlert(0,"Installing module")
-			printAlert(0,"Checking if exists module")
-			root=GetRootModules()
-			for modules in root.findall('module'):
+			printk.inf("Installing module")
+			printk.inf("Checking if exists module")
+			
+			for modules in GetRootModules().findall('module'):
 				if modules.get('name') == init.CodeName:
-					printAlert(1,"the CodeName is already being used by another module.\n")
+					printk.err("the CodeName is already being used by another module.\n")
 					exit()
-			if os.path.isdir("modules/"+New[0]+"/") == False: 
-				printAlert(0,status_cmd("mkdir modules/"+New[0]+"/")+" Crating a new category")
-				os.system("echo > modules/"+New[0]+"/__init__.py")
-			printAlert(0,status_cmd("cp tmp/"+FilenameModule+".py modules/"+New[0]+"/")+" Coping files")
-			printAlert(0,"Adding a module list")
-			inFile = open('core/modules.xml', 'rw')
+			if os.path.isdir(FOLDER_KATANA+"modules/"+New[0]+"/") == False:
+				SYSTEM.Command_exe("Crating a new category.                   ","mkdir "+FOLDER_KATANA+"modules/"+New[0]+"/",std=False)
+				os.system("echo > "+FOLDER_KATANA+"modules/"+New[0]+"/__init__.py")
+			
+			SYSTEM.Command_exe("Coping file to Category folder.           ","cp "+FOLDER_KATANA+"tmp/"+path+" "+FOLDER_KATANA+"modules/"+New[0]+"/",std=False)
+			printk.inf("Adding a module list")
+
+			inFile = open(FOLDER_KATANA+'core/modules.xml', 'rw')
 			data = inFile.readlines()
 			LineNumber=0
 			LastModuleofCategory=0
@@ -72,44 +78,33 @@ class ktf:
         <version>"""+init.Version+"""</version>
         <author>"""+init.Author+"""</author>
         <category>"""+New[0]+"""</category>
-        <filename>"""+FilenameModule+"""</filename>
+        <filename>"""+path+"""</filename>
         <description>"""+init.Description+"""</description>
     </module>
 """
 			if LastModuleofCategory==0:LastModuleofCategory=LineNumber-1
 			data.insert(LastModuleofCategory,InsertNewModule)
 			inFile.close()
-			outFile = open('core/modules.xml', 'w')
+			outFile = open(FOLDER_KATANA+'core/modules.xml', 'w')
 			outFile.writelines(data)
 			outFile.close()
-			printAlert(3,"Module installed")
+			printk.suff("Module installed")
 			Space()
-			os.system("rm tmp/__init__.py")
-			os.system("rm tmp/"+FilenameModule+".py")
-			os.system("rm tmp/*.pyc")
-		except Exception as e:printAlert(1,str(e)+"\n")
+			os.system("rm "+FOLDER_KATANA+"tmp/*")
 
-	def RemoteImport(self):
-		u = urllib2.urlopen("https://raw.githubusercontent.com/PowerScript/rmfktf/master/modules.js")
-		data_string = json.loads(u.read())
-		for module in data_string['Modules']:
-			if module['CodeName'] == Import:
-				printAlert(0,"Downloading Module : "+Import)
-				d = urllib2.urlopen("https://raw.githubusercontent.com/PowerScript/rmfktf/master/"+module['Filename'])
-				outFile = open(module['Filename'], 'w')
-				outFile.writelines(d.read())
-				outFile.close
-				return module['Filename'][:-3]
-		printAlert(1,"Module not found or server is down\n")
-		exit()
+		except Exception as e:printk.err(str(e)+"\n")
 
-try:
-	ktf=ktf()
-	if  Import and isRemote:
-		Import=ktf.RemoteImport()
-		ktf.ImportModule()
+	def RemoteImport(self,url):
 
-	elif Import:ktf.ImportModule()
-	else:printAlert(1,"Check your Arguments\n       |Use '--i-module' for import modules\n       |Use '--i-module-remote' for import remote modules\n       |Use '--i-tool' for import tools\n")
-		
-except:Errors.Errors()
+		printk.inf("Downloading Module : "+url)
+		d = urllib2.urlopen(url)
+		outFile = open(FOLDER_KATANA+"tmp/temp_modules.py", 'w')
+		outFile.writelines(d.read())
+		outFile.close
+		self.ImportModule(FOLDER_KATANA+"tmp/temp_modules.py")
+
+if __name__=="__main__":
+	ktf = ktf()
+	if args.import_module         :ktf.ImportModule(args.path)
+	elif args.import_remote_module:ktf.RemoteImport(args.path)
+	else                          :printk.war("No Operation!, Use ktf.ktf -h.\n")
