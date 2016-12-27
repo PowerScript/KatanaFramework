@@ -3,11 +3,10 @@
 
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Katana Core import                  #
-from core.KATANAFRAMEWORK import *    #
+from core.KatanaFramework import *    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
 # LIBRARIES  
-from core.Function import MakeTable
 from core.Errors import Errors
 from ftplib import FTP
 import commands, os
@@ -42,7 +41,7 @@ def main(run):
 	ftp.connect(init.var['target'],int(init.var['port'])) 
 	ftp.login(init.var['user'],init.var['pass'])
 
-	printAlert(2,"FTP Console")
+	printk.inf("FTP Console")
 	HelpBanner  = [["Commands","Description","Example"]]
 	HelpBanner += [["ls","list files","ls"]]
 	HelpBanner += [["cd","change dir","cd css"]]
@@ -52,7 +51,7 @@ def main(run):
 	HelpBanner += [["rmd","remove dir","remove sex"]]
 	HelpBanner += [["get","download file","get index.php"]]
 	HelpBanner += [["put","upload file","put login.php"]]
-	MakeTable(HelpBanner)
+	GRAPHICAL.CreateTable(HelpBanner)
 
 	cmd="nop"
 	path=""
@@ -74,7 +73,7 @@ def main(run):
 				lfile=cmd[4:].replace("\n","")
 				ftp.retrbinary('RETR '+lfile,open(lfile,'wb').write)
 				commands.getoutput("cp "+lfile+" /root/Desktop/;rm "+lfile)
-				printAlert(3,"File was Saved, /root/Desktop/"+lfile)
+				printk.suff("File was Saved, /root/Desktop/"+lfile)
 			elif cmd[0:3] == "put":
 				lfile=cmd[4:].replace("\n","")
 				w = open(lfile, 'rb')
@@ -85,7 +84,7 @@ def main(run):
 			elif cmd[0:3] == "rmd":ftp.rmd(cmd[4:])
 			elif cmd[0:2] == "rm" :ftp.delete(cmd[3:])
 			elif cmd[0:2] == "mk" :ftp.mkd(cmd[3:])
-			elif cmd == "help":MakeTable(HelpBanner)
+			elif cmd == "help":GRAPHICAL.CreateTable(HelpBanner)
 		except : Errors() 
 
 # END CODE MODULE ############################################################################################
