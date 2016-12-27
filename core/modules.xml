@@ -1,245 +1,210 @@
 <?xml version="1.0"?>
 <modules>
     <module name="web/cp.finder">
-        <version>2.0</version>
         <author>RedToor</author>
 		<category>web</category>
         <filename>administrator_panel_finder</filename>
         <description>Administrator Panel Finder.</description>
     </module>
       <module name="web/bt.form">
-        <version>1.3</version>
         <author>RedToor</author>
 		<category>web</category>
         <filename>brute_force_to_formbase</filename>
         <description>Brute force to Form-based.</description>
     </module>
       <module name="web/bt.http">
-        <version>2.0</version>
         <author>RedToor</author>
 		<category>web</category>
         <filename>brute_force_to_http_block</filename>
         <description>Brute force to Http Authentication.</description>
     </module>
       <module name="web/whois">
-        <version>1.1</version>
         <author>RedToor</author>
 		<category>web</category>
         <filename>whois</filename>
         <description>Whois, DNS Lookup.</description>
     </module>
       <module name="web/clt.lfd">
-        <version>1.1</version>
         <author>RedToor</author>
 		<category>web</category>
         <filename>client_lsd_vulnerabilty</filename>
         <description>LFD Vulnerability Console.</description>
     </module>
       <module name="net/sf.arp">
-        <version>1.1</version>
         <author>cl3ar</author>
 		<category>net</category>
         <filename>arp_attack_monitor</filename>
         <description>ARP tables Monitor.</description>
     </module>
       <module name="net/sc.hosts">
-        <version>2.1</version>
         <author>Redtoor</author>
 		<category>net</category>
         <filename>get_hosts_live</filename>
-        <description>Host's live Scan in LAN.</description>
+        <description>Hosts live Scan in LAN.</description>
     </module>
     <module name="net/sc.scan">
-        <version>2.0</version>
         <author>RedToor</author>
         <category>net</category>
         <filename>scan</filename>
         <description>Scan [Ports, OS, Etc] IP.</description>
     </module>
     <module name="net/work.sniff">
-        <version>2.0</version>
         <author>Thomas TJ 2016 (TTJ)</author>
         <category>net</category>
         <filename>network_sniff</filename>
         <description>HTTP sniffer.</description>
     </module>
     <module name="net/arp.pson">
-        <version>3.1</version>
         <author>RedToor</author>
         <category>net</category>
         <filename>arp_poisoning_attack</filename>
         <description>ARP poisoning Attack.</description>
     </module>
     <module name="net/arp.dos">
-        <version>1.0</version>
         <author>RedToor</author>
         <category>net</category>
         <filename>arp_denegation_of_service</filename>
         <description>ARP D.O.S Attack.</description>
     </module>
     <module name="net/dns.spoof">
-        <version>1.0</version>
         <author>RedToor</author>
         <category>net</category>
         <filename>dns_spoofing</filename>
         <description>DNS Spoofing.</description>
     </module>
     <module name="net/dns.fake">
-        <version>1.0</version>
         <author>Dimitrios Kanellopoulos | Adated by RedToor</author>
         <category>net</category>
         <filename>dns_fake</filename>
         <description>DNS fake Server Spoof.</description>
     </module>
     <module name="net/web.dos">
-        <version>1.0</version>
         <author>RedToor</author>
         <category>net</category>
         <filename>web_killer</filename>
         <description>Web D.O.S Attack in LAN.</description>
     </module>
     <module name="msf/back.door">
-        <version>1.0</version>
         <author>RedToor</author>
         <category>msf</category>
         <filename>msf_venom</filename>
         <description>Generate backdoors with MSF.</description>
     </module>
      <module name="set/web.hot">
-        <version>1.0</version>
         <author>Redtoor</author>
         <category>set</category>
         <filename>hotspot_web</filename>
         <description>Gathering Information with web.</description>
     </module>
      <module name="set/em.boom">
-        <version>1.0</version>
         <author>Redtoor</author>
         <category>set</category>
         <filename>smtp_boombing</filename>
         <description>E-mail Boombing (SPAM).</description>
     </module>
     <module name="clt/cl.sql">
-        <version>1.1</version>
         <author>RedToor</author>
         <category>clt</category>
         <filename>mysql_client</filename>
         <description>Mysql Console Client.</description>
     </module>
     <module name="clt/cl.ftp">
-        <version>1.0</version>
         <author>RedToor</author>
         <category>clt</category>
         <filename>ftp_client</filename>
         <description>FTP Console Client.</description>
     </module>
     <module name="clt/cl.pop">
-        <version>1.0</version>
         <author>RedToor</author>
         <category>clt</category>
         <filename>pop3_client</filename>
         <description>POP Console Client.</description>
     </module>
     <module name="clt/cl.adb">
-        <version>1.0</version>
         <author>RedToor</author>
         <category>clt</category>
         <filename>adb_client</filename>
         <description>ADB Console Client (Android).</description>
     </module>
      <module name="btf/pr.ftp">
-        <version>1.1</version>
         <author>LeSZO ZerO</author>
         <category>btf</category>
         <filename>brute_force_to_ftp_protocol</filename>
         <description>Brute Force to FTprotocol.</description>
     </module>
      <module name="btf/pr.sql">
-        <version>1.1</version>
         <author>RedToor</author>
         <category>btf</category>
         <filename>brute_force_to_sql_protocol</filename>
         <description>Brute Force to SQL protocol.</description>
     </module>
      <module name="btf/pr.ssh">
-        <version>1.1</version>
         <author>RedToor</author>
         <category>btf</category>
         <filename>brute_force_to_ssh_protocol</filename>
         <description>Brute Force to SSH protocol.</description>
     </module>
      <module name="btf/pr.pop">
-        <version>1.1</version>
         <author>RedToor</author>
         <category>btf</category>
         <filename>brute_force_to_pop3_protocol</filename>
         <description>Brute Force to POP3 protocol.</description>
     </module>
      <module name="anf/af.imagen">
-        <version>1.1</version>
         <author>RedToor</author>
         <category>anf</category>
         <filename>forensic_image_analysis</filename>
         <description>Forensic image analysis.</description>
     </module>
      <module name="fle/bt.rar">
-        <version>2.0</version>
         <author>LeSZO ZerO</author>
         <category>fle</category>
         <filename>brute_force_to_rar_file</filename>
         <description>Brute Force to RAR file.</description>
     </module>
      <module name="fle/scan.file">
-        <version>1.0</version>
         <author>RedToor</author>
         <category>fle</category>
         <filename>report_virus_total</filename>
         <description>Report of Virus Scan file.</description>
     </module>
      <module name="fle/bt.zip">
-        <version>2.0</version>
         <author>LeSZO ZerO</author>
         <category>fle</category>
         <filename>brute_force_to_zip_file</filename>
         <description>Brute Force to ZIP file.</description>
     </module>
      <module name="mcs/gn.words">
-        <version>2.1</version>
         <author>RedToor</author>
         <category>mcs</category>
         <filename>generator_dictionary</filename>
         <description>Generator Dictionaries.</description>
     </module>
      <module name="mcs/i.settup">
-        <version>2.0</version>
         <author>RedToor</author>
         <category>mcs</category>
         <filename>mysettup</filename>
         <description>Show Properties of System Current.</description>
     </module>
      <module name="mcs/ts.login">
-        <version>1.1</version>
         <author>RedToor</author>
         <category>mcs</category>
         <filename>credentials_test</filename>
         <description>Test Credentials protocols.</description>
     </module>
      <module name="mcs/px.checker">
-        <version>1.0</version>
         <author>RedToor</author>
         <category>mcs</category>
         <filename>proxy_checker</filename>
         <description>Proxy list checker.</description>
     </module>
      <module name="wifi/ap.dos">
-        <version>1.1</version>
         <author>RedToor</author>
         <category>wifi</category>
         <filename>wifi_denegation_of_service</filename>
         <description>Access Point D.O.S attack.</description>
     </module>
      <module name="wifi/ev.twin">
-        <version>1.0</version>
         <author>RedToor</author>
         <category>wifi</category>
         <filename>evil_twin</filename>
