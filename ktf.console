@@ -1,52 +1,55 @@
 #!/usr/bin/env python2
 #HEAD#########################################################
 #
-# Katana Framework | ktf.run                            
+# Katana Framework | ktf.console                            
 # Last Modified: 27/12/2016
 #
 #########################################################HEAD#
 
-
 from core.MainListLibrary import *
-from core.Default import *    
-from core.Design import *
+from core.GeneralCommands import *
 from core import Banner , Errors 
+from core.Design import *
 
-LoadBuffer()
-LoadGlobalVariables()
-
-parser = argparse.ArgumentParser()
-parser.add_argument("-m", "--module", help=" Script module to run.")
-parser.add_argument("-q", "--quit"  , action='store_false', default=True, help="No show Banner")
-args = parser.parse_args()
-
-if args.quit:Banner.LoadBanner()
-
+def katanaFrameworkConsole():
+	try:
+		action = raw_input(MainPrompt())
+		if KatanaCheckActionShowModules(action):
+			ListModules()
+			katanaFrameworkConsole()
+		if KatanaCheckActionUseModule(action):
+			for modules in GetRootModules().findall('module'):
+				if action[len(SELECT)+1:] == modules.get('name'):
+					InstanceModule = import_module("modules."+modules.find('category').text+"."+modules.find('filename').text) 
+					init=InstanceModule.init()
+					real_init = init.options.copy()
+					init=LoadSession(init)
+					while True:
+						try:
+							actions=raw_input(Prompt(init.CodeName))
+							if   KatanaCheckActionShowOptions(actions)  :ShowOptions(init)
+							elif KatanaCheckActionShowMOptions(actions) :ShowFullOptions(init)
+							elif KatanaCheckActionExefunction(actions)  :Executefunction(actions)
+							elif KatanaCheckActionInvoke(actions)       :Invoke(actions)
+							elif KatanaCheckSession(actions)            :init=SessionInterative(actions,init)
+							elif KatanaCheckActionSetValue(actions)     :init=UpdateValue(actions,init,real_init)
+							elif KatanaCheckActionGetInfo(actions)      :ShowInformationModule(init)
+							elif runModule(actions)                     :
+								init = UpdateInternalModule(init)
+								SaveSession(init)
+								InstanceModule.main(True)
+							elif KatanaCheckActionisBack(actions)       :katanaFrameworkConsole()
+							else:KatanaCheckActionGlobalCommands(actions)
+						except:Errors.Errors()
+			katanaFrameworkConsole()
+		elif KatanaCheckActionExefunction(action)                       :Executefunction(action)
+		else                                                            :KatanaCheckActionGlobalCommands(action)
+		katanaFrameworkConsole()
+	except                                                              :Errors.Errors()
+	  
 if __name__=="__main__":
-	for modules in GetRootModules().findall('module'):
-		if args.module == modules.get('name'):
-
-			InstanceModule = import_module("modules."+modules.find('category').text+"."+modules.find('filename').text) 
-			init=InstanceModule.init()
-			real_init = init.options.copy()
-			init=LoadSession(init)
-
-			while True:
-				try:
-					actions=raw_input(Prompt(init.CodeName))
-					if   KatanaCheckActionShowOptions(actions)  :ShowOptions(init)
-					elif KatanaCheckActionShowMOptions(actions) :ShowFullOptions(init)
-					elif KatanaCheckActionExefunction(actions)  :Executefunction(actions)
-					elif KatanaCheckActionInvoke(actions)       :Invoke(actions)
-					elif KatanaCheckSession(actions)            :init=SessionInterative(actions,init)
-					elif KatanaCheckActionSetValue(actions)     :init=UpdateValue(actions,init,real_init)
-					elif KatanaCheckActionGetInfo(actions)      :ShowInformationModule(init)
-					elif runModule(actions)                     :
-						init = UpdateInternalModule(init)
-						SaveSession(init)
-						InstanceModule.main(True)
-					elif KatanaCheckActionisBack(actions)       :FunctionNoEnableForThisModule()
-					else :
-						if actions                              :KatanaCheckActionGlobalCommands(actions)
-				except                                          :Errors.Errors()
-	ModuleNotFound(args.module)
+	
+	LoadBuffer()
+	LoadGlobalVariables()
+	Banner.LoadBanner()
+	katanaFrameworkConsole()
