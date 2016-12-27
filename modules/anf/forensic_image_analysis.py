@@ -3,11 +3,10 @@
 
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Katana Core import                  #
-from core.KATANAFRAMEWORK import *    #
+from core.KatanaFramework import *    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
 # LIBRARIES 
-from core.Function import MakeTable
 import commands
 # END LIBRARIES
 
@@ -18,7 +17,7 @@ def init():
 	init.Description        ="Forensic Image Analysis with exiftool."
 	init.CodeName           ="anf/af.imagen"
 	init.DateCreation       ="28/09/2015"      
-	init.LastModification   ="03/02/2016"
+	init.LastModification   ="27/12/2016"
 	init.References         =None
 	init.License            =KTF_LINCENSE
 	init.var                ={}
@@ -35,13 +34,12 @@ def init():
 def main(run):
 	Loadingfile(init.var['target'])
 	open(init.var['target'],'rw')
-	printAlert(2,"Forensic Image Analysis Console [exiftool]")
+	printk.inf("Forensic Image Analysis Console [exiftool]")
 	HelpBanner  = [["Commands","Description","Example"]]
 	HelpBanner += [["extract_all","extract all MD","extract_all"]]
 	HelpBanner += [["comment","comment whatever","comment Hello zzz"]]
-	MakeTable(HelpBanner)
+	GRAPHICAL.CreateTable(HelpBanner)
 	cmd="nop"
-	parameter="ROO"
 	while(cmd!="exit"):
 		cmd = raw_input(ClientPrompt(init.CodeName,"anf.imagen"))
 		if(cmd=="extract_all"):
@@ -54,5 +52,6 @@ def main(run):
 			output=output.split("\n")
 			for lineperline in output:
 				print " |"+lineperline
+		elif cmd == "help":GRAPHICAL.CreateTable(HelpBanner)
 
 # END CODE MODULE ############################################################################################
