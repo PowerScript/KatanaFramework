@@ -498,11 +498,11 @@ def SessionInterative(action,init):
 ### LOAD SESSIONS ###
 def LoadSession(init):
 	original = init
+	
 	if AUTO_LOAD_SESSION:
 		try:
-			init=SessionInterative("session -i 0",init)
-			return original
-		except:extra=False
+			return SessionInterative("session -i 0",init)
+		except:err="No exists sessions."
 	return original
 
 ### LOAD GLOBAL VARIABLES ###
