@@ -5,5 +5,4 @@ do
     PARAMETERS+=" "$1
     shift
 done
-cd /usr/share/KatanaFramework
-python ktf.ktf $PARAMETERS
+python /usr/share/KatanaFramework/ktf.ktf $PARAMETERS
