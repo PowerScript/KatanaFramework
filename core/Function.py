@@ -359,7 +359,6 @@ class SYSTEM:
 			i = "["+colors[1]+"\033[1mERROR"+colors[0]+"]"+colors[0]+"["+colors[3]+"\033[1mWARNING"+colors[0]+"]"
 
 		stdout.write("\r" + " " + information + " " + msg +" STATUS:%s                      \r" % i)
-		stdout.write("\n")
 
 	def Rtask(self,process):
 		xtem="" 
