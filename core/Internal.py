@@ -411,7 +411,7 @@ def ListModules():
 
 ### GET ROOT VARIABLE MODULES INSTALLED ###
 def GetRootModules():
-	tree = ET.parse('core/modules.xml')
+	tree = ET.parse(FOLDER_KATANA+'core/modules.xml')
 	root = tree.getroot()
 	return root
 
