@@ -2,7 +2,7 @@
 #HEAD#########################################################
 #
 # Katana Framework | ktf.run                            
-# Last Modified: 24/12/2016
+# Last Modified: 27/12/2016
 #
 #########################################################HEAD#
 
@@ -42,8 +42,8 @@ if __name__=="__main__":
 					elif KatanaCheckActionSetValue(actions)     :init=UpdateValue(actions,init,real_init)
 					elif KatanaCheckActionGetInfo(actions)      :ShowInformationModule(init)
 					elif runModule(actions)                     :
-						SaveSession(init)
 						init = UpdateInternalModule(init)
+						SaveSession(init)
 						InstanceModule.main(True)
 					elif KatanaCheckActionisBack(actions)       :FunctionNoEnableForThisModule()
 					else :
