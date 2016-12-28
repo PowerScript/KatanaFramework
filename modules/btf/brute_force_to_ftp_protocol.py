@@ -49,7 +49,7 @@ def main(run):
 				if True:
 					printk.suff("Successfully with ["+init.var['user']+"]["+password+"]\n")
 					Space()
-					UTIL.Register(init,password)
+					UTIL.sRegister(init,password)
 					return
 			except:printk.inf(" | Checking '"+password+"'")
 
