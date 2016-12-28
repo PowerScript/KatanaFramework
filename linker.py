@@ -7,7 +7,7 @@
 #########################################################HEAD#
 
 
-from core.Function import (GetRootModules)
+from core.Internal import (GetRootModules)
 
 import importlib
 import argparse
@@ -18,8 +18,7 @@ args = parser.parse_args()
 
 
 if __name__=="__main__":
-	root=GetRootModules()
-	for modules in root.findall('module'):
+	for modules in GetRootModules().findall('module'):
 		if args.module == modules.get('name'):
 			category = modules.find('category').text
 			filename = modules.find('filename').text
