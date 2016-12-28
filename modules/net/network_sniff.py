@@ -2,7 +2,7 @@
 # https://github.com/PowerScript/KatanaFramework
 
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
-# Katana Core import				  #
+# Katana Core import		      #
 from core.KatanaFramework import *    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
@@ -18,25 +18,25 @@ gsecret = ""    # Same for secret
 
 # INFORMATION MODULE
 def init():
-	init.Author			 	="Thomas TJ 2016 (TTJ) - Collaborator(RedToor)"
+	init.Author			="Thomas TJ 2016 (TTJ) - Collaborator(RedToor)"
 	init.Version			="2.0"
 	init.Description		="HTTP sniffer"
 	init.CodeName			="net/work.sniff"
 	init.DateCreation		="09/11/2016"
-	init.LastModification	="24/12/2016"
-	init.Collaborators      =None
+	init.LastModification	        ="24/12/2016"
+	init.Collaborators              =None
 	init.References		 	=None
 	init.License			=KTF_LINCENSE
-	init.var				={}
+	init.var			={}
 
 	# DEFAULT OPTIONS MODULE
 	init.options = {
-		# NAME		VALUE				 RQ	   DESCRIPTION
+		# NAME		VALUE		 RQ	   DESCRIPTION
 		'interface' :[INTERFACE_ETHERNET,True ,'Monitor Interface'],
-		'filter'	:["ALL"			    ,False,'Filter sniff'],
-		'onlycreds'	:["false"			,False,'Only show creds'],
-		'hideempty'	:["true"			,False,'Hide empty pkts'],
-		'ignore'	:["false"			,False,'Ignore js etc']
+		'filter'	:["ALL"	        ,False,'Filter sniff'],
+		'onlycreds'	:["false"	,False,'Only show creds'],
+		'hideempty'	:["true"	,False,'Hide empty pkts'],
+		'ignore'	:["false"	,False,'Ignore js etc']
 
 	}
 
