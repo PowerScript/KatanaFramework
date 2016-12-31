@@ -29,7 +29,7 @@ def init():
 		'port'  :[HTTP_PORT           ,False,'Port Target'],
 		'file'  :["/login.php"        ,True ,'File request'],
 		'user'  :[USERNAME            ,True ,'Username target'],
-		'dict'  :["files/db/Routerpass.dicc" ,False,'Wordlist'],
+		'dict'  :["files/db/pass.dicc",False,'Wordlist'],
 		'data_a':["username"          ,True ,'Name value 1'],
 		'data_b':["password"          ,True ,'Name value 2'],
 		'method':["POST"              ,True ,'Method form'],
