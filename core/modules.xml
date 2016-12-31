@@ -6,6 +6,12 @@
         <filename>administrator_panel_finder</filename>
         <description>Administrator Panel Finder.</description>
     </module>
+      <module name="web/bypass.sql">
+        <author>RedToor</author>
+        <category>web</category>
+        <filename>sql_bypass</filename>
+        <description>bypass SQLi with Cheats Injections.</description>
+    </module>
       <module name="web/bt.form">
         <author>RedToor</author>
 		<category>web</category>
