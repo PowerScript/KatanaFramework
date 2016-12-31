@@ -33,10 +33,10 @@ def init():
 	init.options = {
 		# NAME		VALUE		 RQ	   DESCRIPTION
 		'interface' :[INTERFACE_ETHERNET,True ,'Monitor Interface'],
-		'filter'	:["ALL"	        ,False,'Filter sniff'],
-		'onlycreds'	:["false"	,False,'Only show creds'],
-		'hideempty'	:["true"	,False,'Hide empty pkts'],
-		'ignore'	:["false"	,False,'Ignore js etc']
+		'filter'    :["ALL"	        ,False,'Filter sniff'],
+		'onlycreds' :["false"	        ,False,'Only show creds'],
+		'hideempty' :["true"	        ,False,'Hide empty pkts'],
+		'ignore'    :["false"	        ,False,'Ignore js etc']
 
 	}
 
@@ -70,7 +70,7 @@ def main(run):
 
 		if  NET.CheckIfExistInterface(init.var['interface']):
 			printk.inf("Sniffing HTTP protocol.")
-			while True:sniff(filter=FILTER, prn=callback, store=0, iface=init.var['interface'])
+			while True:sniff(filter=FILTER, prn=callback, store=0, iface=str(init.var['interface']))
 	except KeyboardInterrupt:
 		sys.exit()
 
