@@ -1,3 +1,10 @@
 #!/bin/bash
+#HEAD#########################################################
+#
+# Katana Framework | ktf.gui (shortcut)                       
+# Last Modified: 31/12/2016 
+#
+#########################################################HEAD#
+
 cd /usr/share/KatanaFramework
 java -jar ktf.gui.jar
