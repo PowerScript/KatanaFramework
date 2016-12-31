@@ -392,22 +392,15 @@ def LoadBuffer():
 def ListModules():
 	tree = ET.parse('core/modules.xml')
 	root = tree.getroot()
-	print """	\\
- 	,--.,  
-	\\BY\\\\  """+colors[7]+""" CodeName\t\tDescription"""+colors[0]
-	print colors[0]+"	|"+colors[1]+"=="+colors[0]+"|:| -----------------------------------------------"
+	print colors[7]+colors[1]+"\n   CodeName\t\t\tDescription"+colors[0]
  	space_category = "web"
- 	print colors[0]+"	|"+colors[1]+"="+colors[0]+"|:|"
  	for modules in root.findall('module'):
 		name = modules.get('name')
 		if space_category !=  name[:3]:
 			space_category=name[:3]
-			print colors[0]+"	|"+colors[1]+"=="+colors[0]+"|:| -----------------------------------------------"
 		description = modules.find('description').text
 		Desing.Line(CodeName=name,Description=description)
-	print """	/RT/,/ 
-	`--`-'
-	/"""
+	print ""
 
 ### GET ROOT VARIABLE MODULES INSTALLED ###
 def GetRootModules():
