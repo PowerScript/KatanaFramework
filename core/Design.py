@@ -71,8 +71,11 @@ class printk():
 
 class DESIGN:
 	
-	def Line(self,CodeName,Description):print colors[0]+"	|"+colors[1]+"="+colors[0]+"|:|  "+colors[7]+CodeName+colors[0]+"\t\t"+Description
-	
+	def Line(self,CodeName,Description):
+		appent_tab = ""
+		if len(CodeName) < 14 : appent_tab = "\t"
+		print colors[0]+"  "+colors[7]+CodeName+colors[0]+appent_tab+"\t\t"+Description
+		
 	def option(self,lot):
 		more=""
 		if lot == True : more = "["+colors[1]+"+"+colors[0]+"]"
