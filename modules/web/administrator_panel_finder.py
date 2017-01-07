@@ -8,17 +8,17 @@ from core.KatanaFramework import *    #
 
 # LIBRARIES  
 from bs4 import BeautifulSoup
-import httplib                
+import httplib,re        
 # END LIBRARIES 
 
 # INFORMATION MODULE
 def init():
 	init.Author             ="RedToor"
-	init.Version            ="2.0"
+	init.Version            ="2.1"
 	init.Description        ="Administrator Panel finder, Brute Force + Google Dork + Port Scan."
 	init.CodeName           ="web/cp.finder"
 	init.DateCreation       ="28/09/2015"      
-	init.LastModification   ="25/12/2016"
+	init.LastModification   ="07/01/2017"
 	init.References         =None
 	init.License            =KTF_LINCENSE
 	init.var                ={}
@@ -52,30 +52,41 @@ def main(run):
 
 			if response.status == 200 or response.status == 301:
 				printk.suff(" | Response "+init.var['target']+path)
-				Totalresults+="\t|"+init.var['target']+path+"\n"
+				Totalresults+="\t  |"+init.var['target']+path+"\n"
 			else:printk.inf(" | Checking `"+colors[0]+path+"` Response:"+str(response.status))
 			
 	printk.step("[2] Step : Starting Google Dorking...")
-	connection = httplib.HTTPSConnection("www.google.com.ru")
+	connection = httplib.HTTPSConnection("www.google.com")
 	connection.request("GET", "/search?q=inurl:admin+site:"+str(init.var['target']))
 	connection.addheaders=[('User-agent', WEB.RamdonAgent())]
 	response = connection.getresponse()
-	soup = BeautifulSoup(response.read(), "lxml")
-	divList = soup.findAll('cite')
-	for ids in divList:
-		printk.suff("| Result  "+ids.text)
-		Totalresults+="\t | "+ids.text+"\n"
+
+	if response.status == 302:
+		html_response = response.read()
+		urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', html_response)
+		host_name = re.findall('(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-]{,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,6}',urls[0])
+		connection = httplib.HTTPSConnection(host_name[0])
+		connection.request("GET", "/search?q=inurl:admin+site:"+str(init.var['target']))
+		connection.addheaders=[('User-agent', WEB.RamdonAgent())]
+		response = connection.getresponse()
+
+	if response.status == 200:
+		soup = BeautifulSoup(response.read(), "lxml")
+		divList = soup.findAll('cite')
+		for ids in divList:
+			printk.suff("| Result  "+ids.text)
+			Totalresults+="\t | "+ids.text+"\n"
 
 	printk.step("[3] Step : Scanning Port commons...")
 	commonports = [2082,2083,2095,2096]
 	for port in commonports:
 		printk.inf(" | Testing Port "+str(port))
 		if NET.CheckConnectionHost(init.var['target'],port,5):
-			printk.suff(" | "+str(port)+" Port Open!")
-			Totalresults+="\t|"+str(port)+" Open! \n"
+			printk.suff("  | "+str(port)+" Port Open!")
+			Totalresults+="\t |"+str(port)+" Open! \n"
 
 	printk.inf("[*] Total Result")
-	print Totalresults
+	print Totalresults+"  -------/"
 	UTIL.sRegister(init,Totalresults)
 
 # END CODE MODULE ############################################################################################
