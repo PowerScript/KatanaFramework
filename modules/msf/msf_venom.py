@@ -17,7 +17,7 @@ def init():
 	init.Description        ="Generator's payload with Metasploit"
 	init.CodeName           ="msf/back.door"
 	init.DateCreation       ="07/10/2016"      
-	init.LastModification   ="23/12/2016"
+	init.LastModification   ="07/01/2017"
 	init.References         =None
 	init.License            =KTF_LINCENSE
 	init.var                ={}
@@ -57,7 +57,7 @@ def init():
 # CODE MODULE    ############################################################################################
 def main(run):
 
-	printk.inf("Checking : "+UTIL.CheckProjectInstalled("msfvenom"))
+	printk.inf("Checking if metasploit is installed: "+str(UTIL.CheckProjectInstalled("msfvenom")))
 	printk.wait("Wait, msfvenom working...")
 	secuence = "msfvenom"
 	secuence += " -a "+init.var['arch']	
