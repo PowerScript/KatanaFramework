@@ -13,4 +13,4 @@ install:
 python:
  - "2.7"
   
-script: python2.7 --version && python2.7 install
+script: python2.7 --version && sudo python2.7 install
