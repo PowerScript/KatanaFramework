@@ -86,10 +86,29 @@ Banner4= """
  Year-2016                       `, ,`.*.*. *
   ________________________________*  * ` ^ *____________________________"""
 
+Banner5= """
+                      
+                             ⍶⍷⍸⍹⍣⍣
+                            ⍹☊⍥☌☍⍬⍿⍪
+                           ⍢⍣⍤⍥⍨⍩⍦⍧⍬⍹
+                      ⍢⍣⍤⍥"""+colors.GW+colors.R+colors.HH+"""MMMMMMMMMMMM"""+colors.W+"""⍧.⎋
+          ██╗  ██╗ █████╗ """+colors.GW+colors.R+colors.HH+"""MMP""MM""YMM"""+colors.W+""" █████╗ ███╗   ██╗ █████╗ 
+          ██║ ██╔╝██╔══██╗"""+colors.GW+colors.R+colors.HH+"""P'"""+colors.W+"""☋⍧."""+colors.GW+colors.R+colors.HH+"""MM"""+colors.W+"""⍿⍪⍦"""+colors.GW+colors.R+colors.HH+"""`7"""+colors.W+"""██╔══██╗████╗  ██║██╔══██╗
+          █████╔╝ ███████║.⎋⎍⍿⎎"""+colors.GW+colors.R+colors.HH+"""MM"""+colors.W+"""⍤⎋⎍⍩⍦███████║██╔██╗ ██║███████║
+          ██╔═██╗ ██╔══██║⍾⎀⍽⍧⎃"""+colors.GW+colors.R+colors.HH+"""MM"""+colors.W+"""⍣⍦⍤⍥⍨██╔══██║██║╚██╗██║██╔══██║
+          ██║  ██╗██║  ██║⍦⍧.⎋⍤"""+colors.GW+colors.R+colors.HH+"""MM"""+colors.W+"""⍦⍧⍬⍿⍪██║  ██║██║ ╚████║██║  ██║
+          ╚═╝  ╚═╝╚═╝  ╚═╝⍬⍿⍪"""+colors.GW+colors.R+colors.HH+""".JMML."""+colors.W+"""⎋⎍⎎╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝
+                        ⍢⍣⍤⍥⍢⍣⍤⍥⍨⍩⍦⍧☋⍢⍣⍤⍥     """+colors.HH+"""C"""+colors.W+"""["""+Information.version+"""]B["""+Information.build+"""] 
+                            ⍹☊☋☌⍤☍⍬⍿⍪         """+colors.HH+"""D"""+colors.W+"""["""+Information.date+"""] 
+                             ⍥⍨⍩⍦⍧⍬☋          """+colors.HH+"""B"""+colors.W+"""[Hieroglyphics]
+                              ☌☍⍬⍿⍪        القرصنة في العالم سخيف
+                                                   
+"""
+
 def LoadBanner():
-	RamdonBanner=random.randint(1,4)
+	RamdonBanner=random.randint(1,5)
 	if RamdonBanner==1:print Banner1
 	if RamdonBanner==2:print Banner2
 	if RamdonBanner==3:print Banner3
 	if RamdonBanner==4:print Banner4
-	
+	if RamdonBanner==5:print Banner5
