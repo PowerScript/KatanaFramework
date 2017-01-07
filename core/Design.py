@@ -26,22 +26,22 @@ colors=['\033[0m',   # 0}  WHITE
 		'\033[42m',  # 12} BACKGROUND GREEN
 		'\033[43m']  # 13} BACKGROUND YELLOW
 
-error      =colors[0]+"["+colors[7]+colors[1]+"err"+colors[0]+"]"
-step       =colors[0]+"["+colors[1]+"stp"+colors[0]+"]"
-information=colors[0]+"["+colors[4]+"inf"+colors[0]+"]"
-success    =colors[0]+"["+colors[7]+colors[2]+"suf"+colors[0]+"]"
-help       =colors[0]+"["+colors[7]+"hlp"+colors[0]+"]"
-warning    =colors[0]+"["+colors[7]+colors[3]+"war"+colors[0]+"]"
-runing     =colors[0]+"["+colors[2]+"run"+colors[0]+"]"
-wait       =colors[0]+"["+colors[8]+"wait"+colors[0]+"]"
-press      =colors[0]+"["+colors[8]+"press-key"+colors[0]+"]"
+error      =colors[0]+"  ["+colors[7]+colors[1]+"err"+colors[0]+"]"
+step       =colors[0]+"  ["+colors[1]+"stp"+colors[0]+"]"
+information=colors[0]+"  ["+colors[4]+"inf"+colors[0]+"]"
+success    =colors[0]+"  ["+colors[7]+colors[2]+"suf"+colors[0]+"]"
+help       =colors[0]+"  ["+colors[7]+"hlp"+colors[0]+"]"
+warning    =colors[0]+"  ["+colors[7]+colors[3]+"war"+colors[0]+"]"
+runing     =colors[0]+"  ["+colors[2]+"run"+colors[0]+"]"
+wait       =colors[0]+"  ["+colors[8]+"wait"+colors[0]+"]"
+press      =colors[0]+"  ["+colors[8]+"press-key"+colors[0]+"]"
 
 
 def MainPrompt()                    :return colors[7]+" [ktf]:"+colors[0]
 def ClientPrompt(module,client)     :return colors[0]+" [ktf]("+colors[7]+colors[1]+module+colors[0]+":"+colors[9]+client+colors[0]+"):"+colors[0]
 def Prompt(module)                  :return colors[0]+"  ↳[ktf]("+colors[7]+colors[1]+module+colors[0]+"):"+colors[0]
-def ChangeValue(option, value)      :print "\n "+option+"\t\t⋙  "+value+"\n"
-def RunModule()                     :print "\n "+runing+" Running...\n"+colors[0]+" "+information+" "+time.strftime('%c')+colors[0]
+def ChangeValue(option, value)      :print "\n "+option+"\t\t  ⋙ "+value+"\n"
+def RunModule()                     :print " "+runing+" The module was launched...\n"+colors[0]+" "+information+" "+time.strftime('%c')+colors[0]
 
 def Loadingfile(filename)           :print " "+information+" Loading file ["+filename+"]"+colors[0]
 def Space()                         :print ""
@@ -79,8 +79,8 @@ class DESIGN:
 	def option(self,lot):
 		more=""
 		if lot == True : more = "["+colors[1]+"+"+colors[0]+"]"
-		print "\n [options]\t[RQ]\t[description]\t\t[value]"+more
-		print " ---------\t----\t-------------\t\t-------"
+		print "\n  [options]\t[RQ]\t[description]\t\t[value]"+more
+		print "  ---------\t----\t-------------\t\t-------"
 
 	def description(self, option, rq, description, value):
 		if rq == True:
@@ -88,7 +88,7 @@ class DESIGN:
 		else:
 			rq=colors[1]+"no"+colors[0]
 		
-		if len(option) > 6:
+		if len(option) > 5:
 			option=option+"  "
 		else:option=option+"\t"
 
@@ -99,23 +99,8 @@ class DESIGN:
 		if len(description) < 8:
 			description=description+"\t"
 
-		print " "+option+"\t"+rq+"\t"+description+"\t"+colors[8]+value+colors[0]
+		print "  "+option+"\t"+rq+"\t"+description+"\t"+colors[8]+value+colors[0]
 
-	def linker(self):
-		print " \n [ktf]↣[linker]↘"
-	
-	def ktfrun(self):
-		print """
-  _              ___                  
- | |      _     / __)                 
- | |  _ _| |_ _| |__ ____ _   _ ____  
- | |_/ |_   _|_   __) ___) | | |  _ \ 
- |  _ (  | |_  | |_| |   | |_| | | | |
- |_| \_)  \__) |_(_)_|   |____/|_| |_|
-\n [ktf]↣[run]↘"""
-	
-	def ktftool(self):
-		print " \n [ktf]↣[tool]↘"
-	
-	def ktfktf(self):
-		print " \n [ktf]↣[ktf]↘"
+	def linker(self):print " \n [ktf]↣[linker]↘"
+	def ktftool(self):print " \n [ktf]↣[tool]↘"
+	def ktfktf(self):print " \n [ktf]↣[ktf]↘"
