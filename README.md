@@ -22,13 +22,13 @@ The Katana source code is organized as follows:
 # SUPPORTED DISTRIBUTIONS
 |Distribution | Version Check | supported | dependencies already installed |status |
 ----------|-------|------|------|-------|
-|Kali Linux|4.4.0 | yes| yes | [![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
-|Parrot OS| |yes|yes|[![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
-|Wifislax| |yes|yes|[![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
-|Arch Linux|4.8.6|yes|No|[![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
-|Raspbian|4.1.7 |yes|No|[![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
-|Ubuntu|14.04 |yes|No|[![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
-|Xbuntu|4.4.0 |yes|No|[![Wercker](https://img.shields.io/wercker/ci/wercker/docs.svg?maxAge=2592000)]()   |
+|Kali Linux|4.4.0 | yes| yes | working   |
+|Parrot OS| |yes|yes|working   |
+|Wifislax| |yes|yes|working   |
+|Arch Linux|4.8.6|yes|No|working   |
+|Raspbian|4.1.7 |yes|No|working   |
+|Ubuntu|14.04 |yes|No|working   |
+|Xbuntu|4.4.0 |yes|No|working  |
 
 # INSTALLATION
 Installation of Katana framework: is necesary install all [dependencies](https://github.com/PowerScript/KatanaFramework/wiki/Requisites) for a good performance.
