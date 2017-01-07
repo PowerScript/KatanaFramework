@@ -1,0 +1,16 @@
+langueage: python
+
+addons:
+  apt:
+    sources:
+      - deadsnakes
+    packages:
+      - python2.7
+
+install:
+ - sudo apt-get install python2.7
+
+python:
+ - "2.7"
+  
+script: python2.7 --version && python2.7 install
