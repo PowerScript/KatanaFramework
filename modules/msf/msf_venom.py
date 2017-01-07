@@ -58,17 +58,18 @@ def init():
 def main(run):
 
 	printk.inf("Checking if metasploit is installed: "+str(UTIL.CheckProjectInstalled("msfvenom")))
-	printk.wait("Wait, msfvenom working...")
-	secuence = "msfvenom"
-	secuence += " -a "+init.var['arch']	
-	secuence += " --platform "+init.var['platform']
-	secuence += " -p "+init.var['payload']+" LHOST="+init.var['host']+" LPORT="+init.var['port']
-	secuence += " -e "+init.var['encoder']
-	secuence += " -i "+init.var['iterations']
-	secuence += " -f "+init.var['format']
-	secuence += " -o "+init.var['output']
-	secuence += " -b '"+init.var['badchars']+"'"
-	SYSTEM.Command_exe("Generating Payload\t\t\t",secuence,std=False)
-	Space()
+	if UTIL.CheckProjectInstalled("msfvenom"):
+		printk.wait("Wait, msfvenom working...")
+		secuence = "msfvenom"
+		secuence += " -a "+init.var['arch']	
+		secuence += " --platform "+init.var['platform']
+		secuence += " -p "+init.var['payload']+" LHOST="+init.var['host']+" LPORT="+init.var['port']
+		secuence += " -e "+init.var['encoder']
+		secuence += " -i "+init.var['iterations']
+		secuence += " -f "+init.var['format']
+		secuence += " -o "+init.var['output']
+		secuence += " -b '"+init.var['badchars']+"'"
+		SYSTEM.Command_exe("Generating Payload\t\t\t",secuence,std=False)
+		Space()
 		
 # END CODE MODULE ############################################################################################
