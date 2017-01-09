@@ -17,7 +17,7 @@ def init():
 	init.Despcription       ="Generator of Dictionaries."
 	init.CodeName           ="msc/gn.words"
 	init.DateCreation       ="07/07/2015"      
-	init.LastModification   ="23/12/2016"
+	init.LastModification   ="09/01/2017"
 	init.References         =None
 	init.License            =KTF_LINCENSE
 	init.var                ={}
@@ -56,12 +56,9 @@ def main(run):
 	chars_spe = ['.', '-', '_', '/', '@']
 	permitidos = []
 	permitidos += char_null
-	if init.var['charset'] == "chars_num":
-		permitidos += chars_num
-	if init.var['charset'] == "chars_may":
-		permitidos += chars_may
-	if init.var['charset'] == "chars_min":
-		permitidos += chars_min
+	if init.var['charset'] == "chars_num":permitidos += chars_num
+	if init.var['charset'] == "chars_may":permitidos += chars_may
+	if init.var['charset'] == "chars_min":permitidos += chars_min
 	if init.var['charset'] == "chars_mix":
 		permitidos +=chars_min
 		permitidos +=chars_num
@@ -107,7 +104,7 @@ def main(run):
 	procent=int(Maxima)/10
 	counter=0
 	porcent=0
-	printk.inf("Creating file...      "+status_cmd("echo  >"+init.var['output']))
+	SYSTEM.Command_exe("Creating file...      ","echo  >"+init.var['output'], std=False)
 	printk.inf("Generating... ["+str(Maxima)+"] Words to Generate "+str(porcent)+"% Complete")
 	fichero = open(init.var['output'], 'w')
 	bucle = True
