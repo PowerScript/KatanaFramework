@@ -72,7 +72,7 @@ class ktf:
 			LineNumber=0
 			LastModuleofCategory=0
 			for LineperLine in data:
-				if LineperLine.find("name=\""+New[0]) >= 0:LastModuleofCategory=LineNumber+7
+				if LineperLine.find("name=\""+New[0]) >= 0:LastModuleofCategory=LineNumber+8
 				LineNumber+=1
 			InsertNewModule="""	<module name=\""""+init.CodeName+"""\">
         <version>"""+init.Version+"""</version>
