@@ -74,7 +74,7 @@ def main(run):
 		soup = BeautifulSoup(response.read(), "lxml")
 		divList = soup.findAll('cite')
 		for ids in divList:
-			printk.suff("| Result  "+ids.text)
+			printk.suff(" | Result  "+ids.text)
 			Totalresults+="\t  | "+ids.text+"\n"
 
 	printk.step("[3] Step : Scanning Port commons...")
