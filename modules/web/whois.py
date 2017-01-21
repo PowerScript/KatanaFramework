@@ -25,7 +25,7 @@ def init():
 	# DEFAULT OPTIONS MODULE
 	init.options = {
 		# NAME    VALUE                RQ     DESCRIPTION
-		'target':[LOCAL_IP            ,True ,'Host Target']
+		'target':[LOCAL_IP            ,True ,'Host Target'],
 		'port'  :[80                  ,False,'Port Target']
 	}
 	return init
