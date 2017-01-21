@@ -18,7 +18,7 @@ def init():
 	init.Description        ="Administrator Panel finder, Brute Force + Google Dork + Port Scan."
 	init.CodeName           ="web/cp.finder"
 	init.DateCreation       ="28/09/2015"      
-	init.LastModification   ="07/01/2017"
+	init.LastModification   ="21/01/2017"
 	init.References         =None
 	init.License            =KTF_LINCENSE
 	init.var                ={}
@@ -28,6 +28,7 @@ def init():
 		# NAME    VALUE                RQ     DESCRIPTION
 		'target':[LOCAL_IP           ,True , 'Host Target'],
 		'port'  :[HTTP_PORT          ,False, 'Port Target'],
+		'path'  :["/"                ,True , 'Path Target'],
 		'file'  :[TABLE_FOLDER_ADMIN ,False, 'Tables URL']
 	}
 	return init
@@ -42,7 +43,7 @@ def main(run):
 	printk.step("[1] Step : Starting Brute Force...")
 	with open(init.var['file'],'r') as list_path:
 		for path in list_path:
-			path="/"+path.replace("\n","")
+			path=init.var['path']+path.replace("\n","")
 			if init.var['port'] == "443" : 
 				connection = httplib.HTTPSConnection(init.var['target'])
 			else : connection = httplib.HTTPConnection(init.var['target'],int(init.var['port']))
