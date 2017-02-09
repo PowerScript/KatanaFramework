@@ -23,6 +23,7 @@ The Katana source code is organized as follows:
 |Distribution | Version Check | supported | dependencies already installed |status |
 ----------|-------|------|------|-------|
 |Kali Linux|4.4.0 | yes| yes | working   |
+|Debian(8)|4.4.0 | yes| yes | working   |
 |Parrot OS| |yes|yes|working   |
 |Wifislax| |yes|yes|working   |
 |Arch Linux|4.8.6|yes|No|working   |
