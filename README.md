@@ -64,7 +64,7 @@ or use "Issue" on github project
 
 ## LICENSE
 Katana is licensed. 
-See [LICENSE](https://github.com/PowerScript/KatanaFramework/blob/master/doc/LICENCE) for more information.
+See [LICENSE](https://github.com/PowerScript/KatanaFramework/blob/master/doc/LICENSE) for more information.
 
 We need partners, if you're interested in support or help contact.
 
