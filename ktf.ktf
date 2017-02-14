@@ -78,7 +78,7 @@ class ktf:
         <version>"""+init.Version+"""</version>
         <author>"""+init.Author+"""</author>
         <category>"""+New[0]+"""</category>
-        <filename>"""+path+"""</filename>
+        <filename>"""+path[:-3]+"""</filename>
         <description>"""+init.Description+"""</description>
     </module>
 """
