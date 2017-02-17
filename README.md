@@ -26,6 +26,7 @@ The Katana source code is organized as follows:
 |Debian(8)|4.4.0 | yes| yes | working   |
 |Parrot OS| |yes|yes|working   |
 |Wifislax| |yes|yes|working   |
+|OpenSuse| |yes|No|working   |
 |Arch Linux|4.8.6|yes|No|working   |
 |Raspbian|4.1.7 |yes|No|working   |
 |Ubuntu|14.04 |yes|No|working   |
