@@ -39,7 +39,7 @@ def update(fromCall,force):
 		dateupdate=data_string["Katana"]["Update"]["Date"]
 		printk.inf("Last Version    : Core:%s Build:%s Date %s" % (core, build, dateupdate))
 
-		if (build<=Information.build) and force!=False:
+		if (build==Information.build) and force!=False:
 			printk.suff("katana already updated.\n")
 		else:
 			if fromCall == "installer":
