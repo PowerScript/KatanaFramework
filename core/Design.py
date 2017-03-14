@@ -3,7 +3,7 @@
 #HEAD#########################################################
 #
 # Katana Framework | Design                            
-# Last Modified: 24/12/2016
+# Last Modified: 14/03/2017
 #
 #########################################################HEAD#
 
@@ -39,8 +39,8 @@ press      =colors[0]+"  ["+colors[8]+"press-key"+colors[0]+"]"
 
 def MainPrompt()                    :return colors[7]+" [ktf]:"+colors[0]
 def ClientPrompt(module,client)     :return colors[0]+" [ktf]("+colors[7]+colors[1]+module+colors[0]+":"+colors[9]+client+colors[0]+"):"+colors[0]
-def Prompt(module)                  :return colors[0]+"  ↳[ktf]("+colors[7]+colors[1]+module+colors[0]+"):"+colors[0]
-def ChangeValue(option, value)      :print "\n "+option+"\t\t  ⋙ "+value+"\n"
+def Prompt(module)                  :return colors[0]+"  +[ktf]("+colors[7]+colors[1]+module+colors[0]+"):"+colors[0]
+def ChangeValue(option, value)      :print "             ↳--------> "+option+" = "+value
 def RunModule()                     :print " "+runing+" The module was launched...\n"+colors[0]+" "+information+" "+time.strftime('%c')+colors[0]
 
 def Loadingfile(filename)           :print " "+information+" Loading file ["+filename+"]"+colors[0]

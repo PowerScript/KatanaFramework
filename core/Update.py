@@ -47,9 +47,8 @@ def update(fromCall,force):
 				return
 			printk.inf("Downloading Last Version")
 			subprocess.Popen("git clone https://github.com/PowerScript/KatanaFramework.git /tmp/katana",  stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True).wait()
-			printk.inf("Upgrading.")
 			subprocess.Popen("cp -R /tmp/katana/* /usr/share/KatanaFramework/ && rm -rf /tmp/katana", stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True).wait()
 			printk.suff("Katana framework was Updated.\n")
-		return
+		return True
 
 	except:printk.err("Error, No connneted to Internet or server is down.\n")

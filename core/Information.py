@@ -2,11 +2,11 @@
 #HEAD#########################################################
 #
 # Katana Framework | Information File                        
-# Last Modified: 23/12/2016
+# Last Modified: 14/03/2017
 #
 #########################################################HEAD#
 
-__nickname__   = 'Katana'
+__nickname__   = 'Katana Framework'
 __author__     = 'RedToor'
 __emailadd__   = 'redtoor@inbox.ru'
 __twitter__    = 'https://twitter.com/redtoor'
@@ -14,6 +14,6 @@ __facebook__   = 'https://facebook.com/redtoor'
 __license__    = 'GPLv3'
 
 version        = "1.0.0.1"
-date           = "21/12/16:25/12/16"
-build          = "0068"
+date           = "25/12/16:14/03/17"
+build          = "0069"
 Type           = "FREE"

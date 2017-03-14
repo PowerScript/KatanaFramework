@@ -2,15 +2,13 @@
 #HEAD#########################################################
 #
 # Katana Framework | install                         
-# Last Modified: 25/12/2016
+# Last Modified: 14/03/2017
 #
 #########################################################HEAD#
 
 from core import Information, colors, Update
 import os, time, subprocess
 from sys import stdout
-
-
 
 def Command_exe(msg,cmd):
 	i = "\033[1mSTATUS"+colors.W+":[Processing]"
@@ -59,13 +57,13 @@ print " INSTALLING"
 print Command_exe("["+time.strftime('%H:%M:%S')+"] Pre-installing.                  ",Preinstall)
 print Command_exe("["+time.strftime('%H:%M:%S')+"] Checking dependencies.           ",'sudo bash dependencies')
 print " ["+time.strftime('%H:%M:%S')+"] Checking Updates."
-print  "   |"
-Update.update("installer",False)
-print  "   |"
+Update.update("installer",True)
+print ""
 print Command_exe("["+time.strftime('%H:%M:%S')+"] Creating Folder.                 ",'mkdir -p /usr/share/KatanaFramework')
 print Command_exe("["+time.strftime('%H:%M:%S')+"] Copying files.                   ",'cp -r * /usr/share/KatanaFramework')
 print Command_exe("["+time.strftime('%H:%M:%S')+"] Creating Shortcuts.              ",Shortcuts)
 print Command_exe("["+time.strftime('%H:%M:%S')+"] Extracting Files.                ",Files)
 print Command_exe("["+time.strftime('%H:%M:%S')+"] Giving privileges.               ",'chmod -R -c 777 /usr/share/KatanaFramework/')
 
-print "\n if all is [OK] Katana was installed, use ktf.console\n"
+print "\n If all is [OK] Katana was installed, use ktf.console or ktf.gui (DEMO)"
+print " go to https://github.com/PowerScript/KatanaFramework/wiki for more info\n"
