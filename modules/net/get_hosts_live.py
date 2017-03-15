@@ -57,7 +57,7 @@ def main(run):
 				MAC = hosted.get('addr')
 				VENDOR = hosted.get('vendor')
 
-		print "  | #" + str(C) + " --> IP: " + IP + " \t< MAC: " + str(MAC) + " " + str(VENDOR)
+		print "     | #" + str(C) + " --> IP: " + IP + " \t< MAC: " + str(MAC) + " " + str(VENDOR)
 		G_KTFVAR.append(str(IP)+":"+str(MAC))
 	SYSTEM.Command_exe("Clearning Temp files                              ","rm tmp/resultnmap.xml", std=False)
 
