@@ -52,10 +52,6 @@ sudo python install
   
 # USAGE
 Please go to the [Wiki](https://github.com/PowerScript/KatanaFramework/wiki/How-to-use).
-
-# SCREENSHOT
-<img src="https://s30.postimg.org/qctairbkh/Screenshot_from_2016_12_27_11_39_10.png" title="Katana">
-
 ___
 
 ## RECOMMEND IN
