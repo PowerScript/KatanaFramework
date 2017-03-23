@@ -2,7 +2,7 @@
 #HEAD#########################################################
 #
 # Katana Framework | ktf.console                            
-# Last Modified: 27/12/2016
+# Last Modified: 22/03/2016
 #
 #########################################################HEAD#
 
@@ -38,14 +38,14 @@ def katanaFrameworkConsole():
 								init = UpdateInternalModule(init)
 								SaveSession(init)
 								InstanceModule.main(True)
-							elif KatanaCheckActionisBack(actions)       :katanaFrameworkConsole()
+							elif KatanaCheckActionisBack(actions)       :break
 							else:KatanaCheckActionGlobalCommands(actions)
 						except:Errors.Errors()
 			katanaFrameworkConsole()
 		elif KatanaCheckActionExefunction(action)                       :Executefunction(action)
 		else                                                            :KatanaCheckActionGlobalCommands(action)
 		katanaFrameworkConsole()
-	except                                                              :Errors.Errors()
+	except                                                                  :Errors.Errors()
 	  
 if __name__=="__main__":
 	
