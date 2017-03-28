@@ -76,7 +76,7 @@ def main(run):
 		divList = soup.findAll('cite')
 		for ids in divList:
 			printk.suff(" | Result  "+ids.text)
-			Totalresults+="\t   | "+ids.text+"\n"
+			Totalresults+="\t  | "+ids.text+"\n"
 
 	printk.step("[3] Step : Scanning Port commons...")
 	commonports = [2082,2083,2095,2096]
@@ -87,7 +87,7 @@ def main(run):
 			Totalresults+="\t |"+str(port)+" Open! \n"
 
 	printk.inf("[*] Total Result")
-	print Totalresults+"  --------/"
+	print Totalresults+"  -------/"
 	UTIL.sRegister(init,Totalresults)
 
 # END CODE MODULE ############################################################################################
