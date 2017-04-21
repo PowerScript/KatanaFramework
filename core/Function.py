@@ -391,16 +391,16 @@ class WEB:
 ### API EXECUTE FUNCTION ####################################################################################################
 def Executefunction(query):
 	NET_API = NET()
+	WIFE_API= WIFI()
 	try:
 
 		if query[len("f::"):len("get_aps")+len("f::")] == "get_aps": 
 			query = query[len("f::")+len("get_aps"):].replace("(","").replace(")","").split(",")
-			get_aps(str(query[0]),int(query[1]))
+			WIFE_API.get_aps(str(query[0]),int(query[1]))
 
 		elif query[len("f::"):len("start_monitor")+len("f::")]== "start_monitor":
 			query = query[len("f::")+len("start_monitor"):].replace("(","").replace(")","").split(",")
-		    
-			if start_monitor(query[0]):printk.suff(query[0]+" now is in monitor mode.")
+			if NET_API.StartMonitorMode(query[0]):printk.suff(query[0]+" now is in monitor mode.")
 			else:NoDeviceFound(query[0]) 
 
 		elif query[len("f::"):len("get_interfaces")+len("f::")]    == "get_interfaces":    print " ",NET_API.GetInterfacesOnSystem()
