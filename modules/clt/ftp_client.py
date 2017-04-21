@@ -61,8 +61,7 @@ def main(run):
 			cmd = raw_input(ClientPrompt(init.CodeName,"ftp/"+path))
 			if cmd == "ls":
 				Space()
-				ftp.retrlines("LIST")
-				Space()
+				print "   "+ftp.retrlines("LIST")
 			elif cmd[0:2] == "cd":
 				ftp.cwd(cmd[3:])
 				if cmd[3:] != "..": path+=cmd[3:]+"/"
@@ -72,8 +71,8 @@ def main(run):
 			elif cmd[0:3] == "get":
 				lfile=cmd[4:].replace("\n","")
 				ftp.retrbinary('RETR '+lfile,open(lfile,'wb').write)
-				commands.getoutput("cp "+lfile+" /root/Desktop/;rm "+lfile)
-				printk.suff("File was Saved, /root/Desktop/"+lfile)
+				commands.getoutput("cp "+lfile+" /tmp/Desktop/;rm "+lfile)
+				printk.suff("File was Saved, /tmp/Desktop/"+lfile)
 			elif cmd[0:3] == "put":
 				lfile=cmd[4:].replace("\n","")
 				w = open(lfile, 'rb')

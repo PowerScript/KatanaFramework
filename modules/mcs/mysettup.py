@@ -33,16 +33,16 @@ def init():
 # CODE MODULE    ############################################################################################
 def main(run):
 	printk.suff("Computer")
-	print "       | IP Local   : ",NET.GetLocalIp()
-	print "       | Ip Externa : ",NET.GetPublicIp()
-	print "       | Interfaces : ",NET.GetInterfacesOnSystem()
-	print "       | Gateway    : ",NET.GetGateway()
-	print "       | Machaddress: ",NET.GetMacAddress()	
-	print "       | Username   : ",commands.getoutput('whoami')
-	print "       | OS         : ",commands.getoutput('uname')
-	print "       | Version    : ",commands.getoutput('uname -r')
+	print "     | IP Local   : ",NET.GetLocalIp()
+	print "     | Ip Externa : ",NET.GetPublicIp()
+	print "     | Interfaces : ",NET.GetInterfacesOnSystem()
+	print "     | Gateway    : ",NET.GetGateway()
+	print "     | Machaddress: ",NET.GetMacAddress()	
+	print "     | Username   : ",commands.getoutput('whoami')
+	print "     | OS         : ",commands.getoutput('uname')
+	print "     | Version    : ",commands.getoutput('uname -r')
 	printk.suff("Katana")
-	print "       | Core       : ",Information.version
-	print "       | Build      : ",Information.build
+	print "     | Core       : ",Information.version
+	print "     | Build      : ",Information.build
 
 # END CODE MODULE ############################################################################################

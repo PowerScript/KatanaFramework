@@ -2,7 +2,7 @@
 #HEAD#########################################################
 #
 # Katana Framework | ktf.run                            
-# Last Modified: 27/12/2016
+# Last Modified: 27/12/2017
 #
 #########################################################HEAD#
 
@@ -21,8 +21,7 @@ parser.add_argument("-q", "--quit"  , action='store_false', default=True, help="
 args = parser.parse_args()
 
 if args.quit:Banner.LoadBanner()
-
-if __name__=="__main__":
+if args.module and __name__=="__main__":
 	for modules in GetRootModules().findall('module'):
 		if args.module == modules.get('name'):
 
@@ -47,6 +46,6 @@ if __name__=="__main__":
 						InstanceModule.main(True)
 					elif KatanaCheckActionisBack(actions)       :FunctionNoEnableForThisModule()
 					else :
-						if actions                              :KatanaCheckActionGlobalCommands(actions)
-				except                                          :Errors.Errors()
+						if actions                          :KatanaCheckActionGlobalCommands(actions,"mdl")
+				except                                              :Errors.Errors()
 	ModuleNotFound(args.module)

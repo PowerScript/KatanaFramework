@@ -39,11 +39,11 @@ def katanaFrameworkConsole():
 								SaveSession(init)
 								InstanceModule.main(True)
 							elif KatanaCheckActionisBack(actions)       :break
-							else:KatanaCheckActionGlobalCommands(actions)
+							else:KatanaCheckActionGlobalCommands(actions,"mdl")
 						except:Errors.Errors()
 			katanaFrameworkConsole()
 		elif KatanaCheckActionExefunction(action)                       :Executefunction(action)
-		else                                                            :KatanaCheckActionGlobalCommands(action)
+		else                                                            :KatanaCheckActionGlobalCommands(action,"main")
 		katanaFrameworkConsole()
 	except                                                                  :Errors.Errors()
 	  

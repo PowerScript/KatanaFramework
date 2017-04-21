@@ -104,7 +104,7 @@ def ShowInformationModule(init):
 	print "     |->License : "+str(init.License)
 
 ### GLOBAL COMMANDS ###
-def KatanaCheckActionGlobalCommands(action):
+def KatanaCheckActionGlobalCommands(action,instance):
 	if     action[:len(EXIT)]        == EXIT   or action[:len(EXIT)]        == EXIT_SHORT  : sys.exit(1995)
 	elif   action[:len(HELP)]        == HELP   or action[:len(HELP_SHORT)]  == HELP_SHORT  : Help.help()
 	elif   action[:len("version")]   == "version"        :printk.suff("V:["+version+"] B:["+build+"] D:["+date+"]")
@@ -113,7 +113,9 @@ def KatanaCheckActionGlobalCommands(action):
 	elif   action[:len(CLEAR)]       == CLEAR  or action[:len(CLEAR_SHORT)] == CLEAR_SHORT : subprocess.call('clear', shell=True)
 	elif   action[:len(SAVEV)]       == SAVEV            :SaveValue(action)
 	elif   action                    == ""               :return
-	else                                                 :CommandNotFound()
+	else                                                 :
+		if instance == "main":MainCommandNotFound()
+		else:CommandNotFound()
 
 
 ### CALL MODULE ###
@@ -283,7 +285,7 @@ def SaveErrorLog(event):
 
 ### MAKE TABLES ###
 def MakeTable(matriz):
-	print "   "+colors[7]+"|"+colors[0]+" "
+	print " "
 	MMM = len(matriz[0])
 	NNN = len(matriz)
 	MAY = []
@@ -345,7 +347,7 @@ def MakeTable(matriz):
 		VARB=0
 		VAR+=1
 
-	print LINE+colors[7]+R[:-2].replace(" ","")+"|\n   |"+colors[0]
+	print LINE+colors[7]+R[:-2].replace(" ","")+"|\n"+colors[0]
 
 ### GET NUMBER MODULES INSTALLED ###
 def get_number_modules():

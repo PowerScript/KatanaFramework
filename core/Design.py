@@ -32,13 +32,13 @@ information=colors[0]+"  ["+colors[4]+"inf"+colors[0]+"]"
 success    =colors[0]+"  ["+colors[7]+colors[2]+"suf"+colors[0]+"]"
 help       =colors[0]+"  ["+colors[7]+"hlp"+colors[0]+"]"
 warning    =colors[0]+"  ["+colors[7]+colors[3]+"war"+colors[0]+"]"
+warningM   =colors[0]+" ["+colors[7]+colors[3]+"war"+colors[0]+"]"
 runing     =colors[0]+"  ["+colors[2]+"run"+colors[0]+"]"
 wait       =colors[0]+"  ["+colors[8]+"wait"+colors[0]+"]"
 press      =colors[0]+"  ["+colors[8]+"press-key"+colors[0]+"]"
 
-
 def MainPrompt()                    :return colors[7]+" [ktf]:"+colors[0]
-def ClientPrompt(module,client)     :return colors[0]+" [ktf]("+colors[7]+colors[1]+module+colors[0]+":"+colors[9]+client+colors[0]+"):"+colors[0]
+def ClientPrompt(module,client)     :return colors[0]+"  +[ktf]("+colors[7]+colors[1]+module+colors[0]+":"+colors[9]+client+colors[0]+"):"+colors[0]
 def Prompt(module)                  :return colors[0]+"  +[ktf]("+colors[7]+colors[1]+module+colors[0]+"):"+colors[0]
 def ChangeValue(option, value)      :print "             ↳--------> "+option+" = "+value
 def RunModule()                     :print " "+runing+" The module was launched...\n"+colors[0]+" "+information+" "+time.strftime('%c')+colors[0]
@@ -50,24 +50,19 @@ def NoExistsparameter()             :print " "+error+" The parameter is not Exis
 def helpAUX()                       :print " "+help+" Auxiliar module support"
 def NoDeviceFound(device)           :print " "+error+" The device '"+device+"' not was Found.\n"
 def CommandNotFound()               :print " "+warning+" Invalid parameter use show 'help' for more information"+colors[0]
+def MainCommandNotFound()           :print warningM+" Invalid parameter use show 'help' for more information"+colors[0]
 def functionNotFound()              :print " "+warning+" The function not Exists"+colors[0]
 def FunctionNoEnableForThisModule() :print " "+error+" This Commands just work in ktf.console mode."
 
 class printk():
 	def inf(self,msg):
 		if VERBOSE==True:print " "+information+" "+str(msg)
-	def err(self,msg):
-		print " "+error+" "+str(msg)
-	def suff(self,msg):
-		print " "+success+" "+str(msg)
-	def step(self,msg):
-		print " "+step+" "+str(msg)
-	def war(self,msg):
-		print " "+warning+" "+str(msg)
-	def wait(self,msg):
-		print " "+wait+" "+str(msg)
-	def pkey(self,msg):
-		return "   | "+press+" "+str(msg)+"\n   |"
+	def err(self,msg): print " "+error+" "+str(msg)
+	def suff(self,msg):print " "+success+" "+str(msg)
+	def step(self,msg):print " "+step+" "+str(msg)
+	def war(self,msg): print " "+warning+" "+str(msg)
+	def wait(self,msg):print " "+wait+" "+str(msg)
+	def pkey(self,msg):return "   | "+press+" "+str(msg)+"\n   |"
 
 class DESIGN:
 	
@@ -75,13 +70,11 @@ class DESIGN:
 		appent_tab = ""
 		if len(CodeName) < 14 : appent_tab = "\t"
 		print colors[0]+"  "+colors[7]+CodeName+colors[0]+appent_tab+"\t\t"+Description
-		
 	def option(self,lot):
 		more=""
 		if lot == True : more = "["+colors[1]+"+"+colors[0]+"]"
 		print "\n  [options]\t[RQ]\t[description]\t\t[value]"+more
 		print "  ---------\t----\t-------------\t\t-------"
-
 	def description(self, option, rq, description, value):
 		if rq == True:
 			rq=colors[2]+"yes"+colors[0]

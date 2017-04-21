@@ -69,9 +69,7 @@ def main(run):
 	INFORMEs=[]
 	MAC="Unknow"
 	VENDOR="Unknow"
-	Space()
-	commands.getoutput("nmap "+parameter+" "+init.var['target']+" -oX tmp/portScanner-tmp.xml > null")
-
+	SYSTEM.Command_exe("Scanning with Nmap                                ","nmap "+parameter+" "+init.var['target']+" -oX tmp/portScanner-tmp.xml", std=False)
 	for host in ET.parse('tmp/portScanner-tmp.xml').getroot().findall('host'):
 		for address in host.findall('address'):
 			p=address.get('addr')
@@ -109,20 +107,21 @@ def main(run):
 		for os in host.findall('os'):
 			for osmatch in os.findall('osmatch'):
 				OSMATCHs.append(osmatch.get('name'))
-	print "   | Ip address: "+colors[2]+init.var['target']+colors[0]
-	print "   | Mac       : "+MAC
-	print "   | Vendor    : "+VENDOR
-	print "   | OS Matchs : "
+
+	print "     | Ip address: "+colors[2]+init.var['target']+colors[0]
+	print "     | Mac       : "+MAC
+	print "     | Vendor    : "+VENDOR
+	print "     | OS Matchs : "
 	for os in OSMATCHs:
-		print "                "+os
-	print "   | Services  : " 				
+		print "     |           "+os
+	print "     | Services  : " 				
 	for services in SERVICEs:
-		print "                "+str(services) 
-	print "   | Report    :"
+		print "     |           "+str(services) 
+	print "     | Report    :"
 	for informer in INFORMEs:
 		informer=str("{NULL}" if informer is "" else informer)
 		print "                "+str(informer) 
 	commands.getoutput('rm tmp/portScanner-tmp.xml > null')
-	Space()
+	print "     |"
 
 # END CODE MODULE ############################################################################################
