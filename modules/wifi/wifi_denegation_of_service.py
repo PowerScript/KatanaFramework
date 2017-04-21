@@ -35,9 +35,8 @@ def init():
 	init.aux += "\n -> [ALL] all wireless clients."
 	init.aux += "\n -> [MAC] a single client access.\n"
 	init.aux += "\n Devices Founds: "+str(NET.GetInterfacesOnSystem())
-	init.aux += "\n Monitors Inter: """+str(NET.GetMonitorInterfaces())
-	init.aux += "\n Functions     : For Scan Ap's, type 'f::getaps(Monitor_Interface,Time)"
-	init.aux += "\n                  For Start Monitor Mode, type 'f::startmonitormode(Interface)\n" 
+	init.aux += "\n Functions     : For Scan Ap's, type 'f::get_aps(Monitor_Interface,Time)"
+	init.aux += "\n                  For Start Monitor Mode, type 'f::start_monitor(Interface)\n" 
 	return init
 # END INFORMATION MODULE
 
