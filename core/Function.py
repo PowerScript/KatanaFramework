@@ -33,7 +33,7 @@ File_Agent_Open=False
 NUMBER_AGENTS=0
 ap_list = []
 
-
+prks = printk()
 
 class NET:
 
@@ -48,16 +48,14 @@ class NET:
 		return False
 
 	def StartMonitorMode(self,interface):
-		commands.getoutput("airmon-ng check kill")
-		if checkDevice(interface):
-			state=commands.getoutput("airmon-ng start "+interface)
-			if state:return True
+		state=commands.getoutput("airmon-ng start "+interface)
+		if state.find("monitor mode enabled"):return True
 		return False
 
 	def InterfaceSupportAPMode(self):
 		output = commands.getoutput('iw list | grep "* AP"')
 		if len(output) > 0 : return True
-		printk.err("You device not support AP mode.")
+		prk.err("You device not support AP mode.")
 		return False
 
 	def GetLocalIp(self):
@@ -148,7 +146,7 @@ class NET:
 		for line in s:
 			if "default" in line:
 				return True
-		printk.err("you not is connected to a network.\n")
+		prk.err("you not is connected to a network.\n")
 		return False
 
 
@@ -224,13 +222,13 @@ class NET:
 		if code == 510 : description = [ "Not Extended (RFC 2774)"                  , "Err:Server" ]
 		if code == 511 : description = [ "Network Authentication Required"          , "Err:Server" ]
 		if (description[1]=="Err:Server"):
-			printk.err("Connection : "+description[0])
+			prk.err("Connection : "+description[0])
 			return False
 		if (description[1]=="Err:Client"):
-			printk.war("Connection : "+description[0])
+			prk.war("Connection : "+description[0])
 			return False
 		if (description[1]=="Suf")       :
-			printk.suff("Connection : "+description[0])
+			prk.suff("Connection : "+description[0])
 			return True
 
 
@@ -267,7 +265,7 @@ class COM:
 class WIFI:
 	def get_aps(mon,timeout):
 		commands.getoutput('rm '+FOLDER_KATANA+'tmp/*.netxml')
-		printk.inf("Scanning Access Points in Interface '"+mon+"', Please wait "+str(timeout)+"seg")
+		prk.inf("Scanning Access Points in Interface '"+mon+"', Please wait "+str(timeout)+"seg")
 		Subprocess("airodump-ng "+mon+" -w '"+FOLDER_KATANA+"tmp/ktf.wifi' --wps --output-format netxml --write-interval "+str(timeout))
 		time.sleep(timeout+1)
 		APCOUNTER    = 0
@@ -392,15 +390,16 @@ class WEB:
 def Executefunction(query):
 	NET_API = NET()
 	WIFE_API= WIFI()
+
 	try:
 
 		if query[len("f::"):len("get_aps")+len("f::")] == "get_aps": 
 			query = query[len("f::")+len("get_aps"):].replace("(","").replace(")","").split(",")
 			WIFE_API.get_aps(str(query[0]),int(query[1]))
 
-		elif query[len("f::"):len("start_monitor")+len("f::")]== "start_monitor":
+		elif query[len("f::"):len("start_monitor")+len("f::")] == "start_monitor":
 			query = query[len("f::")+len("start_monitor"):].replace("(","").replace(")","").split(",")
-			if NET_API.StartMonitorMode(query[0]):printk.suff(query[0]+" now is in monitor mode.")
+			if NET_API.StartMonitorMode(query[0]):prks.suff(str(query[0])+" now is in monitor mode.")
 			else:NoDeviceFound(query[0]) 
 
 		elif query[len("f::"):len("get_interfaces")+len("f::")]    == "get_interfaces":    print " ",NET_API.GetInterfacesOnSystem()
@@ -410,6 +409,7 @@ def Executefunction(query):
 		elif query[len("f::"):len("get_gateway")+len("f::")]       == "get_gateway":       print " ",NET_API.GetGateway()
 
 		else:functionNotFound()                                                                                 
-	except:print " "+warning+" Check Again your Functions command."
+	except Exception as es:
+		print es
+		#print " "+warning+" Check Again your Functions command."
 ##############################################################################################################################
-
