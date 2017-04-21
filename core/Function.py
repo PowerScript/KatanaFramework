@@ -409,7 +409,5 @@ def Executefunction(query):
 		elif query[len("f::"):len("get_gateway")+len("f::")]       == "get_gateway":       print " ",NET_API.GetGateway()
 
 		else:functionNotFound()                                                                                 
-	except Exception as es:
-		print es
-		#print " "+warning+" Check Again your Functions command."
+	except Exception:print " "+warning+" Check Again your Functions command."
 ##############################################################################################################################
