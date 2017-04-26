@@ -6,6 +6,12 @@
         <filename>administrator_panel_finder</filename>
         <description>Administrator Panel Finder.</description>
     </module>
+      <module name="web/sub.dns">
+        <author>RedToor</author>
+		<category>web</category>
+        <filename>subdomain_btf</filename>
+        <description>Subdomain Bruteforce.</description>
+    </module>
       <module name="web/bypass.sql">
         <author>RedToor</author>
         <category>web</category>
