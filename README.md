@@ -5,7 +5,7 @@
 ---
 # ABOUT.
 
-katana is a framework written in python for making penetration testing, based on a simple and comprehensive structure for anyone to use, modify and share, the goal is to unify tools serve for professional when making a penetration test or simply as a routine tool, The current version is not completely stable, is recommended update ever that you use it.
+katana is a framework written in python for making penetration testing, based on a simple and comprehensive structure for anyone to use, modify and share, the goal is to unify tools serve for professional when making a penetration test or simply as a routine tool, The current version is not completely stable, is recommended update ever that you use it(ktf.update -f).
 
 ## Make your own modules easily and no lost time with commands.
 
@@ -77,7 +77,7 @@ Youtube Guide: https://www.youtube.com/playlist?list=PL6BZilIOZMcy7uG3cRqYMc69kF
 ```
 [![Download katana](https://a.fsdn.com/con/app/sf-download-button)](https://sourceforge.net/projects/katanas/files/latest/download)
 
-from <img src="http://www.euromonitor.com/medialibrary/Image/Flag_20x20_Colombia.png" title="Colombia"> made in <img src="https://developer.ibm.com/predictiveanalytics/wp-content/uploads/sites/48/2015/04/python-icon.png" title="Python"> with <img src="http://cdn0.bodas.com.mx/img/smileys/smiley_heart.png" title="Love"> by <font color="red">Red</font>Toor, if you want Donate <img src="http://www.wbtcb.com/frontend/webroot/gfx/bitcoin-ico.gif" title="Bitcoins"> 1PAq7a9TqkJzEfBZGXGf2YFAU5KBZRccnW
+from <img src="https://www.casur.gov.co/casurinicio-theme/images/diferentes/Esp.png" title="Colombia"> made in <img src="https://developer.ibm.com/predictiveanalytics/wp-content/uploads/sites/48/2015/04/python-icon.png" title="Python"> with <img src="http://cdn0.bodas.com.mx/img/smileys/smiley_heart.png" title="Love"> by <font color="red">Red</font>Toor, if you want Donate <img src="http://www.wbtcb.com/frontend/webroot/gfx/bitcoin-ico.gif" title="Bitcoins"> 1PAq7a9TqkJzEfBZGXGf2YFAU5KBZRccnW
 
 © 2015-2017
 
