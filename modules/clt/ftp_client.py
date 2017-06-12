@@ -1,4 +1,4 @@
-# This module requires katana framework 
+# This module requires katana framework
 # https://github.com/PowerScript/KatanaFramework
 
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
@@ -6,19 +6,19 @@
 from core.KatanaFramework import *    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
-# LIBRARIES  
+# LIBRARIES
 from core.Errors import Errors
 from ftplib import FTP
 import commands, os
-# END LIBRARIES 
+# END LIBRARIES
 
 # INFORMATION MODULE
 def init():
 	init.Author             ="RedToor"
 	init.Version            ="1.1"
-	init.Description        ="Console Client for FTProtocol."
+	init.Description        ="Console Client to FTProtocol."
 	init.CodeName           ="clt/cl.ftp"
-	init.DateCreation       ="03/03/2015"      
+	init.DateCreation       ="03/03/2015"
 	init.LastModification   ="20/07/2016"
 	init.References         =None
 	init.License            =KTF_LINCENSE
@@ -32,13 +32,16 @@ def init():
 		'user'  :[USERNAME ,True ,'Username'],
 		'pass'  :[PASSWORD ,True ,'Password'],
 	}
+	init.extra = {
+		'folder':["/tmp/"   ,False,"Download Folder"]
+	}
 	return init
 # END INFORMATION MODULE
 
 # CODE MODULE    ############################################################################################
 def main(run):
 	ftp = FTP()
-	ftp.connect(init.var['target'],int(init.var['port'])) 
+	ftp.connect(init.var['target'],int(init.var['port']))
 	ftp.login(init.var['user'],init.var['pass'])
 
 	printk.inf("FTP Console")
@@ -71,8 +74,8 @@ def main(run):
 			elif cmd[0:3] == "get":
 				lfile=cmd[4:].replace("\n","")
 				ftp.retrbinary('RETR '+lfile,open(lfile,'wb').write)
-				commands.getoutput("cp "+lfile+" /tmp/Desktop/;rm "+lfile)
-				printk.suff("File was Saved, /tmp/Desktop/"+lfile)
+				commands.getoutput("cp "+lfile+" "+init.var['folder']+";rm "+lfile)
+				printk.suff("File was Saved, "+init.var['folder']+lfile)
 			elif cmd[0:3] == "put":
 				lfile=cmd[4:].replace("\n","")
 				w = open(lfile, 'rb')
@@ -84,6 +87,6 @@ def main(run):
 			elif cmd[0:2] == "rm" :ftp.delete(cmd[3:])
 			elif cmd[0:2] == "mk" :ftp.mkd(cmd[3:])
 			elif cmd == "help":GRAPHICAL.CreateTable(HelpBanner)
-		except : Errors() 
+		except : Errors()
 
 # END CODE MODULE ############################################################################################
