@@ -1,16 +1,15 @@
-# This Tool requires katana framework 
+# This Tool requires katana framework
 # https://github.com/PowerScript/KatanaFramework
 
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Katana Core import                  #
-from core.KATANAFRAMEWORK import *    #
+from core.KatanaFramework import *    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
-# LIBRARIES  
-from core.Function import checkDevice,checkMAC
+# LIBRARIES
 from os import system as sysc
 import random, sys, re, optparse, hashlib, re
-# END LIBRARIES 
+# END LIBRARIES
 
 class init:
 
@@ -38,17 +37,18 @@ def Main():
         random.randint(0x00, 0xff),
         random.randint(0x00, 0xff) ]
 
-    if init.var['r'] == "enable":MAC=':'.join(map(lambda x: "%02x" % x, mac))
-    if init.var['m']!="null" and init.var['m']!="enable":
-        if checkMAC(init.var['m']):MAC=init.var['m']
-    
-    if checkDevice(init.var['i']):
-        printAlert(0,"Changing MAC to "+init.var['i'])
-        printAlert(0,"MAC to Change "+MAC)
+    if init.var['r'] == "enable" or init.var['m']=="null":
+	MAC=':'.join(map(lambda x: "%02x" % x, mac))
+
+    if init.var['m']!="null":
+        MAC=init.var['m']
+
+    if NET.CheckIfExistInterface(init.var['i']):
+        printk.inf("Changing MAC to "+init.var['i'])
         sysc("sudo airmon-ng check kill >/dev/null 2>&1")
         sysc("sudo ifconfig "+init.var['i']+" down >/dev/null 2>&1")
-        sysc("sudo ifconfig "+init.var['i']+" hw ether "+MAC+" >/dev/null 2>&1") 
+        sysc("sudo ifconfig "+init.var['i']+" hw ether "+MAC+" >/dev/null 2>&1")
         sysc("sudo ifconfig "+init.var['i']+" up >/dev/null 2>&1")
-        sysc("sudo service NetworkManager start >/dev/null 2>&1") 
-        printAlert(3,"MAC Changed")
+        sysc("sudo service NetworkManager start >/dev/null 2>&1")
+	printk.suff("MAC Address was Changed "+MAC)
         return
