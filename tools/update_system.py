@@ -1,14 +1,14 @@
-# This Tool requires katana framework 
+# This Tool requires katana framework
 # https://github.com/PowerScript/KatanaFramework
 
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 # Katana Core import                  #
-from core.KATANAFRAMEWORK import *    #
+from core.KatanaFramework import *    #
 # :-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-:-: #
 
-# LIBRARIES  
+# LIBRARIES
 from os import system as sysc
-# END LIBRARIES 
+# END LIBRARIE
 
 class init:
 	
