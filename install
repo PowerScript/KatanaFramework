@@ -63,7 +63,7 @@ print Command_exe("["+time.strftime('%H:%M:%S')+"] Creating Folder.             
 print Command_exe("["+time.strftime('%H:%M:%S')+"] Copying files.                   ",'cp -r * /usr/share/KatanaFramework')
 print Command_exe("["+time.strftime('%H:%M:%S')+"] Creating Shortcuts.              ",Shortcuts)
 print Command_exe("["+time.strftime('%H:%M:%S')+"] Extracting Files.                ",Files)
-print Command_exe("["+time.strftime('%H:%M:%S')+"] Giving privileges.               ",'chmod -R -c 777 /usr/share/KatanaFramework/')
+print Command_exe("["+time.strftime('%H:%M:%S')+"] Giving privileges.               ",'chmod -R -c 750 /usr/share/KatanaFramework/')
 
 print "\n If all is [OK] Katana was installed, use ktf.console or ktf.gui (DEMO)"
 print " go to https://github.com/PowerScript/KatanaFramework/wiki for more info\n"
