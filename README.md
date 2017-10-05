@@ -43,12 +43,12 @@ sudo python install
 </pre></i></n>
 
 # FEATURES
- *SESSIONS* Using sessions in each module to not waste time,
- *VARIABLES TEMP* Save results in variables for use in other modules,
- *SYSTEM COMMANDS* Execute System commands through the console,
- *INTERNAL FUNCTIONS* Run internal functions from console,
- *GUI* Graphical User interface,
- *SETTINGS* Enable and disable features easily.
+  * *SESSIONS* Using sessions in each module to not waste time;
+  * *VARIABLES TEMP* Save results in variables for use in other modules;
+  * *SYSTEM COMMANDS* Execute System commands through the console;
+  * *INTERNAL FUNCTIONS* Run internal functions from console;
+  * *GUI* Graphical User interface;
+  * *SETTINGS* Enable and disable features easily;
   
 # USAGE
 Please go to the [Wiki](https://github.com/PowerScript/KatanaFramework/wiki/How-to-use).
