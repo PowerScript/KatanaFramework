@@ -5,7 +5,7 @@
 ---
 # ABOUT.
 
-katana is a framework written in python for making penetration testing, based on a simple and comprehensive structure for anyone to use, modify and share, the goal is to unify tools serve for professional when making a penetration test or simply as a routine tool, The current version is not completely stable, is recommended update ever that you use it(ktf.update -f).
+katana is a framework written in python for making penetration testing, based on a simple and comprehensive structure for anyone to use, modify and share, the goal is to unify tools serve for professional when making a penetration test or simply as a routine tool, The current version is not completely stable, it's recommended to update every time that you will use it (ktf.update -f).
 
 ## Make your own modules easily and no lost time with commands.
 
@@ -35,7 +35,7 @@ The Katana source code is organized as follows:
 |Xbuntu|4.4.0 |yes|No|working  |
 
 # INSTALLATION
-Installation of Katana framework: is necesary install all [dependencies](https://github.com/PowerScript/KatanaFramework/wiki/Requisites) for a good performance.
+For the installation of Katana framework it's necesary to install all [dependencies](https://github.com/PowerScript/KatanaFramework/wiki/Requisites) for a good performance.
 <pre><i><n>git clone https://github.com/PowerScript/KatanaFramework.git
 cd KatanaFramework
 sudo sh dependencies
@@ -65,7 +65,7 @@ or use "Issue" on github project
 Katana is licensed. 
 See [LICENSE](https://github.com/PowerScript/KatanaFramework/blob/master/doc/LICENSE) for more information.
 
-We need partners, if you're interested in support or help contact.
+We need partners, if you're interested in supporting or helping, please contact me.
 
 ## LINKS
 ```
