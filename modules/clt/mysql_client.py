@@ -63,7 +63,6 @@ def main(run):
 				for x in range(tor):
 					print (" -%s") % cur.fetchone()
 					if cmd[:3] == "use": current = "sql:"+cmd[4:]
-				if True:printAlert(3,"------- > OK.")
 			except Exception , e:printk.err(e)
 
 # END CODE MODULE ############################################################################################
