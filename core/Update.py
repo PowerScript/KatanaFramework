@@ -12,7 +12,7 @@ import httplib,urllib,subprocess,socket,json,os,sys
 
 printk = printk()
 
-if os.getuid() != 0:
+if os.getuid() != 1:
 	Space()
 	printk.inf("Katana Framework.")
 	printk.err("this must be run as "+colors[7]+"root"+colors[0]+".")
