@@ -8,7 +8,7 @@ from core.KatanaFramework import *    #
 
 # LIBRARIES  
 from bs4 import BeautifulSoup
-import httplib,re        
+import httplib,re,ssl
 # END LIBRARIES 
 
 # INFORMATION MODULE
@@ -28,6 +28,7 @@ def init():
 		# NAME    VALUE                RQ     DESCRIPTION
 		'target':[LOCAL_IP           ,True , 'Host Target'],
 		'port'  :[HTTP_PORT          ,False, 'Port Target'],
+                'ssl'   :["true"             ,True , 'SSL Conection'],
 		'path'  :["/"                ,True , 'Path Target'],
 		'file'  :[TABLE_FOLDER_ADMIN ,False, 'Tables URL']
 	}
@@ -44,9 +45,9 @@ def main(run):
 	with open(init.var['file'],'r') as list_path:
 		for path in list_path:
 			path=init.var['path']+path.replace("\n","")
-			if init.var['port'] == "443" : 
-				connection = httplib.HTTPSConnection(init.var['target'])
-			else : connection = httplib.HTTPConnection(init.var['target'],int(init.var['port']))
+			if init.var['ssl'] == "true" : 
+				connection = httplib.HTTPSConnection(init.var['target'],port=int(init.var['port']),context=ssl._create_unverified_context())
+			else :  connection = httplib.HTTPConnection(init.var['target'],int(init.var['port']))
 			connection.addheaders=[('User-agent', WEB.RamdonAgent())]
 			connection.request("GET",path)
 			response = connection.getresponse()
