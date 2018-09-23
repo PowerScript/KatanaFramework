@@ -66,7 +66,7 @@ Youtube Guide: https://www.youtube.com/playlist?list=PL6BZilIOZMcy7uG3cRqYMc69kF
 ```
 [![Download katana](https://a.fsdn.com/con/app/sf-download-button)](https://sourceforge.net/projects/katanas/files/latest/download)
 
-from <img src="https://www.casur.gov.co/casurinicio-theme/images/diferentes/Esp.png" title="Colombia"> made in <img src="https://developer.ibm.com/predictiveanalytics/wp-content/uploads/sites/48/2015/04/python-icon.png" title="Python"> | if you want Donate <img src="http://www.wbtcb.com/frontend/webroot/gfx/bitcoin-ico.gif" title="Bitcoins"> 1PAq7a9TqkJzEfBZGXGf2YFAU5KBZRccnW
+if you want Donate <img src="http://www.wbtcb.com/frontend/webroot/gfx/bitcoin-ico.gif" title="Bitcoins"> 1PAq7a9TqkJzEfBZGXGf2YFAU5KBZRccnW
 
 © 2015-2017
 
