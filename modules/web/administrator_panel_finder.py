@@ -16,7 +16,7 @@ def init():
 	init.Author             ="RedToor"
 	init.Version            ="2.1"
 	init.Description        ="Administrator Panel finder, Brute Force + Google Dork + Port Scan."
-	init.CodeName           ="web/cp.finder"
+	init.CodeName           ="web/ap.finder"
 	init.DateCreation       ="28/09/2015"      
 	init.LastModification   ="21/01/2017"
 	init.References         =None
