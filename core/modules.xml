@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <modules>
-    <module name="web/cp.finder">
+    <module name="web/ap.finder">
         <author>RedToor</author>
 		<category>web</category>
         <filename>administrator_panel_finder</filename>
