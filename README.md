@@ -3,11 +3,11 @@
 ![Gitter chat](https://badges.gitter.im/totaljs/framework.png) ![Supported OS](https://img.shields.io/badge/Supported%20OS-Linux-yellow.svg) 
 ![License](https://img.shields.io/badge/license-GPLv3-blue.svg) ![CORE](https://img.shields.io/badge/core-1.0.0.1-green.svg) ![Build](https://img.shields.io/badge/BUILD-0069-red.svg) ![Modules](https://img.shields.io/badge/modules-37-green.svg) ![Python](https://img.shields.io/badge/Python-2.7-green.svg) [![Build Status](https://travis-ci.org/PowerScript/KatanaFramework.svg?branch=master)](https://travis-ci.org/PowerScript/KatanaFramework)
 ---
-# ABOUT.
+# ABOUT
 
 katana is a framework written in python for making penetration testing, based on a simple and comprehensive structure for anyone to use, modify and share, the goal is to unify tools serve for professional when making a penetration test or simply as a routine tool, The current version is not completely stable, it's recommended to update every time that you will use it (ktf.update -f).
 
-## Make your own modules easily and no lost time with commands.
+## Make your own modules easily and no lost time with commands. ##
 
 # SOURCE CODE ORGANIZATION
 The Katana source code is organized as follows:
@@ -54,10 +54,10 @@ sudo python install
 Please go to the [Wiki](https://github.com/PowerScript/KatanaFramework/wiki/How-to-use).
 ___
 
-## RECOMMEND IN
+## RECOMMEND IN ##
 [blackarch](http://blackarch.org/tools.html) [hackersonlineclub](http://blog.hackersonlineclub.com/2016/01/katana-framework-for-hackers-and.html) [pax0r](http://pax0r.com/staff/tools2016/) [seclist](http://seclist.us/katana-framework-build-v0065-the-hacking-framework.html) [kitploit](http://www.kitploit.com/2015/12/katana-framework-for-hackers.html) [sapsi](http://sapsi.org/es/2015/12/katana-framework-for-hackers-professional-security-and-developers/) [cybrary](https://www.cybrary.it/0p3n/katana-framework-hackers-choice/) [toolwar](http://www.toolwar.com/2016/08/katana-penetration-testing-framework.html) [redeszone](http://www.redeszone.net/2016/10/29/katana-conoce-este-framework-realizar-pentesting-sistemas/) [hackjungle](http://www.hackjungle.com/news/katana-framework-hackers-choice-for-pentesters) [codeby](https://codeby.net/bezopasnost/frejmvork-katana/) [thechandrakant](http://thechandrakant.com/2016/01/26/katana-framework-for-hackers-and-professional-security-researchers/)
 
-## LINKS
+## LINKS ##
 ```
 Wiki: https://github.com/PowerScript/KatanaFramework/wiki
 Project in SF: http://sourceforge.net/projects/katanas/files/
