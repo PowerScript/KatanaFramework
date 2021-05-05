@@ -5,7 +5,8 @@
 ---
 # ABOUT.
 
-katana is a framework written in python for making penetration testing, based on a simple and comprehensive structure for anyone to use, modify and share, the goal is to unify tools serve for professional when making a penetration test or simply as a routine tool, The current version is not completely stable, it's recommended to update every time that you will use it (ktf.update -f).
+Katana is a framework written in python for making penetration testing, based on a simple and comprehensive structure for anyone to use, modify and share, the goal is to unify tools serve for professional when making a penetration test or simply as a routine tool, The current version is not completely stable, it's recommended to update every time that you will use it 
+for update consder this command: ktf.update -f
 
 ## Make your own modules easily and no lost time with commands.
 
@@ -23,10 +24,11 @@ The Katana source code is organized as follows:
 
 # SUPPORTED DISTRIBUTIONS
 |Distribution | Version Check | supported | dependencies already installed |status |
-----------|-------|------|------|-------|
-|Kali Linux|4.4.0 | yes| yes | working   |
-|Debian(8)|4.4.0 | yes| yes | working   |
-|Parrot OS| |yes|yes|working   |
+-----------|-------|------|------|-------|
+|Kali Linux|2019.3 | yes  |yes   |working|
+|Kali Linux|4.4.0 | yes  |yes   |working|
+|Debian(8) |4.4.0 | yes  | yes  | working   |
+|Parrot OS |      |yes   |yes   | working   |
 |Wifislax| |yes|yes|working   |
 |OpenSuse| |yes|No|working   |
 |Arch Linux|4.8.6|yes|No|working   |
